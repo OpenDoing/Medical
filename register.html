@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html >
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>注册</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">			<!--登录框右上角key-->
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.12.4.min.js" ></script>
+        <link rel="stylesheet" href="css/style.css">	
+        <script src="js/status.js"></script>
+
+    </head>
+
+    <body>
+	<header>
+		<img src="img/logo.png" class="logo"/>
+		<!--<a href="#" class="logo"></a>-->
+		<div class="desc">欢迎注册</div>
+		
+	</header>                
+    <div id="main" class="container" >
+        <div class="row">
+        	<div class="col-md-6">
+        		<img id="imgRandom"  class="img-circle">
+        	</div>
+        	<div class="col-md-1">
+        		<div id="vertical"></div>
+        	</div>
+            <div class="col-md-5 ">
+            	<div class="form-top" style="border:1px solid lightgray">
+            		<div class="form-top-left">
+            			<h3><b>注册</b></h3>
+                		<p>一对一的视频问诊平台</p>
+            		</div>
+            		<div class="form-top-right">
+            			
+            		</div>
+                </div>
+                <div class="form-bottom">
+                    <form role="form" action="" method="post" class="login-form">
+                    	<div class="form-group">
+                    		<div class="input-group marginH">
+								<span class="input-group-addon" id="basic-addon1">手机号</span>
+								<input id="phoneInput" type="text" class="form-control" placeholder="请输入11位手机号" onblur="statusCheck1()">
+								
+								<!--<span id="phoneCheck" class="statusCheck input-group-addon glyphicon glyphicon-ok" ></span>
+								<span id="phoneCheck1" class="statusCheck input-group-addon glyphicon glyphicon-remove" ></span>-->
+							</div>
+							
+                        	<div class="row">
+                    			<div class="col-md-8">
+		                        	<div class="input-group marginH" id="verifyCode">
+		                        		<span class="input-group-addon" id="basic-addon1">验证码：</span>
+										<input id="verifyInput" type="text" class="form-control" placeholder="右图验证码" >
+										<span id="verifyCheck" class="statusCheck input-group-addon glyphicon glyphicon-ok"></span>
+										<span id="verifyCheck1" class="statusCheck input-group-addon glyphicon glyphicon-remove" ></span>
+		                        	</div>
+                        		</div>
+                        		<div class="col-md-4">
+                    				<img id="getInfoCode" src="img/verifyCode.png"></button>
+                    			</div>
+							</div>
+							
+                        	<div class="row">
+                    			<div class="col-md-8">
+                    				<div class="input-group marginH" id="infoCode">
+                    					<span class="input-group-addon" id="basic-addon1">短信验证码：</span>
+										<input  id="infoInput" type="text" class="form-control" placeholder="手机验证码" >
+										<span id="infoCheck" class="statusCheck input-group-addon glyphicon glyphicon-ok" ></span>
+										<span id="infoCheck1" class="statusCheck input-group-addon glyphicon glyphicon-remove" ></span>
+									</div>
+                    			</div>
+                    			<div class="col-md-4">
+                    				<button id="getInfoCode" class="btn btn-info ">点击获取</button>
+                    			</div>
+                        	</div>
+                        	
+                        	<div class="input-group marginH">
+                        		<span class="input-group-addon" id="basic-addon1">设置密码：</span>
+								<input id="psdInput" type="text" class="form-control" placeholder="请输入您要设置的密码" >
+								<span id="psdCheck" class="statusCheck input-group-addon glyphicon glyphicon-ok"></span>
+								<span id="psdCheck" class="statusCheck input-group-addon glyphicon glyphicon-remove" ></span>
+                        	</div>
+                        </div>
+                       
+                        <button id="reg"  class="btn btn-success">注册</button>
+                        <div id="bottomText"  class="row" >
+                        	<div class="col-md-6">
+                        		<a href="#" id="forgotPsd">忘记密码?</a>
+                        	</div>
+                        	<div class="col-md-6">
+                        		<a href="login.html" class="pull-right">已有账号？去登陆</a>
+                        	</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+       
+        <script src="js/bootstrap.min.js"></script>
+
+	<script src="js/img.js"></script>
+	<!--<script src="js/status.js"></script>-->
+    </body>
+
+</html>
