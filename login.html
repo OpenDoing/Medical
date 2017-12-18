@@ -11,13 +11,18 @@
         <link rel="stylesheet" href="css/font-awesome.min.css">			<!--登录框右上角key-->
 		
         <link rel="stylesheet" href="css/style.css">
+
+        <script src="js/lib/jquery-3.2.1.min.js"></script>
+
+        <script src="js/config.js"></script>
+        <script src="js/login.js"></script>
     </head>
 
     <body>
 	<header>
 		<img src="img/logo.png" class="logo"/>
 		<!--<a href="#" class="logo"></a>-->
-		<div class="desc">欢迎lopo登录</div>
+		<div class="desc">欢迎登录</div>
 		
 	</header>                
     <div id="main" class="container" >
@@ -48,7 +53,7 @@
                         	
                         	<input type="password" name="form-password" placeholder="密码" class="form-control" id="form-password">
                         </div>
-                        <button type="submit" class="btn btn-success">登录</button>
+                        <button type="button" id="submit" class="btn btn-success">登录</button>
                         <div id="bottomText"  class="row" >
                         	<div class="col-md-6">
                         		<a href="#" >忘记密码?</a>
