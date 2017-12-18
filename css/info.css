@@ -68,3 +68,37 @@
 	border:1px solid #1E90FF;
 }
 	
+/*homepage.css begin*/
+#hImg{
+	height: 150px;
+	width: 150px;
+}
+
+.row .notification{
+	min-height: 20px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.notification{
+	border:1px solid lightblue;
+}
+
+#head{
+	background-color: lightblue;
+}
+
+.row .user_info{
+	min-height: 250px;
+	max-height: 300px;
+}
+
+#nbody{
+	padding-left: 0px!important;
+}
+
+.dot{
+	list-style: none;
+}
+
+/*homepage.css end*/

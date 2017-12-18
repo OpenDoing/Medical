@@ -15,6 +15,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
     	<link rel="stylesheet" href="css/info.css" />
+    	
     </head>
 
     <body>
@@ -124,7 +125,50 @@
                 </div>
             </div>
             <div class="col-md-9" id="frameLine">
-                内容
+				<div class="row user_info">
+					<div class="col-md-3">
+						<img src="img/head.jpg" id="hImg"/>
+					</div>
+					<div class="col-md-9">			<!--getUserName-->
+						<div id="">xxx&nbsp;您好！</div>
+						<div class="">
+							积分：
+							<a href="#" class="" id="">0</a>分
+							账户余额：
+							<a href="#" class="">0.00</a>元
+							
+						</div>
+						<div class="">
+							手机号：
+							<span id="">			<!--getPhoneNumber-->
+								152****9351
+							</span>
+							<a href="#">更换手机号</a>
+						</div>
+					</div>
+				</div>
+			<div class="notification">
+				<div id="head">
+					最近的通知
+				</div>
+				<ul id="nbody">								<!--getNotification-->
+					<li class="dot">
+						<div class="row notification">
+							<div class="col-md-8">
+								<strong>温馨提示</strong>
+							</div>
+							<div class="col-md-4" id="ntime">		<!--getTime-->
+								2017-12-12
+							</div>
+						</div>
+						<div class="content">
+							线上咨询不能代替面诊，医生建议仅供参考！
+						</div>
+					</li>
+				</ul>
+			</div>	
+			
+
             </div>
         </div>
     </div>	    
