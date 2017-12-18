@@ -16,16 +16,8 @@
 
     	<link rel="stylesheet" href="css/info.css" />
     	
-		<script language="javascript">
-		$(document).ready(function(){
-		    $(".userinfo_box .userpic span").hover(function(){
-		        $(this).find("a").show();
-		    },function(){
-		        $(this).find("a").hide();
-		    })
-		});
-		</script>
-		
+
+
     </head>
 
     <body>
@@ -137,8 +129,10 @@
             <div class="col-md-9" id="frameLine">
 				<div class="row user_info">
 					<div class="col-md-3">
-						<img src="img/head.jpg" id="hImg"/>
-						<a href="#">修改头像</a>
+                        <span id="sImg">
+						    <img src="img/head.jpg" id="hImg" class="img-circle"/>
+						    <a href="#" id="headImg">修改头像</a>
+                        </span>
 					</div>
 					<div class="col-md-9">			<!--getUserName-->
 						<div id="">xxx&nbsp;您好！</div>
@@ -193,6 +187,15 @@
                 $(this).find("span").toggleClass("glyphicon-chevron-up");
             });
         });
+        </script>
+        <script language="javascript">
+            $(document).ready(function(){
+                $(".user_info .col-md-3 span").hover(function(){
+                    $(this).find("a").show();
+                },function(){
+                    $(this).find("a").hide();
+                })
+            });
         </script>
     </body>
 

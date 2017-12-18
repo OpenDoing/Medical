@@ -101,4 +101,17 @@
 	list-style: none;
 }
 
+#hImg:hover{
+	opacity:0.4;
+
+}
+
+#headImg{
+	position: absolute;
+	left: 50px;
+	top:50px;
+
+}
+
+
 /*homepage.css end*/
