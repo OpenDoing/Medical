@@ -1,0 +1,70 @@
+.bgc{
+	background-color: #337ab7;
+}
+
+.nav-font{
+	font-size: 20px;
+	text-align: center;
+	color: white !important;
+}
+
+.navbar{
+	min-height: 60px;
+	box-shadow: 10px 10px 10px rgba(111,111,111,.5);
+}
+
+.navbar-brand{
+	min-height: 60px;
+}
+
+.navbar-right{
+	margin-right: 20px;	
+}
+
+.container{
+	margin-top: 100px; 
+	/*width:1000px;*/
+}
+
+.row{
+	background-color: lightgoldenrodyellow;
+	min-height: 600px;
+}
+
+#frameLine{
+	border: 1px solid lightgray;
+}
+
+.panel-group{
+	max-height:770px;
+	overflow: auto;
+}
+.leftMenu{
+	margin:10px;
+	margin-top:5px;
+}
+.leftMenu .panel-heading{
+	font-size:14px;
+	padding-left:20px;
+	height:36px;
+	line-height:36px;
+	color:white;
+	position:relative;
+	cursor:pointer;
+}/*转成手形图标*/
+.leftMenu .panel-heading span{
+	position:absolute;
+	right:10px;
+	top:12px;
+}
+.leftMenu .menu-item-left{
+	padding: 2px; 
+	background: transparent; 
+	border:1px solid transparent;
+	border-radius: 6px;
+}
+.leftMenu .menu-item-left:hover{
+	background:#C4E3F3;
+	border:1px solid #1E90FF;
+}
+	
