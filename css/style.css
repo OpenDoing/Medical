@@ -157,13 +157,13 @@ body {
 .errImg{
 	background:url(../img/err.png);
     background-position:right;    
-    background-repeat:no-repeat;	
+    background-repeat:no-repeat;
 }
 
 .okImg{
 	background:url(../img/ok.png);
     background-position:right;    
-    background-repeat:no-repeat;		
+    background-repeat:no-repeat;
 }
 
 .none{
