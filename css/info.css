@@ -1,5 +1,5 @@
 .bgc{
-	background-color: #337ab7;
+	background-color:#337ab7;
 }
 
 .nav-font{
@@ -18,11 +18,11 @@
 }
 
 .navbar-right{
-	margin-right: 20px;	
+	margin-right: 20px;
 }
 
 .container{
-	margin-top: 100px; 
+	margin-top: 100px;
 	/*width:1000px;*/
 }
 
@@ -39,6 +39,7 @@
 	max-height:770px;
 	overflow: auto;
 }
+
 .leftMenu{
 	margin:10px;
 	margin-top:5px;
@@ -51,15 +52,17 @@
 	color:white;
 	position:relative;
 	cursor:pointer;
-}/*转成手形图标*/
+}
+/*转成手形图标*/
+
 .leftMenu .panel-heading span{
 	position:absolute;
 	right:10px;
 	top:12px;
 }
 .leftMenu .menu-item-left{
-	padding: 2px; 
-	background: transparent; 
+	padding: 2px;
+	background: transparent;
 	border:1px solid transparent;
 	border-radius: 6px;
 }
@@ -67,11 +70,12 @@
 	background:#C4E3F3;
 	border:1px solid #1E90FF;
 }
-	
+
 /*homepage.css begin*/
 #hImg{
 	height: 150px;
 	width: 150px;
+	margin-top: 30px;
 }
 
 .row .notification{
@@ -108,9 +112,31 @@
 
 #headImg{
 	position: absolute;
-	left: 50px;
+	left: 60px;
 	top:50px;
+	margin-top: 45px;
 
+}
+
+#userHi{
+	position: absolute;
+	margin-top: 45px;
+}
+
+.acInform{
+	position: absolute;
+	margin-top: 65px;
+}
+
+.phInform{
+	position: absolute;
+	margin-top: 85px;
+}
+
+#notInform{
+	position: absolute;
+	top: 450px;
+	left:370px;
 }
 
 
