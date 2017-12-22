@@ -16,6 +16,11 @@
 
     <link rel="stylesheet" href="css/info.css" />
 
+    <script src="js/lib/jquery-3.2.1.min.js"></script>
+
+    <script src="js/util.js"></script>
+    <script src="js/userinfo.js"></script>
+
 </head>
 
 <body>
@@ -39,7 +44,7 @@
     </div>
 </nav>
 <div class="container" >
-    <div class="row ">
+    <div class="row">
         <div class="col-md-3">
             <div class="panel-group " role="tablist">
                 <div class="panel panel-primary leftMenu">
@@ -131,8 +136,9 @@
                 <div class="col-md-3">
                         <span id="sImg">
 						    <img src="img/head.jpg" id="hImg" class="img-circle"/>
-						    <a href="#" id="headImg">修改头像</a>
+						    <!--<a href="#" id="headImg">修改头像</a>-->
                         </span>
+                        <a href="#" id="headImg">修改头像</a>
                 </div>
                 <div class="col-md-9">			<!--getUserName-->
                     <div id="userHi">xxx&nbsp;您好！</div>
@@ -145,8 +151,8 @@
                     </div>
                     <div class="phInform">
                         手机号：
-                        <span id="">			<!--getPhoneNumber-->
-								152****9351
+                        <span id="tel">			<!--getPhoneNumber-->
+								000****0000
 							</span>
 <<<<<<< Updated upstream
                         <a href="#">更换手机号</a>

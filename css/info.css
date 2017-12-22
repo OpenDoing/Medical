@@ -27,7 +27,7 @@
 }
 
 .row{
-	background-color: lightgoldenrodyellow;
+	background-color:#F8F8FF;
 	min-height: 600px;
 }
 
@@ -114,7 +114,7 @@
 	position: absolute;
 	left: 60px;
 	top:50px;
-	margin-top: 45px;
+	margin-top: 150px;
 
 }
 
