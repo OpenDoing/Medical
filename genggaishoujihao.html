@@ -15,13 +15,21 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="css/info.css" />
+
+    <script src="js/lib/jquery-3.2.1.min.js"></script>
+
+    <script src="js/util.js"></script>
+    <script src="js/userinfo.js"></script>
+
 </head>
 
 <body>
 <nav class = "navbar navbar-default bgc" role = "navigation" >
+
     <div class="navbar-header">
         <a class="navbar-brand nav-font">Online Medical</a>
     </div>
+
     <div>
         <ul class="nav navbar-nav">
             <li><a href="#" class="nav-font">网站首页</a></li>
@@ -36,7 +44,7 @@
     </div>
 </nav>
 <div class="container" >
-    <div class="row ">
+    <div class="row">
         <div class="col-md-3">
             <div class="panel-group " role="tablist">
                 <div class="panel panel-primary leftMenu">
@@ -123,7 +131,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-9" id="frameLine">
             <h3><strong>我的账户>>更换手机号</strong></h3>
             <div id="crumbs">
@@ -133,7 +140,7 @@
                     <li><a href="#1">更换成功</a></li>
                 </ul>
             </div>
-
+            <br><br>
             <div class="container col-md-3"></div>
             <div class="container col-md-6">
                 <div class="input-group center">
@@ -157,16 +164,15 @@
                         <a href="#">忘记密码？</a>                             <!-- 此处放一个链接，找回密码-->
                     </button>
                     <button class="btn-success">下一步</button>
-
                 </div>
-
-            </div>
-        </div>
     </div>
 </div>
 </div>
-<script src="js/jquery-1.12.4.min.js"></script>
-<script src="js/bootstrap.min.js "></script>
+
+
+
+<script src="js/lib/jquery-1.12.4.min.js"></script>
+<script src="js/lib/bootstrap.min.js "></script>
 <script>
     $(function(){
         $(".panel-heading").click(function(e){
@@ -176,18 +182,15 @@
         });
     });
 </script>
-<script type="text/javascript">
-    $(function(){
-        var pForm = getpForm();
-        function getpForm(){
-            var url = location.search;
-            return url.substr(-11, 11);
-        }
-        if(pForm == 'pharmaindex'){
-            $(".listtitle_hl").removeClass("listtitle_hl_on");
-            $("#pharmaindex").addClass("on");
-        }
-    })
+<script language="javascript">
+    $(document).ready(function(){
+        $(".user_info .col-md-3 span").hover(function(){
+            $(this).find("a").show();
+        },function(){
+            $(this).find("a").hide();
+        })
+    });
 </script>
 </body>
+
 </html>
