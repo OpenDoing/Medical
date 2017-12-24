@@ -1,5 +1,6 @@
 var config = {
-    base_url:"http://139.196.90.212:8080/ma/zxy/api/"
+    base_url:"http://bieke.cf:8080/ma/zxy/api/",
+    img_url:"http://bieke.cf:8080/ma/zxy/public/uploads/"
 }
 
 /* 获取指定cookie */
