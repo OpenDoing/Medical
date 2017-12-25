@@ -21,6 +21,14 @@
     <script src="js/util.js"></script>
     <script src="js/userinfo.js"></script>
 
+    <!--头像上传插件相关-->
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link href="css/cropper/cropper.min.css" rel="stylesheet">
+    <link href="css/avatar.css" rel="stylesheet">
+    <script src="js/lib/cropper/cropper.min.js"></script>
+    <script src="js/avatar.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -44,7 +52,7 @@
     </div>
 </nav>
 <div class="container" >
-    <div class="row">
+    <div class="container-row">
         <div class="col-md-3">
             <div class="panel-group " role="tablist">
                 <div class="panel panel-primary leftMenu">
@@ -134,10 +142,17 @@
         <div class="col-md-9" id="frameLine">
             <div class="row user_info">
                 <div class="col-md-3">
-                        <span id="sImg">
-						    <img src="" id="hImg" class="img-circle"/>
-						    <a href="#" id="headImg">修改头像</a>
-                        </span>
+                        <!--<span id="sImg">-->
+						    <!--<img src="" id="hImg" class="img-circle" data-am-popover="{content: '点击上传', trigger: 'hover focus'}"/>-->
+						    <!--<a href="#" id="headImg">修改头像</a>-->
+                        <!--</span>-->
+                    <dd class="mod-account-avatar">
+                        <a class="account-avatar-panel" target="_blank">
+                            <img class="account-avatar-show img-circle" id="hImg" src="" width="80" height="80" data-target="#avatar-modal" data-toggle="modal">
+                            <span class="account-avatar-edit">修改头像</span>
+                        </a>
+                    </dd>
+
                 </div>
                 <div class="col-md-9">			<!--getUserName-->
                     <div id="userHi">xxx&nbsp;您好！</div>
@@ -184,6 +199,53 @@
 
     </div>
 </div>
+
+<div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="avatar-form" enctype="multipart/form-data" method="post">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title" id="avatar-modal-label">修改头像</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="avatar-body">
+                        <div class="avatar-upload">
+                            <input class="avatar-src" name="avatar_src" type="hidden">
+                            <input class="avatar-data" name="avatar_data" type="hidden">
+                            <label for="avatarInput">上传头像图片</label>
+                            <input class="avatar-input" id="avatarInput" name="avatar_file" type="file"></div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="avatar-wrapper"></div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="avatar-preview preview-lg"></div>
+                                <div class="avatar-preview preview-md"></div>
+                                <div class="avatar-preview preview-sm"></div>
+                            </div>
+                        </div>
+                        <div class="row avatar-btns">
+                            <div class="col-md-9">
+                                <div class="btn-group">
+                                    <button class="btn" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"><i class="fa fa-undo"></i> 向左旋转</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"><i class="fa fa-repeat"></i> 向右旋转</button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-success btn-block avatar-save" type="submit"><i class="fa fa-save"></i> 保存修改</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <script src="js/lib/jquery-1.12.4.min.js"></script>
 <script src="js/lib/bootstrap.min.js "></script>
 <script>
