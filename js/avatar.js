@@ -228,29 +228,34 @@
           data = new FormData(this.$avatarForm[0]),
           _this = this;
 
+      data.append('token',getCookie('token'));
 
-      $.ajax(url, {
-        type: 'post',
-        data: data,
-        dataType: 'json',
-        processData: false,
-        contentType: false,
+      this.$avatarSave.attr('disabled',true);
+      this.$avatarSave.text("正在上传...");
 
-        beforeSend: function () {
-          _this.submitStart();
-        },
 
-        success: function (data) {
-          _this.submitDone(data);
-        },
+        $.ajax(url, {
+            type: 'post',
+            data: data,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
 
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-          _this.submitFail(textStatus || errorThrown);
-        },
+            beforeSend: function () {
+              _this.submitStart();
+            },
 
-        complete: function () {
-          _this.submitEnd();
-        }
+            success: function (data) {
+              _this.submitDone(data);
+            },
+
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+              _this.submitFail(textStatus || errorThrown);
+            },
+
+            complete: function () {
+              _this.submitEnd();
+            }
       });
     },
 
@@ -263,24 +268,42 @@
     },
 
     submitDone: function (data) {
-      if ($.isPlainObject(data)) {
-        if (data.result) {
-          this.url = data.result;
-          if (this.support.datauri || this.uploaded) {
-            this.uploaded = false;
-            this.cropDone();
-          } else {
-            this.uploaded = true;
-            this.$avatarSrc.val(this.url);
-            this.startCropper();
-          }
-          this.$avatarInput.val('');
-        } else if (data.message) {
-          this.alert(data.message);
+        if ($.isPlainObject(data)) {
+            if (data.succ == 1) {
+                var $alert = [
+                    '<div class="alert alert-success avater-alert">',
+                    '<button type="button" class="close" data-dismiss="alert">&times;</button>',
+                    '头像上传成功',
+                    '</div>'
+                ].join('');
+
+                this.$avatarUpload.after($alert);
+                this.$avatarSave.text("上传成功");
+            }
+            else {
+               this.alert(data.error);
+               this.$avatarSave.attr('disabled',false);
+               this.$avatarSave.text("保存修改");
+            }
         }
-      } else {
-        this.alert('Failed to response');
-      }
+      // if ($.isPlainObject(data)) {
+      //   if (data.result) {
+      //     this.url = config.img_url + data.result;
+      //     if (this.support.datauri || this.uploaded) {
+      //       this.uploaded = false;
+      //       this.cropDone();
+      //     } else {
+      //       this.uploaded = true;
+      //       this.$avatarSrc.val(this.url);
+      //       this.startCropper();
+      //     }
+      //     this.$avatarInput.val('');
+      //   } else if (data.message) {
+      //     this.alert(data.message);
+      //   }
+      // } else {
+      //   this.alert('Failed to response');
+      // }
     },
 
     submitFail: function (msg) {
