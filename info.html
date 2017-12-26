@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="css/info.css" />
 
-    <script src="js/lib/jquery-3.2.1.min.js"></script>
+
 
     <script src="js/util.js"></script>
     <script src="js/userinfo.js"></script>
@@ -27,7 +27,7 @@
     <link href="css/avatar.css" rel="stylesheet">
     <script src="js/lib/cropper/cropper.min.js"></script>
     <script src="js/avatar.js"></script>
-    <script src="js/lib/bootstrap.min.js"></script>
+
 
 </head>
 
@@ -51,19 +51,20 @@
         </ul>
     </div>
 </nav>
-<div class="container" >
+
+<div class="container">
     <div class="container-row">
         <div class="col-md-3">
             <div class="panel-group " role="tablist">
                 <div class="panel panel-primary leftMenu">
-                    <div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse" data-target="#collapseListGroup1" role="tab" >
+                    <div class="panel-heading" id="MyAccPanel" data-toggle="collapse" data-target="#MyAccount" role="tab" >
                         <h4 class="panel-title">
                             我的账户
                             <span class="glyphicon glyphicon-chevron-down right"></span>
                         </h4>
                     </div>
                     <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
-                    <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading2" >
+                    <div id="MyAccount" class="panel-collapse collapse in" role="tabpanel" >
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <button class="menu-item-left">
@@ -79,13 +80,13 @@
                     </div>
                 </div><!--panel end-->
                 <div class="panel panel-primary leftMenu">
-                    <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" data-target="#collapseListGroup2" role="tab" >
+                    <div class="panel-heading" id="CasePanel" data-toggle="collapse" data-target="#CaseManage" role="tab" >
                         <h4 class="panel-title">
                             病历管理
                             <span class="glyphicon glyphicon-chevron-down right"></span>
                         </h4>
                     </div>
-                    <div id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading2" >
+                    <div id="CaseManage" class="panel-collapse collapse in" role="tabpanel" >
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <button class="menu-item-left">
@@ -102,13 +103,13 @@
                 </div>
 
                 <div class="panel panel-primary leftMenu">
-                    <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" data-target="#collapseListGroup4" role="tab" >
+                    <div class="panel-heading" id="OrdPanel" data-toggle="collapse" data-target="#Order" role="tab" >
                         <h4 class="panel-title">
                             咨询
                             <span class="glyphicon glyphicon-chevron-down right"></span>
                         </h4>
                     </div>
-                    <div id="collapseListGroup4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading4">
+                    <div id="Order" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading4">
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <button class="menu-item-left">
@@ -155,7 +156,8 @@
 
                 </div>
                 <div class="col-md-9">			<!--getUserName-->
-                    <div id="userHi">xxx&nbsp;您好！</div>
+                    <div id="userHi" class="hello">XXXX</div>
+                    <div class="hello" id="nihao">您好</div>
                     <div class="acInform">
                         积分：
                         <a href="#" class="" id="">0</a>分
@@ -172,31 +174,29 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-8" id="notInform">
-            <div class="notification">
-                <div id="head">
-                    最近的通知
-                </div>
-                <ul id="nbody">								<!--getNotification-->
-                    <li class="dot">
-                        <div class="row notification">
-                            <div class="col-md-8">
-                                <strong>温馨提示</strong>
+            <div class="row">
+                <div class="notification">
+                    <div id="head">
+                        最近的通知
+                    </div>
+                    <ul id="nbody">								<!--getNotification-->
+                        <li class="dot">
+                            <div class="row notification">
+                                <div class="col-md-8">
+                                    <strong>温馨提示</strong>
+                                </div>
+                                <div class="col-md-4" id="ntime">		<!--getTime-->
+                                    2017-12-12
+                                </div>
                             </div>
-                            <div class="col-md-4" id="ntime">		<!--getTime-->
-                                2017-12-12
-                            </div>
-                            <div class="content col-md-6">
+                            <div class="content">
                                 线上咨询不能代替面诊，医生建议仅供参考！
                             </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
 

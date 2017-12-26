@@ -119,10 +119,20 @@
 }
 
 #userHi{
-	position: absolute;
-	margin-top: 45px;
+	/*position: absolute;*/
+	/*margin-top: 45px;*/
+
 }
 
+.hello{
+	position: absolute;
+	margin-top: 45px;
+	display: inline;
+}
+
+#nihao{
+	padding-left: 45px;
+}
 .acInform{
 	position: absolute;
 	margin-top: 65px;
