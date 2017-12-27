@@ -16,10 +16,6 @@
 
     <link rel="stylesheet" href="css/info.css" />
 
-    <script src="js/lib/jquery-3.2.1.min.js"></script>
-
-    <script src="js/util.js"></script>
-    <script src="js/userinfo.js"></script>
 
 </head>
 
@@ -43,19 +39,20 @@
         </ul>
     </div>
 </nav>
-<div class="container" >
-    <div class="row">
+
+<div class="container">
+    <div class="container-row">
         <div class="col-md-3">
             <div class="panel-group " role="tablist">
                 <div class="panel panel-primary leftMenu">
-                    <div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse" data-target="#collapseListGroup1" role="tab" >
+                    <div class="panel-heading" id="MyAccPanel" data-toggle="collapse" data-target="#MyAccount" role="tab" >
                         <h4 class="panel-title">
                             我的账户
                             <span class="glyphicon glyphicon-chevron-down right"></span>
                         </h4>
                     </div>
                     <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
-                    <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading2" >
+                    <div id="MyAccount" class="panel-collapse collapse in" role="tabpanel" >
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <button class="menu-item-left">
@@ -71,13 +68,13 @@
                     </div>
                 </div><!--panel end-->
                 <div class="panel panel-primary leftMenu">
-                    <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" data-target="#collapseListGroup2" role="tab" >
+                    <div class="panel-heading" id="CasePanel" data-toggle="collapse" data-target="#CaseManage" role="tab" >
                         <h4 class="panel-title">
                             病历管理
                             <span class="glyphicon glyphicon-chevron-down right"></span>
                         </h4>
                     </div>
-                    <div id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading2" >
+                    <div id="CaseManage" class="panel-collapse collapse in" role="tabpanel" >
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <button class="menu-item-left">
@@ -94,13 +91,13 @@
                 </div>
 
                 <div class="panel panel-primary leftMenu">
-                    <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" data-target="#collapseListGroup4" role="tab" >
+                    <div class="panel-heading" id="OrdPanel" data-toggle="collapse" data-target="#Order" role="tab" >
                         <h4 class="panel-title">
                             咨询
                             <span class="glyphicon glyphicon-chevron-down right"></span>
                         </h4>
                     </div>
-                    <div id="collapseListGroup4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading4">
+                    <div id="Order" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading4">
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <button class="menu-item-left">
@@ -134,13 +131,21 @@
         <div class="col-md-9" id="frameLine">
             <div class="row user_info">
                 <div class="col-md-3">
-                        <span id="sImg">
-						    <img src="" id="hImg" class="img-circle"/>
-						    <a href="#" id="headImg">修改头像</a>
-                        </span>
+                        <!--<span id="sImg">-->
+						    <!--<img src="" id="hImg" class="img-circle" data-am-popover="{content: '点击上传', trigger: 'hover focus'}"/>-->
+						    <!--<a href="#" id="headImg">修改头像</a>-->
+                        <!--</span>-->
+                    <dd class="mod-account-avatar">
+                        <a class="account-avatar-panel" target="_blank">
+                            <img class="account-avatar-show img-circle" id="hImg" src="" width="80" height="80" data-target="#avatar-modal" data-toggle="modal">
+                            <span class="account-avatar-edit">修改头像</span>
+                        </a>
+                    </dd>
+
                 </div>
                 <div class="col-md-9">			<!--getUserName-->
-                    <div id="userHi">xxx&nbsp;您好！</div>
+                    <div id="userHi" class="hello">XXXX</div>
+                    <div class="hello" id="nihao">您好</div>
                     <div class="acInform">
                         积分：
                         <a href="#" class="" id="">0</a>分
@@ -157,43 +162,97 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-8" id="notInform">
-            <div class="notification">
-                <div id="head">
-                    最近的通知
-                </div>
-                <ul id="nbody">								<!--getNotification-->
-                    <li class="dot">
-                        <div class="row notification">
-                            <div class="col-md-8">
-                                <strong>温馨提示</strong>
+            <div class="row">
+                <div class="notification">
+                    <div id="head">
+                        最近的通知
+                    </div>
+                    <ul id="nbody">								<!--getNotification-->
+                        <li class="dot">
+                            <div class="row notification">
+                                <div class="col-md-8">
+                                    <strong>温馨提示</strong>
+                                </div>
+                                <div class="col-md-4" id="ntime">		<!--getTime-->
+                                    2017-12-12
+                                </div>
                             </div>
-                            <div class="col-md-4" id="ntime">		<!--getTime-->
-                                2017-12-12
-                            </div>
-                            <div class="content col-md-6">
+                            <div class="content">
                                 线上咨询不能代替面诊，医生建议仅供参考！
                             </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
+
+<div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="avatar-form" enctype="multipart/form-data" method="post">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title" id="avatar-modal-label">修改头像</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="avatar-body">
+                        <div class="avatar-upload">
+                            <input class="avatar-src" name="avatar_src" type="hidden">
+                            <input class="avatar-data" name="avatar_data" type="hidden">
+                            <label for="avatarInput">上传头像图片</label>
+                            <input class="avatar-input" id="avatarInput" name="avatar_file" type="file"></div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="avatar-wrapper"></div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="avatar-preview preview-lg"></div>
+                                <div class="avatar-preview preview-md"></div>
+                                <div class="avatar-preview preview-sm"></div>
+                            </div>
+                        </div>
+                        <div class="row avatar-btns">
+                            <div class="col-md-9">
+                                <div class="btn-group">
+                                    <button class="btn" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"><i class="fa fa-undo"></i> 向左旋转</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"><i class="fa fa-repeat"></i> 向右旋转</button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-success btn-block avatar-save" type="submit"><i class="fa fa-save"></i> 保存修改</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <script src="js/lib/jquery-1.12.4.min.js"></script>
 <script src="js/lib/bootstrap.min.js "></script>
+<script src="js/util.js"></script>
+<script src="js/userinfo.js"></script>
+
+<!--头像上传插件相关-->
+<link href="css/cropper/cropper.min.css" rel="stylesheet">
+<link href="css/avatar.css" rel="stylesheet">
+<script src="js/lib/cropper/cropper.min.js"></script>
+<script src="js/avatar.js"></script>
 <script>
     $(function(){
+        $(".panel-heading").click(function(e){
         $(".panel-heading").click(function(e){
             /*切换折叠指示图标*/
             $(this).find("span").toggleClass("glyphicon-chevron-down");
             $(this).find("span").toggleClass("glyphicon-chevron-up");
         });
-    });
+    })});
 </script>
 <script language="javascript">
     $(document).ready(function(){

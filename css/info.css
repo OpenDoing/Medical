@@ -26,7 +26,7 @@
 	/*width:1000px;*/
 }
 
-.row{
+.container-row{
 	background-color:#F8F8FF;
 	min-height: 600px;
 }
@@ -119,10 +119,20 @@
 }
 
 #userHi{
-	position: absolute;
-	margin-top: 45px;
+	/*position: absolute;*/
+	/*margin-top: 45px;*/
+
 }
 
+.hello{
+	position: absolute;
+	margin-top: 45px;
+	display: inline;
+}
+
+#nihao{
+	padding-left: 45px;
+}
 .acInform{
 	position: absolute;
 	margin-top: 65px;
@@ -137,6 +147,41 @@
 	position: absolute;
 	top: 450px;
 	left:370px;
+}
+
+/*avatar*/
+
+.mod-account-avatar{
+	background-position:0 0;
+	padding:4px 8px 11px 9px;
+	float:left
+}
+
+.mod-account-avatar .account-avatar-panel{
+	display:block;
+	position:relative
+}
+
+.mod-account-avatar .account-avatar-panel:hover
+
+.account-avatar-edit{height:16px}
+
+.mod-account-avatar .account-avatar-edit{
+	display:block;
+	position:absolute;
+	width:100%;
+	background:rgba(64,64,64,.5);
+	background:#333\9;
+	overflow:hidden;
+	bottom:2px;
+	left:0;
+	*bottom:4px;
+	_bottom:16px;
+	height:0;
+	transition:.3s;
+	color:#ccc;
+	text-align:center;
+	filter:alpha(opacity:60)
 }
 
 /*homepage.css end*/
