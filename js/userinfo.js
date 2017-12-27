@@ -31,3 +31,24 @@ function refresh_userinfo() {
         }
     });
 }
+
+$(function () {
+    $(".panel-group").on("click", "button", function(){
+        var sId = event.target.id; //获取data-id的值
+        window.location.hash = sId; //设置锚点
+        loadInner(sId);
+    });
+
+    function loadInner(sId){
+        var sId = window.location.hash;
+        var pathn, i;
+        pathn = sId.replace("#","");
+        if(!pathn)
+            pathn = "baseinfo.html";
+        else
+            pathn = pathn + ".html";
+        $("#info-content").load(pathn); //加载相对应的内容
+    }
+    var sId = window.location.hash;
+    loadInner(sId);
+});
