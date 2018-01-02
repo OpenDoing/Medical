@@ -14,3 +14,9 @@ function getCookie(name) {
     }
     return "";
 }
+
+function getInfoFromCookie(name) {
+    var data = getCookie('data');
+    data = JSON.parse(data);
+    return data[name];
+}

@@ -20,7 +20,7 @@ function refresh_userinfo() {
                     //设置过期时间
                     exp.setTime(exp.getTime() + 1000 * 60 * data.data.token_valid_time); //计算毫秒
                 }
-                document.cookie = "user=" + JSON.stringify(data.data) + ";expires=" + exp.toGMTString();
+                document.cookie = "data=" + JSON.stringify(data.data) + ";expires=" + exp.toGMTString();
                 $("#userHi").text(data.data.nickname);
                 $("#tel").text(data.data.phone);
                 $("#hImg").attr('src',config.img_url + data.data.avatar);
@@ -31,6 +31,7 @@ function refresh_userinfo() {
         }
     });
 }
+
 
 $(function () {
     $(".panel-group").on("click", "button", function(){
@@ -43,12 +44,18 @@ $(function () {
         var sId = window.location.hash;
         var pathn, i;
         pathn = sId.replace("#","");
-        if(!pathn)
+        if(!pathn){
             pathn = "baseinfo.html";
+            refresh_userinfo();
+        }
         else
             pathn = pathn + ".html";
         $("#info-content").load(pathn); //加载相对应的内容
     }
     var sId = window.location.hash;
     loadInner(sId);
+});
+
+$("#CasePanel").on("click",function () {
+
 });
