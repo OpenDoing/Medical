@@ -126,8 +126,10 @@
 
 .hello{
 	position: absolute;
-	margin-top: 45px;
+	margin-top: 50px;
 	display: inline;
+	font-family:Microsoft YaHei;
+	font-size: 18px;
 }
 
 #nihao{
@@ -135,12 +137,14 @@
 }
 .acInform{
 	position: absolute;
-	margin-top: 65px;
+	margin-top: 87px;
+	font-size: 14px;
 }
 
 .phInform{
 	position: absolute;
-	margin-top: 85px;
+	margin-top: 122px;
+	font-size: 14px;
 }
 
 #notInform{
