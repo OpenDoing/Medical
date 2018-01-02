@@ -86,10 +86,21 @@
 
 .notification{
 	border:1px solid lightblue;
+    line-height:200%;
+	text-indent:20px;
+}
+
+#NotFrame{
+    margin-top: 40px;
 }
 
 #head{
 	background-color: lightblue;
+    font-weight:bold;
+}
+
+#ntime{
+	color:#909090;
 }
 
 .row .user_info{
