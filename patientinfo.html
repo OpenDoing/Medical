@@ -1,0 +1,106 @@
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap-datepicker3.css"> <!--生日选择样式-->
+    <!--<link rel="stylesheet" href="css/case.css">-->
+    <link rel="stylesheet" href="css/bootstrap-table.css">
+<div class="col-md-9">
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addCase">
+        添加病历
+    </button>
+    <table id="caseTable"></table>
+    <div class="modal fade" tabindex="-1" role="dialog" id="addCase">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
+                    <h4 class="modal-title" >添加账户信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-1">
+                            姓名：
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="input-md">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-1">
+                            性别：
+                        </div>
+                        <div class="col-md-8">
+                            <input type="radio"  name="sex" checked="checked"/>男
+                            <input type="radio"  name="sex"/>女
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-1">
+                            生日：
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-group date datepicker">
+                                <input type="text" class="form-control">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th "></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-1">
+                            居住地址：
+                        </div>
+                        <div class="col-md-8">
+                            <div>
+                                <form class="form-inline">
+                                    <div data-toggle="distpicker">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="province1">Province</label>
+                                            <select class="form-control" id="province1"></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="city1">City</label>
+                                            <select class="form-control" id="city1"></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="district1">District</label>
+                                            <select class="form-control" id="district1"></select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-1">
+                            手机号码：
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="input-md">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="bOK">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+<script src="js/caseInfo/cityData.js"></script>                              <!--城市库-->
+<script src="js/caseInfo/city.js"></script>                                  <!--三级联动逻辑-->
+<script src="js/caseInfo/bootstrap-datepicker.js"></script>                  <!--生日选择-->
+<script src="js/caseInfo/bootstrap-datepicker.zh-CN.min.js"></script>        <!--调用中文生日选择-->
+<script src="js/caseInfo/bootstrap-table.js"></script>                       <!--table插件-->
+<script src="js/caseInfo/bootstrap-table-zh-CN.js"></script>                 <!--中文table-->
+<script src="js/caseInfo/data.js"></script>                                  <!--table初始化-->
+<script type="text/javascript">
+    $(function(){
+        $('.datepicker').datepicker({
+            language: 'zh-CN'
+        });
+    })
+</script>                                  <!--设置生日语言-->
+
