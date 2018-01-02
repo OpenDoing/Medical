@@ -1,31 +1,33 @@
 <link rel="stylesheet" href="css/edit-phone.css">
 
-<div class="col-md-9" id="frameLine">
-    <h3><strong>我的账户>>更换手机号</strong></h3>
-    <div id="crumbs">
-        <ul>
-            <li><a href="#1" >验证密码</a></li>
-            <li><a href="#1">新手机验证</a></li>
-            <li><a href="#1">更换成功</a></li>
-        </ul>
-    </div>
-    <br><br>
+<div class="col-md-9" id="edit-phone">
+    <h4><strong>更换绑定手机</strong></h4>
+    <br>
+    <ul class="nav nav-pills nav-justified step step-arrow">
+        <li>
+            <a>验证身份</a>
+        </li>
+        <li>
+            <a>绑定新手机</a>
+        </li>
+        <li>
+            <a>更换成功</a>
+    </ul>
     <div class="container col-md-3"></div>
     <div class="container col-md-6">
-        <div class="input-group center">
-            <span class="input-group-addon" id="basic-addon1">原手机号</span>
-            <input type="text" class="form-control" placeholder="#" />
+        <div class="phInform">
+            已绑定手机号码：
+            <span id="tel">000****0000</span>
         </div>
-        <br><br>
-        <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">确定原手机号</span>
-            <input type="text" class="form-control" placeholder="原始手机号" />
+        <div class="input-group center">
+            <span class="input-group-addon" id="basic-addon1">原绑定手机号码</span>
+            <input type="text" class="form-control" placeholder="当前绑定的手机号码" />
         </div>
 
         <br><br>
         <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">网站登录密码</span>
-            <input type="text" class="form-control" placeholder="网站登录密码" />
+            <span class="input-group-addon" id="basic-addon1">短信验证码</span>
+            <input type="text" class="form-control" placeholder="短信验证码" />
         </div>
         <br><br>
         <div class="btn_inline">
@@ -34,3 +36,15 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="js/lib/step-lib.js"></script>
+<script>
+    $(function() {
+        //bsStep(i) i 为number 可定位到第几步 如bsStep(2)/bsStep(3)
+        bsStep();
+    })
+    $(document).ready(function(){
+        $("#edit-phone").show(function(){
+            $('#tel').text(getInfoFromCookie('phone'));
+        });
+    });
+</script>
