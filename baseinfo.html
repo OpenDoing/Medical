@@ -14,21 +14,28 @@
             </dd>
 
         </div>
-        <div class="col-md-9">			<!--getUserName-->
-            <div id="userHi" class="hello">XXXX</div>
-            <div class="hello" id="nihao">您好</div>
-            <div class="acInform">
-                积分：
-                <a href="#" class="" id="">0</a>分
-                账户余额：
-                <a href="#" class="">0.00</a>元
-
+        <div class="col-md-9 Inform">			<!--getUserName-->
+            <div id="userInform">
+                <div id="userHi" class="hello">XXXX</div>
+                <div class="hello" id="nihao">您好</div>
             </div>
-            <div class="phInform">
+            <div class="acInform ">
+                <div class="sameline">积分：</div>
+                <a href="#"  id="account" class="sameline">0</a>分
+                <div class="space sameline" >账户余额：</div>
+                <a href="#" id="money" class="sameline">0.00</a>元
+            </div>
+            <div class="timeInform">
+                <div class="sameline">创建时间：</div>
+                <span id="cerateTime" >1978-12-12</span>
+                <div class="space sameline">最后登录时间：</div>
+                <span id="lastTime" class="sameline">2018-01-03</span>
+            </div>
+            <div class="phInform ">
                 手机号：
                 <span id="tel">			<!--getPhoneNumber-->
 								000****0000
-							</span>
+                </span>
                 <a href="#">更换手机号</a>
             </div>
         </div>
@@ -38,28 +45,22 @@
 <div class="col-md-9" id="NotFrame">
     <div class="row">
         <div class="notification">
-                <div id="head">
-                    最近的通知
+            <div class="panel panel-primary leftMenu">
+                <div class="panel-heading" id="userList" role="tab" >
+                    <h4 class="panel-title">
+                        最近通知
+                    </h4>
                 </div>
-            <ul id="nbody">								<!--getNotification-->
-                <div class="dot">
-                    <div class="row notification">
-                        <div class="col-md-8">
-                            <strong>温馨提示</strong>
-                        </div>
-                        <div class="col-md-2 col-md-offset-1" id="ntime">		<!--getTime-->
-                            2017-12-12
-                        </div>
-                    </div>
-                    <div class="row notification">
-                        <div class="col-md-8">
-                            <div class="content">
-                                线上咨询不能代替面诊，医生建议仅供参考！
-                            </div>
-                        </div>
-                    </div>
+                <div id="notice" >
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <strong>温馨提示</strong><br>
+                            线上咨询不能代替面诊，医生建议仅供参考！
+                        </li>
+                    </ul>
                 </div>
-            </ul>
+            </div>
         </div>
     </div>
 </div>

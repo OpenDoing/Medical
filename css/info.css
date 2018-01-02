@@ -85,7 +85,7 @@
 }
 
 .notification{
-	border:1px solid lightblue;
+	/*border:1px solid lightblue;*/
     line-height:200%;
 	text-indent:20px;
 }
@@ -134,27 +134,50 @@
 	/*margin-top: 45px;*/
 
 }
+/*头像右边的一丢*/
+.col-md-9 .Inform{
+	padding-left: 40px;
+}
 
 .hello{
-	position: absolute;
-	margin-top: 50px;
+	position: relative;
+
 	display: inline;
 	font-family:Microsoft YaHei;
 	font-size: 18px;
 }
 
-#nihao{
-	padding-left: 45px;
-}
-.acInform{
-	position: absolute;
-	margin-top: 87px;
-	font-size: 14px;
+.sameline{
+	position: relative;
+	display: inline;
 }
 
+/*您好两字*/
+#nihao{
+
+	padding-left: 25px;
+}
+.space{
+	padding-left: 25px;
+}
+#userInform{
+	margin-top: 20px;
+}
+/*创建时间、最后登录时间*/
+.timeInform{
+	margin-top: 25px;
+
+}
+/*积分、账户余额*/
+.acInform{
+
+	margin-top: 25px;
+	font-size: 14px;
+}
+/*手机号*/
 .phInform{
-	position: absolute;
-	margin-top: 122px;
+
+	margin-top: 25px;
 	font-size: 14px;
 }
 

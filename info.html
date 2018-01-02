@@ -32,28 +32,27 @@
         <div class="col-md-3">
             <div class="panel-group" role="tablist">
                 <div class="panel panel-primary leftMenu">
-                    <div class="panel-heading" id="MyAccPanel" data-toggle="collapse" data-target="#MyAccount" role="tab" >
+                    <div class="panel-heading" id="userList" data-toggle="collapse" data-target="#UserInfo" role="tab" >
                         <h4 class="panel-title">
-                            我的账户
-                            <span class="glyphicon glyphicon-chevron-down right"></span>
+                            用户信息
                         </h4>
                     </div>
-                    <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
-                    <div id="MyAccount" class="panel-collapse collapse in" role="tabpanel" >
+                    <div id="UserInfo" class="panel-collapse collapse in" role="tabpanel" >
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <button class="menu-item-left" id="edit_phone">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>更改手机
+                                <button class="menu-item-left">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>个人主页
                                 </button>
                             </li>
                             <li class="list-group-item">
-                                <button class="menu-item-left" id="edit_password">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>修改密码
+                                <button class="menu-item-left" id="patientinfo">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>患者信息
                                 </button>
                             </li>
                         </ul>
                     </div>
-                </div><!--panel end-->
+                </div>
+
                 <div class="panel panel-primary leftMenu">
                     <div class="panel-heading" id="CasePanel" data-toggle="collapse" data-target="#CaseManage" role="tab" >
                         <h4 class="panel-title">
@@ -76,6 +75,31 @@
                         </ul>
                     </div>
                 </div>
+
+                <div class="panel panel-primary leftMenu">
+                    <div class="panel-heading" id="MyAccPanel" data-toggle="collapse" data-target="#MyAccount" role="tab" >
+                        <h4 class="panel-title">
+                            我的账户
+                            <span class="glyphicon glyphicon-chevron-down right"></span>
+                        </h4>
+                    </div>
+                    <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+
+                    <div id="MyAccount" class="panel-collapse collapse in" role="tabpanel" >
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="edit_phone">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>更改手机
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="edit_password">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>修改密码
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!--panel end-->
 
                 <div class="panel panel-primary leftMenu">
                     <div class="panel-heading" id="OrdPanel" data-toggle="collapse" data-target="#Order" role="tab" >
@@ -111,7 +135,6 @@
                             意见建议
                         </h4>
                     </div>
-
                 </div>
             </div>
         </div>
