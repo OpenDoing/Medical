@@ -19,8 +19,12 @@ function refresh_userinfo() {
                 if(data.data.token_valid_time > 0){
                     //设置过期时间
                     exp.setTime(exp.getTime() + 1000 * 60 * data.data.token_valid_time); //计算毫秒
+                    document.cookie = "data=" + JSON.stringify(data.data) + ";expires=" + exp.toGMTString();
                 }
-                document.cookie = "data=" + JSON.stringify(data.data) + ";expires=" + exp.toGMTString();
+                else {
+                    document.cookie = "data=" + JSON.stringify(data.data);
+
+                }
                 $("#userHi").text(data.data.nickname);
                 $("#tel").text(data.data.phone);
                 $("#hImg").attr('src',config.img_url + data.data.avatar);

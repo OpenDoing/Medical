@@ -38,12 +38,10 @@
 </div>
 <script type="text/javascript" src="js/lib/step-lib.js"></script>
 <script>
-    $(function() {
-        //bsStep(i) i 为number 可定位到第几步 如bsStep(2)/bsStep(3)
-        bsStep();
-    })
     $(document).ready(function(){
         $("#edit-phone").show(function(){
+            //bsStep(i) i 为number 可定位到第几步 如bsStep(2)/bsStep(3)
+            bsStep();
             $('#tel').text(getInfoFromCookie('phone'));
         });
     });
