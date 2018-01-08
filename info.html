@@ -32,7 +32,7 @@
         <div class="col-md-3">
             <div class="panel-group" role="tablist">
                 <div class="panel panel-primary leftMenu">
-                    <div class="panel-heading" id="userList" data-toggle="collapse" data-target="#UserInfo" role="tab" >
+                    <div class="panel-heading" id="user" data-toggle="collapse" data-target="#UserInfo" role="tab" >
                         <h4 class="panel-title">
                             用户信息
                         </h4>
@@ -57,21 +57,21 @@
                     <div class="panel-heading" id="CasePanel" data-toggle="collapse" data-target="#CaseManage" role="tab" >
                         <h4 class="panel-title">
                             病历管理
-                            <span class="glyphicon glyphicon-chevron-down right"></span>
+                            <span class=""></span>
                         </h4>
                     </div>
                     <div id="CaseManage" class="panel-collapse collapse in" role="tabpanel" >
-                        <ul class="list-group">
+                        <ul class="list-group" id="userList">
                             <li class="list-group-item">
-                                <button class="menu-item-left">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>病历信息
-                                </button>
+                                <!--<button class="menu-item-left">-->
+                                    <!--<span class="glyphicon glyphicon-triangle-right"></span>病历信息-->
+                                <!--</button>-->
                             </li>
-                            <li class="list-group-item">
-                                <button class="menu-item-left">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>图片
-                                </button>
-                            </li>
+                            <!--<li class="list-group-item">-->
+                                <!--<button class="menu-item-left">-->
+                                    <!--<span class="glyphicon glyphicon-triangle-right"></span>图片-->
+                                <!--</button>-->
+                            <!--</li>-->
                         </ul>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                     <div class="panel-heading" id="MyAccPanel" data-toggle="collapse" data-target="#MyAccount" role="tab" >
                         <h4 class="panel-title">
                             我的账户
-                            <span class="glyphicon glyphicon-chevron-down right"></span>
+                            <span class=""></span>          <!--glyphicon glyphicon-chevron-down right-->
                         </h4>
                     </div>
                     <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
@@ -105,7 +105,7 @@
                     <div class="panel-heading" id="OrdPanel" data-toggle="collapse" data-target="#Order" role="tab" >
                         <h4 class="panel-title">
                             咨询
-                            <span class="glyphicon glyphicon-chevron-down right"></span>
+                            <span class=""></span>
                         </h4>
                     </div>
                     <div id="Order" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading4">
@@ -198,16 +198,16 @@
 <link href="css/avatar.css" rel="stylesheet">
 <script src="js/lib/cropper/cropper.min.js"></script>
 <script src="js/avatar.js"></script>
-<script>
-    $(function(){
-        $(".panel-heading").click(function(e){
-        $(".panel-heading").click(function(e){
-            /*切换折叠指示图标*/
-            $(this).find("span").toggleClass("glyphicon-chevron-down");
-            $(this).find("span").toggleClass("glyphicon-chevron-up");
-        });
-    })});
-</script>
+<!--<script>-->
+    <!--$(function(){-->
+        <!--$(".panel-heading").click(function(e){-->
+        <!--$(".panel-heading").click(function(e){-->
+            <!--/*切换折叠指示图标*/-->
+            <!--$(this).find("span").toggleClass("glyphicon-chevron-down");-->
+            <!--$(this).find("span").toggleClass("glyphicon-chevron-up");-->
+        <!--});-->
+    <!--})});-->
+<!--</script>-->
 <script language="javascript">
     $(document).ready(function(){
         $(".user_info .col-md-3 span").hover(function(){

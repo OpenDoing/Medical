@@ -4,6 +4,7 @@ $('#caseTable').bootstrapTable({
     method:"GET",
     dataType:'json',
     pagination:true,
+    search:true,
     // data:{
     //     profile_id : '0',
     //     token:'30e35f0c1c20ba47a6949a82e838d63f'
@@ -24,6 +25,27 @@ $('#caseTable').bootstrapTable({
         return "加载数据失败";
     },
     striped:true,
+    responseHandler:function (res) {    //data prehandle
+
+
+        for (var i=0;i<res.length;i++){
+            if (res[i].sex=="0"){
+                res[i].sex="男";
+            }else{
+                res[i].sex="女";
+            }
+
+        }
+        //gloable = res;
+        return res;
+    },
+    onClickRow:function (row) {
+        //console.log(row);
+        //var index = row.id;
+        $('#pname').val(row.name);
+        $('#birthday').val(row.birth);
+        $('#phone').val(row.phone);
+    },
     columns: [
         {
             field: 'id',
@@ -52,7 +74,20 @@ $('#caseTable').bootstrapTable({
             title: '手机号'
         },
         {
-            tittle:'操作'
+            tittle:'操作',
+            align:"center",
+            formatter: function (value, row, index) {
+                //value = "编辑";
+                //console.log(row.id);
+                return "<div class=\"glyphicon glyphicon-edit\"  data-target=\"#addCase\" data-toggle=\"modal\" data-type=\"text\" data-pk=\""+row.Id+"\" data-title=\"用户名\"></div>";
+            }
         }
     ]
 });
+
+function update(row) {
+
+    console.log(gloable);
+    alert(gloable);
+    //return 'index';
+}
