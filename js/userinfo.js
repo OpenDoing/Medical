@@ -28,6 +28,8 @@ function refresh_userinfo() {
                 $("#userHi").text(data.data.nickname);
                 $("#tel").text(data.data.phone);
                 $("#hImg").attr('src',config.img_url + data.data.avatar);
+                $('#createTime').text(data.data.create_time);
+                $('#lastTime').text(data.data.token_create_time);
             }
             else {
                 alert(data.error);
@@ -52,6 +54,9 @@ $(function () {
             pathn = "baseinfo.html";
             refresh_userinfo();
         }
+        else if(pathn === 'recordinfo'){
+            pathn = pathn + ".html";
+        }
         else
             pathn = pathn + ".html";
         $("#info-content").load(pathn); //加载相对应的内容
@@ -61,5 +66,25 @@ $(function () {
 });
 
 $("#CasePanel").on("click",function () {
+    $.ajax({
+        url:"http://bieke.cf:8080/ma/zxy/api/userprofile",
+        type: 'get',
+        dataType: 'json',
+        data: {
+            profile_id: 0,
+            token:getCookie('token')
+        },
+        success: function (user) {
+
+            var htmlNodes = '';
+            $('#userList').empty();
+
+            for(var i in user) {
+                htmlNodes += '<li class="list-group-item"><button class="menu-item-left" id="recordinfo" value="' + user[i].id + '"><span class="glyphicon glyphicon-triangle-right"></span>'+user[i].name +'</button></li>';
+            }
+            $('#userList').append(htmlNodes);
+        }
+
+    });
 
 });
