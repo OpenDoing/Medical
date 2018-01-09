@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker3.css"> <!--生日选择样式-->
     <!--<link rel="stylesheet" href="css/case.css">-->
     <link rel="stylesheet" href="css/bootstrap-table.css">
+    <link rel="stylesheet" href="css/info.css">
 <div class="col-md-9">
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addCase">
         添加患者
@@ -16,15 +17,15 @@
                     <h4 class="modal-title" >添加患者信息</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
+                    <div class="row modal-body-height">
                         <div class="col-md-3 col-md-offset-1">
                             姓名：
                         </div>
                         <div class="col-md-8">
-                            <input type="text" id="pname" class="input-md">
+                            <input type="text" id="pname" class="form-control" aria-describedby="basic-addon1">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row modal-body-height">
                         <div class="col-md-3 col-md-offset-1">
                             性别：
                         </div>
@@ -33,7 +34,7 @@
                             <input type="radio"  name="sex"/>女
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row modal-body-height">
                         <div class="col-md-3 col-md-offset-1">
                             生日：
                         </div>
@@ -46,7 +47,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row modal-body-height">
                         <div class="col-md-3 col-md-offset-1">
                             居住地址：
                         </div>
@@ -62,7 +63,7 @@
                                             <label class="sr-only" for="city1">City</label>
                                             <select class="form-control" id="city1"></select>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group Distr">
                                             <label class="sr-only" for="district1">District</label>
                                             <select class="form-control" id="district1"></select>
                                         </div>
@@ -71,18 +72,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row modal-body-height">
                         <div class="col-md-3 col-md-offset-1">
                             手机号码：
                         </div>
                         <div class="col-md-8">
-                            <input type="text" id="phone" class="input-md">
+                            <input type="text" id="phone" class="form-control" aria-describedby="basic-addon1">
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" id="bOK">保存</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="bOK">保存</button>
+                    </div>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
