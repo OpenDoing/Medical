@@ -9,7 +9,7 @@ $('#caseTable').bootstrapTable({
     //     profile_id : '0',
     //     token:'30e35f0c1c20ba47a6949a82e838d63f'
     // },
-    url:"http://bieke.cf:8080/ma/zxy/api/userprofile?profile_id=0&token="+getCookie('token'),
+    url:config.base_url + "userprofile?profile_id=0&token="+getCookie('token'),
     // ajax:function () {
     //     url:"http://bieke.cf:8080/ma/zxy/api/",
     //     type:"POST",

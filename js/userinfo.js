@@ -2,11 +2,7 @@ window.onunload = refresh_userinfo();
 
 function refresh_userinfo() {
 
-    if(!getCookie('token')){
-        //todo:弹框提示登录已失效
-        window.location.href = "login.html";
-    }
-    var token = getCookie('token');
+    var token = checktoken();
 
     $.ajax({
         type: "POST",
@@ -48,14 +44,18 @@ $(function () {
 
     function loadInner(sId){
         var sId = window.location.hash;
-        var pathn, i;
+        var pathn, i, data;
         pathn = sId.replace("#","");
         if(!pathn){
             pathn = "baseinfo.html";
             refresh_userinfo();
         }
-        else if(pathn === 'recordinfo'){
+        else if(pathn.indexOf('recordinfo') >= 0 && event.target.value !== null){
             pathn = pathn + ".html";
+            if(pathn.indexOf('profile_id') < 0)
+                window.location.hash += "?profile_id=" + event.target.value;
+            else
+                pathn = pathn.split("?")[0] + ".html";
         }
         else
             pathn = pathn + ".html";

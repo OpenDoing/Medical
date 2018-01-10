@@ -20,3 +20,13 @@ function getInfoFromCookie(name) {
     data = JSON.parse(data);
     return data[name];
 }
+
+//读取token
+function checktoken() {
+    if(!getCookie('token')){
+        //todo:弹框提示登录已失效
+        window.location.href = "login.html";
+        return;
+    }
+    return getCookie('token');
+}
