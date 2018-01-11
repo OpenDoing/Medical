@@ -30,9 +30,9 @@ $('#caseTable').bootstrapTable({
 
         for (var i=0;i<res.length;i++){
             if (res[i].sex=="0"){
-                res[i].sex="男";
-            }else{
                 res[i].sex="女";
+            }else{
+                res[i].sex="男";
             }
 
         }

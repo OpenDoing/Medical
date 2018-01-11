@@ -17,6 +17,9 @@
                     <h4 class="modal-title" >添加患者信息</h4>
                 </div>
                 <div class="modal-body">
+
+                    <div id="alertmessage"></div>
+
                     <div class="row modal-body-height">
                         <div class="col-md-3 col-md-offset-1">
                             姓名：
@@ -30,8 +33,8 @@
                             性别：
                         </div>
                         <div class="col-md-8">
-                            <input type="radio"  name="sex" checked="checked"/>男
-                            <input type="radio"  name="sex"/>女
+                            <input type="radio"  name="sex" checked="checked" value="1"/>男
+                            <input type="radio"  name="sex" value="0"/>女
                         </div>
                     </div>
                     <div class="row modal-body-height">
@@ -104,4 +107,4 @@
         });
     });
 </script>                                  <!--设置生日语言-->
-
+<script src="js/patientinfo/addpatient.js"></script>
