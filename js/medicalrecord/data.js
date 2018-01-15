@@ -4,7 +4,7 @@ $('#caseTable').bootstrapTable({
     dataType:'json',
     pagination:true,
     search:true,
-    url:config.base_url + "medicalrecord?profile_id=" + window.location.hash.split("profile_id=")[1] +"&token="+getCookie('token') + "&record_id=0",
+    url:config.base_url + "medicalrecord?profile_id=" + window.location.hash.split("profile_id=")[1] +"&token="+checktoken() + "&record_id=0",
 
     onLoadSuccess: function(){  //加载成功时执行
         return "加载成功";
@@ -58,6 +58,45 @@ window.operateEvents = {
             $("#hospital").text(row.hospital);
             $("#decription").text(row.description);
 
+            $.ajax({
+                type: "POST",
+                url: config.base_url + "recordimage",
+                data: {
+                    'token':checktoken(),
+                    'profile_id':window.location.hash.split("profile_id=")[1],
+                    'record_id':row.id
+                },
+                success: function (data) {
+                    $("#image-items").empty();
+                    if(data.succ == 1){
+                        var images = data.data;
+                        var imagehtml = '';
+
+                        for (var i in images){
+                            imagehtml += '<div class="col-sm-6 col-md-4">\n' +
+                                '    <div class="thumbnail">\n' +
+                                '        <a class="lightbox" href="' + config.img_url + images[i].link +'">\n' +
+                                '            <img src="' + config.img_url + images[i].link + '" alt="' + images[i].type_id + '">\n' +
+                                '        </a>\n' +
+                                '        <div class="caption">\n' +
+                                '            <h3>' + images[i].type_id + '</h3>\n' +
+                                '            <p>上传时间:' + images[i].create_time + '</p>\n' +
+                                '        </div>\n' +
+                                '    </div>\n' +
+                                '</div>'
+                        }
+                        $("#image-items").append(imagehtml);
+                        baguetteBox.run('.tz-gallery');
+                    }
+                    else {
+                        var message = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">\n" +
+                        "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                        data.error +
+                        "                    </div>";
+                        $("#image-items").append(message);
+                    }
+                }
+            });
 
         });
 
