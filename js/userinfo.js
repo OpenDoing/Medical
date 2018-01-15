@@ -50,7 +50,7 @@ $(function () {
             pathn = "baseinfo.html";
             refresh_userinfo();
         }
-        else if(pathn.indexOf('recordinfo') >= 0 && event.target.value !== null){
+        else if(pathn.indexOf('recordlist') >= 0 && event.target.value !== null){
             pathn = pathn + ".html";
             if(pathn.indexOf('profile_id') < 0)
                 window.location.hash += "?profile_id=" + event.target.value;
@@ -80,7 +80,7 @@ $("#CasePanel").on("click",function () {
             $('#userList').empty();
 
             for(var i in user) {
-                htmlNodes += '<li class="list-group-item"><button class="menu-item-left" id="recordinfo" value="' + user[i].id + '"><span class="glyphicon glyphicon-triangle-right"></span>'+user[i].name +'</button></li>';
+                htmlNodes += '<li class="list-group-item"><button class="menu-item-left" id="recordlist" value="' + user[i].id + '"><span class="glyphicon glyphicon-triangle-right"></span>'+user[i].name +'</button></li>';
             }
             $('#userList').append(htmlNodes);
         }

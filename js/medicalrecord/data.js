@@ -1,3 +1,4 @@
+
 $('#caseTable').bootstrapTable({
     method:"GET",
     dataType:'json',
@@ -37,16 +38,31 @@ $('#caseTable').bootstrapTable({
             title: '描述'
         },
         {
-            tittle:'操作',
+            title:'操作',
             align:"center",
+            events:"operateEvents",
             formatter: function (value, row, index) {
-                //value = "编辑";
-                //console.log(row.id);
-                return "<div class=\"glyphicon glyphicon-edit\"  data-target=\"#addCase\" data-toggle=\"modal\" data-type=\"text\" data-pk=\""+row.Id+"\" data-title=\"用户名\"></div>";
+                return [
+                    '<button id="showinfo" type="button" class="btn btn-default">查看</button>'
+                ].join("");
             }
         }
     ]
 });
+
+window.operateEvents = {
+    'click #showinfo': function (e, value, row, index) {
+        $("#list-info").empty();
+        $("#list-info").load("recordinfo.html",function () {
+            $("#visit_time").text(row.visit_time);
+            $("#hospital").text(row.hospital);
+            $("#decription").text(row.description);
+
+
+        });
+
+    }
+};
 
 function update(row) {
 
