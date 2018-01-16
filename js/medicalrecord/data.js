@@ -52,8 +52,7 @@ $('#caseTable').bootstrapTable({
 
 window.operateEvents = {
     'click #showinfo': function (e, value, row, index) {
-        $("#list-info").empty();
-        $("#list-info").load("recordinfo.html",function () {
+        $("#list-info").empty().load("recordinfo.html",function () {
             $("#visit_time").text(row.visit_time);
             $("#hospital").text(row.hospital);
             $("#decription").text(row.description);
@@ -67,7 +66,6 @@ window.operateEvents = {
                     'record_id':row.id
                 },
                 success: function (data) {
-                    $("#image-items").empty();
                     if(data.succ == 1){
                         var images = data.data;
                         var imagehtml = '';
@@ -85,7 +83,7 @@ window.operateEvents = {
                                 '    </div>\n' +
                                 '</div>'
                         }
-                        $("#image-items").append(imagehtml);
+                        $("#image-items").empty().append(imagehtml);
                         baguetteBox.run('.tz-gallery');
                     }
                     else {
@@ -93,7 +91,8 @@ window.operateEvents = {
                         "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
                         data.error +
                         "                    </div>";
-                        $("#image-items").append(message);
+
+                        $("#img-msg").empty().append(message);
                     }
                 }
             });
