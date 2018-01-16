@@ -37,32 +37,11 @@ function refresh_userinfo() {
 
 $(function () {
     $(".panel-group").on("click", "button", function(){
-        var sId = event.target.id; //获取data-id的值
-        window.location.hash = sId; //设置锚点
-        loadInner(sId);
+        window.location.hash = event.target.id; //设置锚点
+        loadInner();
     });
 
-    function loadInner(sId){
-        var sId = window.location.hash;
-        var pathn, i, data;
-        pathn = sId.replace("#","");
-        if(!pathn){
-            pathn = "baseinfo.html";
-            refresh_userinfo();
-        }
-        else if(pathn.indexOf('recordlist') >= 0 && event.target.value !== null){
-            pathn = pathn + ".html";
-            if(pathn.indexOf('profile_id') < 0)
-                window.location.hash += "?profile_id=" + event.target.value;
-            else
-                pathn = pathn.split("?")[0] + ".html";
-        }
-        else
-            pathn = pathn + ".html";
-        $("#info-content").load(pathn); //加载相对应的内容
-    }
-    var sId = window.location.hash;
-    loadInner(sId);
+    loadInner();
 });
 
 $("#CasePanel").on("click",function () {
@@ -74,15 +53,21 @@ $("#CasePanel").on("click",function () {
             profile_id: 0,
             token:getCookie('token')
         },
-        success: function (user) {
+        success: function (data) {
+            if(data.succ == 1){
+                var user = data.data;
+                var htmlNodes = '';
+                $('#userList').empty();
 
-            var htmlNodes = '';
-            $('#userList').empty();
-
-            for(var i in user) {
-                htmlNodes += '<li class="list-group-item"><button class="menu-item-left" id="recordlist" value="' + user[i].id + '"><span class="glyphicon glyphicon-triangle-right"></span>'+user[i].name +'</button></li>';
+                for(var i in user) {
+                    htmlNodes += '<li class="list-group-item"><button class="menu-item-left" id="recordlist" value="' + user[i].id + '"><span class="glyphicon glyphicon-triangle-right"></span>'+user[i].name +'</button></li>';
+                }
+                $('#userList').append(htmlNodes);
             }
-            $('#userList').append(htmlNodes);
+            else {
+                alert(data.error);
+            }
+
         }
 
     });

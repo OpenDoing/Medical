@@ -32,4 +32,9 @@ function refresh_userprofile() {
     });
 }
 
+$("#addCase").on("click",function () {
+    window.location.hash = "addrecord";
+    loadInner();
+});
+
 
