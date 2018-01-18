@@ -1,9 +1,9 @@
 window.onunload = load_profile();
 
-var record_id;
+var record_id,profile_id,type_id;
 
 function load_profile() {
-
+    $("#step2").hide();
     var token = checktoken();
 
     $.ajax({
@@ -34,6 +34,9 @@ $("#submit").on('click',function () {
 
     var token = checktoken();
 
+    profile_id = $("#profile").val();
+    type_id = $("#type").val();
+
     $("#submit").attr("disabled",true).text("正在提交...");
 
     $.ajax({
@@ -41,17 +44,18 @@ $("#submit").on('click',function () {
         url: config.base_url + "medicalrecord/create",
         data: {
             'token':token,
-            'profile_id':$("#profile").val(),
+            'profile_id':profile_id,
             'visit_time':$("#visit_time").val().replace("年","-").replace("月","-").replace("日","-"),
             'hospital':$("#hospital").val(),
             'description':$("#description").val()
         },
         success: function (data) {
             if(data.succ == 1){
-                $("#step1").empty();
+                $("#step1").hide();
                 bsStep(2);
                 record_id = data.data;
-                alert(record_id);
+                $("#step2").show();
+                loadtype();
             }
             else {
                 var error_message = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">\n" +
@@ -63,3 +67,17 @@ $("#submit").on('click',function () {
         }
     });
 });
+
+function loadtype() {
+    var htmls = "";
+    $.ajax({
+        type: "GET",
+        url: config.base_url + "recordimage/imagetype",
+        success: function (data) {
+            for(var i in data){
+                htmls += "<option value=" + data[i].id + ">" + data[i].type + "</option>";
+            }
+            $("#type").empty().append(htmls);
+        }
+    });
+}
