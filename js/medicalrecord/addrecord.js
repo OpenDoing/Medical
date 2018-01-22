@@ -1,6 +1,6 @@
 window.onunload = load_profile();
 
-var record_id,profile_id,type_id;
+var record_id,profile_id;
 
 function load_profile() {
     $("#step2").hide();
@@ -35,7 +35,6 @@ $("#submit").on('click',function () {
     var token = checktoken();
 
     profile_id = $("#profile").val();
-    type_id = $("#type").val();
 
     $("#submit").attr("disabled",true).text("正在提交...");
 

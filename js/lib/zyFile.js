@@ -151,7 +151,7 @@ var ZYFILE = {
             data.append('token',checktoken());
             data.append('record_id',record_id);
             data.append('profile_id',profile_id);
-            data.append('type_id',type_id);
+            data.append('type_id',$("#type").val());
 
 
             $.ajax(self.url, {
