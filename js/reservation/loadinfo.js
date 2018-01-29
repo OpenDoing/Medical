@@ -70,10 +70,29 @@ function inithead() {
     $("#thead").html(htmls);
 }
 
+//获取下一个周x的日期
+function getdate(day) {
+    var length = day - new Date().getDay();
+    if (length <= 0)
+        length += 7;
+    var date = new Date();
+    date.setDate(date.getDate() + length);
+    var month = date.getMonth() + 1;
+    return month + '月' + date.getDate() + '日';
+}
+
 //构造表主体结构
 function inittable(data) {
 
     var htmls = '';
+
+    //剩余人数
+    var num0 = [-1,-1,-1,-1,-1,-1,-1,-1];//上午
+    var num1 = [-1,-1,-1,-1,-1,-1,-1,-1];//下午
+
+    //获取周次
+    var weekday = new Date().getDay();
+
     //常用组件
     //未排班，无分割线
     var empty0 = '<td width="7%" class="bor_botm" align="center"></td>\n';
@@ -82,6 +101,8 @@ function inittable(data) {
     //已满
     var full0 = '<td width="7%" class="bor_botm" align="center"><span class="yuyue_yiman">已满</span></td>\n';
     var full1 = '<td align="center"><span class="yuyue_yiman">已满</span></td>\n';
+
+    var time_part = '<td width="3%" class="bor_botm tab_data" align="center"><span>上<br>午</span></td>';
 
     //1.替换医生简介部分
     var doctor_part = $('#doctor_change').html();
@@ -92,8 +113,80 @@ function inittable(data) {
         .replace('{department}',data.department)
         .replace('{description}',data.introduction);
 
+    //2.拼接时间表
+    //解析剩余号数
+    var timelist = data.time_list;
+    if (timelist !== null){
+        for(var i in timelist) {
+            var day = timelist[i].day;
+            //上午
+            if (timelist[i].flag === 0){
+                if(num0[day] === -1)
+                    num0[day] = 0;
+                num0[day] += timelist[i].number;
+            }
+            //下午
+            else {
+                if(num1[day] === -1)
+                    num1[day] = 0;
+                num1[day] += timelist[i].number;
+            }
+        }
+    }
+    //拼接上午排班
+    for(var i=1; i<=7; i++){
+        weekday++;
+        if (weekday > 7)
+            weekday = weekday - 7;
+        //无排班
+        if (num0[weekday] === -1)
+            time_part += empty0;
+        //已满
+        else if (num0[weekday] === 0)
+            time_part += full0;
+        //有剩余
+        else
+            time_part += '<td width="7%" class="bor_botm" align="center">\n' +
+                '<span class="yuyue_time">\n' +
+                '<a href="javascript:submit_order(' + data.id + ',' + weekday +
+                ')" title="门诊类型：' + data.typename + '\n' +
+                '出诊时间：'+ getdate(weekday) + '上午\n' +
+                '科室：' + data.typename + '\n' +
+                '剩余：' + num0[weekday] + '\n' +
+                '咨询费：' + data.price + '元">预约</a>\n' +
+                '</span>\n' +
+                '</td>';
+    }
+    time_part += '<td width="3%" class="bor_botm"></td></tr>'+
+                '<tr><td align="center" class="tab_data"><span>下<br>午\n</span></td>\n';
+    weekday = new Date().getDay();
 
+    //拼接下午排班
+    for(var i=1; i<=7; i++){
+        weekday++;
+        if (weekday > 7)
+            weekday = weekday - 7;
+        //无排班
+        if (num1[weekday] === -1)
+            time_part += empty1;
+        //已满
+        else if (num1[weekday] === 0)
+            time_part += full1;
+        //有剩余
+        else
+            time_part += '<td align="center">\n' +
+                '<span class="yuyue_time">\n' +
+                '<a href="javascript:submit_order(' + data.id + ',' + weekday +
+                ')" title="门诊类型：' + data.typename + '\n' +
+                '出诊时间：'+ getdate(weekday) + '下午\n' +
+                '科室：' + data.typename + '\n' +
+                '剩余：' + num1[weekday] + '\n' +
+                '咨询费：' + data.price + '元">预约</a>\n' +
+                '</span>\n' +
+                '</td>';
+    }
+    time_part += '</tr>';
 
-        $('#tablebody').append(doctor_part);
+    $('#tablebody').append(doctor_part + time_part);
 
 }

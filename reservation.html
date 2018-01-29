@@ -12,8 +12,8 @@
 
     <link rel="stylesheet" href="css/info.css" />
 
-    <link href="test/basic.css" type="text/css" rel="stylesheet">
-    <link href="test/xz_ks.css" type="text/css" rel="stylesheet">
+    <link href="css/reservation/basic.css" type="text/css" rel="stylesheet">
+    <link href="css/reservation/xz_ks.css" type="text/css" rel="stylesheet">
 
 
 
@@ -68,88 +68,6 @@
                     <tbody id="tablebody">
                     <tr>
                         <td colspan="12" style="height: 39px;"></td>
-                    </tr>
-
-                    <tr>
-
-                        <td width="8%" rowspan="2" class="tab_one">
-                            <a href="/njres/reservation/doc_detail.do?docid=14971" target="_blank">
-                            <img src="http://www.nj12320.org/njresimg/upload/doctor/logo_32010100_B331.jpg" width="60" height="80">
-                        </a><a class="collection" href="javascript:void(0)" onclick="addCollection(14971,'03')">加入收藏</a>
-                        </td>
-
-                        <td width="15%" rowspan="2" class="tab_xx ver_top">
-                            <a class="ys_name" href="/njres/reservation/doc_detail.do?docid=14971&amp;hoscode=32010100" target="_blank">曹彬</a>
-                            <i title="主任医师">主任医师</i>
-                            <p>
-                                <a target="_blank" style="color: #8b8a8a" href="/njres/hospital/hos_showHosDetail.do?hoscode=32010100">南京鼓楼医院</a>
-                                <br>[三级甲等]
-                            </p>
-                            <em>
-                                <a target="_blank" style="color: #f99c09;" href="/njres/reservation/dep_detail.do?depid=150079&amp;hoscode=32010100">心胸外科</a>
-                            </em>
-                        </td>
-
-
-                        <td width="22%" rowspan="2" class="tab_xx ver_top">
-                            主任医师、医学硕士，江苏省和南京市心胸外科学会委员，江苏省“医学333工程”人才。曾在印度班加洛尔心脏中心进修学习。目前承担或参与多项省卫生厅、市卫...
-                        </td>
-                        <!--此处限制字数最多74个字符-->
-
-
-                        <td width="3%" class="bor_botm tab_data" align="center">
-                            <span>上<br>午</span>
-                        </td>
-
-                        <td width="7%" class="bor_botm" align="center">
-
-
-                            <span class="yuyue_time">
-                                <a href="javascript:toShowSchedule('32010100',23889064,'am')" title="门诊类型：专家号
-出诊时间：01月26日上午
-科室：心胸外科
-挂号费：35元">预约</a>
-                            </span>
-                        </td>
-
-                        <td width="7%" class="bor_botm" align="center"></td>
-
-                        <td width="7%" class="bor_botm" align="center"></td>
-
-                        <td width="7%" class="bor_botm" align="center"></td>
-
-                        <td width="7%" class="bor_botm" align="center"></td>
-
-                        <td width="7%" class="bor_botm" align="center"></td>
-
-                        <td width="3%" class="bor_botm"></td>
-                    </tr>
-                    <tr>
-                        <td align="center" class="tab_data">
-                            <span>下<br>午</span>
-                        </td>
-
-                        <td align="center">
-
-                            <span class="yuyue_time"> <a href="javascript:toShowSchedule('32010100',23889063,'pm')" title="门诊类型：专家号
-出诊时间：01月26日下午
-科室：心胸外科
-挂号费：35元">预约</a>
-                            </span>
-                        </td>
-
-                        <td align="center"></td>
-
-                        <td align="center"></td>
-
-                        <td align="center"></td>
-
-                        <td align="center"></td>
-
-                        <td align="center"></td>
-
-
-                        <td></td>
                     </tr>
 
                     </tbody>
@@ -309,6 +227,7 @@
 </div>
 
 </body>
+
 <!-- 医生介绍替换模板 -->
 <script type="text/html" id='doctor_change'>
     <tr>
@@ -340,12 +259,8 @@
         </td>
         <!--此处限制字数最多74个字符-->
 
-
-        <td width="3%" class="bor_botm tab_data" align="center">
-            <span>上<br>午</span>
-        </td>
-
 </script>
+
 <script src="js/util.js"></script>
 <script src="js/lib/jquery-3.2.1.min.js"></script>
 <script src="js/reservation/loadinfo.js"></script>
