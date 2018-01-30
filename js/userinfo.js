@@ -22,8 +22,10 @@ function refresh_userinfo() {
 
                 }
                 $("#userHi").text(data.data.nickname);
+                $("#userHH").text(data.data.nickname);
                 $("#tel").text(data.data.phone);
                 $("#hImg").attr('src',config.img_url + data.data.avatar);
+                $("#hhImg").attr('src',config.img_url + data.data.avatar);
                 $('#createTime').text(data.data.create_time);
                 $('#lastTime').text(data.data.token_create_time);
             }
