@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>提交订单</title>
+
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+
+    <link rel="stylesheet" href="css/info.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/reservation/process.css">
+
+</head>
+
+<header>
+    <img src="img/logo.png" class="logo"/>
+    <!--<a href="#" class="logo"></a>-->
+    <div class="desc">个人中心</div>
+    <a id="hhome" href="#">网站首页</a>
+    <a id="hname" href="#">退出登录</a>
+
+</header>
+
+<body>
+    <div class="padtb20">
+        <div class="content w960">
+            <div class="order-bor marbot50 border-top-no">
+
+        <!-- 医生信息 -->
+        <div class="order-tit">医生信息</div>
+        <div id="doctor_info" class="fn-clear order-con">
+
+        </div>
+        <!-- 医生信息 -->
+
+        <!-- 就诊时间 -->
+        <div class="order-tit" id="jzdate"><p class="fn-left">就诊时间（必填）</p>
+            <span class="select-time-close" style="display:none;"><cite></cite><em>请选择就诊时间</em></span>
+        </div>
+        <div id="yuyue-time" class="fn-clear order-con">
+
+        </div>
+        <!-- 就诊日期 -->
+
+        <!-- 就诊人信息 -->
+        <div class="order-tit" id="memberinfo">
+            <font class="fn-left">就诊人信息</font>
+            <!-- 新增就诊人 -->
+            <a id="add_member_new" class="fl add_family" href="javascript:void(0);">
+                <i class="order-icon iconA1"></i>新增就诊人
+            </a>
+            <!-- 提示框-->
+            <span class="choose_member_info" style=" display: none; border:none;"><cite></cite><em>请选择就诊人</em></span>
+            <span class="add_member_info" style="display: none;border:none;"><cite></cite><em>请新增就诊人</em></span>
+
+        </div>
+        <div class="order-con">
+            <ul v="" class="fn-clear family-li" id="mem_list">
+                <li id="mem58207501">
+                    <label class="pr">
+                        <div class="fun_td">
+                                    <span class="span-edit inblo">
+                                        <!--修改手机号 #22946 -->
+                                            <span class="fl span-a">
+                                                <a class="edit-phone" href="javascript:void(0);">
+                                                        <i class="order-icon fl"></i>修改
+                                                </a>
+                                            </span>
+                                            <span class="fl span-input" style="display:none;">
+                                                <input type="button" class="btn-ok" value="确定" disabled="disabled">
+                                                <input type="button" class="btn-no" value="取消">
+                                            </span>
+                                        <!--修改手机号-->
+                                    </span>
+                            <span class="span-set inblo">
+                                                                            <span class="fl">&nbsp;(默认就诊人)</span>
+                                                                        </span>
+                            <!--<a class="_on_up_mem"  val="58207501" truename="郭均" sex="0" birth="1978-09-20" card_type="1" card="420623197809207012" phone="" social_card="" href="javascript:void(0);">
+                               <i class="order-icon iconA3"></i>修改
+                             </a>
+                             <a class="_on_del_mem" val="58207501" href="javascript:void(0);"><i class="order-icon iconA5"></i><font color="red">删除</font></a>-->
+                            <span class="span-info inblo">
+                                                                                                            </span>
+                        </div>
+                        <span class="tips_wrap">
+                                      <input data-title="您当前的就诊人信息审核中，暂不能预约挂号" style="margin-top:5px;" class="fl must_choose" type="radio" need_check="" is_created="" record_created="" is_complete="" birth="1978-09-20" checked=" " name="mid" value="58207501" username="郭均" sex="0" age="39" address="北京市 朝阳区 呼家楼街道" area_id="3833" city_id="2912" province_id="2913" is_info_complete="1" accountrelation="1" card="420***7012" card_type="1" real_card="420623197809207012" real_phone="15676955274" mphone="156****5274">
+
+                                    <span class="fl w1 elli ml5" style="width: 80px;">郭均</span>
+                                    </span>
+
+                        <span class="w4">男</span>
+                        <span class="w2 pr">身份证 420***7012                                                                                                                                            </span>
+                        <span class="w3">1978-09-20</span>
+                        <span class="w3">
+                                         <!--修改手机号 #22946-->
+                                        <input type="text" value="156****5274" maxlength="11" class="input-phone" disabled="disabled" onkeyup="value=value.replace(/[^\d]/g,&#39;&#39;)">
+                            <!--修改手机号-->
+                                    </span>
+                    </label>
+                </li>
+
+
+            </ul>
+            <!--修改手机号提示  #22946-->
+            <!--  <div class="edit-phone-tips hide">
+                    <div class="middle-box">
+                        <div class="middle-inner">
+                            <p class="fl fs12">挂号预约成功的短信支持发送到就诊人手机号码啦~ 点击上方”修改“即可更改接收号码<br><span class="no-phone"></span>提交订单成功后，<span class="b fs14">短信将发送到您<span class="new-mobile"></span>的手机号码中！</span></p>
+                            <input type="button" class="fr "value="知道了">
+                        </div>
+                    </div>
+                </div> -->
+            <!--修改手机号提示-->
+        </div>
+        <!-- 就诊人信息 -->
+
+        <!-- 病历资料 -->
+        <div id="otherinfo_clinic" class="order-tit">其他资料</div>
+        <div class="order-con">
+
+        </div>
+        <!-- 病历资料 -->
+        <!-- 疾病信息 -->
+
+        <div class="order-tit fn-clear" id="diseastit"><p class="fn-left">疾病信息 </p>
+            <span class="write-disease-info"></span>
+        </div>
+        <div class="fn-clear order-con">
+            <div id="judgment" class="fn-left disease-info-left">
+                <textarea name="disease_input" id="disease_input" style="height:100px;color:#999;" class="textareas areanum" autocomplete="off" placeholder="请填写病史，症状，发病时间，接受过的治疗等信息，提前告知医生您的病情，有助于医生对您的诊疗"></textarea><br>
+                <p><span></span><em>0</em>/500</p>
+                <input type="hidden" name="doctor_id" id="doctor_id" value="18108">
+                <input type="hidden" name="order_no" id="order_no" value="">
+                <input type="hidden" name="disease_content" id="disease_content" value="">
+            </div>
+            <div class="fn-right disease-info-rgt">
+                <p>示例：</p>
+                <p style="width:90px;"><span>糖尿病20余年</span><br><em>病史</em></p>
+                <p>，</p>
+                <p style="width:72px;"><span style="border-bottom:none;">半年前开始</span><br><em style="width:70px;border-top:solid 1px #e2a1a1;">症状出现时间</em></p>
+                <p style="width:114px;"><span>手脚像针刺般疼痛</span><br><em>症状</em></p>
+                <p>，</p>
+                <p style="width:60px;"><span>不能睡觉</span><br><em>症状程度</em></p>
+                <p>，</p>
+                <p style="width:170px;"><span>正在服用汉桃叶片和甲谷胺</span><br><em>正在接受的治疗</em></p>
+                <p>，</p>
+                <p style="width:80px;"><span>疗效不明显。</span><br><em>治疗效果</em></p>
+            </div>
+        </div>
+
+        <!-- 疾病信息 -->
+        <!-- 医院预约规则 -->
+        <div id="yuyue_rule" class="order-tit"><p class="fn-left">医院预约规则 </p>
+            <span class="read-rule-close" style="display:none"><cite></cite><em>请阅读预约规则</em></span></div>
+        <div class="order-con">
+            <div rows="" cols="" class="p_prot textareas">
+                <p>这里是预约规则</p>
+            </div>
+            <div class="block p10">
+                <label><input id="check_yuyue_rule" type="checkbox" name="accept" value="1" style="border:none;margin:4px 5px 0 0;" class="must_choose fl"> 我已经了解本站的预约规则</label>
+            </div>
+        </div>
+        <!-- 医院预约规则 -->
+
+        <!-- 支付方式 -->
+        <div id="pay_box" class="order-tit"><p class="fn-left">支付方式</p>
+            <span class="select-pay-close" style="display:none"><cite></cite><em>请选择支付方式</em></span>
+        </div>
+        <div class="order-con">
+            <div class="pay-list">
+                <input name="pay_online" value="1" type="radio" checked="checked" style="">
+                <label class="hui-s fs16 hradio"><i></i>支付宝</label>
+                <p class="mt10" style="line-height:24px;font-weight:100;color:#00a2e3;">
+                    支付宝扫码支付
+                </p>
+            </div>
+            <div class="pay-list">
+                <input name="pay_online" value="0" type="radio" style="">
+                <label class="hui-s fs16 hradio hradio_checked"><i></i>微信支付</label>
+                <p class="hui-q mt10" style="line-height:24px;font-weight:100;color:#00a2e3;">
+                    微信扫码支付
+                </p>
+            </div>
+        </div>
+        <!-- 支付方式 -->
+
+        <!-- 提交订单 -->
+        <div class="fn-clear block tj-order">
+
+            <div class="new-sub">
+                <input type="button" id="submitbtn" value="提交订单" paymethodname="" class="fn-left orderbtn">
+                <span class="send-sms fn-left">短信将发送到您<span class="new-mobile">156****5274</span>的手机号码中</span>
+                <div class="fn-clear"></div>
+            </div>
+        </div>
+        <!-- add by luochao 2015-7-16 -->
+        <!-- 提交订单 -->
+    </div>
+        </div>
+    </div>
+
+</body>
+
+<!--医生信息替换模板-->
+<script type="text/html" id="doctor_info_change">
+    <dl class="fn-left docinfo">
+        <dt><img src="{img}"></dt>
+        <dd>
+            <a href="/doctors.html?doctor_id={doctor_id}" target="_blank">{name}</a><br>
+            南京鼓楼医院<br>
+            {department}<br>
+            {type}
+        </dd>
+    </dl>
+    <div class="fn-right doc-type">
+        咨询类型：<i class="c1">{department}-{type}</i><br>
+        费用：<i class="c1">{price}元</i>
+    </div>
+</script>
+<!--就诊时间替换模板-->
+<script type="text/html" id="time_change">
+    <div class="order-time">
+        {date}
+        <i>{week}</i>
+    </div>
+    <div class="fn-left yy-time">
+        <ul class="fn-clear" id="delts">
+
+            <!--<li value="1" class="cur">08:00-12:00</li>-->
+        </ul>
+    </div>
+</script>
+
+<script src="js/lib/jquery-3.2.1.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/reservation/order.js"></script>
+</html>

@@ -50,3 +50,21 @@ function loadInner(){
         pathn = pathn + ".html";
     $("#info-content").load(pathn); //加载相对应的内容
 }
+
+//获取get参数
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+}
+
+//获取下一个周x的日期
+function getdate(day) {
+    var length = day - new Date().getDay();
+    if (length <= 0)
+        length += 7;
+    var date = new Date();
+    date.setDate(date.getDate() + length);
+    var month = date.getMonth() + 1;
+    return date.getFullYear() + '年' + month + '月' + date.getDate() + '日';
+}

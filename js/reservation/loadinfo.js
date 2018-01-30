@@ -70,16 +70,7 @@ function inithead() {
     $("#thead").html(htmls);
 }
 
-//获取下一个周x的日期
-function getdate(day) {
-    var length = day - new Date().getDay();
-    if (length <= 0)
-        length += 7;
-    var date = new Date();
-    date.setDate(date.getDate() + length);
-    var month = date.getMonth() + 1;
-    return month + '月' + date.getDate() + '日';
-}
+
 
 //构造表主体结构
 function inittable(data) {
@@ -148,8 +139,8 @@ function inittable(data) {
         else
             time_part += '<td width="7%" class="bor_botm" align="center">\n' +
                 '<span class="yuyue_time">\n' +
-                '<a href="javascript:submit_order(' + data.id + ',' + weekday +
-                ')" title="门诊类型：' + data.typename + '\n' +
+                '<a href="submit_order.html?did=' + data.id + '&day=' + weekday + '&flag=0' +
+                '" title="门诊类型：' + data.typename + '\n' +
                 '出诊时间：'+ getdate(weekday) + '上午\n' +
                 '科室：' + data.typename + '\n' +
                 '剩余：' + num0[weekday] + '\n' +
@@ -176,8 +167,8 @@ function inittable(data) {
         else
             time_part += '<td align="center">\n' +
                 '<span class="yuyue_time">\n' +
-                '<a href="javascript:submit_order(' + data.id + ',' + weekday +
-                ')" title="门诊类型：' + data.typename + '\n' +
+                '<a href="submit_order.html?did=' + data.id + '&day=' + weekday + '&flag=1' +
+                '" title="门诊类型：' + data.typename + '\n' +
                 '出诊时间：'+ getdate(weekday) + '下午\n' +
                 '科室：' + data.typename + '\n' +
                 '剩余：' + num1[weekday] + '\n' +
