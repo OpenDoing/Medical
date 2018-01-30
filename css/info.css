@@ -280,3 +280,30 @@ header{
 }
 /*patientinfo.css end*/
 
+/*导航栏头像及用户名*/
+#userHH{
+	margin-left: 30px;
+	padding-top: 0px;
+}
+.jumbotron {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+	color: inherit;
+	background-color: #eee;
+}
+
+.smaller-image{
+	width: 60px;
+	margin-top: 20px;
+	margin-left: 20px;
+
+}
+.userhead{
+	margin-left: 11px;
+	background-color:#337ab7;
+	width: 234px;
+	height:100px;
+	border-radius: 4px;
+}
+/*导航栏头像及用户名 end*/
