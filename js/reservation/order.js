@@ -6,6 +6,7 @@ function load_order() {
     flag = getQueryString('flag');
     day = getQueryString('day');
     load_doctor();
+    load_userprofile();
 }
 
 function load_doctor() {
@@ -24,6 +25,26 @@ function load_doctor() {
     });
 }
 
+function load_userprofile() {
+    $.ajax({
+        url:"http://bieke.cf:8080/ma/zxy/api/userprofile",
+        type: 'get',
+        dataType: 'json',
+        data: {
+            profile_id: 0,
+            token:checktoken()
+        },
+        success: function (data) {
+            if(data.succ == 1){
+                init_memlist(data.data);
+            }
+            else {
+                alert(data.error);
+            }
+        }
+    });
+}
+
 function init_doctor(data) {
 
     var week = ['星期一','星期二','星期三','星期四','星期五','星期六','星期日'];
@@ -35,6 +56,7 @@ function init_doctor(data) {
     var doctor_info_part = $('#doctor_info_change').html();
     doctor_info_part = doctor_info_part.replace(new RegExp("{department}","gm"),data.department)
         .replace('{img}',config.img_url + data.photo)
+        .replace('{doctor_id}',data.id)
         .replace('{name}',data.name)
         .replace(new RegExp("{type}","gm"),data.typename)
         .replace('{price}',data.price);
@@ -52,7 +74,7 @@ function init_doctor(data) {
     }
     $("#delts").append(time_part);
 
-    $('li').click(function () {
+    $('#delts').children().click(function () {
         click_time($(this));
     })
 
@@ -71,4 +93,21 @@ function click_time(clicked) {
         });
         clicked.addClass('cur');
     }
+}
+
+//替换患者列表模板
+function init_memlist(data) {
+    var htmls = '';
+    for (var i in data){
+        var sex = (data[i].sex == 0)?'女':'男';
+        var mem_part = $('#mem_change').html();
+        mem_part = mem_part.replace('{id}',data[i].id)
+            .replace('{name}',data[i].name)
+            .replace('{sex}',sex)
+            .replace('{birth}',data[i].birth)
+            .replace('{address}',data[i].address)
+            .replace('{phone}',data[i].phone);
+        htmls += mem_part + '\n';
+    }
+    $("#mem_list").append(htmls);
 }

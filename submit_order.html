@@ -50,7 +50,7 @@
         <div class="order-tit" id="memberinfo">
             <font class="fn-left">就诊人信息</font>
             <!-- 新增就诊人 -->
-            <a id="add_member_new" class="fl add_family" href="javascript:void(0);">
+            <a id="add_member_new" class="fl add_family" href="info.html#patientinfo">
                 <i class="order-icon iconA1"></i>新增就诊人
             </a>
             <!-- 提示框-->
@@ -60,61 +60,8 @@
         </div>
         <div class="order-con">
             <ul v="" class="fn-clear family-li" id="mem_list">
-                <li id="mem58207501">
-                    <label class="pr">
-                        <div class="fun_td">
-                                    <span class="span-edit inblo">
-                                        <!--修改手机号 #22946 -->
-                                            <span class="fl span-a">
-                                                <a class="edit-phone" href="javascript:void(0);">
-                                                        <i class="order-icon fl"></i>修改
-                                                </a>
-                                            </span>
-                                            <span class="fl span-input" style="display:none;">
-                                                <input type="button" class="btn-ok" value="确定" disabled="disabled">
-                                                <input type="button" class="btn-no" value="取消">
-                                            </span>
-                                        <!--修改手机号-->
-                                    </span>
-                            <span class="span-set inblo">
-                                                                            <span class="fl">&nbsp;(默认就诊人)</span>
-                                                                        </span>
-                            <!--<a class="_on_up_mem"  val="58207501" truename="郭均" sex="0" birth="1978-09-20" card_type="1" card="420623197809207012" phone="" social_card="" href="javascript:void(0);">
-                               <i class="order-icon iconA3"></i>修改
-                             </a>
-                             <a class="_on_del_mem" val="58207501" href="javascript:void(0);"><i class="order-icon iconA5"></i><font color="red">删除</font></a>-->
-                            <span class="span-info inblo">
-                                                                                                            </span>
-                        </div>
-                        <span class="tips_wrap">
-                                      <input data-title="您当前的就诊人信息审核中，暂不能预约挂号" style="margin-top:5px;" class="fl must_choose" type="radio" need_check="" is_created="" record_created="" is_complete="" birth="1978-09-20" checked=" " name="mid" value="58207501" username="郭均" sex="0" age="39" address="北京市 朝阳区 呼家楼街道" area_id="3833" city_id="2912" province_id="2913" is_info_complete="1" accountrelation="1" card="420***7012" card_type="1" real_card="420623197809207012" real_phone="15676955274" mphone="156****5274">
-
-                                    <span class="fl w1 elli ml5" style="width: 80px;">郭均</span>
-                                    </span>
-
-                        <span class="w4">男</span>
-                        <span class="w2 pr">身份证 420***7012                                                                                                                                            </span>
-                        <span class="w3">1978-09-20</span>
-                        <span class="w3">
-                                         <!--修改手机号 #22946-->
-                                        <input type="text" value="156****5274" maxlength="11" class="input-phone" disabled="disabled" onkeyup="value=value.replace(/[^\d]/g,&#39;&#39;)">
-                            <!--修改手机号-->
-                                    </span>
-                    </label>
-                </li>
-
 
             </ul>
-            <!--修改手机号提示  #22946-->
-            <!--  <div class="edit-phone-tips hide">
-                    <div class="middle-box">
-                        <div class="middle-inner">
-                            <p class="fl fs12">挂号预约成功的短信支持发送到就诊人手机号码啦~ 点击上方”修改“即可更改接收号码<br><span class="no-phone"></span>提交订单成功后，<span class="b fs14">短信将发送到您<span class="new-mobile"></span>的手机号码中！</span></p>
-                            <input type="button" class="fr "value="知道了">
-                        </div>
-                    </div>
-                </div> -->
-            <!--修改手机号提示-->
         </div>
         <!-- 就诊人信息 -->
 
@@ -233,6 +180,36 @@
             <!--<li value="1" class="cur">08:00-12:00</li>-->
         </ul>
     </div>
+</script>
+<!--患者列表替换模板-->
+<script type="text/html" id="mem_change">
+    <li>
+        <label class="pr">
+            <div class="fun_td">
+                <span class="span-edit inblo">
+                    <!--修改患者信息 -->
+                    <span class="fl span-a">
+                        <a class="edit-phone" href="info.html#patientinfo">
+                            <i class="order-icon fl"></i>修改
+                        </a>
+                    </span>
+                    <!--修改患者信息-->
+                </span>
+            </div>
+
+            <span class="tips_wrap">
+                <input name="mem_list" value="{user_id}" style="margin-top:5px;" class="fl must_choose" type="radio">
+                <span class="fl w1 elli ml5" style="width: 80px;">{name}</span>
+            </span>
+
+            <span class="w4">{sex}</span>
+            <span class="w3">{birth}</span>
+            <span class="w2">{address}</span>
+            <span class="w3">{phone}</span>
+
+        </label>
+    </li>
+
 </script>
 
 <script src="js/lib/jquery-3.2.1.min.js"></script>

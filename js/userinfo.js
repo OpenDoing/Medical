@@ -53,7 +53,7 @@ $("#CasePanel").on("click",function () {
         dataType: 'json',
         data: {
             profile_id: 0,
-            token:getCookie('token')
+            token:checktoken()
         },
         success: function (data) {
             if(data.succ == 1){

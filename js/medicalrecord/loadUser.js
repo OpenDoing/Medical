@@ -20,7 +20,7 @@ function refresh_userprofile() {
                 $("#birth").text(data.data.birth);
                 $("#address").text(data.data.address);
                 $("#phone").text(data.data.phone);
-                if(data.data.sex === "0")
+                if(data.data.sex === 0)
                     $("#sex").text("女");
                 else
                     $("#sex").text("男");

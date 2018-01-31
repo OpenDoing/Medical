@@ -1,23 +1,12 @@
 $('#caseTable').bootstrapTable({
-    // http://bieke.cf:8080/ma/zxy/api/
-    //url:'data.json',
+
     method:"GET",
     dataType:'json',
     pagination:true,
     search:true,
-    // data:{
-    //     profile_id : '0',
-    //     token:'30e35f0c1c20ba47a6949a82e838d63f'
-    // },
+
     url:config.base_url + "userprofile?profile_id=0&token="+getCookie('token'),
-    // ajax:function () {
-    //     url:"http://bieke.cf:8080/ma/zxy/api/",
-    //     type:"POST",
-    // },
-    // ajaxOptions:{
-    //     profile_id : '0',
-    //     token:'30e35f0c1c20ba47a6949a82e838d63f'
-    // },
+
     onLoadSuccess: function(){  //加载成功时执行
         return "加载成功";
     },
@@ -29,14 +18,13 @@ $('#caseTable').bootstrapTable({
 
 
         for (var i=0;i<res.length;i++){
-            if (res[i].sex=="0"){
+            if (res[i].sex === 0){
                 res[i].sex="女";
             }else{
                 res[i].sex="男";
             }
 
         }
-        //gloable = res;
         return res;
     },
     onClickRow:function (row) {
