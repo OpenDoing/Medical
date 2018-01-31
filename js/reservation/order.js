@@ -1,4 +1,5 @@
 var did,flag,day;
+var dropdown;
 window.onunload = load_order();
 
 function load_order() {
@@ -7,6 +8,13 @@ function load_order() {
     day = getQueryString('day');
     load_doctor();
     load_userprofile();
+    dropdown = $('.dropdown-mul-1').dropdown({
+        limitCount: 40,
+        multipleMode: 'label',
+        choice: function () {
+            console.log(arguments,this);
+        }
+    }).data('dropdown') ;
 }
 
 function load_doctor() {
@@ -41,6 +49,41 @@ function load_userprofile() {
             else {
                 alert(data.error);
             }
+        }
+    });
+}
+
+function load_case() {
+    var value = $('input[name="mem_list"]:checked').val();
+    var dropdown_data = [];
+    $.ajax({
+        url:"http://bieke.cf:8080/ma/zxy/api/medicalrecord",
+        type: 'get',
+        dataType: 'json',
+        data: {
+            profile_id: value,
+            token:checktoken(),
+            record_id:0
+        },
+        success: function (data) {
+            //dropdown.update(data,true);
+            if (data.succ == 1){
+                for (var i in data.data){
+                    var option = new Object();
+                    option.id = data.data[i].id;
+                    option.name = '就诊时间:' + data.data[i].visit_time + '  就诊医院:' + data.data[i].hospital;
+                    dropdown_data[i] = option;
+                }
+            }
+            else{
+                var option = new Object();
+                option.id = 0;
+                option.disabled = true;
+                option.name = data.error;
+                dropdown_data[0] = option;
+            }
+            dropdown_data = JSON.stringify(dropdown_data);
+            dropdown.update(JSON.parse(dropdown_data),true);
         }
     });
 }
@@ -101,7 +144,7 @@ function init_memlist(data) {
     for (var i in data){
         var sex = (data[i].sex == 0)?'女':'男';
         var mem_part = $('#mem_change').html();
-        mem_part = mem_part.replace('{id}',data[i].id)
+        mem_part = mem_part.replace('{user_id}',data[i].id)
             .replace('{name}',data[i].name)
             .replace('{sex}',sex)
             .replace('{birth}',data[i].birth)
@@ -110,4 +153,8 @@ function init_memlist(data) {
         htmls += mem_part + '\n';
     }
     $("#mem_list").append(htmls);
+    //点击加载对应病历
+    $(':radio').click(function () {
+        load_case();
+    });
 }
