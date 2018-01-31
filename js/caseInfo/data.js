@@ -16,14 +16,12 @@ $('#caseTable').bootstrapTable({
     striped:true,
     responseHandler:function (res) {    //data prehandle
 
-
-        for (var i=0;i<res.length;i++){
-            if (res[i].sex === 0){
-                res[i].sex="女";
+        for (var i=0;i<res.data.length;i++){
+            if (res.data[i].sex === 0){
+                res.data[i].sex="女";
             }else{
-                res[i].sex="男";
+                res.data[i].sex="男";
             }
-
         }
         return res;
     },
