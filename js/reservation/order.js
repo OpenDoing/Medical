@@ -1,6 +1,33 @@
 var did,flag,day;
 var dropdown;
+var schedule_id;
 window.onunload = load_order();
+
+function submit() {
+    //获取病历ID
+    var m_ids = [];
+    var p_id = $('input[name="mem_list"]:checked')[0].getAttribute('value');
+    $('span.dropdown-selected').each(function () {
+        var t = $(this).find("i").first()[0].getAttribute('data-id');
+        m_ids.push(t);
+    });
+
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "order/create",
+        data: {
+            'token':checktoken(),
+            'profile_id':p_id,
+            'appointment_time':schedule_id,
+            'record_id':m_ids
+        },
+        success: function (data) {
+
+        }
+    });
+}
+
+
 
 function load_order() {
     did = getQueryString('did');
@@ -10,10 +37,7 @@ function load_order() {
     load_userprofile();
     dropdown = $('.dropdown-mul-1').dropdown({
         limitCount: 40,
-        multipleMode: 'label',
-        choice: function () {
-            console.log(arguments,this);
-        }
+        multipleMode: 'label'
     }).data('dropdown') ;
 }
 
@@ -135,6 +159,7 @@ function click_time(clicked) {
             }
         });
         clicked.addClass('cur');
+        schedule_id = clicked.val();
     }
 }
 
