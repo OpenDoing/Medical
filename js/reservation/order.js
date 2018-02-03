@@ -6,12 +6,24 @@ window.onunload = load_order();
 function submit() {
     //获取病历ID
     var m_ids = [];
-    var p_id = $('input[name="mem_list"]:checked')[0].getAttribute('value');
+    try{
+        var p_id = $('input[name="mem_list"]:checked')[0].getAttribute('value');
+    }catch (e){
+        $('#choose_member_info').css("display","block");
+        return;
+    }
     $('span.dropdown-selected').each(function () {
         var t = $(this).find("i").first()[0].getAttribute('data-id');
         m_ids.push(t);
     });
+    if (typeof(schedule_id) == "undefined"){
+        $('#select-time-close').css("display","block");
+        return;
+    }
 
+
+    $("#submitbtn").attr("disabled",true);
+    var disease_input = $("#disease_input").val();
     $.ajax({
         type: "POST",
         url: config.base_url + "order/create",
@@ -19,10 +31,16 @@ function submit() {
             'token':checktoken(),
             'profile_id':p_id,
             'appointment_time':schedule_id,
-            'record_id':m_ids
+            'record_id':m_ids,
+            'disease_input': disease_input
         },
         success: function (data) {
-
+            if (data.succ == 1){
+                window.location.href = "yysuccess.html?isdetail=0&oid=" + data.data + "&pid=" + p_id;
+            }
+            else {
+                alert(data.error);
+            }
         }
     });
 }
