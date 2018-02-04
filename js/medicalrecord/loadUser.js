@@ -1,4 +1,4 @@
-window.onunload = refresh_userprofile();
+//window.onunload = refresh_userprofile();
 
 function refresh_userprofile() {
 

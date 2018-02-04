@@ -39,13 +39,13 @@ function loadInner(){
         pathn = "baseinfo.html";
         refresh_userinfo();
     }
-    else if(pathn.indexOf('recordlist') >= 0 && event.target.value !== null){
-        pathn = pathn + ".html";
-        if(pathn.indexOf('profile_id') < 0)
-            window.location.hash += "?profile_id=" + event.target.value;
-        else
-            pathn = pathn.split("?")[0] + ".html";
-    }
+    // else if(pathn.indexOf('recordlist') >= 0 && event.target.value !== null){
+    //     pathn = pathn + ".html";
+    //     if(pathn.indexOf('profile_id') < 0)
+    //         window.location.hash += "?profile_id=" + event.target.value;
+    //     else
+    //         pathn = pathn.split("?")[0] + ".html";
+    // }
     else
         pathn = pathn + ".html";
     $("#info-content").load(pathn); //加载相对应的内容

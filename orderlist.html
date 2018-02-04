@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>订单列表</title>
-    <link rel="stylesheet" href="css/bootstrap-table.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
+
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/bootstrap-table.css">
+
+<div class="col-md-9">
+
+    <div id="list-orders">
+        <table id="order"></table>
+    </div>
+</div>
 
 
-
-</head>
-<body>
-    <button id="showorder">订单</button>
-    <div id="temp"></div>
-    <table id="order"></table>
-</body>
-<script src="js/lib/jquery-3.2.1.min.js"></script>
-<script src="js/util.js"></script>
-<script src="js/caseInfo/bootstrap-table.js"></script>
-<script src="js/caseInfo/bootstrap-table-zh-CN.js"></script>
+<script src="js/caseInfo/bootstrap-table.js"></script>                       <!--table插件-->
+<script src="js/caseInfo/bootstrap-table-zh-CN.js"></script>                 <!--中文table-->
+<script src="js/medicalrecord/data.js"></script>                                  <!--table初始化-->
 <script src="js/order/orderlist.js"></script>
-</html>

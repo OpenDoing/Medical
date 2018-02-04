@@ -65,7 +65,7 @@
                 <div class="panel panel-primary leftMenu">
                     <div class="panel-heading" id="CasePanel" data-toggle="collapse" data-target="" role="tab" >
                         <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
-                        <h4 class="panel-title" id="recordmanage">
+                        <h4 class="panel-title" id="recordlist">
                             病历管理
                             <span class=""></span>
                         </h4>
@@ -114,7 +114,7 @@
                     <div id="Order" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading4">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <button class="menu-item-left">
+                                <button id="orderlist" class="menu-item-left">
                                     <span class="glyphicon glyphicon-triangle-right"></span>订单状态
                                 </button>
                             </li>
@@ -194,7 +194,10 @@
 
 <script src="js/lib/jquery-1.12.4.min.js"></script>
 <script src="js/lib/bootstrap.min.js "></script>
+<script src="js/caseInfo/bootstrap-table.js"></script>                       <!--table插件-->
+<script src="js/caseInfo/bootstrap-table-zh-CN.js"></script>                 <!--中文table-->
 <script src="js/util.js"></script>
+<script src="js/medicalrecord/data.js"></script>
 <script src="js/userinfo.js"></script>
 
 <!--头像上传插件相关-->
