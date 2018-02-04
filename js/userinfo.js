@@ -74,7 +74,7 @@ $(function () {
 //
 //     });
 // });
-$("#recordmanage").on("click",function () {
+$("#recordmanage").on("click",function () { //病历管理
     $.ajax({
         url:"http://bieke.cf:8080/ma/zxy/api/userprofile",
         type: 'get',
