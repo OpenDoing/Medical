@@ -13,12 +13,11 @@ function load_department() {
         url: config.base_url + "department",
         success: function (data) {
             for(var i in data){
-                htmls += '<span class="small">\n' +
-                    '<a href="" id="' + data[i].id + '">' + data[i].name + '</a>\n' +
+                htmls += '<span class="small department_item">\n' +
+                    '<a class="department_item" href="javascript:switch_department('+ data[i].id +  ')" id="department' + data[i].id + '">' + data[i].name + '</a>\n' +
                     '</span>';
             }
             $("#departments").empty().append(htmls);
-            //$("#test11").html('111')
         }
     });
 }
@@ -31,11 +30,21 @@ function load_doctor(d_id) {
           'department_id':d_id
         },
         success: function (data) {
+            var initbody = '<tr><td colspan="12" style="height: 39px;"></td></tr>';
+            $("#tablebody").empty().append(initbody);
             for(var i in data) {
                 inittable(data[i])
             }
         }
     });
+}
+
+function switch_department(id) {
+    $(".department_item").css({"background":"white","color":"black"});
+    var textid = '#department' + id;
+    //document.getElementById("department" + id).style.cssText = 'background:#7fcee2; color:#fff;';
+    $(textid).css({"background":"#7fcee2","color":"#fff"});
+    load_doctor(id);
 }
 
 //初始化表头

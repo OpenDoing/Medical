@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/info.css" />
 
     <link type="text/css" rel="stylesheet" href="css/reservation/process.css">
+    <link href="css/jquery.dropdown.css" type="text/css" rel="stylesheet">
 
 </head>
 
@@ -39,7 +40,7 @@
 
         <!-- 就诊时间 -->
         <div class="order-tit" id="jzdate"><p class="fn-left">就诊时间（必填）</p>
-            <span class="select-time-close" style="display:none;"><cite></cite><em>请选择就诊时间</em></span>
+            <span id="select-time-close" class="select-time-close" style="display:none;"><cite></cite><em>请选择就诊时间</em></span>
         </div>
         <div id="yuyue-time" class="fn-clear order-con">
 
@@ -54,7 +55,7 @@
                 <i class="order-icon iconA1"></i>新增就诊人
             </a>
             <!-- 提示框-->
-            <span class="choose_member_info" style=" display: none; border:none;"><cite></cite><em>请选择就诊人</em></span>
+            <span id="choose_member_info" class="choose_member_info" style=" display: none; border:none;"><cite></cite><em>请选择就诊人</em></span>
             <span class="add_member_info" style="display: none;border:none;"><cite></cite><em>请新增就诊人</em></span>
 
         </div>
@@ -66,9 +67,15 @@
         <!-- 就诊人信息 -->
 
         <!-- 病历资料 -->
-        <div id="otherinfo_clinic" class="order-tit">其他资料</div>
+        <div id="otherinfo_clinic" class="order-tit">病历资料（可选）</div>
         <div class="order-con">
-
+            <div>选择要提交给医生的病历，可多选：</div>
+            <br>
+            <div class="dropdown-mul-1 dropdown-multiple-label">
+                <select style="display:none" name="" id="case_list" multiple="">
+                    <option disabled>请先选择一位就诊人</option>
+                </select>
+            </div>
         </div>
         <!-- 病历资料 -->
         <!-- 疾病信息 -->
@@ -114,33 +121,33 @@
         <!-- 医院预约规则 -->
 
         <!-- 支付方式 -->
-        <div id="pay_box" class="order-tit"><p class="fn-left">支付方式</p>
-            <span class="select-pay-close" style="display:none"><cite></cite><em>请选择支付方式</em></span>
-        </div>
-        <div class="order-con">
-            <div class="pay-list">
-                <input name="pay_online" value="1" type="radio" checked="checked" style="">
-                <label class="hui-s fs16 hradio"><i></i>支付宝</label>
-                <p class="mt10" style="line-height:24px;font-weight:100;color:#00a2e3;">
-                    支付宝扫码支付
-                </p>
-            </div>
-            <div class="pay-list">
-                <input name="pay_online" value="0" type="radio" style="">
-                <label class="hui-s fs16 hradio hradio_checked"><i></i>微信支付</label>
-                <p class="hui-q mt10" style="line-height:24px;font-weight:100;color:#00a2e3;">
-                    微信扫码支付
-                </p>
-            </div>
-        </div>
+        <!--<div id="pay_box" class="order-tit"><p class="fn-left">支付方式</p>-->
+            <!--<span class="select-pay-close" style="display:none"><cite></cite><em>请选择支付方式</em></span>-->
+        <!--</div>-->
+        <!--<div class="order-con">-->
+            <!--<div class="pay-list">-->
+                <!--<input name="pay_online" value="1" type="radio" checked="checked" style="">-->
+                <!--<label class="hui-s fs16 hradio"><i></i>支付宝</label>-->
+                <!--<p class="mt10" style="line-height:24px;font-weight:100;color:#00a2e3;">-->
+                    <!--支付宝扫码支付-->
+                <!--</p>-->
+            <!--</div>-->
+            <!--<div class="pay-list">-->
+                <!--<input name="pay_online" value="0" type="radio" style="">-->
+                <!--<label class="hui-s fs16 hradio hradio_checked"><i></i>微信支付</label>-->
+                <!--<p class="hui-q mt10" style="line-height:24px;font-weight:100;color:#00a2e3;">-->
+                    <!--微信扫码支付-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
         <!-- 支付方式 -->
 
         <!-- 提交订单 -->
         <div class="fn-clear block tj-order">
 
             <div class="new-sub">
-                <input type="button" id="submitbtn" value="提交订单" paymethodname="" class="fn-left orderbtn">
-                <span class="send-sms fn-left">短信将发送到您<span class="new-mobile">156****5274</span>的手机号码中</span>
+                <input type="button" id="submitbtn" value="提交订单" onclick="submit()" class="fn-left orderbtn">
+                <span class="send-sms fn-left">相关提示短信将发送到就诊人的手机号码中</span>
                 <div class="fn-clear"></div>
             </div>
         </div>
@@ -213,6 +220,7 @@
 </script>
 
 <script src="js/lib/jquery-3.2.1.min.js"></script>
+<script src="js/lib/jquery.dropdown.js"></script>
 <script src="js/util.js"></script>
 <script src="js/reservation/order.js"></script>
 </html>
