@@ -25,6 +25,7 @@ $("#bOK").on('click',function () {
                     "                        患者信息添加成功\n" +
                     "                    </div>";
                 $("#alertmessage").append(succ_message);
+                //页面需要刷新
             }
             else {
                 var error_message = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">\n" +

@@ -307,3 +307,9 @@ header{
 	border-radius: 4px;
 }
 /*导航栏头像及用户名 end*/
+
+/*子账号button列表start*/
+.eborder{
+	/*去掉按钮边框*/
+	border: none;
+}

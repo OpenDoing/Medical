@@ -46,7 +46,35 @@ $(function () {
     loadInner();
 });
 
-$("#CasePanel").on("click",function () {
+// $("#CasePanel").on("click",function () {
+//     $.ajax({
+//         url:"http://bieke.cf:8080/ma/zxy/api/userprofile",
+//         type: 'get',
+//         dataType: 'json',
+//         data: {
+//             profile_id: 0,
+//             token:checktoken()
+//         },
+//         success: function (data) {
+//             if(data.succ == 1){
+//                 var user = data.data;
+//                 var htmlNodes = '';
+//                 $('#userList').empty();
+//
+//                 for(var i in user) {
+//                     htmlNodes += '<li class="list-group-item"><button class="menu-item-left" id="recordlist" value="' + user[i].id + '"><span class="glyphicon glyphicon-triangle-right"></span>'+user[i].name +'</button></li>';
+//                 }
+//                 $('#userList').append(htmlNodes);
+//             }
+//             else {
+//                 alert(data.error);
+//             }
+//
+//         }
+//
+//     });
+// });
+$("#recordmanage").on("click",function () {
     $.ajax({
         url:"http://bieke.cf:8080/ma/zxy/api/userprofile",
         type: 'get',
@@ -58,13 +86,15 @@ $("#CasePanel").on("click",function () {
         success: function (data) {
             if(data.succ == 1){
                 var user = data.data;
+                // console.log(user);
+                // console.log(111);
                 var htmlNodes = '';
-                $('#userList').empty();
+                $('#blist').empty();
 
                 for(var i in user) {
-                    htmlNodes += '<li class="list-group-item"><button class="menu-item-left" id="recordlist" value="' + user[i].id + '"><span class="glyphicon glyphicon-triangle-right"></span>'+user[i].name +'</button></li>';
+                    htmlNodes += '<button class="btn btn-default eborder" id="recordlist" value="' + user[i].id + '"> ' + user[i].name + ' </button>';
                 }
-                $('#userList').append(htmlNodes);
+                $('#blist').append(htmlNodes);
             }
             else {
                 alert(data.error);
@@ -73,5 +103,4 @@ $("#CasePanel").on("click",function () {
         }
 
     });
-
 });
