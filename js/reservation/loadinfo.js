@@ -1,9 +1,11 @@
+var page_flag = 0;
+var department_id = 0;
 window.onload = loadinfo();
 
 function loadinfo() {
     load_department();
     inithead();
-    load_doctor(0);
+    load_doctor(0,1);
 }
 
 function load_department() {
@@ -22,29 +24,49 @@ function load_department() {
     });
 }
 
-function load_doctor(d_id) {
+function load_doctor(d_id, page) {
     $.ajax({
         type: "GET",
         url: config.base_url + "doctorprofile/dutylist",
         data:{
-          'department_id':d_id
+            'department_id':d_id,
+            'page':page
         },
         success: function (data) {
             var initbody = '<tr><td colspan="12" style="height: 39px;"></td></tr>';
             $("#tablebody").empty().append(initbody);
-            for(var i in data) {
-                inittable(data[i])
+            for(var i in data.data) {
+                inittable(data.data[i])
             }
+            //首次加载，初始化分页
+            if(page_flag == 0){
+                page_flag = 1;
+                $("#pagination3").pagination({
+                    currentPage: 1,// 当前页数
+                    totalPage: data.count,// 总页数
+                    isShow: true,// 是否显示首尾页
+                    count: 7,// 显示个数
+                    homePageText: "首页",// 首页文本
+                    endPageText: "尾页",// 尾页文本
+                    prevPageText: "上一页",// 上一页文本
+                    nextPageText: "下一页",// 下一页文本
+                    callback: function(current) {
+                        load_doctor(department_id,current);
+                    }
+                });
+            }
+            if(page == 1)
+                $("#pagination3").pagination("setPage", 1,data.count);
         }
     });
 }
 
 function switch_department(id) {
+    department_id = id;
     $(".department_item").css({"background":"white","color":"black"});
     var textid = '#department' + id;
-    //document.getElementById("department" + id).style.cssText = 'background:#7fcee2; color:#fff;';
     $(textid).css({"background":"#7fcee2","color":"#fff"});
-    load_doctor(id);
+    load_doctor(id,1);
 }
 
 //初始化表头

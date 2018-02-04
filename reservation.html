@@ -14,6 +14,7 @@
 
     <link href="css/reservation/basic.css" type="text/css" rel="stylesheet">
     <link href="css/reservation/xz_ks.css" type="text/css" rel="stylesheet">
+    <link href="css/jquery.pagination.css" type="text/css" rel="stylesheet">
 
 </head>
 
@@ -68,154 +69,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="fanye">
 
-                <!--<link href="/njres/css/fenye.css" type="text/css" rel="stylesheet">-->
-                <script type="text/javascript">
-
-                    function topage(page){
-                        var form = $("#myform");
-                        $("#currentpage").val(page);
-                        form.submit();
-                    }
-                    function change(obj){
-                        if(obj.options[obj.selectedIndex].value!="0"){
-                            topage(obj.options[obj.selectedIndex].value);
-                        }
-                    }
-
-                </script>
-                <div id="fenye">
-                    共373条数据
-                    页次:4/47页
-
-                    <a href="javascript:topage('1')" class="fenye_button">首页</a>
-
-                    <a href="javascript:topage('3')" class="fenye_button">上一页</a>
-
-                    <a href="javascript:topage('1')" class="fenye_num">1</a>
-
-                    <a href="javascript:topage('2')" class="fenye_num">2</a>
-
-                    <a href="javascript:topage('3')" class="fenye_num">3</a>
-
-                    <a class="fenye_num_s">4</a>
-
-                    <a href="javascript:topage('5')" class="fenye_num">5</a>
-
-                    <a href="javascript:topage('6')" class="fenye_num">6</a>
-
-                    <a href="javascript:topage('7')" class="fenye_num">7</a>
-
-                    <a href="javascript:topage('8')" class="fenye_num">8</a>
-
-                    <a href="javascript:topage('9')" class="fenye_num">9</a>
-
-                    <a href="javascript:topage('10')" class="fenye_num">10</a>
-
-                    <a href="javascript:topage('5')" class="fenye_button">下一页</a>
-
-                    <a href="javascript:topage('47')" class="fenye_button">尾页</a>
-
-                    跳转到<select name="selectPage" onchange="change(this)"><option value="0">页码</option>
-
-                    <option value="1">1</option>
-
-                    <option value="2">2</option>
-
-                    <option value="3">3</option>
-
-                    <option value="4" selected="selected">4</option>
-
-                    <option value="5">5</option>
-
-                    <option value="6">6</option>
-
-                    <option value="7">7</option>
-
-                    <option value="8">8</option>
-
-                    <option value="9">9</option>
-
-                    <option value="10">10</option>
-
-                    <option value="11">11</option>
-
-                    <option value="12">12</option>
-
-                    <option value="13">13</option>
-
-                    <option value="14">14</option>
-
-                    <option value="15">15</option>
-
-                    <option value="16">16</option>
-
-                    <option value="17">17</option>
-
-                    <option value="18">18</option>
-
-                    <option value="19">19</option>
-
-                    <option value="20">20</option>
-
-                    <option value="21">21</option>
-
-                    <option value="22">22</option>
-
-                    <option value="23">23</option>
-
-                    <option value="24">24</option>
-
-                    <option value="25">25</option>
-
-                    <option value="26">26</option>
-
-                    <option value="27">27</option>
-
-                    <option value="28">28</option>
-
-                    <option value="29">29</option>
-
-                    <option value="30">30</option>
-
-                    <option value="31">31</option>
-
-                    <option value="32">32</option>
-
-                    <option value="33">33</option>
-
-                    <option value="34">34</option>
-
-                    <option value="35">35</option>
-
-                    <option value="36">36</option>
-
-                    <option value="37">37</option>
-
-                    <option value="38">38</option>
-
-                    <option value="39">39</option>
-
-                    <option value="40">40</option>
-
-                    <option value="41">41</option>
-
-                    <option value="42">42</option>
-
-                    <option value="43">43</option>
-
-                    <option value="44">44</option>
-
-                    <option value="45">45</option>
-
-                    <option value="46">46</option>
-
-                    <option value="47">47</option>
-                </select>
-                </div>
-            </div>
-
+        <div id="pagination3" class="page fl"></div>
 
 
     </div>
@@ -258,5 +113,6 @@
 
 <script src="js/util.js"></script>
 <script src="js/lib/jquery-3.2.1.min.js"></script>
+<script src="js/lib/jquery.pagination.min.js"></script>
 <script src="js/reservation/loadinfo.js"></script>
 </html>
