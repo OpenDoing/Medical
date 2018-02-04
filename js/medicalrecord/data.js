@@ -17,8 +17,7 @@ function init() {
         striped:true,
 
         onClickRow:function (row) {
-            //console.log(row);
-            //var index = row.id;
+            // alert(row.profile_id)
         },
         columns: [
             {
@@ -66,7 +65,7 @@ window.operateEvents = {
                 url: config.base_url + "recordimage",
                 data: {
                     'token':checktoken(),
-                    'profile_id':window.location.hash.split("profile_id=")[1],
+                    'profile_id':row.profile_id,
                     'record_id':row.id
                 },
                 success: function (data) {

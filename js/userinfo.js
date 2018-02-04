@@ -81,7 +81,10 @@ function load_profiles() {
                 }
                 $('#blist').append(htmlNodes);
                 $(".profile_buttons").on("click",function () {
-
+                    if (document.getElementById("caseTable") == null){
+                        $("#list-info").empty().append('<table id="caseTable"></table>');
+                        init();
+                    }
                     $('#caseTable').bootstrapTable('refresh',{url:config.base_url + "medicalrecord?profile_id=" + $(this).val() +"&token="+checktoken() + "&record_id=0"});
                 });
             }
