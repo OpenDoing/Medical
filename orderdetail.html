@@ -1,0 +1,94 @@
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>订单详情</title>
+
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/info.css" />
+
+    <link rel="stylesheet" href="css/reservation/process.css" />
+
+
+
+</head>
+
+<header>
+    <img src="img/logo.png" class="logo"/>
+    <!--<a href="#" class="logo"></a>-->
+    <div class="desc">个人中心</div>
+    <a id="hhome" href="#">网站首页</a>
+    <a id="hname" href="#">退出登录</a>
+
+</header>
+<body>
+
+<div class="padtb20">
+    <div id="order-info" class="content w960">
+
+    </div>
+</div>
+
+</body>
+<!--替换模板-->
+<script type="text/html" id="detail_change">
+    <div class="order-bor">
+        <!-- 订单详情 -->
+        <div class="order-con">
+            <h2 class="or-t"> 订单详情 &nbsp;&nbsp;<a href="info.html#orderlist">&lt; 返回我的订单</a></h2>
+            <div class="order-li">当前订单状态：<span class="c1">{status}</span>
+            </div>
+        </div>
+
+        <!-- 订单信息 start -->
+        <div class="order-tit"><span class="fn-right">订单编号：{id}</span>订单信息</div>
+        <div class="fn-clear order-con">
+            <table width="100%" border="0" class="order-tab">
+                <tbody><tr>
+                    <td width="12%" align="right">预约医院：</td>
+                    <td width="27%">南京鼓楼医院</td>
+                    <td width="16%" align="right">就诊日期：</td>
+                    <td width="45%"><b class="c2">{date} {time}</b></td>
+                </tr>
+                <tr>
+                    <td align="right">预约科室：</td>
+                    <td>{department}</td>
+                    <td align="right">就&nbsp;&nbsp;诊&nbsp;人：</td>
+                    <td>{username}</td>
+                </tr>
+                <tr>
+                    <td align="right">预约医生：</td>
+                    <td><a href="/doctors.html?doctor_id={doctor_id}" class="c1">{doctor_name}</a></td>
+                    <td align="right">下单时间：</td>
+                    <td>{create_time}</td>
+                </tr>
+                <tr>
+                    <td align="right">门诊类型：</td>
+                    <td>{type}</td>
+                    <td align="right">费用：</td>
+                    <td><b class="c3">{price} 元</b></td>
+                </tr>
+                </tbody></table>
+        </div>
+
+        <!-- 订单信息 end -->
+        <!--就诊须知-->
+        <!-- 就诊须知 -->
+        <div class="order-tit">就诊须知</div>
+        <div class="fn-clear order-con jzxz">
+            这里是就诊须知
+        </div>
+        <!-- 就诊须知 -->
+        <div class="order-tit">医生建议</div>
+        <div class="fn-clear order-con">
+            暂无医生建议
+        </div>
+    </div>
+</script>
+<script src="js/util.js"></script>
+<script src="js/lib/jquery-3.2.1.min.js"></script>
+<script src="js/order/loadorder.js"></script>
+</html>
