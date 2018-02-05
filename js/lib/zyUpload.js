@@ -331,6 +331,7 @@
 						eleProgress.css("width",percent);
 					},
 					onSuccess: function(file, response) {
+						bsStep(3);
 						$("#uploadProgress_" + file.index).hide();
 						$("#uploadSuccess_" + file.index).show();
 						$("#uploadInf").append("<p>上传成功，文件地址是：" + response + "</p>");

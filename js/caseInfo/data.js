@@ -15,7 +15,6 @@ $('#caseTable').bootstrapTable({
     },
     striped:true,
     responseHandler:function (res) {    //data prehandle
-        console.log(res);
         for (var i=0;i<res.data.length;i++){
             if (res.data[i].sex === 0){
                 res.data[i].sex="女";
