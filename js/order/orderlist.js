@@ -50,7 +50,7 @@ function init_order_table(data) {
             },
             {
                 field: 'username',
-                title: '账号'
+                title: '姓名'
             },
             {
                 field: 'department',
