@@ -26,6 +26,7 @@ function init_order_table(data) {
         dataType:'json',
         pagination:true,
         data:data,
+        search:true,
 
         //url:config.base_url + "order?profile_id=2&token="+getCookie('token'),
 
@@ -37,6 +38,7 @@ function init_order_table(data) {
         },
         striped:true,
         responseHandler:function (res) {    //data prehandle
+            console.log(res);
             for (var i=0;i<res.data.length;i++){
                 if (res.data[i].sex === 0){
                     res.data[i].sex="女";
@@ -80,6 +82,16 @@ function init_order_table(data) {
             {
                 field: 'status',
                 title: '状态'
+            },
+            {
+                title:'操作',
+                align:"center",
+                events:"operateEvents",
+                formatter: function (value, row, index) {
+                    return [
+                        '<button id="showinfo" type="button" class="btn btn-default">查看</button>'
+                    ].join("");
+                }
             }
         ]
     });
