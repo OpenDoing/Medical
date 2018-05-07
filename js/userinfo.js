@@ -71,15 +71,11 @@ function load_profiles() {
         success: function (data) {
             if(data.succ == 1){
                 var user = data.data;
-                // console.log(user);
-                // console.log(111);
                 var htmlNodes = '';
-                $('#blist').empty();
-
                 for(var i in user) {
                     htmlNodes += '<button class="btn btn-default eborder profile_buttons" value="' + user[i].id + '"> ' + user[i].name + ' </button>';
                 }
-                $('#blist').append(htmlNodes);
+                $('#blist').empty().append(htmlNodes);
                 $(".profile_buttons").on("click",function () {
                     if (document.getElementById("caseTable") == null){
                         $("#list-info").empty().append('<table id="caseTable"></table>');

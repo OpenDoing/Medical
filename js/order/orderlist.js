@@ -1,22 +1,23 @@
-window.onload = init_orderlist();
+window.onload = init_order_table();
 
-function init_orderlist() {
+function init_orderlist(p_id) {
     $.ajax({
         type: "GET",
         url: config.base_url + "order",
         data:{
-            'profile_id':2,
+            'profile_id':p_id,
             'token':checktoken()
         },
         success: function (data) {
             if (data.succ == 1){
-                init_order_table(data.data);
+                $('#order').bootstrapTable('load',data.data);
             }
         }
     });
 }
 
 function init_order_table(data) {
+    load_profiles();
     $('#order').bootstrapTable({
 
         method:"GET",
@@ -72,6 +73,37 @@ function init_order_table(data) {
                 title: '状态'
             }
         ]
+    });
+}
+
+function load_profiles() {
+    $.ajax({
+        url:"http://bieke.cf:8080/ma/zxy/api/userprofile",
+        type: 'get',
+        dataType: 'json',
+        data: {
+            profile_id: 0,
+            token:checktoken()
+        },
+        success: function (data) {
+            if(data.succ == 1){
+                var user = data.data;
+                var htmlNodes = '';
+                for(var i in user) {
+                    htmlNodes += '<button class="btn btn-default eborder profile_buttons" value="' + user[i].id + '"> ' + user[i].name + ' </button>';
+                }
+                $('#user_list').empty().append(htmlNodes);
+                $(".profile_buttons").on("click",function () {
+                    init_orderlist($(this).val());
+                    //$('#order').bootstrapTable('refresh',{url:config.base_url + "medicalrecord?profile_id=" + $(this).val() +"&token="+checktoken() + "&record_id=0"});
+                });
+            }
+            else {
+                alert(data.error);
+            }
+
+        }
+
     });
 }
 
