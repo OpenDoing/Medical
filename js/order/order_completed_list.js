@@ -1,36 +1,42 @@
-window.onload = init_order_table();
+// window.onload = init_order_table();
+//
+// function init_orderlist() {
+//     $.ajax({
+//         type: "GET",
+//         url: config.base_url + "Doctororders",
+//         data:{
+//             'token':checktoken(),
+//             'flag': 1
+//         },
+//         success: function (data) {
+//             if (data.succ == 1){
+//                 $('#order').bootstrapTable('load',data.data);
+//             }
+//         }
+//     });
+// }
+//
+// function init_order_table(data) {
+//
+//     init_orderlist();
 
-function init_orderlist() {
-    $.ajax({
-        type: "GET",
+    $('#order').bootstrapTable({
+
         url: config.base_url + "Doctororders",
+        method:"GET",
+        dataType:'json',
         data:{
             'token':checktoken(),
             'flag': 1
         },
-        success: function (data) {
-            if (data.succ == 1){
-                $('#order').bootstrapTable('load',data.data);
-            }
-        }
-    });
-}
-
-function init_order_table(data) {
-
-    init_orderlist();
-
-    $('#order').bootstrapTable({
-
-        method:"GET",
-        dataType:'json',
         pagination:true,
-        data:data,
+
         search:true,
 
         //url:config.base_url + "order?profile_id=2&token="+getCookie('token'),
 
         onLoadSuccess: function(){  //加载成功时执行
+            console.log("Loading");
             return "加载成功";
         },
         onLoadError: function(){  //加载失败时执行
@@ -95,6 +101,6 @@ function init_order_table(data) {
             }
         ]
     });
-}
+
 
 
