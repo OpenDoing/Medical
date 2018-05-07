@@ -34,20 +34,29 @@
             </div>
         </div>
     </div>
-</div>
 
+
+</div>
 <div class="col-md-9" id="NotFrame">
-    <div class="row">
-        <div class="notification">
-            <div class="panel panel-primary leftMenu">
-                <div class="panel-heading" id="userList" role="tab" >
-                    <h4 class="panel-title">
-                        今日预约咨询
-                    </h4>
-                </div>
-
-
-            </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">今日预约咨询</h3>
         </div>
+
+        <div id="list-orders">
+            <table id="order"></table>
+        </div>
+
     </div>
+
+
 </div>
+
+
+<script src="js/order/orderlist_by_date.js"></script>
+<script type="text/javascript">
+    //todo：仅供测试
+    init_orderlist('2018-05-14');
+//    init_orderlist(getNowFormatDate());
+
+</script>
