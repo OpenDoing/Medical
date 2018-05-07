@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>个人中心</title>
+    <meta name="keywords" content="侧边导航菜单(可分组折叠)">
+    <meta name="description" content="侧边导航菜单(可分组折叠)" />
+    <meta name="HandheldFriendly" content="True" />
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/info.css" />
+
+</head>
+
+<body>
+
+<header>
+    <img src="img/logo.png" class="logo"/>
+    <!--<a href="#" class="logo"></a>-->
+    <div class="desc">个人中心</div>
+    <a id="hhome" href="#">网站首页</a>
+    <a id="hname" href="login.html">退出登录</a>
+
+</header>
+
+<div class="container">
+    <div class="container-row">
+        <div class="col-md-3">
+            <div class="panel-group" role="tablist">
+
+                <div class="userhead">
+                    <img class="smaller-image thick-green-border img-circle" alt="userhead" id="hhImg">
+                    <div id="userHH" class="hello"></div>
+                </div>
+
+                <div class="panel panel-primary leftMenu">
+                    <div class="panel-heading" id="user" data-toggle="collapse" data-target="#UserInfo" role="tab" >
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        <h4 class="panel-title">
+                            医生信息
+                        </h4>
+                    </div>
+                    <div id="UserInfo" class="panel-collapse collapse in" role="tabpanel" >
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <button class="menu-item-left">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>个人主页
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="doctorprofile">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>医生资料
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-primary leftMenu">
+                    <div class="panel-heading" id="order" data-toggle="collapse" data-target="#MyAccount" role="tab" >
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        <h4 class="panel-title">
+                            咨询
+                            <span class=""></span>          <!--glyphicon glyphicon-chevron-down right-->
+                        </h4>
+                    </div>
+                    <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+
+                    <div id="MyOrder" class="panel-collapse collapse in" role="tabpanel" >
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="order_completed">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>已完成的咨询
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="order_in_progress">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>进行中的咨询
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="order_week">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>本周预约咨询
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!--panel end-->
+
+                <div class="panel panel-primary leftMenu">
+                    <div class="panel-heading" id="MyAccPanel" data-toggle="collapse" data-target="#MyAccount" role="tab" >
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        <h4 class="panel-title">
+                            我的账户
+                            <span class=""></span>          <!--glyphicon glyphicon-chevron-down right-->
+                        </h4>
+                    </div>
+                    <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+
+                    <div id="MyAccount" class="panel-collapse collapse in" role="tabpanel" >
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="edit_phone">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>更改手机
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="edit_password">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>修改密码
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!--panel end-->
+
+            </div>
+        </div>
+        <div id="info-content"></div>
+    </div>
+</div>
+
+<div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="avatar-form" enctype="multipart/form-data" method="post">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title" id="avatar-modal-label">修改头像</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="avatar-body">
+                        <div class="avatar-upload">
+                            <input class="avatar-src" name="avatar_src" type="hidden">
+                            <input class="avatar-data" name="avatar_data" type="hidden">
+                            <label for="avatarInput">上传头像图片</label>
+                            <input class="avatar-input" id="avatarInput" name="avatar_file" type="file"></div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="avatar-wrapper"></div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="avatar-preview preview-lg"></div>
+                                <div class="avatar-preview preview-md"></div>
+                                <div class="avatar-preview preview-sm"></div>
+                            </div>
+                        </div>
+                        <div class="row avatar-btns">
+                            <div class="col-md-9">
+                                <div class="btn-group">
+                                    <button class="btn" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"><i class="fa fa-undo"></i> 向左旋转</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"><i class="fa fa-repeat"></i> 向右旋转</button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-success btn-block avatar-save" type="submit"><i class="fa fa-save"></i> 保存修改</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/lib/jquery-1.12.4.min.js"></script>
+<script src="js/lib/bootstrap.min.js "></script>
+<script src="js/caseInfo/bootstrap-table.js"></script>                       <!--table插件-->
+<script src="js/caseInfo/bootstrap-table-zh-CN.js"></script>                 <!--中文table-->
+<script src="js/util.js"></script>
+<script src="js/doctor/doctorinfo.js"></script>
+
+<!--头像上传插件相关-->
+<link href="css/cropper/cropper.min.css" rel="stylesheet">
+<link href="css/avatar.css" rel="stylesheet">
+<script src="js/lib/cropper/cropper.min.js"></script>
+<script src="js/avatar.js"></script>
+<!--<script>-->
+    <!--$(function(){-->
+        <!--$(".panel-heading").click(function(e){-->
+        <!--$(".panel-heading").click(function(e){-->
+            <!--/*切换折叠指示图标*/-->
+            <!--$(this).find("span").toggleClass("glyphicon-chevron-down");-->
+            <!--$(this).find("span").toggleClass("glyphicon-chevron-up");-->
+        <!--});-->
+    <!--})});-->
+<!--</script>-->
+<script language="javascript">
+    $(document).ready(function(){
+        $(".user_info .col-md-3 span").hover(function(){
+            $(this).find("a").show();
+        },function(){
+            $(this).find("a").hide();
+        })
+    });
+</script>
+</body>
+
+</html>

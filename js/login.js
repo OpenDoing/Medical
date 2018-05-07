@@ -24,7 +24,10 @@ $(function() {
                         document.cookie = "data=" + JSON.stringify(data.data);
                     }
                     //跳转个人中心页面
-                    window.location.href = 'info.html';
+                    if(data.data.type_id == 1)
+                        window.location.href = 'info.html';
+                    else if(data.data.type_id == 2)
+                        window.location.href = 'doctorinfo.html';
                 }
                 else {
                     alert(data.error);

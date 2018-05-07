@@ -36,8 +36,15 @@ function loadInner(){
     var pathn, i, data;
     pathn = sId.replace("#","");
     if(!pathn){
-        pathn = "baseinfo.html";
-        refresh_userinfo();
+        if (getInfoFromCookie('type_id') == 1){
+            pathn = "baseinfo.html";
+            refresh_userinfo();
+        }
+        else if (getInfoFromCookie('type_id') == 2){
+            pathn = "doctor_baseinfo.html";
+            refresh_doctorinfo();
+        }
+
     }
     // else if(pathn.indexOf('recordlist') >= 0 && event.target.value !== null){
     //     pathn = pathn + ".html";
