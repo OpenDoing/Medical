@@ -85,11 +85,12 @@
         <td width="8%" rowspan="2" class="tab_one">
             <a href="/doctors.html?doctor_id={doctor_id}" target="_blank">
                 <img src="{img}" width="60" height="80">
-            </a><a class="collection" href="javascript:void(0)" onclick="addCollection({doctor_id})">加入收藏</a>
+            </a>
+            <a class="collection" href="doctors.html?doctor_id={doctor_id}">详细介绍</a>
         </td>
 
         <td width="15%" rowspan="2" class="tab_xx ver_top">
-            <a class="ys_name" href="/doctors.html?doctor_id={doctor_id}" target="_blank">{name}</a>
+            <a class="ys_name" href="doctors.html?doctor_id={doctor_id}" target="_blank">{name}</a>
             <i title="{type}">{type}</i>
 
             <!-- 暂不考虑其他医院 -->
