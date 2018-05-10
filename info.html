@@ -65,23 +65,27 @@
                 <div class="panel panel-primary leftMenu">
                     <div class="panel-heading" id="CasePanel" data-toggle="collapse" data-target="" role="tab" >
                         <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
-                        <h4 class="panel-title" id="recordlist">
+                        <h4 class="panel-title">
                             病历管理
                             <span class=""></span>
                         </h4>
                     </div>
-                    <!--<div id="CaseManage" class="panel-collapse collapse in" role="tabpanel" >-->
-                        <!--<ul class="list-group" id="userList">-->
-                            <!--<li class="list-group-item"></li>-->
-                        <!--</ul>-->
-                    <!--</div>-->
+                    <div id="CaseManage" class="panel-collapse collapse in" role="tabpanel" >
+                        <ul class="list-group" id="userList">
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="recordlist">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>病历管理
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="panel panel-primary leftMenu">
                     <div class="panel-heading" id="MyAccPanel" data-toggle="collapse" data-target="#MyAccount" role="tab" >
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                         <h4 class="panel-title">
-                            我的账户
+                            账户安全
                             <span class=""></span>          <!--glyphicon glyphicon-chevron-down right-->
                         </h4>
                     </div>
@@ -89,6 +93,11 @@
 
                     <div id="MyAccount" class="panel-collapse collapse in" role="tabpanel" >
                         <ul class="list-group">
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="login_log">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>登录记录
+                                </button>
+                            </li>
                             <li class="list-group-item">
                                 <button class="menu-item-left" id="edit_phone">
                                     <span class="glyphicon glyphicon-triangle-right"></span>更改手机
@@ -127,14 +136,14 @@
                     </div>
                 </div>
 
-                <div class="panel panel-primary leftMenu">
-                    <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" data-target="#collapseListGroup3" role="tab" >
-                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                        <h4 class="panel-title">
-                            意见建议
-                        </h4>
-                    </div>
-                </div>
+                <!--<div class="panel panel-primary leftMenu">-->
+                    <!--<div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" data-target="#collapseListGroup3" role="tab" >-->
+                        <!--<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>-->
+                        <!--<h4 class="panel-title">-->
+                            <!--意见建议-->
+                        <!--</h4>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
         <div id="info-content"></div>

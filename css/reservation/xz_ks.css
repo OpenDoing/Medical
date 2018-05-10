@@ -2,7 +2,7 @@
 /* CSS Document */
 .middle {
 	width: 100%;
-	background: #faf8f8 url(../images/bg.png) repeat-x 0 -470px;
+	background: #faf8f8 url(../../img/bg.png) repeat-x 0 -470px;
 	padding-top: 5px;
 }
 
@@ -261,7 +261,7 @@
 .turn_fl, .turn_fr, .page_fl, .page_fr, .an_fl, .an_fr {
 	width: 21px;
 	height: 21px;
-	background: url(../images/tb.png) no-repeat -206px -51px;
+	background: url(../../img/tb.png) no-repeat -206px -51px;
 	display: inline-block;
 }
 
@@ -334,7 +334,7 @@
 
 .collection {
 	display: block;
-	background: url(../images/tb.png) no-repeat -286px -74px;
+	background: url(../../img/tb.png) no-repeat -286px -74px;
 	color: #89b157;
 	padding-left: 15px;
 	margin: 5px 0;
@@ -461,7 +461,7 @@
 	width: 59px;
 	height: 19px;
 	line-height: 19px;
-	background: url(../images/tb.png) no-repeat -107px -112px;
+	background: url(../../img/tb.png) no-repeat -107px -112px;
 	color: #eb830c;
 	margin: 10px 0 0 10px;
 	font-weight: bold;
@@ -583,7 +583,7 @@
 .xx_til h3 {
 	font-size: 16px;
 	color: #fff;
-	background: url(../images/btimg.jpg) no-repeat;
+	background: url(../../img/btimg.jpg) no-repeat;
 	line-height: 37px;
 	float: left;
 	padding: 0 15px;
@@ -592,7 +592,7 @@
 .xx_til span {
 	width: 41px;
 	height: 37px;
-	background: url(../images/btimg.jpg) no-repeat -176px 0;
+	background: url(../../img/btimg.jpg) no-repeat -176px 0;
 	float: left;
 }
 
@@ -1107,7 +1107,7 @@ html, body {
 .gulou_tab td.ver_top { vertical-align:text-top; padding:15px 0 0 15px;}
 .gulou_tab td img { border:1px solid #dedcdd;}
 .gulou_tab td p.ks_yy { padding:8px 0;}
-.collection { display:block; background:url(../images/tb.png) no-repeat -286px -74px; color:#89b157; padding-left:15px; margin:5px 0;}
+.collection { display:block; background:url(../../img/tb.png) no-repeat -286px -74px; color:#89b157; padding-left:15px; margin:5px 0;}
 .gulou_tab td.tab_one { padding: 15px 0 5px 15px;}
 .gulou_tab td i { margin-left:10px; color:#333434;}
 .gulou_tab td em a { color:#f99c09;}
@@ -1115,5 +1115,5 @@ html, body {
 .gulou_tab td p a { font-weight:bold; font-size:13px; color:#888;}
 .gulou_tab td p a:hover,.gulou_tab td em a:hover { color:#f80;}
 
-.yuyue_tingzhen2, .yuyue_yiman2,.yiguoqi2{color: ##787878;display: inline-block;line-height: 24px;
+.yuyue_tingzhen2, .yuyue_yiman2,.yiguoqi2{color: #787878;display: inline-block;line-height: 24px;
     padding: 0 15px;font-size: 13px;}
