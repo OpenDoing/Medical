@@ -1,0 +1,35 @@
+
+<link rel="stylesheet" href="css/bootstrap-datepicker3.css">
+<script src="js/medicalrecord/addrecord.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+
+
+<div class="col-md-9">
+
+    <h3>医生资料</h3>
+
+        <table class="table table-hover">
+
+            <tbody>
+
+            <tr><td><b>医生姓名</b><br/></td>
+                <td><b id="docname">朱文玲</b></td></tr>
+
+            <tr><td><b>科室</b><br/></td>
+                <td><b id="department">心内科</b></td></tr>
+
+            <tr><td><b>职位</b><br/></td>
+                <td><b id="position">主任医师 教授</b></td></tr>
+
+            <tr><td><b>详细介绍</b><br/><br>简单描述主攻方向、临床经验等</td>
+                <td><textarea id="description" class="form-control" style="height:200px"></textarea></td></tr>
+
+            </tbody>
+        </table>
+
+        <br/>
+        <div id="alertmessage"></div>
+    <div class="col-md-6 col-md-offset-5">
+        <input type="button" class="btn btn-success" id="submit" value="保存">
+    </div>
