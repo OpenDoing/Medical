@@ -19,6 +19,7 @@ function init_orderlist(date) {
                     }
                 }
                 $('#order').bootstrapTable('load',data.data);
+                $(".fixed-table-loading")[0].style.display="none";      //数据加载成功  加载那行字去掉
             }
         }
     });
@@ -36,6 +37,7 @@ function init_order_table(data) {
         //url:config.base_url + "order?profile_id=2&token="+getCookie('token'),
 
         onLoadSuccess: function(){  //加载成功时执行
+
             return "加载成功";
         },
         onLoadError: function(){  //加载失败时执行
@@ -47,8 +49,17 @@ function init_order_table(data) {
 
         },
         onClickRow:function (row) {
+            // var url = "orderdetail.html?oid="+row.id;
+            // window.location.href = url;
+            // // oid = row.id;
+            // console.log(row.id);
 
         },
+        // ss:function (){
+        //     url = "www,baidu.com";
+        //     //url = "dorderdetail.html?oid="+oid+"&age="+age;//此处拼接内容
+        //     window.location.href = url;
+        // },
         columns: [
             {
                 field: 'id',
@@ -86,13 +97,27 @@ function init_order_table(data) {
                 events: "operateEvents",
                 formatter: function (value, row, index) {
                     return [
-                        '<button id="showinfo" type="button" class="btn btn-default">查看</button>'
+                        '<button id="showinfo" type="button" class="btn btn-default" >查看</button>'
                     ].join("");
                 }
             }
         ]
     });
 }
+
+window.operateEvents = {
+    'click #showinfo': function (e, value, row, index) {
+        console.log(row);
+        var url = "dorderdetail.html?oid="+row.id;
+        window.location.href = url;
+    }
+};
+
+// function jump(){
+//     url = "www.baidu.com";
+//     //url = "dorderdetail.html?oid="+oid+"&age="+age;//此处拼接内容
+//     window.location.href = url;
+// }
 
 function load_profiles() {
     $.ajax({

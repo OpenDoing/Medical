@@ -3,7 +3,24 @@ window.onload = function () {
     var oid = getQueryString('oid');
     var isdetail = getQueryString('isdetail');
     loadorder(pid,oid,isdetail);
+    orderdetail(oid);
 };
+
+function orderdetail(oid) {
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "Doctororders",
+        data:{
+            'token':checktoken(),
+            'oid':oid
+        },
+        success:function (response) {
+            if (response.succ === 1){
+                console.log("接口测试");
+            }
+        }
+    });
+}
 
 function loadorder(pid,oid,flag) {
     $.ajax({
