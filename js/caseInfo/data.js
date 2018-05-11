@@ -25,11 +25,14 @@ $('#caseTable').bootstrapTable({
         return res;
     },
     onClickRow:function (row) {
-        //console.log(row);
-        //var index = row.id;
-        $('#pname').val(row.name);
-        $('#birthday').val(row.birth);
-        $('#phone').val(row.phone);
+        $('#pname1').val(row.name);
+        $('#birthday1').val(row.birth);
+        $('#phone1').val(row.phone);
+        if (row.sex === "男") {
+            document.getElementById("man").checked= true;
+        }else {
+            document.getElementById("woman").checked= true;
+        }
     },
     columns: [
         {
@@ -64,7 +67,7 @@ $('#caseTable').bootstrapTable({
             formatter: function (value, row, index) {
                 //value = "编辑";
                 //console.log(row.id);
-                return "<div class=\"glyphicon glyphicon-edit\"  data-target=\"#addCase\" data-toggle=\"modal\" data-type=\"text\" data-pk=\""+row.Id+"\" data-title=\"用户名\"></div>";
+                return "<div class=\"glyphicon glyphicon-edit\"  data-target=\"#editCase\" data-toggle=\"modal\" data-type=\"text\" data-pk=\""+row.Id+"\" data-title=\"用户名\"></div>";
             }
         }
     ]
