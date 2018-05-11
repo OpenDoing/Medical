@@ -1,3 +1,9 @@
+// window.onunload = function () {
+//     init_log(1);
+//     // load_log();
+//
+// };
+
 function init_log(status) {
     $.ajax({
         type: "GET",
@@ -9,6 +15,8 @@ function init_log(status) {
         success: function (data) {
             if (data.succ == 1){
                 $('#login-s1').bootstrapTable('load',data.data);
+                // console.log("shuju");
+                load_log(data.data);
             }
         }
     });
