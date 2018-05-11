@@ -26,25 +26,15 @@
 </header>
 <body>
 
-<div class="padtb20">
-    <div id="order-info" class="content w960">
-
-    </div>
-</div>
 <div class="container">
     <div class="order-bor " id="outer" style="">
         <!-- 订单详情 -->
         <div class="order-con">
             <h2 class="or-t"> 订单详情 &nbsp;&nbsp;<a href="info.html" class="fn-right">&lt; 返回我的订单</a></h2>
-            <div class="order-li">当前订单状态：<span class="c1"></span>
+            <div class="order-li">当前订单状态：<span class="c1" id="status"></span>
             </div>
         </div>
-        <div class="order-tit">疾病信息</div>
-        <div id="afterdiseas">
-            <div class="fn-clear order-con">
-                <div id="disease_input">null</div>
-            </div>
-        </div>
+
         <div class="order-tit"><span class="fn-right" id="order_id"></span>订单信息</div>
         <div class="fn-clear order-con">
             <table width="100%" border="0" class="order-tab">
@@ -58,89 +48,69 @@
                 </tr>
                 <tr>
                     <td width="20%" align="right">预约医生：</td>
-                    <td width="30%"><b class="c2" id="doctorname"></b></td>
+                    <td width="30%" id="doctorname"></td>
                     <td align="right">医生类型：</td>
                     <td id="typename"></td>
                 </tr>
                 <tr>
                     <td width="20%" align="right">下单时间：</td>
-                    <td width="30%"><b class="c2" id="create_time"></b></td>
+                    <td width="30%" id="create_time"></td>
                     <td align="right">预约时间：</td>
-                    <td id="appointment_time"></td>
+                    <td ><b class="c2" id="appointment_time"></b></td>
                 </tr>
                 <tr>
-                    <td align="right">订单价格：</td>
-                    <td id="price"></td>
-                    <td align="right">订单状态：</td>
-                    <td><span class="c1" id="status"></span></td>
-                </tr>
-                <tr>
-                    <td align="right">医生建议：</td>
-                    <td id="advice" colspan="3">相关建议未提交</td>
+                    <td align="right">订单费用：</td>
+                    <td><b id="price" class="c3"></b></td>
 
                 </tr>
+
                 </tbody>
             </table>
         </div>
+
+        <div class="order-tit">疾病信息</div>
+        <div class="fn-clear order-con">
+            <div id="disease_input"></div>
+        </div>
+
+        <div class="order-tit">医生建议</div>
+        <div class="fn-clear order-con">
+            <div id="advice"></div>
+        </div>
+
         <div class="order-tit">病史记录</div>
         <div id="caseList">
-            <table id="doc_order"></table>
+            <table id="order_case"></table>
         </div>
-        <!--<div id="caseList" class="fn-clear order-con">-->
-        <!--<table width="100%" border="0" class="order-tab">-->
-        <!--<tbody><tr>-->
-        <!--<td width="20%" align="right">就诊时间：</td>-->
-        <!--<td width="30%"></td>-->
-        <!--<td width="20%" align="right">就诊医院：</td>-->
-        <!--<td width="30%"></td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-        <!--<td width="20%" align="right">病情描述：</td>-->
-        <!--<td ></td>-->
-        <!--</tr>-->
-
-        <!--</tbody>-->
-        <!--</table>-->
 
     </div>
 </div>
 </div>
 
+<div class="modal fade" id="case-images-modal" aria-hidden="true" aria-labelledby="case-images-label" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="avatar-form" enctype="multipart/form-data" method="post">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title">查看病历</h4>
+                </div>
+                <div class="modal-body" id="case-detail">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 
 </body>
-<!--替换模板-->
-<!--<script type="text/html" id="detail_change">-->
-<!--<div class="order-bor">-->
-<!--&lt;!&ndash; 订单详情 &ndash;&gt;-->
-<!--<div class="order-con">-->
-<!--<h2 class="or-t"> 订单详情 &nbsp;&nbsp;<a href="info.html#orderlist">&lt; 返回我的订单</a></h2>-->
-<!--<div class="order-li">当前订单状态：<span class="c1">{status}</span>-->
-<!--</div>-->
-<!--</div>-->
 
-<!--&lt;!&ndash; 订单信息 start &ndash;&gt;-->
-<!--<div class="order-tit"><span class="fn-right">订单编号：{id}</span>订单信息</div>-->
-
-
-<!--&lt;!&ndash; 订单信息 end &ndash;&gt;-->
-<!--&lt;!&ndash;就诊须知&ndash;&gt;-->
-<!--&lt;!&ndash; 就诊须知 &ndash;&gt;-->
-<!--<div class="order-tit">就诊须知</div>-->
-<!--<div class="fn-clear order-con jzxz">-->
-<!--这里是就诊须知-->
-<!--</div>-->
-<!--&lt;!&ndash; 就诊须知 &ndash;&gt;-->
-<!--<div class="order-tit">医生建议</div>-->
-<!--<div class="fn-clear order-con">-->
-<!--暂无医生建议-->
-<!--</div>-->
-<!--</div>-->
-<!--</script>-->
 <script src="js/util.js"></script>
 <script src="js/lib/jquery-3.2.1.min.js"></script>
+<script src="js/lib/bootstrap.min.js "></script>
 <script src="js/caseInfo/bootstrap-table.js"></script>                       <!--table插件-->
 <script src="js/caseInfo/bootstrap-table-zh-CN.js"></script>                 <!--中文table-->
-<script src="js/order/doc_order_detail.js"></script>
+<script src="js/order/patient_order_detail.js"></script>
 
 
 <!--<script src="js/order/loadorder.js"></script>-->

@@ -1,13 +1,14 @@
 window.onload = function () {
 
     var oid = getQueryString('oid');
-    orderdetail(oid);
+    var pid = getQueryString('pid');
+    orderdetail(oid,pid);
     init();
 };
 
 
 function init() {
-    $('#doc_order').bootstrapTable({
+    $('#order_case').bootstrapTable({
         dataType:'json',
 
         onLoadSuccess: function(){  //加载成功时执行
@@ -64,25 +65,22 @@ function init() {
 window.operateEvents = {
     'click #showinfo': function (e, value, row, index) {
         $("#case-detail").empty().load("recordinfo.html",function () {
-            console.log(row);
             $("#visit_time").text(row.visit_time);
             $("#hospital").text(row.hospital);
             $("#decription").text(row.description);
 
             $.ajax({
                 type: "POST",
-                url: config.base_url + "Doctororders/casedetail",
-                data: {                          //oid+cid
+                url: config.base_url + "Recordimage/",
+                data: {
                     'token':checktoken(),
-                    'oid':row.order_id,
-                    'cid':row.id,
-                    // 'profile_id':row.profile_id,
-                    // 'record_id':row.id
+                    'profile_id':row.profile_id,
+                    'record_id':row.id
                 },
                 success: function (data) {
                     console.log(data);
                     if(data.succ == 1){
-                        var images = data.data.images;
+                        var images = data.data;
                         var imagehtml = '';
 
                         if (images.length == 0){
@@ -133,16 +131,17 @@ function update(row) {
 }
 
 
-function orderdetail(oid) {
+function orderdetail(oid,pid) {
     $.ajax({
         type: "POST",
-        url: config.base_url + "Doctororders/detail",
+        url: config.base_url + "order/",
         data:{
             'token':checktoken(),
-            'oid':oid
+            'order_id':oid,
+            'profile_id':pid
         },
         success:function (response) {
-            $('#doc_order').bootstrapTable('load',response.data.cases);
+            $('#order_case').bootstrapTable('load',response.data.cases);
             $(".fixed-table-loading")[0].style.display="none";      //数据加载成功  加载那行字去掉
 
             $("#order_id").text("订单编号："+response.data.id);
@@ -157,7 +156,10 @@ function orderdetail(oid) {
             else
                 $("#advice").text("医生暂未提交建议");
 
-            $("#username").text(response.data.username);
+            $("#doctorname").text(response.data.doctorname);
+            $("#typename").text(response.data.typename);
+            $("#department").text(response.data.department);
+
             $("#appointment_time").text(response.data.appointment_date +" "+ response.data.range);
             $("#price").text(response.data.price + " 元");
             $("#status").text(response.data.status);
@@ -165,8 +167,13 @@ function orderdetail(oid) {
                 $("#sex").text("男");
             else
                 $("#sex").text("女");
-            $("#birth").text(response.data.birth);
 
+
+
+            console.log(response);
+            if (response.succ == 1){
+                // console.log("接口测试");
+            }
         }
     });
 }
