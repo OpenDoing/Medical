@@ -80,7 +80,7 @@ window.operateEvents = {
     'click #showinfo': function (e, value, row, index) {
         console.log(row);
         var url = "dorderdetail.html?oid="+row.id;
-        window.location.href = url;
+        window.open(url);
     }
 };
 

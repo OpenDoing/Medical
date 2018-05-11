@@ -16,8 +16,8 @@ function init_orderlist(oid) {
         },
         success: function (data) {
             if (data.succ == 1){
-                $('#doc_order').bootstrapTable('load',data.data.cases);
-                $(".fixed-table-loading")[0].style.display="none";      //数据加载成功  加载那行字去掉
+                    $('#doc_order').bootstrapTable('load',data.data.cases);
+                    $(".fixed-table-loading")[0].style.display="none";      //数据加载成功  加载那行字去掉
             }
         }
     });
@@ -27,16 +27,7 @@ function init_orderlist(oid) {
 
 function init(oid) {
     $('#doc_order').bootstrapTable({
-        // method:"POST",
         dataType:'json',
-        // pagination:true,
-        // search:true,
-        // url: config.base_url + "Doctororders/detail",
-        // data:{
-        //     'token':checktoken(),
-        //     'oid':oid
-        // },
-        //url:config.base_url + "medicalrecord?profile_id=" + p_id +"&token="+checktoken() + "&record_id=0",
 
         onLoadSuccess: function(){  //加载成功时执行
             return "加载成功";
@@ -80,7 +71,7 @@ function init(oid) {
                 events:"operateEvents",
                 formatter: function (value, row, index) {
                     return [
-                        '<button id="showinfo" type="button" class="btn btn-default">查看</button>'
+                        '<button id="showinfo" type="button" class="btn btn-default" data-toggle="modal" data-target="#case-images-modal">查看</button>'
                     ].join("");
                 }
             }
@@ -91,7 +82,7 @@ function init(oid) {
 
 window.operateEvents = {
     'click #showinfo': function (e, value, row, index) {
-        $("#outer").empty().load("recordinfo.html",function () {
+        $("#case-detail").empty().load("recordinfo.html",function () {
             console.log(row);
             $("#visit_time").text(row.visit_time);
             $("#hospital").text(row.hospital);
@@ -110,8 +101,17 @@ window.operateEvents = {
                 success: function (data) {
                     console.log(data);
                     if(data.succ == 1){
-                        var images = data.data;
+                        var images = data.data.images;
                         var imagehtml = '';
+
+                        if (images.length == 0){
+                            var message = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">\n" +
+                                "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                                "暂无病历图片" +
+                                "                    </div>";
+                            $("#img-msg").empty().append(message);
+                            return;
+                        }
 
                         for (var i in images){
                             imagehtml += '<div class="col-sm-6 col-md-4">\n' +
@@ -163,49 +163,27 @@ function orderdetail(oid) {
         success:function (response) {
             $("#order_id").text("订单编号："+response.data.id);
             $("#create_time").text(response.data.create_time);
-            $("#disease_input").text(response.data.disease_input);
+            if(response.data.disease_input != null)
+                $("#disease_input").text(response.data.disease_input);
+            else
+                $("#disease_input").text("患者未提交病情描述");
+
+            if(response.data.advice != null)
+                $("#advice").text(response.data.advice);
+            else
+                $("#advice").text("医生暂未提交建议");
+
             $("#username").text(response.data.username);
             $("#appointment_time").text(response.data.appointment_date +" "+ response.data.range);
-            $("#price").text(response.data.price);
+            $("#price").text(response.data.price + " 元");
             $("#status").text(response.data.status);
+            if(response.data.sex == 1)
+                $("#sex").text("男");
+            else
+                $("#sex").text("女");
+            $("#birth").text(response.data.birth);
 
-            // var caseList = document.getElementById("caseList");
-            // for (i=0;i<response.data.cases.length;i++){
-            //     var tt = "<table width=\"100%\" border=\"0\" class=\"order-tab\">\n" +
-            //         "                <tbody><tr>\n" +
-            //         "                    <td width=\"20%\" align=\"right\">就诊时间：</td>\n" +
-            //         "                    <td width=\"30%\">"+response.data.cases[i].visit_time +"</td>\n" +
-            //         "                    <td width=\"20%\" align=\"right\">就诊医院：</td>\n" +
-            //         "                    <td width=\"30%\">"+ response.data.cases[i].hospital +"</td>\n" +
-            //         "                </tr>\n" +
-            //         "                <tr>\n" +
-            //         "                    <td width=\"20%\" align=\"right\">病情描述：</td>\n" +
-            //         "                    <td colspan=\"3\">"+ response.data.cases[i].description +"</td>\n" +
-            //         "                </tr>\n" +
-            //         "\n" +
-            //         "                </tbody>\n" +
-            //         "            </table>";
-            //     $("#caseList").append(tt);
-            //     // var case1=document.createElement('div');
-            //     // case1.setAttribute('id',response.data.cases[i].id);
-            //     //
-            //     // var visit_time = document.createElement('div');
-            //     // visit_time.setAttribute('id',"visit"+response.data.cases[i].id);
-            //     // var time_text=document.createTextNode(response.data.cases[i].visit_time);
-            //     // visit_time.appendChild(time_text);
-            //     // case1.appendChild(visit_time);
-            //     //
-            //     // var hospital = document.createElement('div');
-            //     // hospital.setAttribute('id',"hospital"+response.data.cases[i].id);
-            //     // var hospital_text=document.createTextNode(response.data.cases[i].hospital);
-            //     // hospital.appendChild(hospital_text);
-            //     // case1.appendChild(hospital);
-            //     //
-            //     // var liText=document.createTextNode(response.data.cases[i].description);
-            //     //
-            //     // // liElement.appendChild(liText);
-            //     // caseList.appendChild(case1);
-            // }
+
             console.log(response);
             if (response.succ == 1){
                 // console.log("接口测试");
