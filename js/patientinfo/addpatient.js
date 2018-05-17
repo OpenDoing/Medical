@@ -23,12 +23,16 @@ $("#bOK").on('click',function () {
             if(data.succ == 1){
                 var succ_message = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">\n" +
                     "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
-                    "                        患者信息添加成功\n" +
+                    "                        患者信息添加成功,一秒后自动刷新本页面\n" +
                     "                    </div>";
                 $("#alertmessage").append(succ_message);
                 //页面需要刷新
-                location.reload();
+                // location.reload();
+                setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
+                    window.location.reload();//页面刷新
+                },1500);
             }
+
             else {
                 var error_message = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">\n" +
                     "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
@@ -43,6 +47,7 @@ $("#bOK").on('click',function () {
 $("#bOK1").on('click',function () {
 
     var token = checktoken();
+    var id = $('#getID').text();
 
     var sex = $('input:radio[name="sex"]:checked').val();
 
@@ -50,8 +55,9 @@ $("#bOK1").on('click',function () {
 
     $.ajax({
         type: "POST",
-        url: config.base_url + "userprofile/create",
+        url: config.base_url + "userprofile/update",
         data: {
+            'profile_id':id,
             'token':token,
             'name':$("#pname1").val(),
             'sex':sex,
@@ -60,20 +66,24 @@ $("#bOK1").on('click',function () {
             'phone':$("#phone1").val()
         },
         success: function (data) {
-            $("#bOK").attr("disabled",false).text("提交");
+
+            $("#bOK1").attr("disabled",false).text("提交");
             if(data.succ == 1){
                 var succ_message = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">\n" +
                     "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
-                    "                        患者信息添加成功\n" +
+                    "                        患者信息修改成功,一秒后自动刷新本页面\n" +
                     "                    </div>";
-                $("#alertmessage").append(succ_message);
+                $("#alertmessage1").append(succ_message);
                 //页面需要刷新
+                setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
+                    window.location.reload();//页面刷新
+                },1500);
             }
             else {
                 var error_message = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">\n" +
                     "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
                     data.error + "</div>";
-                $("#alertmessage").append(error_message);
+                $("#alertmessage1").append(error_message);
             }
         }
     });

@@ -33,6 +33,9 @@ $('#caseTable').bootstrapTable({
         }else {
             document.getElementById("woman").checked= true;
         }
+        //console.log(row.id);
+        document.getElementById("getID").innerText=row.id;
+        //$('#getID').val(row.id);
     },
     columns: [
         {
@@ -67,7 +70,7 @@ $('#caseTable').bootstrapTable({
             formatter: function (value, row, index) {
                 //value = "编辑";
                 //console.log(row.id);
-                return "<div class=\"glyphicon glyphicon-edit\"  data-target=\"#editCase\" data-toggle=\"modal\" data-type=\"text\" data-pk=\""+row.Id+"\" data-title=\"用户名\"></div>";
+                return "<div class=\"glyphicon glyphicon-edit\"  data-target=\"#editCase\" data-toggle=\"modal\" data-type=\"text\" data-pk=\""+row.Id+"\" data-title=\"用户名\" data-id=''></div>";
             }
         }
     ]

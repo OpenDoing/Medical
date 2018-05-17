@@ -84,4 +84,27 @@ window.operateEvents = {
     }
 };
 
+function load() {
+    $.ajax({
+        url:config.base_url + "Doctororders/queue?&token=" + checktoken(),
+        success:function (res) {
+
+            if (res.succ === 1){
+
+                $("#patient").text(res.data.name);
+                $("#content").css("display","none");
+                $("#link").css("display","block");
+                var href = "dorderdetail.html?oid=" + res.data.id;
+                $("#link").attr("href",href);
+                $("#ok").attr("disabled",true);
+            }else {
+                $("#content").text("当前暂无排队信息");
+            }
+        }
+    });
+    // var url = "dorderdetail.html?oid=30";
+    // window.open(url);
+}
+
+
 
