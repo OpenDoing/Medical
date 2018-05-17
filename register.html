@@ -40,50 +40,44 @@
                     <form role="form" action="" method="post" class="login-form">
                     	<div class="form-group">
                     		<div class="input-group marginH">
-								<span class="input-group-addon" id="basic-addon1">手机号</span>
-								<input id="phoneInput" type="text" class="form-control" placeholder="请输入11位手机号" onblur="statusCheck1()">
-								
+								<span class="input-group-addon" id="basic-addon1">用户名</span>
+								<input id="username" type="text" class="form-control" placeholder="请输入要注册的用户名" onblur="statusCheck1()">
+							</div>
+
+							<div class="input-group marginH">
+								<span class="input-group-addon" id="basic-addon1">设置密码</span>
+								<input id="pwd" type="text" class="form-control" placeholder="请输入您要设置的密码" >
+								<!--<span id="psdCheck" class="statusCheck input-group-addon glyphicon glyphicon-ok"></span>-->
+								<!--<span id="psdCheck" class="statusCheck input-group-addon glyphicon glyphicon-remove" ></span>-->
+							</div>
+
+							<div class="input-group marginH">
+								<span class="input-group-addon" id="basic-addon1">手机号码</span>
+								<input id="phone" type="text" class="form-control" placeholder="请输入11位手机号" onblur="statusCheck1()">
+
 								<!--<span id="phoneCheck" class="statusCheck input-group-addon glyphicon glyphicon-ok" ></span>
 								<span id="phoneCheck1" class="statusCheck input-group-addon glyphicon glyphicon-remove" ></span>-->
 							</div>
-							
-                        	<div class="row">
-                    			<div class="col-md-8">
-		                        	<div class="input-group marginH" id="verifyCode">
-		                        		<span class="input-group-addon" id="basic-addon1">验证码：</span>
-										<input id="verifyInput" type="text" class="form-control" placeholder="右图验证码" >
-										<span id="verifyCheck" class="statusCheck input-group-addon glyphicon glyphicon-ok"></span>
-										<span id="verifyCheck1" class="statusCheck input-group-addon glyphicon glyphicon-remove" ></span>
-		                        	</div>
-                        		</div>
-                        		<div class="col-md-4">
-                    				<img id="getInfoCode" src="img/verifyCode.png"></button>
-                    			</div>
-							</div>
+
 							
                         	<div class="row">
                     			<div class="col-md-8">
                     				<div class="input-group marginH" id="infoCode">
-                    					<span class="input-group-addon" id="basic-addon1">短信验证码：</span>
-										<input  id="infoInput" type="text" class="form-control" placeholder="手机验证码" >
-										<span id="infoCheck" class="statusCheck input-group-addon glyphicon glyphicon-ok" ></span>
-										<span id="infoCheck1" class="statusCheck input-group-addon glyphicon glyphicon-remove" ></span>
+                    					<span class="input-group-addon" id="basic-addon1">短信验证码</span>
+										<input  id="code" type="text" class="form-control" placeholder="手机验证码" >
+										<!--<span id="infoCheck" class="statusCheck input-group-addon glyphicon glyphicon-ok" ></span>-->
+										<!--<span id="infoCheck1" class="statusCheck input-group-addon glyphicon glyphicon-remove" ></span>-->
 									</div>
                     			</div>
                     			<div class="col-md-4">
-                    				<button id="getInfoCode" class="btn btn-info " onclick="time(this)">点击获取</button>
+                    				<button type="button" id="getInfoCode" class="btn btn-info" onclick="test()">点击获取</button>
                     			</div>
                         	</div>
                         	
-                        	<div class="input-group marginH">
-                        		<span class="input-group-addon" id="basic-addon1">设置密码：</span>
-								<input id="psdInput" type="text" class="form-control" placeholder="请输入您要设置的密码" >
-								<span id="psdCheck" class="statusCheck input-group-addon glyphicon glyphicon-ok"></span>
-								<span id="psdCheck" class="statusCheck input-group-addon glyphicon glyphicon-remove" ></span>
-                        	</div>
+
                         </div>
                        
-                        <button id="reg"  class="btn btn-success">注册</button>
+                        <button id="submit"  type="button" class="btn btn-success" onclick="reg_func()">注册</button>
                         <div id="bottomText"  class="row" >
                         	<div class="col-md-6">
                         		<a href="#" id="forgotPsd">忘记密码?</a>
@@ -105,4 +99,5 @@
 	<script src="js/status.js"></script>
 	<script src="js/img.js"></script>
 	<script src="js/time.js"></script>
+	<script src="js/reg.js"></script>
 </html>

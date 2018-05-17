@@ -71,10 +71,28 @@ function init_order_table(data) {
             {
                 field: 'status',
                 title: '状态'
+            },
+            {
+                title: '操作',
+                align: "center",
+                events: "operateEvents",
+                formatter: function (value, row, index) {
+                    return [
+                        '<button id="showinfo" type="button" class="btn btn-default">查看</button>'
+                    ].join("");
+                }
             }
         ]
     });
 }
+
+window.operateEvents = {
+    'click #showinfo': function (e, value, row, index) {
+        console.log(row);
+        var url = "porderdetail.html?oid="+row.id + "&pid=" + row.profile_id;
+        window.open(url);
+    }
+};
 
 function load_profiles() {
     $.ajax({

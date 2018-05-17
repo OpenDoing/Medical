@@ -15,4 +15,4 @@ function time(o){
             1000)
     }
 }
-document.getElementById("getInfoCode").onclick=function(){time(this);}
+// document.getElementById("getInfoCode").onclick=function(){time(this);}
