@@ -1,48 +1,123 @@
-<link rel="stylesheet" href="css/edit-phone.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">			<!--登录框右上角key-->
+
 
 <div class="col-md-9" id="edit-phone">
-    <h4><strong>更换绑定手机</strong></h4>
-    <br>
-    <ul class="nav nav-pills nav-justified step step-arrow">
-        <li>
-            <a>验证身份</a>
-        </li>
-        <li>
-            <a>绑定新手机</a>
-        </li>
-        <li>
-            <a>更换成功</a>
-    </ul>
-    <div class="container col-md-3"></div>
-    <div class="container col-md-6">
-        <div class="phInform">
-            已绑定手机号码：
-            <span id="tel">000****0000</span>
-        </div>
-        <div class="input-group center">
-            <span class="input-group-addon" id="basic-addon1">原绑定手机号码</span>
-            <input type="text" class="form-control" placeholder="当前绑定的手机号码" />
-        </div>
+    <h3>账号设置</h3>
 
-        <br><br>
-        <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">短信验证码</span>
-            <input type="text" class="form-control" placeholder="短信验证码" />
-        </div>
-        <br><br>
-        <div class="btn_inline">
-            <a href="#">忘记密码？</a>                             <!-- 此处放一个链接，找回密码-->
-            <button class="btn btn-success">下一步</button>
+    <p class="bind-tips bind-tips-detial">修改账号的绑定手机或密码。</p>
+
+    <table class="table table-hover">
+
+        <tbody>
+        <tr><td><b>绑定手机</b><br/>手机可以用来登录咨询系统</td>
+            <td>
+                <span id="phone"></span>
+                <a id="change-phone" data-toggle="modal" data-target="#change-phone-modal">[修改]</a>
+            </td>
+        </tr>
+
+        <tr><td><b>更改密码</b><br/>请勿随意泄露密码，以防不法分子利用造成个人损失</td><td>
+            <a id="change-pwd" data-toggle="modal" data-target="#change-pwd-modal">[修改密码]</a>
+        </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade in" id="change-phone-modal" aria-hidden="true" aria-labelledby="change-phone-label" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title">修改绑定手机</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="input-group marginH">
+                        <span class="input-group-addon" id="basic-addon1">当前手机</span>
+                        <input id="old_phone" type="text" class="form-control" placeholder="请输入当前绑定的手机号">
+                    </div>
+
+                    <br>
+
+                    <div class="input-group marginH">
+                        <span class="input-group-addon" id="basic-addon1">新的手机</span>
+                        <input id="new_phone" type="text" class="form-control" placeholder="请输入新的手机号">
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="input-group marginH" id="infoCode">
+                                <span class="input-group-addon" id="basic-addon1">短信验证码</span>
+                                <input id="code" type="text" class="form-control" placeholder="手机验证码" >
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" id="getInfoCode" class="btn btn-info" onclick="test()">点击获取</button>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button id="submit_phone" type="button" class="btn btn-success" onclick="reg_func()">确定</button>
+                    </div>
+
+
+
+                </div>
+
         </div>
     </div>
 </div>
-<script type="text/javascript" src="js/lib/step-lib.js"></script>
+
+<div class="modal fade in" id="change-pwd-modal" aria-hidden="true" aria-labelledby="change-pwd-label" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" type="button">&times;</button>
+                <h4 class="modal-title">修改密码</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="input-group marginH" id="password">
+                    <span class="input-group-addon" >请输入原密码</span>
+                    <input type="text" class="form-control" />
+                </div>
+                <br>
+
+                <div class="input-group marginH" id="newpwd1">
+                    <span class="input-group-addon" >请输入新密码</span>
+                    <input type="text" class="form-control"/>
+                </div>
+                <br>
+                <div class="input-group marginH" id="newpwd2">
+                    <span class="input-group-addon" >请重新输入新密码</span>
+                    <input type="text" class="form-control" />
+                </div>
+
+
+                <br>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button id="submit_pwd" type="button" class="btn btn-success" onclick="reg_func()">确定</button>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="js/util.js"></script>
 <script>
-    $(document).ready(function(){
-        $("#edit-phone").show(function(){
-            //bsStep(i) i 为number 可定位到第几步 如bsStep(2)/bsStep(3)
-            bsStep();
-            $('#tel').text(getInfoFromCookie('phone'));
-        });
-    });
+    $("#phone").text(getInfoFromCookie('phone'));
 </script>

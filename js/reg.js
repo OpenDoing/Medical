@@ -1,5 +1,3 @@
-// $("#getInfoCode").click(sendsms());
-// $("#reg").click(reg());
 function test() {
     sendsms();
     time(document.getElementById("getInfoCode"));
