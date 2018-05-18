@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="css/reservation/process.css"/>
 
 
-
 </head>
 
 <header>
@@ -31,7 +30,14 @@
         <!-- 订单详情 -->
         <div class="order-con">
             <h2 class="or-t"> 订单详情 &nbsp;&nbsp;<a href="info.html" class="fn-right">&lt; 返回我的订单</a></h2>
-            <div class="order-li">当前订单状态：<span class="c1" id="status"></span>
+            <div class="order-li">
+                当前订单状态：<span class="c1" id="status"></span>
+                <br>
+                预约密码：<span class="c1" id="code"></span>
+                <div class="fn-right">
+                    <button class="btn btn-warning " id="live" value="" disabled="disabled" onclick="live_btn()">进入直播间</button>
+                    <button class="btn btn-info" id="introduction">使用说明</button>
+                </div>
             </div>
         </div>
 

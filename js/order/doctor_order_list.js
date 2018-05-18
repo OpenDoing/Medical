@@ -85,6 +85,9 @@ window.operateEvents = {
 };
 
 function load() {
+
+    $("#ok").attr("disabled",true);
+
     $.ajax({
         url:config.base_url + "Doctororders/queue?&token=" + checktoken(),
         success:function (res) {
@@ -96,7 +99,7 @@ function load() {
                 $("#link").css("display","block");
                 var href = "dorderdetail.html?oid=" + res.data.id;
                 $("#link").attr("href",href);
-                $("#ok").attr("disabled",true);
+
             }else {
                 $("#content").text("当前暂无排队信息");
             }

@@ -6,6 +6,10 @@ window.onload = function () {
     init();
 };
 
+function live_btn() {
+    var url = config.patient_live_url + $('#live').attr("value");
+    window.open(url);
+}
 
 function init() {
     $('#order_case').bootstrapTable({
@@ -159,10 +163,15 @@ function orderdetail(oid,pid) {
             $("#doctorname").text(response.data.doctorname);
             $("#typename").text(response.data.typename);
             $("#department").text(response.data.department);
+            $("#code").text(response.data.code);
 
             $("#appointment_time").text(response.data.appointment_date +" "+ response.data.range);
             $("#price").text(response.data.price + " 元");
             $("#status").text(response.data.status);
+            if (response.data.status == '咨询中'){
+                $("#live").attr("disabled", false);
+                $("#live").attr('value',response.data.live_link);
+            }
             if(response.data.sex == 1)
                 $("#sex").text("男");
             else

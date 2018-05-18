@@ -5,6 +5,47 @@ window.onload = function () {
     init();
 };
 
+function submit_advice() {
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "Doctororders/advice",
+        data: {
+            'token': checktoken(),
+            'oid': getQueryString('oid'),
+            'advice': $("#text_advice").val()
+        },
+        success: function (response) {
+            if (response.succ == 1) {
+                var succ_message = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">\n" +
+                    "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    "                        建议提交成功,一秒后自动刷新本页面\n" +
+                    "                    </div>";
+                $("#alertmessage").append(succ_message);
+                //页面需要刷新
+                setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
+                    window.location.reload();//页面刷新
+                },1500);
+            }
+        }
+    });
+}
+
+function load_eval() {
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "evaluation",
+        data: {
+            'oid': getQueryString('oid'),
+        },
+        success: function (response) {
+            if (response.succ == 1) {
+                $("#score").text(response.data.score);
+                $("#comment").text(response.data.comment);
+                $("#comment_time").text(response.data.create_time);
+            }
+        }
+    });
+}
 
 function init() {
     $('#doc_order').bootstrapTable({
@@ -161,6 +202,13 @@ function orderdetail(oid) {
             $("#appointment_time").text(response.data.appointment_date +" "+ response.data.range);
             $("#price").text(response.data.price + " 元");
             $("#status").text(response.data.status);
+            if (response.data.status == '待建议'){
+                $("#btn_advice").attr("disabled", false);
+            }
+            if (response.data.status == '已完成'){
+                $("#btn_evaluation").attr("disabled", false);
+            }
+
             if(response.data.sex == 1)
                 $("#sex").text("男");
             else

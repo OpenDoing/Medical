@@ -6,22 +6,6 @@ window.onload = function () {
     orderdetail(oid);
 };
 
-function orderdetail(oid) {
-    $.ajax({
-        type: "POST",
-        url: config.base_url + "Doctororders",
-        data:{
-            'token':checktoken(),
-            'oid':oid
-        },
-        success:function (response) {
-            if (response.succ === 1){
-                console.log("接口测试");
-            }
-        }
-    });
-}
-
 function loadorder(pid,oid,flag) {
     $.ajax({
         type: "POST",
@@ -42,7 +26,8 @@ function loadorder(pid,oid,flag) {
                         .replace('{department}',data.department)
                         .replace('{doctor_name}',data.doctorname)
                         .replace('{date}',data.appointment_date)
-                        .replace('{range}',data.range);
+                        .replace('{range}',data.range)
+                        .replace('{code}',data.code);
                     $("#success").append(success_part);
                 }
                 //加载订单详情
