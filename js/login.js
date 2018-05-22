@@ -28,6 +28,8 @@ $(function() {
                         window.location.href = 'info.html';
                     else if(data.data.type_id == 2)
                         window.location.href = 'doctorinfo.html';
+                    else if(data.data.type_id == 3)
+                        window.location.href = 'admin.html';
                 }
                 else {
                     alert(data.error);

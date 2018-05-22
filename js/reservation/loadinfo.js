@@ -13,7 +13,8 @@ function load_department() {
     $.ajax({
         type: "GET",
         url: config.base_url + "department",
-        success: function (data) {
+        success: function (response) {
+            var data = response.data;
             for(var i in data){
                 htmls += '<span class="small department_item">\n' +
                     '<a class="department_item" href="javascript:switch_department('+ data[i].id +  ')" id="department' + data[i].id + '">' + data[i].name + '</a>\n' +

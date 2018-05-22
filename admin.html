@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>个人中心</title>
+    <meta name="keywords" content="侧边导航菜单(可分组折叠)">
+    <meta name="description" content="侧边导航菜单(可分组折叠)" />
+    <meta name="HandheldFriendly" content="True" />
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/info.css" />
+
+</head>
+
+<body>
+
+<header>
+    <img src="img/logo.png" class="logo"/>
+    <!--<a href="#" class="logo"></a>-->
+    <div class="desc">个人中心</div>
+    <a id="hhome" href="#">网站首页</a>
+    <a id="hname" href="login.html">退出登录</a>
+
+</header>
+
+<div class="container">
+    <div class="container-row">
+        <div class="col-md-3">
+            <div class="panel-group" role="tablist">
+
+                <div class="userhead">
+                    <img class="smaller-image thick-green-border img-circle" alt="userhead" id="hhImg">
+                    <div id="userHH" class="hello"></div>
+                </div>
+
+                <div class="panel panel-primary leftMenu">
+                    <div class="panel-heading" id="user_panel" data-toggle="collapse" data-target="#UserInfo" role="tab" >
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        <h4 class="panel-title">
+                            医生管理
+                        </h4>
+                    </div>
+                    <div id="UserInfo" class="panel-collapse collapse in" role="tabpanel" >
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="importdoctor">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>导入医生资料
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="managedoctor">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>管理医生资料
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="importdtype">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>导入医生类型
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="managedtype">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>管理医生类型
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary leftMenu">
+                    <div class="panel-heading" id="order1_panel" data-toggle="collapse" data-target="#UserInfo" role="tab" >
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        <h4 class="panel-title">
+                            科室管理
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse in" role="tabpanel" >
+                        <ul class="list-group">
+
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="importdepartment">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>导入科室资料
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="managedepartment">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>管理科室资料
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-primary leftMenu">
+                    <div class="panel-heading" id="MyAccPanel" data-toggle="collapse" data-target="#MyAccount" role="tab" >
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        <h4 class="panel-title">
+                            我的账户
+                            <span class=""></span>          <!--glyphicon glyphicon-chevron-down right-->
+                        </h4>
+                    </div>
+                    <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+
+                    <div id="MyAccount" class="panel-collapse collapse in" role="tabpanel" >
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="login_log">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>登录记录
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="menu-item-left" id="edit_phone">
+                                    <span class="glyphicon glyphicon-triangle-right"></span>更改手机
+                                </button>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div><!--panel end-->
+
+            </div>
+        </div>
+        <div id="info-content"></div>
+    </div>
+</div>
+
+<script src="js/lib/jquery-1.12.4.min.js"></script>
+<script src="js/lib/bootstrap.min.js "></script>
+<script src="js/util.js"></script>
+
+
+<script language="javascript">
+    $("#hhImg").attr('src',config.img_url + getInfoFromCookie('avatar'));
+    $("#userHH").text(getInfoFromCookie('nickname'));
+    $(document).ready(function(){
+        $(".user_info .col-md-3 span").hover(function(){
+            $(this).find("a").show();
+        },function(){
+            $(this).find("a").hide();
+        })
+    });
+    $(function () {
+        $(".panel-group").on("click", "button", function(){
+            window.location.hash = event.target.id; //设置锚点
+            loadInner();
+        });
+
+        $(".panel-group").on("click", "button", function(){
+            window.location.hash = event.target.id; //设置锚点
+            loadInner();
+        });
+
+        loadInner();
+    });
+</script>
+</body>
+
+</html>
