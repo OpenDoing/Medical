@@ -9,8 +9,9 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/info.css"/>
-
+    <link rel="stylesheet" href="css/star.css">
     <link rel="stylesheet" href="css/reservation/process.css"/>
+
 
 
 </head>
@@ -37,6 +38,7 @@
                 <div class="fn-right">
                     <button class="btn btn-warning " id="live" value="" disabled="disabled" onclick="live_btn()">进入直播间</button>
                     <button class="btn btn-info" id="introduction">使用说明</button>
+                    <button class="btn btn-info" id="eva" data-toggle="modal" data-target="#evaluation">评价</button>
                 </div>
             </div>
         </div>
@@ -90,8 +92,85 @@
         </div>
 
     </div>
+
 </div>
+
+<!--评价的模态框-->
+<div class="modal fade" id="evaluation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" style="margin-top: 200px ;" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">评价</h4>
+            </div>
+            <div class="modal-body">
+                <div class="quiz">
+
+                    <div class="quiz_content">
+                        <table class="table">
+
+                        <tr>
+                            <td class="lside">
+                                <span class="star_l">满意度：</span>
+                            </td>
+                            <td>
+                                <div class="goods-comm">
+                                    <div class="goods-comm-stars">
+                                        <div id="rate-comm-1" class="rate-comm"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lside">
+                                <label class="m_flo">描述：</label>
+                            </td>
+                            <td >
+                                <textarea style="height: 100px;" name="" id="content" class="" placeholder="不要在评论栏涉及您的个人相关信息"></textarea>
+                            </td>
+                        </tr>
+
+                        <!--<div class="l_text">-->
+                                <!--&lt;!&ndash;<span class="tr">字数限制为5-200个</span>&ndash;&gt;-->
+                        <!--</div>-->
+                        <tr>
+                            <td class="lside">
+                                <div>是否要进行投诉？</div>
+                            </td>
+                            <td>
+                                <div class="switch" data-on="danger" data-off="primary">
+
+                                    <input name="report" type="checkbox"  />
+
+                                </div>
+                                <div id="s_zero" style="display: none">投诉会使您的满意度置0</div>
+                            </td>
+                        </tr>
+
+                        <!--<div id="complaint">-->
+                        <tr>
+                            <td colspan="2">
+                                <div id="info" style="display: none">
+                                    您的评价记录已上传，本弹框一秒后自动退出。
+                                </div>
+                            </td>
+
+                        </tr>
+
+
+                        <!--</div>-->
+                        </table>
+                    </div><!--quiz_content end-->
+                </div><!--quiz end-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="ok" onclick="result()" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <div class="modal fade" id="case-images-modal" aria-hidden="true" aria-labelledby="case-images-label" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-lg">
@@ -112,8 +191,11 @@
 </body>
 
 <script src="js/util.js"></script>
-<script src="js/lib/jquery-3.2.1.min.js"></script>
-<script src="js/lib/bootstrap.min.js "></script>
+
+<script src="js/lib/jquery-1.12.4.min.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/order/switch.js"></script>
+<script src="js/order/comment.js"></script>
 <script src="js/caseInfo/bootstrap-table.js"></script>                       <!--table插件-->
 <script src="js/caseInfo/bootstrap-table-zh-CN.js"></script>                 <!--中文table-->
 <script src="js/order/patient_order_detail.js"></script>
