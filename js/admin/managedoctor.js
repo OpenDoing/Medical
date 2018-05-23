@@ -204,10 +204,11 @@ function update() {
 
 window.operateEvents = {
     'click #edit': function (e, value, row, index) {
+        console.log(row);
         $('#name2').val(row.name);
         $('#introduction2').val(row.introduction);
-        $('#deid2').find('option[value='+ row.department_id +']').attr("selected",true);
-        $('#type2').find('option[value='+ row.type +']').attr("selected",true);
+        $('#deid2').val(row.department_id);
+        $('#type2').val(row.type);
         $('#doctor_id').val(row.id);
     }
 };
