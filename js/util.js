@@ -46,6 +46,10 @@ function loadInner(){
             pathn = "doctor_baseinfo.html";
             refresh_doctorinfo();
         }
+        else if (getInfoFromCookie('type_id') == 3){
+            //todo:管理员首页
+            pathn = "admin_index.html";
+        }
 
     }
     // else if(pathn.indexOf('recordlist') >= 0 && event.target.value !== null){

@@ -1,0 +1,209 @@
+
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/bootstrap-table.css">
+
+<div class="col-md-9">
+
+    <h3>管理医生资料</h3>
+
+    <table class="table table-hover">
+
+        <tbody>
+        <tr><td><b>添加医生</b><br>手动添加医生账号和资料</td>
+            <td>
+                <input type="button" class="btn btn-info" id="create_doctor" value="添加医生账号" data-toggle="modal" data-target="#create-doctor-modal">
+            </td>
+            </tr>
+        <tr><td><b>医生姓名</b><br>根据姓名查找医生资料进行修改</td>
+            <td>
+                <input type="text" id="search_name" class="form-control">
+            </td>
+            <td>
+                <input type="button" class="btn btn-success" id="search_by_name" onclick="init_doctor_list()" value="查询">
+            </td></tr>
+
+        </tbody></table>
+
+
+    <div id="list-doctors">
+        <table id="doctors"></table>
+    </div>
+</div>
+
+<!--添加医生弹框--1-->
+<div class="modal fade" tabindex="-1" role="dialog" id="create-doctor-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" >添加医生账号</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="alertmessage1"></div>
+
+                <div class="row modal-body-height">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        用户名：
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" id="nickname" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+
+                <div class="row modal-body-height">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        密码：
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" id="password" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+
+                <div class="row modal-body-height">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        手机号码：
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" id="phone" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+
+                <div class="row modal-body-height">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        医生姓名：
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" id="name1" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+
+                <div class="row modal-body-height">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        科室：
+                    </div>
+                    <div class="col-md-8">
+                        <select id="deid1" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="row modal-body-height">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        医生类型：
+                    </div>
+                    <div class="col-md-8">
+                        <select id="type1" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="row modal-body-height">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        医生简介：
+                    </div>
+                    <div class="col-md-8">
+                        <textarea id="introduction1" class="form-control" style="height:200px"></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="bOK1" onclick="create()">保存</button>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<!--修改医生弹框--2-->
+<div class="modal fade" tabindex="-1" role="dialog" id="edit-doctor-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" >修改医生资料</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="alertmessage2"></div>
+
+                <div class="row modal-body-height">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        医生编号：
+                    </div>
+                    <div class="col-md-8" >
+                        <input type="text" id="doctor_id" class="form-control" aria-describedby="basic-addon1" disabled="disabled">
+                    </div>
+                </div>
+
+                <div class="row modal-body-height">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        医生姓名：
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" id="name2" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+
+                <div class="row modal-body-height">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        科室：
+                    </div>
+                    <div class="col-md-8">
+                        <select id="deid2" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="row modal-body-height">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        医生类型：
+                    </div>
+                    <div class="col-md-8">
+                        <select id="type2" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="row modal-body-height">
+
+                    <div class="col-md-3 col-md-offset-1">
+                        医生简介：
+                    </div>
+                    <div class="col-md-8">
+                        <textarea id="introduction2" class="form-control" style="height:200px"></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="bOK2" onclick="update()">保存</button>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<script src="js/caseInfo/bootstrap-table.js"></script>                       <!--table插件-->
+<script src="js/caseInfo/bootstrap-table-zh-CN.js"></script>                 <!--中文table-->
+
+<script src="js/admin/managedoctor.js"></script>
+<script src="js/util.js"></script>
+<script type="text/javascript">
+
+//    $("#search_by_date").on('click',function () {
+//        var date = $("#appointment_time").val();
+//        if (date == null)
+//            alert("请选择预约日期");
+//        else
+//            init_orderlist(date);
+//    });
+</script>

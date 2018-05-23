@@ -1,8 +1,49 @@
 window.onload = function () {
     inithead();
     load_doctor(getQueryString('doctor_id'));
+    init_evaluation();
 };
+function init_evaluation() {
+    $('#evaluation').bootstrapTable({
+        method:"GET",
+        dataType:'json',
+        pagination:true,
+        url:config.base_url + "evaluation?did=" + getQueryString('doctor_id') +"&oid=0",
 
+        onLoadSuccess: function(){  //加载成功时执行
+            return "加载成功";
+        },
+        onLoadError: function(){  //加载失败时执行
+            return "加载数据失败";
+        },
+        striped:true,
+
+        onClickRow:function (row) {
+            // alert(row.profile_id)
+        },
+        columns: [
+            {
+                field: 'id',
+                title: '序号',
+                align:'center',
+                width: 50 + "px"
+            },
+            {
+                field: 'create_time',
+                title: '评价日期'
+            },
+            {
+                field: 'score',
+                title: '评价得分'
+            },
+            {
+                field: 'comment',
+                title: '评价内容'
+            }
+        ]
+    });
+
+}
 function load_doctor(d_id) {
     $.ajax({
         type: "GET",
