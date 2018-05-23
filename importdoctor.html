@@ -1,0 +1,36 @@
+
+<meta charset="UTF-8">
+<!--<link rel="stylesheet" href="css/bootstrap-table.css">-->
+<link rel="stylesheet" href="css/fileinput.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+
+<div class="col-md-9">
+    <h3>导入医生资料</h3>
+    <input id="excelFile" type="file" >
+</div>
+<script src="js/admin/fileinput.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/admin/zh.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        $("#excelFile").fileinput({
+            uploadUrl: config.base_url+ "/Importxls?token="+checktoken()+"&type=doctor",//上传的地址
+            language: "zh",
+            showCaption: true,              //是否显示标题
+            showUpload: true,               //是否显示上传按钮
+            showRemove: true,               //是否显示移除按钮
+            showPreview: true,                //是否显示预览按钮
+            allowedFileExtensions: ["xls", "xlsx"], //接收的文件后缀
+            uploadExtraData: {  //上传的时候，增加的附加参数
+                // token:checktoken(),
+                // type:"doctor"
+                // folder: '数据导入文件', guid: $("#AttachGUID").val()
+            }
+        })
+        .on('fileuploaded',function (event, data, previewId, index) {
+            var res = data.response;
+            console.log(res);
+        })
+    });
+</script>
