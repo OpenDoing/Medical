@@ -1,6 +1,7 @@
 var config = {
     base_url:"http://bieke.cf:8080/ma/zxy/api/",
     img_url:"http://bieke.cf:8080/ma/zxy/public/uploads/",
+    download_url:"http://bieke.cf:8080/ma/zxy/downloads",
     doctor_live_url:"https://class.csslcloud.net/index/presenter/?userid=5B85FDD2600912FE&roomid=",
     patient_live_url:"https://class.csslcloud.net/index/talker/?userid=5B85FDD2600912FE&roomid="
 };
