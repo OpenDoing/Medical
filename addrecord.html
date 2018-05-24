@@ -1,18 +1,20 @@
 <link rel="stylesheet" href="css/step-lib.css">
 <link rel="stylesheet" href="css/bootstrap-datepicker3.css">
-<script src="js/medicalrecord/addrecord.js"></script>
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 
-<!-- 引用控制层插件样式 -->
-<link rel="stylesheet" href="css/zyUpload.css" type="text/css">
-<!-- 引用核心层插件 -->
-<script src="js/lib/zyFile.js"></script>
-<!-- 引用控制层插件 -->
-<script src="js/lib/zyUpload.js"></script>
-<!-- 引用初始化JS -->
-<script src="js/medicalrecord/imageupload.js"></script>
-<script src="js/lib/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="css/fileinput.css">
+
+<!--&lt;!&ndash; 引用控制层插件样式 &ndash;&gt;-->
+<!--<link rel="stylesheet" href="css/zyUpload.css" type="text/css">-->
+<!--&lt;!&ndash; 引用核心层插件 &ndash;&gt;-->
+<!--<script src="js/lib/zyFile.js"></script>-->
+<!--&lt;!&ndash; 引用控制层插件 &ndash;&gt;-->
+<!--<script src="js/lib/zyUpload.js"></script>-->
+<!--&lt;!&ndash; 引用初始化JS &ndash;&gt;-->
+<!--<script src="js/medicalrecord/imageupload.js"></script>-->
 
 <div class="col-md-9" role="main">
 
@@ -64,12 +66,20 @@
         <tr><td><b>图片类型</b><br/>选择要上传的图片类型</td>
             <td><select id="type" name="type" class="form-control"></select></td>
         </tr></tbody></table>
-        <div id="demo" class="demo"></div>
+
+        <!--<div id="demo" class="demo"></div>-->
+        <input id="imageFile" type="file" multiple="multiple">
+        <button class="btn btn-info" id="select">select</button>
     </div>
 
+    <script src="js/lib/jquery-1.12.4.min.js"></script>
+
+    <script src="js/medicalrecord/addrecord.js"></script>
     <script type="text/javascript" src="js/lib/step-lib.js"></script>
     <script src="js/caseInfo/bootstrap-datepicker.js"></script>                  <!--生日选择-->
     <script src="js/caseInfo/bootstrap-datepicker.zh-CN.min.js"></script>        <!--调用中文生日选择-->
+    <script src="js/admin/fileinput.js"></script>
+    <script src="js/admin/zh.js"></script>
     <script type="text/javascript">
         $(function(){
             $('.datepicker').datepicker({
@@ -80,4 +90,6 @@
             bsStep();
         });
     </script>
+
+
 </div>
