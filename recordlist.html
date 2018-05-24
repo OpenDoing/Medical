@@ -20,6 +20,10 @@
 <script src="js/caseInfo/bootstrap-table.js"></script>                       <!--table插件-->
 <script src="js/caseInfo/bootstrap-table-zh-CN.js"></script>                 <!--中文table-->
 <script src="js/medicalrecord/data.js"></script>                                  <!--table初始化-->
-<script src="js/medicalrecord/loadUser.js"></script>
-
+<script>
+    $("#addCase").on("click",function () {
+        window.location.hash = "addrecord";
+        loadInner();
+    });
+</script>
 

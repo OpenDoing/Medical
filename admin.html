@@ -116,7 +116,7 @@
                             </li>
                             <li class="list-group-item">
                                 <button class="menu-item-left" id="edit_phone">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>更改手机
+                                    <span class="glyphicon glyphicon-triangle-right"></span>账号设置
                                 </button>
                             </li>
 
@@ -146,11 +146,6 @@
         })
     });
     $(function () {
-        $(".panel-group").on("click", "button", function(){
-            window.location.hash = event.target.id; //设置锚点
-            loadInner();
-        });
-
         $(".panel-group").on("click", "button", function(){
             window.location.hash = event.target.id; //设置锚点
             loadInner();

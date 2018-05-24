@@ -42,11 +42,6 @@ $(function () {
         loadInner();
     });
 
-    $(".panel-group").on("click", "button", function(){
-        window.location.hash = event.target.id; //设置锚点
-        loadInner();
-    });
-
     loadInner();
 });
 

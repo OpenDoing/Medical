@@ -45,55 +45,10 @@ $(function () {
         loadInner();
     });
 
-    $(".panel-group").on("click", "button", function(){
-        window.location.hash = event.target.id; //设置锚点
-        loadInner();
-    });
-
-    $("#recordlist").on("click",function () {
-        window.location.hash = event.target.id; //设置锚点
-        loadInner();
-        load_profiles();
-    });
-
     loadInner();
 });
 
-function load_profiles() {
-    $.ajax({
-        url:"http://bieke.cf:8080/ma/zxy/api/userprofile",
-        type: 'get',
-        dataType: 'json',
-        data: {
-            profile_id: 0,
-            token:checktoken()
-        },
-        success: function (data) {
-            if(data.succ == 1){
-                var user = data.data;
-                var htmlNodes = '';
-                for(var i in user) {
-                    htmlNodes += '<button class="btn btn-default eborder profile_buttons" value="' + user[i].id + '"> ' + user[i].name + ' </button>';
-                }
-                $('#blist').empty().append(htmlNodes);
-                $(".profile_buttons").on("click",function () {
-                    if (document.getElementById("caseTable") == null){
-                        $("#list-info").empty().append('<table id="caseTable"></table>');
-                        init();
-                    }
-                    $('#caseTable').bootstrapTable('refresh',{url:config.base_url + "medicalrecord?profile_id=" + $(this).val() +"&token="+checktoken() + "&record_id=0"});
-                });
-            }
-            else {
-                alert(data.error);
-            }
-
-        }
-
-    });
-}
-
-// $("#CasePanel").on("click",function () {
+// function load_profiles() {
 //     $.ajax({
 //         url:"http://bieke.cf:8080/ma/zxy/api/userprofile",
 //         type: 'get',
@@ -106,12 +61,17 @@ function load_profiles() {
 //             if(data.succ == 1){
 //                 var user = data.data;
 //                 var htmlNodes = '';
-//                 $('#userList').empty();
-//
 //                 for(var i in user) {
-//                     htmlNodes += '<li class="list-group-item"><button class="menu-item-left" id="recordlist" value="' + user[i].id + '"><span class="glyphicon glyphicon-triangle-right"></span>'+user[i].name +'</button></li>';
+//                     htmlNodes += '<button class="btn btn-default eborder profile_buttons" value="' + user[i].id + '"> ' + user[i].name + ' </button>';
 //                 }
-//                 $('#userList').append(htmlNodes);
+//                 $('#blist').empty().append(htmlNodes);
+//                 $(".profile_buttons").on("click",function () {
+//                     if (document.getElementById("caseTable") == null){
+//                         $("#list-info").empty().append('<table id="caseTable"></table>');
+//                         init();
+//                     }
+//                     $('#caseTable').bootstrapTable('refresh',{url:config.base_url + "medicalrecord?profile_id=" + $(this).val() +"&token="+checktoken() + "&record_id=0"});
+//                 });
 //             }
 //             else {
 //                 alert(data.error);
@@ -120,7 +80,5 @@ function load_profiles() {
 //         }
 //
 //     });
-// });
-// $("#recordlist").on("click",function () { //病历管理
-//
-// });
+// }
+

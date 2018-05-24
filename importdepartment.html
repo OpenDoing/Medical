@@ -6,11 +6,48 @@
 
 <div class="col-md-9">
     <h3>导入科室资料</h3>
+    <button class="btn btn-info" id="infoDepartment" type="button"  data-toggle="modal" data-target="#tipDepartment" >使用说明</button>
+    <button class="btn btn-success " id="downloadDepartment">下载模板</button>
     <input id="excelFile3" type="file" >
 </div>
+
+<div class="modal fade" id="tipDepartment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" style="margin-top: 200px ;" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">导入说明</h4>
+            </div>
+            <div class="modal-body">
+                <div>1.下载示例模板</div>
+                <div>2.按照模板格式填写科室信息</div>
+                <div>3.将填写好医生信息的excel文件进行上传</div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" id="ok" data-dismiss="modal" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="js/admin/fileinput.js"></script>
-<script src="js/lib/bootstrap.min.js"></script>
+<!--<script src="js/lib/bootstrap.min.js"></script>-->
 <script src="js/admin/zh.js"></script>
+
+<script type="text/javascript">
+    $("#downloadDepartment").click(function () {
+        var $eleFormDepartment = $("<form method='get'></form>");
+
+
+        $eleFormDepartment.attr("action",config.download_url + "/department.xlsx");
+
+        $(document.body).append($eleFormDepartment);
+
+        //提交表单，实现下载
+        $eleFormDepartment.submit();
+    })
+
+</script>
 
 <script type="text/javascript">
     $(function() {
