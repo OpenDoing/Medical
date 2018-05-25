@@ -40,7 +40,7 @@ function refresh_userinfo() {
 
 
 $(function () {
-    $(".panel-group").on("click", "button", function(){
+    $(".panel-group").on("click", "button", function(event){
         window.location.hash = event.target.id; //设置锚点
         loadInner();
     });
