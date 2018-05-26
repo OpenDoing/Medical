@@ -818,6 +818,23 @@
 	color: #70a41e;
 }
 
+.doc_duty_empty {
+	display: inline-block;
+	width: 100%;
+	height: 98px;
+	background: #ffffff;
+	font-weight: 600;
+	text-align: center;
+	font-size: 14px;
+	line-height: 98px;
+	vertical-align: middle;
+}
+
+.doc_duty_empty a {
+	color: #CCCCCC;
+	/*font-size: 12px;*/
+}
+
 .doc_yuyue_time a:VISITED {
 	color: #70a41e;
 }

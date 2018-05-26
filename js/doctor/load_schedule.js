@@ -113,7 +113,7 @@ function inittable(data) {
     var empty = '<td></td>\n';
 
     //已满
-    var full = '<span class="doc_yiman">已满</span>\n';
+    var full = '<td><span class="doc_yiman">已满</span></td>\n';
 
     var time_part = '<tr></tr><td class="tomr"><span>上午</span></td>';
 

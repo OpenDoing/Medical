@@ -16,9 +16,9 @@ html, body, div, iframe, h1, h2, h3, h4, h5, h6, p, a, del, em, b, i, s,
 	white-space: normal;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-size: 100%;
-}
+/*h1, h2, h3, h4, h5, h6 {*/
+	/*font-size: 100%;*/
+/*}*/
 
 table {
 	border-collapse: collapse;
@@ -45,7 +45,7 @@ ul, ol {
 	text-align: left;
 }
 
-img, input, select, button, textarea {
+img, input, select, textarea {
 	font: 12px Arial, sans-serif;
 	vertical-align: middle;
 	padding: 0;
