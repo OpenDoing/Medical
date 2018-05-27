@@ -63,7 +63,7 @@ function init_order_table(data) {
         columns: [
             {
                 field: 'id',
-                title: '订单编号',
+                title: '编号',
                 align: 'center',
                 width: 50 + "px"
             },

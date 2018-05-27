@@ -18,10 +18,14 @@ $(function() {
                         exp.setTime(exp.getTime() + 1000 * 60 * data.data.token_valid_time); //计算毫秒
                         document.cookie = "token=" + data.token + ";expires=" + exp.toGMTString();
                         document.cookie = "data=" + JSON.stringify(data.data) + ";expires=" + exp.toGMTString();
+                        if (data.data.type_id == 2)
+                            document.cookie = "did=" + data.doctor_id + ";expires=" + exp.toGMTString();
                     }
                     else {
                         document.cookie = "token=" + data.token;
                         document.cookie = "data=" + JSON.stringify(data.data);
+                        if (data.data.type_id == 2)
+                            document.cookie = "did=" + data.doctor_id;
                     }
                     //跳转个人中心页面
                     if(data.data.type_id == 1)
