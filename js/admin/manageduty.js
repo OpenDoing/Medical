@@ -42,6 +42,83 @@ function load_time_range(flag) {
     });
 }
 
+function add_duty() {
+    $("#bOK2").attr("disabled",true).text("正在提交...");
+
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "doctorprofile/addduty",
+        data:{
+            'token':checktoken(),
+            'doctor_id':doctor_id,
+            'day':$("#weekday").val(),
+            'range':$("#range").val(),
+            'max_count':$("#max_count1").val()
+        },
+
+        success: function (data) {
+            $("#bOK2").attr("disabled",false).text("提交");
+            if(data.succ == 1){
+                var succ_message = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">\n" +
+                    "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    "                        排班添加成功\n" +
+                    "                    </div>";
+                $("#alertmessage2").append(succ_message);
+                //页面需要刷新
+                // location.reload();
+                // setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
+                //     window.location.reload();//页面刷新
+                // },1500);
+            }
+
+            else {
+                var error_message = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">\n" +
+                    "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    data.error + "</div>";
+                $("#alertmessage2").append(error_message);
+            }
+        }
+    });
+}
+
+function edit_duty() {
+    $("#bOK3").attr("disabled",true).text("正在提交...");
+
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "doctorprofile/editduty",
+        data:{
+            'token':checktoken(),
+            'sid':$("#s_id").val(),
+            'status':$("#status").val(),
+            'max_count':$("#max_count2").val()
+        },
+
+        success: function (data) {
+            $("#bOK3").attr("disabled",false).text("提交");
+            if(data.succ == 1){
+                var succ_message = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">\n" +
+                    "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    "                        排班修改成功\n" +
+                    "                    </div>";
+                $("#alertmessage3").append(succ_message);
+                //页面需要刷新
+                // location.reload();
+                // setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
+                //     window.location.reload();//页面刷新
+                // },1500);
+            }
+
+            else {
+                var error_message = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">\n" +
+                    "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    data.error + "</div>";
+                $("#alertmessage3").append(error_message);
+            }
+        }
+    });
+}
+
 function init_duty_table() {
     $('#duty').bootstrapTable({
 
