@@ -153,7 +153,7 @@ function inittable(data) {
         else
             time_part += '<td>' +
                 '<span class="doc_yuyue_time"> '+
-                '<a href="submit_order.html?did=' + data.id + '&day=' + weekday + '&flag=0' +
+                '<a target="_blank" href="submit_order.html?did=' + data.id + '&day=' + weekday + '&flag=0' +
                 '" title="门诊类型：' + data.typename + '\n' +
                 '出诊时间：'+ getdate(weekday) + '上午\n' +
                 '科室：' + data.typename + '\n' +
@@ -181,7 +181,7 @@ function inittable(data) {
         else
             time_part += '<td>' +
                 '<span class="doc_yuyue_time"> '+
-                '<a href="submit_order.html?did=' + data.id + '&day=' + weekday + '&flag=0' +
+                '<a target="_blank" href="submit_order.html?did=' + data.id + '&day=' + weekday + '&flag=0' +
                 '" title="门诊类型：' + data.typename + '\n' +
                 '出诊时间：'+ getdate(weekday) + '上午\n' +
                 '科室：' + data.typename + '\n' +

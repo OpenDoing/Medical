@@ -35,15 +35,17 @@
                 </div>
                 <div class="modal-body">
 
+                    <div id="alertmessage1"></div>
+
                     <div class="input-group marginH">
-                        <span class="input-group-addon" id="basic-addon1">当前手机</span>
+                        <span class="input-group-addon" >当前手机</span>
                         <input id="old_phone" type="text" class="form-control" placeholder="请输入当前绑定的手机号">
                     </div>
 
                     <br>
 
                     <div class="input-group marginH">
-                        <span class="input-group-addon" id="basic-addon1">新的手机</span>
+                        <span class="input-group-addon" >新的手机</span>
                         <input id="new_phone" type="text" class="form-control" placeholder="请输入新的手机号">
                     </div>
 
@@ -52,12 +54,12 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="input-group marginH" id="infoCode">
-                                <span class="input-group-addon" id="basic-addon1">短信验证码</span>
+                                <span class="input-group-addon">短信验证码</span>
                                 <input id="code" type="text" class="form-control" placeholder="手机验证码" >
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <button type="button" id="getInfoCode" class="btn btn-info" onclick="test()">点击获取</button>
+                            <button type="button" id="getInfoCode" class="btn btn-info" onclick="send()">点击获取</button>
                         </div>
                     </div>
 
@@ -65,7 +67,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button id="submit_phone" type="button" class="btn btn-success" onclick="reg_func()">确定</button>
+                        <button id="submit_phone" type="button" class="btn btn-success" onclick="edit_phone()">确定</button>
                     </div>
 
 
@@ -118,6 +120,8 @@
 </div>
 
 <script src="js/util.js"></script>
+<script src="js/time.js"></script>
+<script src="js/account.js"></script>
 <script>
     $("#phone").text(getInfoFromCookie('phone'));
 </script>
