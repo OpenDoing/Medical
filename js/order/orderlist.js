@@ -108,10 +108,13 @@ function load_profiles() {
                 var user = data.data;
                 var htmlNodes = '';
                 for(var i in user) {
-                    htmlNodes += '<button class="btn btn-default eborder profile_buttons" value="' + user[i].id + '"> ' + user[i].name + ' </button>';
+
+                    htmlNodes += '<li class="profile_buttons" value="' + user[i].id + '"><a href="#orderlist"> ' + user[i].name + '</a></li>';
+                    // htmlNodes += '<button class="btn btn-default eborder profile_buttons" value="' + user[i].id + '"> ' + user[i].name + ' </button>';
                 }
                 $('#user_list').empty().append(htmlNodes);
                 $(".profile_buttons").on("click",function () {
+                    $("#current_name").text($(this).text());
                     init_orderlist($(this).val());
                     //$('#order').bootstrapTable('refresh',{url:config.base_url + "medicalrecord?profile_id=" + $(this).val() +"&token="+checktoken() + "&record_id=0"});
                 });

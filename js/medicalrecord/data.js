@@ -126,10 +126,12 @@ function load_profiles() {
                 var user = data.data;
                 var htmlNodes = '';
                 for(var i in user) {
-                    htmlNodes += '<button class="btn btn-default eborder profile_buttons" value="' + user[i].id + '"> ' + user[i].name + ' </button>';
+                    htmlNodes += '<li class="profile_buttons" value="' + user[i].id + '"><a href="#recordlist"> ' + user[i].name + '</a></li>';
+                    // htmlNodes += '<button class="btn btn-default eborder profile_buttons" value="' + user[i].id + '"> ' + user[i].name + ' </button>';
                 }
                 $('#blist').empty().append(htmlNodes);
                 $(".profile_buttons").on("click",function () {
+                    $("#current_name").text($(this).text());
                     if (document.getElementById("caseTable") == null){
                         $("#list-info").empty().append('<table id="caseTable"></table>');
                         init();
