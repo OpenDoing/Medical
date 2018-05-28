@@ -4,14 +4,18 @@
 <!--<link href="css/reservation/basic.css" type="text/css" rel="stylesheet">-->
 <link href="css/reservation/xz_ks.css" type="text/css" rel="stylesheet">
 <div class="col-md-9">
-
-    <div id="blist" class="">
-    </div>
-
     <div id="list-info">
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="addCase">
-            添加病历
-        </button>
+        <div class="btn-group">
+            <h3>患者病历查看</h3>
+            <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" aria-expanded="false">张放<span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">严尚嘉</a></li>
+                <li><a href="#">李艾</a></li>
+                <li><a href="#">李爱丽</a></li>
+                <li class="divider"></li>
+                <li><a href="#">增加病历</a></li>
+            </ul>
+        </div>
         <table id="caseTable"></table>
     </div>
 </div>
