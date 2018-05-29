@@ -14,7 +14,7 @@ function live_btn() {
 function cancel_order() {
     bootbox.confirm({
         size: "small",
-        message: "是否删除此订单？",
+        message: "是否取消此订单？",
         callback: function(result){
             /* result is a boolean; true = OK, false = Cancel*/
             if(result == true){
@@ -70,6 +70,43 @@ function del_order() {
                             bootbox.alert({
                                 size: "small",
                                 title: "删除订单",
+                                message: res.error
+                            });
+                    }
+                });
+            }
+        }
+    })
+
+}
+
+function create_case() {
+    bootbox.confirm({
+        size: "small",
+        message: "是否生成咨询记录？",
+        callback: function(result){
+            /* result is a boolean; true = OK, false = Cancel*/
+            if(result == true){
+                $.ajax({
+                    type: "POST",
+                    url: config.base_url + "order/createcase",
+                    data: {
+                        'token': checktoken(),
+                        'profile_id':getQueryString('pid'),
+                        'order_id': getQueryString('oid'),
+                    },
+                    success:function (res) {
+                        if (res.succ === 1){
+                            bootbox.alert({
+                                size: "small",
+                                title: "生成咨询记录",
+                                message: "生成记录成功！"
+                            });
+                        }
+                        else
+                            bootbox.alert({
+                                size: "small",
+                                title: "生成咨询记录",
                                 message: res.error
                             });
                     }

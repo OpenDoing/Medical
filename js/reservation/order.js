@@ -99,7 +99,7 @@ function load_case() {
     var value = $('input[name="mem_list"]:checked').val();
     var dropdown_data = [];
     $.ajax({
-        url:"http://bieke.cf:8080/ma/zxy/api/medicalrecord",
+        url:config.base_url + "medicalrecord/all",
         type: 'get',
         dataType: 'json',
         data: {
