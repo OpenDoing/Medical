@@ -87,20 +87,22 @@
             </div>
             <div class="modal-body">
 
-                <div class="input-group marginH" id="password">
+                <div id="alertmessage2"></div>
+
+                <div class="input-group marginH">
                     <span class="input-group-addon" >请输入原密码</span>
-                    <input type="text" class="form-control" />
+                    <input type="text" id="password" class="form-control" />
                 </div>
                 <br>
 
-                <div class="input-group marginH" id="newpwd1">
+                <div class="input-group marginH" >
                     <span class="input-group-addon" >请输入新密码</span>
-                    <input type="text" class="form-control"/>
+                    <input type="text" id="newpwd1" class="form-control"/>
                 </div>
                 <br>
-                <div class="input-group marginH" id="newpwd2">
+                <div class="input-group marginH">
                     <span class="input-group-addon" >请重新输入新密码</span>
-                    <input type="text" class="form-control" />
+                    <input type="text" id="newpwd2" class="form-control" />
                 </div>
 
 
@@ -108,7 +110,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button id="submit_pwd" type="button" class="btn btn-success" onclick="reg_func()">确定</button>
+                    <button id="submit_pwd" type="button" class="btn btn-success" onclick="change_pwd()">确定</button>
                 </div>
 
 

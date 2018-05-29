@@ -42,3 +42,79 @@ $(function() {
         });
     });
 });
+
+function find_pwd() {
+    var password = $("#password").val();
+    $("#bOK").attr("disabled",true).text("正在提交...");
+
+    if (password.length < 8){
+        $("#bOK").attr("disabled",false).text("提交");
+        var error_message = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">\n" +
+            "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+            "新密码少于八位" + "</div>";
+        $("#alertmessage").append(error_message);
+        return;
+    }
+    $.ajax({
+        url:config.base_url + "User/findpwd",
+        type: 'post',
+        dataType: 'json',
+        data: {
+            phone: $("#phone").val(),
+            password: $("#password").val(),
+            code: $("#code").val()
+        },
+        success: function (data) {
+            $("#bOK").attr("disabled",false).text("提交");
+
+            if(data.succ == 1){
+                var succ_message = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">\n" +
+                    "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    "                        密码修改成功\n" +
+                    "                    </div>";
+                $("#alertmessage").append(succ_message);
+            }
+
+            else {
+                var error_message = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">\n" +
+                    "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    data.error + "</div>";
+                $("#alertmessage").append(error_message);
+            }
+        }
+
+    });
+}
+
+function send() {
+    sendsms();
+    time(document.getElementById("getInfoCode"));
+}
+
+function sendsms() {
+    $.ajax({
+        url:"http://bieke.cf:8080/ma/zxy/api/Smscode/send",
+        type: 'post',
+        dataType: 'json',
+        data: {
+            phone: $("#phone").val(),
+            action: "FINDPWD"
+        },
+        success: function (data) {
+            if(data.succ == 1){
+                var succ_message = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">\n" +
+                    "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    "                        发送成功\n" +
+                    "                    </div>";
+                $("#alertmessage").append(succ_message);
+            }
+            else{
+                var error_message = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">\n" +
+                    "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    data.error + "</div>";
+                $("#alertmessage").append(error_message);
+            }
+        }
+
+    });
+}
