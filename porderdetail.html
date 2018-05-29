@@ -38,7 +38,9 @@
                 <div class="fn-right">
                     <button class="btn btn-warning " id="live" value="" disabled="disabled" onclick="live_btn()">进入直播间</button>
                     <button class="btn btn-info" id="introduction">使用说明</button>
-                    <button class="btn btn-info" id="eva" data-toggle="modal" data-target="#evaluation">评价</button>
+                    <button class="btn btn-success" id="eva" data-toggle="modal" disabled="disabled" data-target="#evaluation">评价</button>
+                    <button class="btn btn-danger " id="cancel" value="" disabled="disabled" onclick="cancel_order()">取消订单</button>
+                    <button class="btn btn-danger " id="del" value="" disabled="disabled" onclick="del_order()">删除订单</button>
                 </div>
             </div>
         </div>
@@ -126,7 +128,7 @@
                                 <label class="m_flo">描述：</label>
                             </td>
                             <td >
-                                <textarea style="height: 100px;" name="" id="content" class="" placeholder="不要在评论栏涉及您的个人相关信息"></textarea>
+                                <textarea style="height: 100px;" name="" id="content" class="" placeholder="评论公开展示，请不要在评论中泄露个人信息"></textarea>
                             </td>
                         </tr>
 
@@ -194,6 +196,7 @@
 
 <script src="js/lib/jquery-1.12.4.min.js"></script>
 <script src="js/lib/bootstrap.min.js"></script>
+<script src="js/lib/bootbox.min.js"></script>
 <script src="js/order/switch.js"></script>
 <script src="js/order/comment.js"></script>
 <script src="js/caseInfo/bootstrap-table.js"></script>                       <!--table插件-->

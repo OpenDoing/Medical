@@ -11,6 +11,75 @@ function live_btn() {
     window.open(url);
 }
 
+function cancel_order() {
+    bootbox.confirm({
+        size: "small",
+        message: "是否删除此订单？",
+        callback: function(result){
+            /* result is a boolean; true = OK, false = Cancel*/
+            if(result == true){
+                $.ajax({
+                    type: "POST",
+                    url: config.base_url + "order/delete",
+                    data: {
+                        'token': checktoken(),
+                        'profile_id':getQueryString('pid'),
+                        'order_id': getQueryString('oid'),
+                    },
+                    success:function (res) {
+                        if (res.succ === 1){
+                            setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
+                                window.location.reload();//页面刷新
+                            },1500);
+                        }
+                        else
+                            bootbox.alert({
+                                size: "small",
+                                title: "取消订单",
+                                message: res.error
+                            });
+                    }
+                });
+            }
+        }
+    })
+}
+
+function del_order() {
+    bootbox.confirm({
+        size: "small",
+        message: "是否删除此订单？",
+        callback: function(result){
+            /* result is a boolean; true = OK, false = Cancel*/
+            if(result == true){
+                $.ajax({
+                    type: "POST",
+                    url: config.base_url + "order/delete",
+                    data: {
+                        'token': checktoken(),
+                        'profile_id':getQueryString('pid'),
+                        'order_id': getQueryString('oid')
+                    },
+                    success:function (res) {
+                        if (res.succ === 1){
+                            setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
+                                window.location.reload();//页面刷新
+                            },1500);
+                        }
+                        else
+                            bootbox.alert({
+                                size: "small",
+                                title: "删除订单",
+                                message: res.error
+                            });
+                    }
+                });
+            }
+        }
+    })
+
+}
+
 function init() {
     $('#order_case').bootstrapTable({
         dataType:'json',
@@ -171,6 +240,15 @@ function orderdetail(oid,pid) {
             if (response.data.status == '咨询中'){
                 $("#live").attr("disabled", false);
                 $("#live").attr('value',response.data.live_link);
+            }
+            if (response.data.status == '待支付'){
+                $("#cancel").attr("disabled", false);
+            }
+            if (response.data.status == '已取消'){
+                $("#del").attr("disabled", false);
+            }
+            if (response.data.status == '待评价'){
+                $("#eva").attr("disabled", false);
             }
             if(response.data.sex == 1)
                 $("#sex").text("男");
