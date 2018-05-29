@@ -70,24 +70,39 @@ window.operateEvents = {
                     'record_id':row.id
                 },
                 success: function (data) {
-                    if(data.succ == 1){
+                    if(data.succ === 1){
                         var images = data.data;
                         var imagehtml = '';
-
+                        var head = '';
+                        var tail = '</div>';
                         for (var i in images){
-                            imagehtml += '<div class="col-sm-6 col-md-4">\n' +
+                            console.log(i);
+                            if((i+1)%3 === 1 ){                 //换行
+                                head = '<div class="row">';
+                                console.log(head);
+                                imagehtml += head;
+                            }else{
+                                head = '';
+                            }
+                            imagehtml +=  '<div class="col-md-4" >\n' +
                                 '    <div class="thumbnail">\n' +
                                 '        <a class="lightbox" href="' + config.img_url + images[i].link +'">\n' +
-                                '            <img src="' + config.img_url + images[i].link + '" alt="' + images[i].type_id + '">\n' +
+                                '            <img width="200" class="img-responsive" src="' + config.img_url + images[i].link + '" alt="' + images[i].type_id + '">\n' +
                                 '        </a>\n' +
                                 '        <div class="caption">\n' +
                                 '            <h3>' + images[i].type_id + '</h3>\n' +
                                 '            <p>上传时间:' + images[i].create_time + '</p>\n' +
                                 '        </div>\n' +
                                 '    </div>\n' +
-                                '</div>'
+                                '</div>' ;
+                            if ((i+1)%3 === 0) {
+                                imagehtml += tail;
+                            }
+
                         }
                         $("#image-items").empty().append(imagehtml);
+
+
                         baguetteBox.run('.tz-gallery');
                     }
                     else {

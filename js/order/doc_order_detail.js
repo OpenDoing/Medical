@@ -122,11 +122,12 @@ window.operateEvents = {
                 },
                 success: function (data) {
                     console.log(data);
-                    if(data.succ == 1){
+                    if(data.succ === 1){
                         var images = data.data.images;
                         var imagehtml = '';
-
-                        if (images.length == 0){
+                        var head = '';
+                        var tail = '</div>';
+                        if (images.length === 0){
                             var message = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">\n" +
                                 "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
                                 "暂无病历图片" +
@@ -136,7 +137,14 @@ window.operateEvents = {
                         }
 
                         for (var i in images){
-                            imagehtml += '<div class="col-sm-6 col-md-4">\n' +
+                            if((i+1)%3 === 1 ){                 //换行
+                                head = '<div class="row">';
+                                console.log(head);
+                                imagehtml += head;
+                            }else{
+                                head = '';
+                            }
+                            imagehtml += '<div class="col-md-4">\n' +
                                 '    <div class="thumbnail">\n' +
                                 '        <a class="lightbox" href="' + config.img_url + images[i].link +'">\n' +
                                 '            <img src="' + config.img_url + images[i].link + '" alt="' + images[i].type_id + '">\n' +
@@ -146,7 +154,10 @@ window.operateEvents = {
                                 '            <p>上传时间:' + images[i].create_time + '</p>\n' +
                                 '        </div>\n' +
                                 '    </div>\n' +
-                                '</div>'
+                                '</div>';
+                            if ((i+1)%3 === 0) {
+                                imagehtml += tail;
+                            }
                         }
                         $("#image-items").empty().append(imagehtml);
                         baguetteBox.run('.tz-gallery');
