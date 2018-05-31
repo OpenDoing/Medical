@@ -52,7 +52,11 @@
                 'introduction': $('#description').val()
             },
             success: function (data) {
-                alert(data.msg);
+                bootbox.alert({
+                    size: "small",
+                    title: "修改医生介绍",
+                    message: data.msg
+                });
             }
         });
     });

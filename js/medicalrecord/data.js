@@ -84,10 +84,14 @@ window.operateEvents = {
                             }else{
                                 head = '';
                             }
+
+                            var date = images[i].link.split("\\")[0];
+                            var name = images[i].link.split("\\")[1];
+
                             imagehtml +=  '<div class="col-md-4" >\n' +
                                 '    <div class="thumbnail">\n' +
                                 '        <a class="lightbox" href="' + config.img_url + images[i].link +'">\n' +
-                                '            <img width="200" class="img-responsive" src="' + config.img_url + images[i].link + '" alt="' + images[i].type_id + '">\n' +
+                                '            <img width="200" class="img-responsive" src="' + config.img_url + date + "/thumb_" + name + '" alt="' + images[i].type_id + '">\n' +
                                 '        </a>\n' +
                                 '        <div class="caption">\n' +
                                 '            <h3>' + images[i].type_id + '</h3>\n' +

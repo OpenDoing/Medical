@@ -8,7 +8,7 @@ function initImage() {
             uploadUrl: config.base_url+ "Recordimage/upload" , //上传的地址  ?token="+checktoken()+"&type=doctor
             language: "zh",
             showCaption: true,              //是否显示标题
-            uploadAsync: false,
+            uploadAsync: true,
             showUpload: true,               //是否显示上传按钮
             showRemove: true,               //是否显示移除按钮
             showPreview: true,                //是否显示预览按钮
