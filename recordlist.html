@@ -7,14 +7,19 @@
     <div id="list-info">
         <h3>患者病历查看</h3>
         <div class="btn-group" style="float:left;margin-right:10px;">
-            <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" aria-expanded="false" id="current_name">选择患者 <span class="caret"></span></button>
+            <button type="button" id="current_name" class="btn btn-default">选择患者</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+            </ul>
             <ul id="blist" class="dropdown-menu" role="menu"></ul>
         </div>
 
         <button type="button" id="addCase" class="btn btn-primary">添加患者病历</button>
 
         <table id="caseTable"></table>
-
     </div>
 </div>
 
