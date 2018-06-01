@@ -1,8 +1,9 @@
-// window.onunload = function () {
-//     init_log(1);
-//     // load_log();
-//
-// };
+window.onload = init();
+
+function init() {
+    load_log();
+    init_log(1);
+}
 
 function init_log(status) {
     $.ajax({
@@ -15,22 +16,20 @@ function init_log(status) {
         success: function (data) {
             if (data.succ == 1){
                 $('#login-s1').bootstrapTable('load',data.data);
-                // console.log("shuju");
-                load_log(data.data);
+
             }
         }
     });
 }
 
 
-function load_log(data) {
+function load_log() {
 
     $('#login-s1').bootstrapTable({
 
         method:"GET",
         dataType:'json',
         pagination:true,
-        // data:data,
 
         onLoadSuccess: function(){  //加载成功时执行
             return "加载成功";

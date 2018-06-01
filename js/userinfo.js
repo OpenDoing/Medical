@@ -47,38 +47,3 @@ $(function () {
 
     loadInner();
 });
-
-// function load_profiles() {
-//     $.ajax({
-//         url:"http://bieke.cf:8080/ma/zxy/api/userprofile",
-//         type: 'get',
-//         dataType: 'json',
-//         data: {
-//             profile_id: 0,
-//             token:checktoken()
-//         },
-//         success: function (data) {
-//             if(data.succ == 1){
-//                 var user = data.data;
-//                 var htmlNodes = '';
-//                 for(var i in user) {
-//                     htmlNodes += '<button class="btn btn-default eborder profile_buttons" value="' + user[i].id + '"> ' + user[i].name + ' </button>';
-//                 }
-//                 $('#blist').empty().append(htmlNodes);
-//                 $(".profile_buttons").on("click",function () {
-//                     if (document.getElementById("caseTable") == null){
-//                         $("#list-info").empty().append('<table id="caseTable"></table>');
-//                         init();
-//                     }
-//                     $('#caseTable').bootstrapTable('refresh',{url:config.base_url + "medicalrecord?profile_id=" + $(this).val() +"&token="+checktoken() + "&record_id=0"});
-//                 });
-//             }
-//             else {
-//                 alert(data.error);
-//             }
-//
-//         }
-//
-//     });
-// }
-

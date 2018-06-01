@@ -134,7 +134,7 @@ function inittable(data) {
         .replace('{name}',data.name)
         .replace(new RegExp("{type}","gm"),data.typename)
         .replace('{department}',data.department)
-        .replace('{description}',data.introduction.substr(0,80));
+        .replace('{description}',data.introduction.substr(0,80) + "...");
 
     //2.拼接时间表
     //解析剩余号数
