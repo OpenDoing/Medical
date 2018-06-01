@@ -125,8 +125,8 @@ function reply() {
         url: config.base_url + "evaluation/admin_reply",
         data: {
             'token':token,
-            'eid':$('#eid').val(),
-            'reply':$("#text_reply").val(),
+            'eid':$('#eid').text(),
+            'reply':$("#text_reply").val()
         },
         success: function (data) {
             $("#bOK").attr("disabled",false).text("提交");
@@ -150,8 +150,8 @@ function reply() {
 
 window.operateEvents = {
     'click #edit': function (e, value, row, index) {
-        $('#eid').val(row.id);
-        $('#comment').val(row.comment);
+        $('#eid').text(row.id);
+        $('#comment').text(row.comment);
         $('#order_info').attr("href","adminorder.html?oid=" + row.oid);
 
         $.ajax({

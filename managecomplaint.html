@@ -42,24 +42,39 @@
                         <h3 class="panel-title">投诉信息</h3>
                     </div>
 
-                    <table class="table table-hover">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-bullhorn sameline"></span>
+                            <b>投诉编号：</b>
+                            <div class="sameline" id="eid"></div></li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-user sameline"></span>
+                            <b>订单信息：</b>
+                            <div class="sameline"><a id="order_info" href="" target="_blank">点击查看订单信息</a></div></li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-user sameline"></span>
+                            <b>投诉内容：</b>
+                            <div class="sameline" id="comment"></div></li>
+                    </ul>
 
-                        <tbody>
-                        <tr><td><b>投诉编号</b><br>当前查看的投诉编号</td>
-                            <td>
-                                <input type="text" id="eid" class="form-control" aria-describedby="basic-addon1" disabled="disabled">
-                            </td>
-                        </tr>
-                        <tr><td><b>查看订单</b><br>查看被投诉的订单信息</td>
-                            <td>
-                                <a id="order_info" href="" target="_blank">点击查看订单信息</a>
-                            </td></tr>
-                        <tr><td><b>投诉内容</b><br>查看被投诉的订单信息</td>
-                            <td>
-                                <textarea id="comment" class="form-control" aria-describedby="basic-addon1" disabled="disabled"></textarea>
-                            </td></tr>
+                    <!--<table class="table table-hover">-->
 
-                        </tbody></table>
+                        <!--<tbody>-->
+                        <!--<tr><td><b>投诉编号</b><br>当前查看的投诉编号</td>-->
+                            <!--<td>-->
+                                <!--<input type="text" id="eid" class="form-control" aria-describedby="basic-addon1" disabled="disabled">-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <!--<tr><td><b>查看订单</b><br>查看被投诉的订单信息</td>-->
+                            <!--<td>-->
+                                <!--<a id="order_info" href="" target="_blank">点击查看订单信息</a>-->
+                            <!--</td></tr>-->
+                        <!--<tr><td><b>投诉内容</b><br>查看被投诉的订单信息</td>-->
+                            <!--<td>-->
+                                <!--<textarea id="comment" class="form-control" aria-describedby="basic-addon1" disabled="disabled"></textarea>-->
+                            <!--</td></tr>-->
+
+                        <!--</tbody></table>-->
 
                 </div>
 
