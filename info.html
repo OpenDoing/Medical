@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="panel panel-primary leftMenu">
-                    <div class="panel-heading" id="CasePanel" data-toggle="collapse" data-target="" role="tab" >
+                    <div class="panel-heading" id="CasePanel" data-toggle="collapse" data-target="#CaseManage" role="tab" >
                         <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
                         <h4 class="panel-title">
                             病历管理
@@ -77,10 +77,6 @@
                                     <span class="glyphicon glyphicon-triangle-right"></span>病历管理
                                 </button>
                             </li>
-                        </ul>
-                    </div>
-                    <div id="OrderlogManage" class="panel-collapse collapse in" role="tabpanel" >
-                        <ul class="list-group" >
                             <li class="list-group-item">
                                 <button class="menu-item-left" id="orderloglist">
                                     <span class="glyphicon glyphicon-triangle-right"></span>线上咨询记录
@@ -88,6 +84,11 @@
                             </li>
                         </ul>
                     </div>
+                    <!--<div id="OrderlogManage" class="panel-collapse collapse in" role="tabpanel" >-->
+                        <ul class="list-group" >
+
+                        </ul>
+                    <!--</div>-->
                 </div>
 
 
@@ -128,7 +129,7 @@
                     <div id="MyAccount" class="panel-collapse collapse in" role="tabpanel" >
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <button class="menu-item-left" id="login_log">
+                                <button class="menu-item-left" id="login_log" onclick="init_log(1)">
                                     <span class="glyphicon glyphicon-triangle-right"></span>登录记录
                                 </button>
                             </li>
@@ -207,6 +208,7 @@
 <script src="js/lib/bootstrap.min.js "></script>
 <script src="js/caseInfo/bootstrap-table.js"></script>                       <!--table插件-->
 <script src="js/caseInfo/bootstrap-table-zh-CN.js"></script>                 <!--中文table-->
+<script src="js/login_log.js"></script>
 <script src="js/util.js"></script>
 <script src="js/medicalrecord/data.js"></script>
 <script src="js/userinfo.js"></script>
@@ -235,6 +237,7 @@
         })
     });
 </script>
+
 </body>
 
 </html>
