@@ -80,7 +80,7 @@ function load_duty(day,flag,did) {
                     data.data[i].text_status = status[data.data[i].status];
                 }
                 $('#duty').bootstrapTable('load',data.data);
-                $(".fixed-table-loading")[0].style.display="none";      //数据加载成功  加载那行字去掉
+                $(".fixed-table-loading")[1].style.display="none";      //数据加载成功  加载那行字去掉
             }
         }
     });
