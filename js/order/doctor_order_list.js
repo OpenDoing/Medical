@@ -101,7 +101,7 @@ function load() {
                 $("#link").attr("href",href);
 
             }else {
-                $("#content").text("当前暂无排队信息");
+                $("#content").text("暂无待咨询的患者");
             }
         }
     });
