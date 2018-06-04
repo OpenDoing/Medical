@@ -2,24 +2,24 @@
 	background-color:#337ab7;
 }
 
-.nav-font{
-	font-size: 20px;
-	text-align: center;
-	color: white !important;
-}
+/*.nav-font{*/
+	/*font-size: 20px;*/
+	/*text-align: center;*/
+	/*color: white !important;*/
+/*}*/
 
-.navbar{
-	min-height: 60px;
-	box-shadow: 10px 10px 10px rgba(111,111,111,.5);
-}
+/*.navbar{*/
+	/*min-height: 60px;*/
+	/*box-shadow: 10px 10px 10px rgba(111,111,111,.5);*/
+/*}*/
 
-.navbar-brand{
-	min-height: 60px;
-}
+/*.navbar-brand{*/
+	/*min-height: 60px;*/
+/*}*/
 
-.navbar-right{
-	margin-right: 20px;
-}
+/*.navbar-right{*/
+	/*margin-right: 20px;*/
+/*}*/
 
 .container{
 	margin-top: 40px;
@@ -87,7 +87,7 @@
 .notification{
 	/*border:1px solid lightblue;*/
     line-height:200%;
-	text-indent:20px;
+	/*text-indent:20px;*/
 }
 
 #NotFrame{

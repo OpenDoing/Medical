@@ -34,6 +34,11 @@ function checktoken() {
     return getCookie('token');
 }
 
+//todo:退出登录
+function logout() {
+    alert("logout");
+}
+
 function loadInner(){
     var sId = window.location.hash;
     var pathn, i, data;
@@ -98,4 +103,44 @@ function getNowFormatDate() {
     }
     var currentdate = year + seperator1 + month + seperator1 + strDate;
     return currentdate;
+}
+
+
+//顶部导航栏公共操作
+
+//全屏切换
+function fulls() {
+    if ((document.fullScreenElement && document.fullScreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+        $('body').addClass("full-screen");
+        if (document.documentElement.requestFullScreen) {
+            document.documentElement.requestFullScreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+            document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullScreen) {
+            document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+        }
+    } else {
+        $('body').removeClass("full-screen");
+        if (document.cancelFullScreen) {
+            document.cancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        }
+    }
+}
+
+//侧边栏隐藏展开
+function switch_sidebar() {
+        var toggleButton = $('#toggle-sidebar');
+        var toggleIcon = toggleButton.find('i');
+        //sidebar
+        $('#sidebar').toggleClass('hide-sidebar');
+        if($('#sidebar').hasClass('hide-sidebar')) {
+            toggleIcon.css("transform","rotate(-180deg)");
+        } else {
+            toggleIcon.css("transform","rotate(0deg)");
+        }
+
 }
