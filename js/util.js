@@ -53,8 +53,8 @@ function loadInner(){
             refresh_doctorinfo();
         }
         else if (getInfoFromCookie('type_id') == 3){
-            //todo:管理员首页
-            pathn = "admin_index.html";
+            pathn = "admin_baseinfo.html";
+            refresh_admininfo();
         }
 
     }

@@ -20,13 +20,13 @@ function sendsms() {
                     "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
                     "                        发送成功\n" +
                     "                    </div>";
-                $("#alertmessage1").append(succ_message);
+                $("#alertmessage3").append(succ_message);
             }
             else{
                 var error_message = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">\n" +
                     "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
                     data.error + "</div>";
-                $("#alertmessage1").append(error_message);
+                $("#alertmessage3").append(error_message);
             }
         }
 
@@ -106,7 +106,7 @@ function edit_phone() {
                     "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
                     "                        手机号修改成功\n" +
                     "                    </div>";
-                $("#alertmessage1").append(succ_message);
+                $("#alertmessage3").append(succ_message);
                 //页面需要刷新
                 // location.reload();
                 // setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
@@ -118,7 +118,7 @@ function edit_phone() {
                 var error_message = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">\n" +
                     "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
                     data.error + "</div>";
-                $("#alertmessage1").append(error_message);
+                $("#alertmessage3").append(error_message);
             }
         }
 

@@ -1,12 +1,12 @@
 loadInner();
-window.onunload = refresh_userinfo();
+window.onunload = refresh_admininfo();
 
-function patient_group() {
+function admin_group() {
     window.location.hash = event.target.id; //设置锚点
     loadInner();
 }
 
-function refresh_userinfo() {
+function refresh_admininfo() {
 
     $.ajax({
         type: "POST",
@@ -38,8 +38,4 @@ function refresh_userinfo() {
             }
         }
     });
-
-    if (window.location.hash == '#recordlist'){
-        load_profiles();
-    }
 }

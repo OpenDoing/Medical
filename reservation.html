@@ -8,46 +8,47 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>预约医生</title>
 
-    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
-
-    <link rel="stylesheet" href="css/info.css" />
-
     <link href="css/reservation/basic.css" type="text/css" rel="stylesheet">
     <link href="css/reservation/xz_ks.css" type="text/css" rel="stylesheet">
     <link href="css/jquery.pagination.css" type="text/css" rel="stylesheet">
 
+    <!--解决与bootstrap的css冲突-->
+    <style>
+        th {
+            font-weight: bold;
+            text-align: center;
+        }
+        .small, small {
+             font-size: 100%;
+        }
+        dd, dt {
+            line-height: unset;
+        }
+        .department_item {
+             box-sizing: unset;
+            -webkit-box-sizing: unset;
+        }
+    </style>
 </head>
-
-<header>
-    <img src="img/logo.png" class="logo"/>
-    <!--<a href="#" class="logo"></a>-->
-    <div class="desc">个人中心</div>
-    <a id="hhome" href="#">网站首页</a>
-    <a id="hname" href="#">退出登录</a>
-
-</header>
 
 <body>
 
 
 
-<div class="middle">
+<!--<div class="middle">-->
 
     <div class="yy_ys">
 
-            <div class="section">
-                当前所在位置：<a href="./info.html">首页</a> &gt; 选择挂号
-            </div>
+        <br>
+        <h3>预约医生</h3>
+        <br>
 
-            <p class="search_num">
-                <strong>预约咨询</strong>
-            </p>
             <div class="hotmian">
 
                 <dl class="yy_list">
                     <dt>科室分类：</dt>
                     <dd>
-                        <em class="department_item" style="background:#7fcee2; color:#fff;" id="department0" onclick="switch_department(0)">不限</em>
+                        <em class="department_item" style="background:#75b9e6; color:#fff;" id="department0" onclick="switch_department(0)">不限</em>
 
                         <span id="departments" class="big">
 
@@ -74,7 +75,7 @@
 
 
     </div>
-</div>
+<!--</div>-->
 
 </body>
 

@@ -34,10 +34,12 @@
 
                         <div class="profile-quote">
                             <p>欢迎登录个人中心！</p>
-                            <br>
                             <p>注册时间：<span id="profile-create-time"></span></p>
-                            <br>
                             <p>最后登录：<span id="profile-last-login"></span></p>
+
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#change-phone-modal">修改手机</button>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#change-pwd-modal">修改密码</button>
+
                         </div>
 
                     </div>
@@ -240,6 +242,101 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<div class="modal fade in" id="change-phone-modal" aria-hidden="true" aria-labelledby="change-phone-label" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" type="button">&times;</button>
+                <h4 class="modal-title">修改绑定手机</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="alertmessage3"></div>
+
+                <div class="input-group marginH">
+                    <span class="input-group-addon" >当前手机</span>
+                    <input id="old_phone" type="text" class="form-control" placeholder="请输入当前绑定的手机号">
+                </div>
+
+                <br>
+
+                <div class="input-group marginH">
+                    <span class="input-group-addon" >新的手机</span>
+                    <input id="new_phone" type="text" class="form-control" placeholder="请输入新的手机号">
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="input-group marginH" id="infoCode">
+                            <span class="input-group-addon">短信验证码</span>
+                            <input id="code" type="text" class="form-control" placeholder="手机验证码" >
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" id="getInfoCode" class="btn btn-info" onclick="send()">点击获取</button>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button id="submit_phone" type="button" class="btn btn-success" onclick="edit_phone()">确定</button>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade in" id="change-pwd-modal" aria-hidden="true" aria-labelledby="change-pwd-label" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" type="button">&times;</button>
+                <h4 class="modal-title">修改密码</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="alertmessage2"></div>
+
+                <div class="input-group marginH">
+                    <span class="input-group-addon" >请输入原密码</span>
+                    <input type="text" id="password" class="form-control" />
+                </div>
+                <br>
+
+                <div class="input-group marginH" >
+                    <span class="input-group-addon" >请输入新密码</span>
+                    <input type="text" id="newpwd1" class="form-control"/>
+                </div>
+                <br>
+                <div class="input-group marginH">
+                    <span class="input-group-addon" >请重新输入新密码</span>
+                    <input type="text" id="newpwd2" class="form-control" />
+                </div>
+
+
+                <br>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button id="submit_pwd" type="button" class="btn btn-success" onclick="change_pwd()">确定</button>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <script src="js/lib/bootbox.min.js"></script>
 <script src="js/caseInfo/cityData.js"></script>                              <!--城市库-->
 <script src="js/caseInfo/city.js"></script>                                  <!--三级联动逻辑-->
@@ -255,5 +352,9 @@
         });
     });
 </script>                                  <!--设置生日语言-->
+
+<script src="js/util.js"></script>
+<script src="js/time.js"></script>
+<script src="js/account.js"></script>
 <script src="js/patientinfo/addpatient.js"></script>
 

@@ -18,14 +18,14 @@
                         <dd class="mod-account-avatar profile-avatar">
                             <a class="account-avatar-panel" target="_blank">
                                 <img class="account-avatar-show img-responsive" id="profile-avatar" width="150" height="150" src="" data-target="#avatar-modal" data-toggle="modal">
-                                <span class="account-avatar-edit">修改照片</span>
+                                <span class="account-avatar-edit">修改头像</span>
                             </a>
                         </dd>
                     </div>
                     <div class="col-lg-8 col-md-8 col-sm-12">
                         <div class="profile-name">
                             <span id="profile-name"></span>
-                             <span class="label label-success" id="profile-type">医生</span>
+                             <span class="label label-success" id="profile-type">管理员</span>
                         </div>
 
                         <div class="profile-quote">
@@ -43,8 +43,6 @@
                     <ul class="profile-info">
                         <li><i class="ec-mobile"></i> <span id="profile-phone"></span> </li>
                         <li><i class="ec-location"></i> 南京鼓楼医院</li>
-                        <li><i class="im-office"></i> <span id="profile-department"></span> </li>
-                        <li><i class="fa-bitbucket"></i> <span id="profile-dtype"></span> </li>
                     </ul>
                 </div>
             </div>
@@ -56,30 +54,10 @@
             <div class="panel panel-default plain" id="spr_1">
                 <!-- Start .panel -->
                 <div class="panel-heading white-bg">
-                    <h4 class="panel-title"><i class="ec-user"></i> 医生资料</h4>
+                    <h4 class="panel-title"><i class="ec-user"></i> 系统信息</h4>
                 </div>
                 <div class="panel-body">
 
-                    <form class="form-vertical hover-stripped" role="form">
-                        <div class="form-group">
-                            <label class="control-label">姓名</label>
-                            <input type="text" class="form-control" id="docname" disabled="disabled">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">科室</label>
-                            <input type="text" class="form-control" id="department" disabled="disabled">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">类型</label>
-                            <input type="email" class="form-control" id="dtype" disabled="disabled">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">详细介绍</label>
-                            <textarea class="form-control" rows="12" id="introduction"></textarea>
-                        </div>
-                        <!-- End .form-group  -->
-                    </form>
-                    <button class="btn btn-primary" id="submit">保存</button>
 
                 </div>
             </div>
@@ -190,41 +168,4 @@
 <script src="js/util.js"></script>
 <script src="js/time.js"></script>
 <script src="js/account.js"></script>
-<script>
-    $.ajax({
-        type: "POST",
-        url: config.base_url + "Doctorprofile/tokenquery",
-        data:{
-            'token':checktoken()
-        },
-        success: function (data) {
-            if (data.succ == 1){
-                $('#docname').val(data.data.name);
-                $('#department').val(data.data.department);
-                $('#profile-department').text(data.data.department);
-                $('#profile-dtype').text(data.data.typename);
-                $('#dtype').val(data.data.typename);
-                $('#introduction').val(data.data.introduction);
-            }
-        }
-    });
-    $("#submit").click(function () {
-        $.ajax({
-            type: "POST",
-            url: config.base_url + "Doctorprofile/update",
-            data:{
-                'token':checktoken(),
-                'introduction': $('#introduction').val()
-            },
-            success: function (data) {
-                bootbox.alert({
-                    size: "small",
-                    title: "修改医生介绍",
-                    message: data.msg
-                });
-            }
-        });
-    });
-
-</script>
 

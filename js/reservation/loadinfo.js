@@ -66,7 +66,7 @@ function switch_department(id) {
     department_id = id;
     $(".department_item").css({"background":"white","color":"black"});
     var textid = '#department' + id;
-    $(textid).css({"background":"#7fcee2","color":"#fff"});
+    $(textid).css({"background":"#75b9e6","color":"#fff"});
     load_doctor(id,1);
 }
 
