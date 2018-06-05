@@ -1160,7 +1160,7 @@ body.full-screen #header {
   display: none;
   margin-right: -1px;
 }
-#sidebar #sideNav li .sub a {
+#sidebar #sideNav .collapse .sub li a {
   background: #fcfcfd;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;

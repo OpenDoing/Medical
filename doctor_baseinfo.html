@@ -1,106 +1,133 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<br>
 <link href="css/reservation/basic.css" type="text/css" rel="stylesheet">
 <link href="css/reservation/xz_ks.css" type="text/css" rel="stylesheet">
 
-<div class="col-md-9" id="frameLine">
-    <div class="row user_info">
-        <div class="col-md-3">
-            <!--<span id="sImg">-->
-            <!--<img src="" id="hImg" class="img-circle" data-am-popover="{content: '点击上传', trigger: 'hover focus'}"/>-->
-            <!--<a href="#" id="headImg">修改头像</a>-->
-            <!--</span>-->
-            <dd class="mod-account-avatar">
-                <a class="account-avatar-panel" target="_blank">
-                    <img class="account-avatar-show img-circle" id="hImg" src="" width="80" height="80" data-target="#avatar-modal" data-toggle="modal">
-                    <span class="account-avatar-edit">修改照片</span>
-                </a>
-            </dd>
-
-        </div>
-        <div class="col-md-9 Inform">			<!--getUserName-->
-            <div id="userInform">
-                <div id="userHi" class="hello"></div>
-                <div class="hello" id="nihao">医生，您好</div>
-            </div>
-            <div class="timeInform">
-                <div class="sameline">注册时间：</div>
-                <span id="createTime" > </span>
-                <div class="space sameline">最后登录时间：</div>
-                <span id="lastTime" class="sameline"> </span>
-            </div>
-            <div class="phInform ">
-                手机号：
-                <span id="tel">			<!--getPhoneNumber-->
-
-                </span>
-                <a href="#">更换手机号</a>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-<div class="col-md-9" id="NotFrame">
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">今日预约咨询</h3>
-        </div>
-
-        <div id="list-orders">
-            <table id="order"></table>
-        </div>
-
-    </div>
-
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">我的排班</h3>
-        </div>
-
-        <div class="yy_paiban">
-            <table id="maintable" width="100%">
-                <thead id="thead">
-
-                </thead>
-
-                <tbody id="tbody">
-
-                </tbody>
-            </table>
-        </div>
-
-    </div>
-
-</div>
-
-<!--排班列表弹框-->
-<div class="modal fade" tabindex="-1" role="dialog" id="duty-list-modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" >排班列表</h4>
-            </div>
-            <div class="modal-body">
-
-
-                <div id="list-duty">
-                    <table id="duty"></table>
+<div class="outlet">
+    <!-- Start .outlet -->
+    <!-- Page start here ( usual with .row ) -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <!-- col-lg-4 start here -->
+            <div class="panel panel-default plain profile-widget" id="spr_0">
+                <!-- Start .panel -->
+                <div class="panel-heading white-bg pl0 pr0">
+                    <img class="profile-image img-responsive" src="img/profile-cover.jpg" alt="profile cover">
                 </div>
+                <div class="panel-body">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <!--<div class="profile-avatar">-->
+                            <!--<img class="img-responsive" src="" id="profile-avatar">-->
+                        <!--</div>-->
+                        <dd class="mod-account-avatar profile-avatar">
+                            <a class="account-avatar-panel" target="_blank">
+                                <img class="account-avatar-show img-responsive" id="profile-avatar" width="150" height="150" src="" data-target="#avatar-modal" data-toggle="modal">
+                                <span class="account-avatar-edit">修改照片</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-12">
+                        <div class="profile-name">
+                            <span id="profile-name"></span>
+                             <span class="label label-success" id="profile-type">医生</span>
+                        </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                        <div class="profile-quote">
+                            <p>欢迎登录个人中心！</p>
+                            <br>
+                            <p>注册时间：<span id="profile-create-time"></span></p>
+                            <br>
+                            <p>最后登录：<span id="profile-last-login"></span></p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel-footer white-bg">
+                    <ul class="profile-info">
+                        <li><i class="ec-mobile"></i> <span id="profile-phone"></span> </li>
+                        <li><i class="ec-location"></i> 南京鼓楼医院</li>
+                        <li><i class="im-office"></i> <span id="profile-department"></span> </li>
+                        <li><i class="fa-bitbucket"></i> <span id="profile-dtype"></span> </li>
+                    </ul>
                 </div>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+            <!-- End .panel -->
+        </div>
+        <!-- col-lg-4 end here -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <!-- col-lg-4 start here -->
+            <div class="panel panel-default plain" id="spr_1">
+                <!-- Start .panel -->
+                <div class="panel-heading white-bg">
+                    <h4 class="panel-title"><i class="ec-user"></i> 医生资料</h4>
+                </div>
+                <div class="panel-body">
+
+                    <form class="form-vertical hover-stripped" role="form">
+                        <div class="form-group">
+                            <label class="control-label">姓名</label>
+                            <input type="text" class="form-control" id="docname" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">科室</label>
+                            <input type="text" class="form-control" id="department" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">类型</label>
+                            <input type="email" class="form-control" id="dtype" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">详细介绍</label>
+                            <textarea class="form-control" rows="12" id="introduction"></textarea>
+                        </div>
+                        <!-- End .form-group  -->
+                    </form>
+                    <button class="btn btn-primary" id="submit">保存</button>
+
+                </div>
+            </div>
+            <!-- End .panel -->
+        </div>
+        <!-- col-lg-4 end here -->
+    </div>
+    <!-- Page End here -->
 </div>
 
-
-
-<script src="js/order/orderlist_by_date.js"></script>
-<script src="js/doctor/load_duty.js"></script>
-<script type="text/javascript">
-    init_orderlist(getNowFormatDate());
+<script src="js/lib/bootbox.min.js"></script>
+<script>
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "Doctorprofile/tokenquery",
+        data:{
+            'token':checktoken()
+        },
+        success: function (data) {
+            if (data.succ == 1){
+                $('#docname').val(data.data.name);
+                $('#department').val(data.data.department);
+                $('#profile-department').text(data.data.department);
+                $('#profile-dtype').text(data.data.typename);
+                $('#dtype').val(data.data.typename);
+                $('#introduction').val(data.data.introduction);
+            }
+        }
+    });
+    $("#submit").click(function () {
+        $.ajax({
+            type: "POST",
+            url: config.base_url + "Doctorprofile/update",
+            data:{
+                'token':checktoken(),
+                'introduction': $('#introduction').val()
+            },
+            success: function (data) {
+                bootbox.alert({
+                    size: "small",
+                    title: "修改医生介绍",
+                    message: data.msg
+                });
+            }
+        });
+    });
 
 </script>
+

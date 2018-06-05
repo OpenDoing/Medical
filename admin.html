@@ -13,8 +13,13 @@
     <link rel="shortcut icon" href="img/favicon.ico">
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap-table.css">
+
 
     <link rel="stylesheet" href="css/info.css" />
+    <!--导入说明css-->
+    <link rel="stylesheet" href="css/docs.css">
+
 
     <!-- Icons -->
     <link href="css/sidebar/icons.css" rel="stylesheet" />
@@ -177,13 +182,6 @@
     $("#avatar-head").attr('src',config.img_url + getInfoFromCookie('avatar'));
     $("#username-head").text(getInfoFromCookie('nickname'));
     $("#userHH").text(getInfoFromCookie('nickname'));
-    $(document).ready(function(){
-        $(".user_info .col-md-3 span").hover(function(){
-            $(this).find("a").show();
-        },function(){
-            $(this).find("a").hide();
-        })
-    });
 
     function admin_group() {
         window.location.hash = event.target.id; //设置锚点
