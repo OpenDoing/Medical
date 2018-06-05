@@ -1,4 +1,10 @@
+loadInner();
 window.onunload = refresh_userinfo();
+
+function patient_group() {
+    window.location.hash = event.target.id; //设置锚点
+    loadInner();
+}
 
 function refresh_userinfo() {
 
@@ -19,13 +25,13 @@ function refresh_userinfo() {
                     document.cookie = "data=" + JSON.stringify(data.data);
 
                 }
-                $("#userHi").text(data.data.nickname);
-                $("#userHH").text(data.data.nickname);
-                $("#tel").text(data.data.phone);
-                $("#hImg").attr('src',config.img_url + data.data.avatar);
-                $("#hhImg").attr('src',config.img_url + data.data.avatar);
-                $('#createTime').text(data.data.create_time);
-                $('#lastTime').text(data.data.token_create_time);
+                $("#username-head").text(data.data.nickname);
+                $("#profile-name").text(data.data.nickname);
+                $("#profile-phone").text(data.data.phone);
+                $("#avatar-head").attr('src',config.img_url + data.data.avatar);
+                $("#profile-avatar").attr('src',config.img_url + data.data.avatar);
+                $('#profile-create-time').text(data.data.create_time);
+                $('#profile-last-login').text(data.data.token_create_time);
             }
             else {
                 alert(data.error);
