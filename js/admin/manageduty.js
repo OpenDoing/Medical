@@ -36,7 +36,7 @@ function load_time_range(flag) {
                 $("#range").empty().append(htmls);
             }
             else {
-                alert(data.error);
+                alert_error(data.error);
             }
         }
     });

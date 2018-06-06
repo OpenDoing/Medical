@@ -41,7 +41,7 @@ function init_type_table() {
                 events: "operateEvents",
                 formatter: function (value, row, index) {
                     return [
-                        '<button id="edit" type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-modal">编辑</button>'
+                        '<div id="edit" class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#edit-modal" style="cursor:pointer"></div>'
                     ].join("");
                 }
             }

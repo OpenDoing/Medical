@@ -34,7 +34,7 @@ function refresh_admininfo() {
                 $('#profile-last-login').text(data.data.token_create_time);
             }
             else {
-                alert(data.error);
+                alert_error(data.error);
             }
         }
     });

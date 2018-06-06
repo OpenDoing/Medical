@@ -72,7 +72,7 @@ function load_profile() {
                 $("#profile").empty().append(htmls);
             }
             else {
-                alert(data.error);
+                alert_error(data.error);
             }
         }
     });

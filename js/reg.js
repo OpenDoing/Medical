@@ -20,7 +20,7 @@ function sendsms() {
         },
         success: function (data) {
             if(data.succ == 0){
-                alert(data.error);
+                alert_error(data.error);
             }
             else if(data.succ == 1){
                 // document.getElementById("getInfoCode").onclick=function(){time(document.getElementById("getInfoCode"));}
@@ -65,7 +65,7 @@ function reg_func() {
                 window.location.href = 'info.html';
             }
             else {
-                alert(data.error);
+                alert_error(data.error);
             }
         }
 

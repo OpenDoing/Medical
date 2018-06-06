@@ -36,7 +36,7 @@ $(function() {
                         window.location.href = 'admin.html';
                 }
                 else {
-                    alert(data.error);
+                    alert_error(data.error);
                 }
             }
         });

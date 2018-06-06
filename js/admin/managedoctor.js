@@ -21,7 +21,7 @@ function init_select() {
                 $("#deid2").empty().append(htmls);
             }
             else {
-                alert(data.error);
+                alert_error(data.error);
             }
         }
     });
@@ -40,7 +40,7 @@ function init_select() {
                 $("#type2").empty().append(htmls);
             }
             else {
-                alert(data.error);
+                alert_error(data.error);
             }
         }
     });

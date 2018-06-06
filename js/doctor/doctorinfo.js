@@ -35,7 +35,7 @@ function refresh_doctorinfo() {
                 $('#profile-last-login').text(data.data.token_create_time);
             }
             else {
-                alert(data.error);
+                alert_error(data.error);
             }
         }
     });

@@ -39,6 +39,16 @@ function logout() {
     alert("logout");
 }
 
+//右上角错误提示
+function alert_error(error) {
+    $.notify({
+        title: '<strong>错误：</strong>',
+        message: error
+    },{
+        type: 'danger'
+    });
+}
+
 function loadInner(){
     var sId = window.location.hash;
     var pathn, i, data;

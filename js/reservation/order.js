@@ -39,7 +39,7 @@ function submit() {
                 window.location.href = "yysuccess.html?isdetail=0&oid=" + data.data + "&pid=" + p_id;
             }
             else {
-                alert(data.error);
+                alert_error(data.error);
             }
         }
     });
@@ -89,7 +89,7 @@ function load_userprofile() {
                 init_memlist(data.data);
             }
             else {
-                alert(data.error);
+                alert_error(data.error);
             }
         }
     });

@@ -120,7 +120,7 @@ function load_profiles() {
                 });
             }
             else {
-                alert(data.error);
+                alert_error(data.error);
             }
 
         }
