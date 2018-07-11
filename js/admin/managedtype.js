@@ -47,6 +47,33 @@ function init_type_table() {
             }
         ]
     });
+
+    $('#xls-list').bootstrapTable({
+
+        method:"GET",
+        dataType:'json',
+        pagination:true,
+
+        onLoadSuccess: function(){  //加载成功时执行
+
+            return "加载成功";
+        },
+        onLoadError: function(){  //加载失败时执行
+            return "加载数据失败";
+        },
+        striped:true,
+
+        columns: [
+            {
+                field: '医生类型',
+                title: '医生类型'
+            },
+            {
+                field: '咨询价格',
+                title: '咨询价格'
+            }
+        ]
+    });
 }
 
 function create() {

@@ -93,11 +93,7 @@
 
             <div id="admin-side1" class="collapse">
                 <ul class="nav sub">
-                    <li><a id="importdoctor" href="javascript:void(0)" onclick="admin_group()"><i class="ec-pencil2"></i> 导入医生资料</a>
-                    </li>
                     <li><a href="javascript:void(0)" onclick="admin_group()" id="managedoctor"><i class="im-checkbox-checked"></i> 管理医生资料</a>
-                    </li>
-                    <li><a href="javascript:void(0)" onclick="admin_group()" id="importdtype"><i class="im-wand"></i> 导入医生类型</a>
                     </li>
                     <li><a href="javascript:void(0)" onclick="admin_group()" id="managedtype"><i class="fa-pencil"></i> 管理医生类型</a>
                     </li>
@@ -111,8 +107,6 @@
 
             <div id="admin-side2" class="collapse">
                 <ul class="nav sub">
-                    <li><a href="javascript:void(0)" onclick="admin_group()" id="importdepartment"><i class="ec-pencil2"></i> 导入科室资料</a>
-                    </li>
                     <li><a href="javascript:void(0)" onclick="admin_group()" id="managedepartment"><i class="im-checkbox-checked"></i> 管理科室资料</a>
                     </li>
                 </ul>
@@ -145,11 +139,27 @@
             </div>
 
             <li class="hasSub"  data-toggle="collapse" data-target="#admin-side5">
-                <a href="javascript:void(0)" class="notExpand"><i class="en-arrow-down5 sideNav-arrow"></i> 账号设置 <i class="im-paragraph-justify"></i></a>
+                <a href="javascript:void(0)" class="notExpand"><i class="en-arrow-down5 sideNav-arrow"></i> 数据统计 <i class="im-paragraph-justify"></i></a>
 
             </li>
 
             <div id="admin-side5" class="collapse">
+                <ul class="nav sub">
+                    <li><a href="javascript:void(0)" onclick="admin_group()" id="orderstat"><i class="im-wand"></i> 订单数据</a>
+                    </li>
+                    <li><a href="javascript:void(0)" onclick="admin_group()" id="userstat"><i class="fa-pencil"></i> 用户数据</a>
+                    </li>
+                    <li><a href="javascript:void(0)" onclick="admin_group()" id="docstat"><i class="fa-pencil"></i> 医生和科室数据</a>
+                    </li>
+                </ul>
+            </div>
+
+            <li class="hasSub"  data-toggle="collapse" data-target="#admin-side6">
+                <a href="javascript:void(0)" class="notExpand"><i class="en-arrow-down5 sideNav-arrow"></i> 账号设置 <i class="im-paragraph-justify"></i></a>
+
+            </li>
+
+            <div id="admin-side6" class="collapse">
                 <ul class="nav sub">
                     <li><a href="javascript:void(0)" onclick="admin_group()" id="login_log"><i class="ec-pencil2"></i> 登录记录</a>
                     </li>

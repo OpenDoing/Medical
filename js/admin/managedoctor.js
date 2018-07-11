@@ -101,17 +101,17 @@ function init_doctor_table(data) {
                 field: 'typename',
                 title: '医生类型'
             },
-            {
-                field: 'introduction',
-                title: '医生简介'
-            },
+            // {
+            //     field: 'short_des',
+            //     title: '医生简介'
+            // },
             {
                 title: '操作',
                 align: "center",
                 events: "operateEvents",
                 formatter: function (value, row, index) {
                     return [
-                        '<button id="edit" type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-doctor-modal">编辑</button>'
+                        '<div id="edit" class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#edit-doctor-modal" style="cursor:pointer"></div>'
                     ].join("");
                 }
             }

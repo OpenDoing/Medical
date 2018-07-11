@@ -24,7 +24,9 @@
                         <p>2.按照模板的格式填写医生类型信息。</p>
                         <p>3.保存修改后的excel文件并上传。</p>
                     </div>
-                    <input id="excelFile1" type="file" >
+                    <input id="excelFile1" type="file" onchange="importf(this)">
+
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#show-xls">预览导入文件</button>
 
                 </div>
             </div>
@@ -36,7 +38,7 @@
             <div class="panel panel-default plain" id="spr_2">
                 <!-- Start .panel -->
                 <div class="panel-heading white-bg">
-                    <h4 class="panel-title"><i class="ec-user"></i> 管理医生类型</h4>
+                    <h4 class="panel-title"><i class="ec-user"></i> 编辑医生类型</h4>
                 </div>
                 <div class="panel-body">
 
@@ -147,15 +149,39 @@
     </div><!-- /.modal-dialog -->
 </div>
 
+<!--文件预览弹框--3-->
+<div class="modal fade" tabindex="-1" role="dialog" id="show-xls">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" >预览导入文件</h4>
+            </div>
+            <div class="modal-body">
+
+                <table id="xls-list"></table>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
 <script src="js/caseInfo/bootstrap-table.js"></script>                       <!--table插件-->
 <script src="js/caseInfo/bootstrap-table-zh-CN.js"></script>                 <!--中文table-->
+
+<script src="js/lib/xlsx.full.min.js"></script>
 
 <script src="js/admin/managedtype.js"></script>
 <script src="js/util.js"></script>
 
 <script src="js/admin/fileinput.js"></script>
-<!--<script src="js/lib/bootstrap.min.js"></script>-->
 <script src="js/admin/zh.js"></script>
+
+<script src="js/admin/showxls.js"></script>
 
 <script type="text/javascript">
     $("#downloadType").click(function () {
