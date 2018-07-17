@@ -40,24 +40,30 @@
                     <form role="form" action="" method="post" class="login-form">
                     	<div class="form-group">
                     		<div class="input-group marginH">
-								<span class="input-group-addon" id="basic-addon1">用户名</span>
-								<input id="username" type="text" class="form-control" placeholder="请输入要注册的用户名" onblur="statusCheck1()">
+								<span class="input-group-addon" id="user">用户名</span>
+								<input id="username" type="text" class="form-control" placeholder="请输入要注册的用户名" onblur="checkUserName(this.value)">
 							</div>
+							<div id="errUser" class="errFont">用户名长度5到16位，可以是字母，数字，下划线，减号</div>
+
 
 							<div class="input-group marginH">
-								<span class="input-group-addon" id="basic-addon1">设置密码</span>
-								<input id="pwd" type="text" class="form-control" placeholder="请输入您要设置的密码" >
+								<span class="input-group-addon" id="pass">设置密码</span>
+								<input id="pwd" type="password" class="form-control" placeholder="请输入您要设置的密码" onblur="checkpassword(this.value)">
 								<!--<span id="psdCheck" class="statusCheck input-group-addon glyphicon glyphicon-ok"></span>-->
 								<!--<span id="psdCheck" class="statusCheck input-group-addon glyphicon glyphicon-remove" ></span>-->
 							</div>
+							<div id="errPwd" class="errFont">密码应为6-20位字母数字的组合</div>
+
 
 							<div class="input-group marginH">
-								<span class="input-group-addon" id="basic-addon1">手机号码</span>
-								<input id="phone" type="text" class="form-control" placeholder="请输入11位手机号" onblur="statusCheck1()">
+								<span class="input-group-addon" id="pnumber">手机号码</span>
+								<input id="phone" type="text" class="form-control" placeholder="请输入11位手机号" onblur="checkPhone(this.value)">
+
 
 								<!--<span id="phoneCheck" class="statusCheck input-group-addon glyphicon glyphicon-ok" ></span>
 								<span id="phoneCheck1" class="statusCheck input-group-addon glyphicon glyphicon-remove" ></span>-->
 							</div>
+							<div id="errPhone" class="errFont">手机格式不正确</div>
 
 							
                         	<div class="row">
@@ -98,6 +104,7 @@
 	<script src="js/lib/bootstrap.min.js"></script>
 	<script src="js/util.js"></script>
 	<script src="js/lib/bootstrap-notify.min.js"></script>
+	<script src="js/verify.js"></script>
 	<script src="js/status.js"></script>
 	<script src="js/img.js"></script>
 	<script src="js/time.js"></script>

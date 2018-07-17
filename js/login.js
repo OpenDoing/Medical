@@ -1,6 +1,7 @@
 $(function() {
     //按钮单击时执行
     $("#submit").click(function () {
+        //todo：加密
         var username = document.getElementById("form-username").value;
         var password = document.getElementById("form-password").value;
 

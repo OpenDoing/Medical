@@ -169,3 +169,10 @@ body {
 .none{
 	display: none;
 }
+
+/*注册报错信息提示*/
+.errFont{
+	display: none;
+	color: red;
+	font-size: 12px;
+}

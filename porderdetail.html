@@ -37,12 +37,13 @@
                 预约密码：<span class="c1" id="code"></span>
                 <div class="fn-right">
                     <button class="btn btn-info" id="introduction">使用说明</button>
-                    <button class="btn btn-warning " id="pay" value="" disabled="disabled" onclick="pay()">支付</button>
+                    <button class="btn btn-warning " id="pay" value=""  disabled="disabled" onclick="pay()">支付</button>
                     <button class="btn btn-warning " id="live" value="" disabled="disabled" onclick="live_btn()">进入直播间</button>
                     <button class="btn btn-success" id="eva" data-toggle="modal" disabled="disabled" data-target="#evaluation">评价</button>
                     <button class="btn btn-danger " id="cancel" value="" disabled="disabled" onclick="cancel_order()">取消订单</button>
                     <button class="btn btn-danger " id="del" value="" disabled="disabled" onclick="del_order()">删除订单</button>
                     <button class="btn btn-success" id="create_case" data-toggle="modal" onclick="create_case()">生成咨询记录</button>
+                    <button class="btn btn-success" disabled="disabled" id="btn_evaluation" data-toggle="modal" data-target="#evaluation-modal" onclick="load_eval()">查看评价</button>
                 </div>
             </div>
         </div>
@@ -193,6 +194,82 @@
     </div>
 </div>
 
+<!--查看评价的模态框-->
+<div class="modal fade" id="evaluation-modal" aria-hidden="true" aria-labelledby="evaluation-label" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="avatar-form" enctype="multipart/form-data" method="post">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title">查看评价</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">评价信息</h3>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-bullhorn sameline"></span>
+                                <b>总体评分：</b>
+                                <div class="sameline" id="score"></div></li>
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-user sameline"></span>
+                                <b>评价内容：</b>
+                                <div class="sameline" id="comment"></div></li>
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-user sameline"></span>
+                                <b>评价时间：</b>
+                                <div class="sameline" id="comment_time"></div></li>
+                        </ul>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">回复记录</h3>
+                        </div>
+
+                        <div id="list-reply">
+                            <table id="reply"></table>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#reply-modal">回复留言</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!--回复留言modal-->
+<div class="modal fade" id="reply-modal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel">
+    <div class="modal-dialog" style="margin-top: 200px ;" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">回复患者评价</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="alertmessage2"></div>
+
+                <div id="content2">
+                    <textarea id="text_reply" class="form-control" style="height:200px"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="bOK" onclick="reply()" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 <script src="js/util.js"></script>

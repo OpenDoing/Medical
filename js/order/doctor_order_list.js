@@ -95,13 +95,13 @@ function load() {
             if (res.succ === 1){
 
                 $("#patient").text(res.data.name);
-                $("#content").css("display","none");
+                $("#contentCall").css("display","none");
                 $("#link").css("display","block");
                 var href = "dorderdetail.html?oid=" + res.data.id;
                 $("#link").attr("href",href);
 
             }else {
-                $("#content").text("暂无待咨询的患者");
+                $("#contentCall").text("暂无待咨询的患者");
             }
         }
     });

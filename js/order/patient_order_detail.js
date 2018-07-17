@@ -5,6 +5,79 @@ window.onload = function () {
     orderdetail(oid,pid);
     init();
 };
+//查看评价
+function load_eval() {
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "evaluation",
+        data: {
+            'oid': getQueryString('oid')
+        },
+        success: function (response) {
+            if (response.succ == 1) {
+                $("#score").text(response.data.score);
+                $("#comment").text(response.data.comment);
+                $("#comment_time").text(response.data.create_time);
+            }
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: config.base_url + "evaluation/patient_replylist",
+        data:{
+            'token':checktoken(),
+            'oid': getQueryString('oid'),
+            'profile_id':getQueryString('pid')
+        },
+        success: function (data) {
+            if (data.succ == 1){
+                $('#reply').bootstrapTable('load',data.data);
+                $(".fixed-table-loading")[1].style.display="none";      //数据加载成功  加载那行字去掉
+            }
+        }
+    });
+}
+
+$('#reply').bootstrapTable({
+
+    method:"GET",
+    dataType:'json',
+    pagination:true,
+    search: true,
+    pageSize:5,
+
+
+    onLoadSuccess: function(){  //加载成功时执行
+
+        return "加载成功";
+    },
+    onLoadError: function(){  //加载失败时执行
+        return "加载数据失败";
+    },
+    striped:true,
+
+    columns: [
+        {
+            field: 'id',
+            title: '编号',
+            align: 'center',
+            width: 50 + "px"
+        },
+        {
+            field: 'type',
+            title: '回复者'
+        },
+        {
+            field: 'reply',
+            title: '回复内容'
+        },
+        {
+            field: 'reply_time',
+            title: '回复时间'
+        }
+    ]
+});
 
 function live_btn() {
     var url = config.patient_live_url + $('#live').attr("value");
@@ -288,30 +361,193 @@ function orderdetail(oid,pid) {
             $("#appointment_time").text(response.data.appointment_date +" "+ response.data.range);
             $("#price").text(response.data.price + " 元");
             $("#status").text(response.data.status);
-            if (response.data.status == '咨询中'){
+            if (response.data.status === '待支付'){
+                $("#pay").attr("disabled", false);
+                $("#pay").show();
+
+                $("#cancel").attr("disabled", false);
+                $("#cancel").show();
+
+                $("#live").attr("disabled", true);
+
+                $("#live").hide();
+
+                $("#eva").attr("disabled", true);
+                $("#eva").hide();
+
+                $("#del").attr("disabled", true);
+                $("#del").hide();
+
+                $("#create_case").attr("disabled", true);
+                $("#create_case").hide();
+
+                $("#btn_evaluation").attr("disabled", true);
+                $("#btn_evaluation").hide();
+            }
+            if (response.data.status === '待咨询'){
+                $("#pay").attr("disabled", false);
+                $("#pay").hide();
+
+                $("#cancel").attr("disabled", true);
+                $("#cancel").hide();
+
+                $("#live").attr("disabled", false);
+                $("#live").show();
+
+                $("#eva").attr("disabled", true);
+                $("#eva").hide();
+
+                $("#del").attr("disabled", true);
+                $("#del").hide();
+
+                $("#create_case").attr("disabled", true);
+                $("#create_case").hide();
+
+                $("#btn_evaluation").attr("disabled", true);
+                $("#btn_evaluation").hide();
+            }
+            if (response.data.status === '咨询中'){
+                $("#pay").attr("disabled", false);
+                $("#pay").hide();
+
+                $("#cancel").attr("disabled", true);
+                $("#cancel").hide();
+
+                $("#del").attr("disabled", true);
+                $("#del").hide();
+
+                $("#eva").attr("disabled", true);
+                $("#eva").hide();
+
                 $("#live").attr("disabled", false);
                 $("#live").attr('value',response.data.live_link);
+
+                $("#create_case").attr("disabled", true);
+                $("#create_case").hide();
+
+                $("#btn_evaluation").attr("disabled", true);
+                $("#btn_evaluation").hide();
             }
-            if (response.data.status == '待支付'){
-                $("#cancel").attr("disabled", false);
+            if (response.data.status === '待建议'){
+                $("#pay").attr("disabled", true);
+                $("#pay").hide();
+
+                $("#cancel").attr("disabled", true);
+                $("#cancel").hide();
+
+                $("#del").attr("disabled", true);
+                $("#del").hide();
+
+                $("#eva").attr("disabled", true);
+                $("#eva").hide();
+
+                $("#live").attr("disabled", true);
+                $("#live").hide();
+                $("#live").attr('value',response.data.live_link);
+
+                $("#create_case").attr("disabled", true);
+                $("#create_case").hide();
+
+                $("#btn_evaluation").attr("disabled", true);
+                $("#btn_evaluation").hide();
             }
-            if (response.data.status == '已取消'){
-                $("#del").attr("disabled", false);
-            }
-            if (response.data.status == '待评价'){
+            if (response.data.status === '待评价'){
+                $("#pay").attr("disabled", true);
+                $("#pay").hide();
+
+                $("#cancel").attr("disabled", true);
+                $("#cancel").hide();
+
+                $("#del").attr("disabled", true);
+                $("#del").hide();
+
                 $("#eva").attr("disabled", false);
+                $("#eva").show();
+
+                $("#live").attr("disabled", true);
+                $("#live").hide();
+                $("#live").attr('value',response.data.live_link);
+
+                $("#create_case").attr("disabled", true);
+                $("#create_case").hide();
+
+                $("#btn_evaluation").attr("disabled", true);
+                $("#btn_evaluation").hide();
             }
-            if(response.data.sex == 1)
+            if (response.data.status === '已完成'){
+
+                $("#pay").attr("disabled", true);
+                $("#pay").hide();
+
+                $("#cancel").attr("disabled", true);
+                $("#cancel").hide();
+
+                $("#del").attr("disabled", true);
+                $("#del").hide();
+
+                $("#eva").attr("disabled", true);
+                $("#eva").hide();
+
+                $("#live").attr("disabled", true);
+                $("#live").hide();
+                $("#live").attr('value',response.data.live_link);
+
+                $("#create_case").attr("disabled", false);
+                $("#create_case").show();
+
+                $("#btn_evaluation").attr("disabled", false);
+                $("#btn_evaluation").show();
+
+            }
+
+            if (response.data.status === '已取消'){
+                $("#pay").attr("disabled", true);
+                $("#pay").hide();
+
+                $("#cancel").attr("disabled", true);
+                $("#cancel").hide();
+
+                $("#del").attr("disabled", false);
+                $("#del").show();
+
+                $("#eva").attr("disabled", true);
+                $("#eva").hide();
+
+                $("#live").attr("disabled", true);
+                $("#live").attr('value',response.data.live_link);
+
+                $("#create_case").attr("disabled", false);
+                $("#create_case").show();
+            }
+            if (response.data.status === '已删除'){
+                $("#pay").attr("disabled", true);
+                $("#pay").hide();
+
+                $("#cancel").attr("disabled", true);
+                $("#cancel").hide();
+
+                $("#del").attr("disabled", true);
+                $("#del").hide();
+
+                $("#eva").attr("disabled", true);
+                $("#eva").hide();
+
+                $("#live").attr("disabled", true);
+                $("#live").attr('value',response.data.live_link);
+
+                $("#create_case").attr("disabled", true);
+                $("#create_case").hide();
+            }
+
+            if(response.data.sex === 1)
                 $("#sex").text("男");
             else
                 $("#sex").text("女");
 
 
 
-            console.log(response);
-            if (response.succ == 1){
-                // console.log("接口测试");
-            }
+            //console.log(response);
+
         }
     });
 }

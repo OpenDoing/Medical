@@ -7,18 +7,39 @@ var info = document.getElementById("infoInput");
 var psd = document.getElementById("psdInput");
 var reg = document.getElementById("reg");
 
-function statusCheck1(){
-	var phone = document.getElementById("phoneInput");
+function checkPhone(str){
+	var phone = document.getElementById("phone");
 //	alert(phone.value.length);
-	var len = phone.value.length;
-	if (len!=11) {
-		$(phone).remove("okImg");
-		$(phone).addClass("errImg");
+// 	var len = phone.value.length;
+	if (!isPoneAvailable(str)) {
+		console.log("手机格式错误");
+        $("#errPhone").css("display","block");
+		$("#phone").remove("okImg");
+		$("#phone").addClass("errImg");
 	} else{
-		$(phone).remove("errImg");
-		$(phone).addClass("okImg");
+        console.log("手机格式OK");
+        $("#errPhone").css("display","none");
+		$("#phone").remove("errImg");
+		$("#phone").addClass("okImg");
 	}
 }
 
+function checkUserName(str) {
+
+	if (isUserName(str)){
+        $("#errUser").css("display","none");
+    }else{
+		$("#errUser").css("display","block");
+	}
+}
+
+function checkpassword(str) {
+
+    if (password(str)){
+        $("#errPwd").css("display","none");
+    }else{
+        $("#errPwd").css("display","block");
+    }
+}
 
 
