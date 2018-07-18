@@ -225,17 +225,17 @@
 /*homepage.css end*/
 
 /*head.css*/
-.desc{
-    font-size:16px;
-    line-height: 34px;
-    border-left: 1px solid #ccc;
-    position: absolute;
-    left: 270px;
-    top:15px;
-    padding-left: 15px;
-    font-weight:bold;
-    color:#888888;
-}
+/*.desc{*/
+    /*font-size:16px;*/
+    /*line-height: 34px;*/
+    /*border-left: 1px solid #ccc;*/
+    /*position: absolute;*/
+    /*left: 270px;*/
+    /*top:15px;*/
+    /*padding-left: 15px;*/
+    /*font-weight:bold;*/
+    /*color:#888888;*/
+/*}*/
 
 .logo{
     width: 150px;
