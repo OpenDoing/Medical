@@ -16,6 +16,21 @@ function init_orderlist(p_id) {
     });
 }
 
+
+//模拟鼠标点击事件
+function changeStatus(e) {
+    var t1 = $("#search").find("option:selected").text();
+    $(".form-control").attr("value",t1);
+    $(".form-control").click();
+    $(".form-control").blur();
+}
+//每次点击按钮都重新清除input内容
+function clearInput(){
+    $(".form-control").attr("value","");
+    $(".form-control").click();
+    $(".form-control").blur();
+}
+
 function init_order_table(data) {
     load_profiles();
     $('#order').bootstrapTable({
@@ -24,8 +39,10 @@ function init_order_table(data) {
         dataType:'json',
         pagination:true,
         data:data,
-
-        //url:config.base_url + "order?profile_id=2&token="+getCookie('token'),
+        // filterControl:true,
+        // showFilter:true,
+        search:true,
+        // url:config.base_url + "order?profile_id=2&token="+getCookie('token'),
 
         onLoadSuccess: function(){  //加载成功时执行
             return "加载成功";
@@ -41,6 +58,7 @@ function init_order_table(data) {
         onClickRow:function (row) {
 
         },
+
         columns: [
             {
                 field: 'id',
@@ -71,6 +89,8 @@ function init_order_table(data) {
             {
                 field: 'status',
                 title: '状态'
+                // filterControl:"select",
+                // filterControlPlaceholder:''
             },
             {
                 title: '操作',
@@ -84,6 +104,7 @@ function init_order_table(data) {
             }
         ]
     });
+    $(".form-control").css("visibility","hidden");  //2333
 }
 
 window.operateEvents = {

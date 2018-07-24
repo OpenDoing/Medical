@@ -48,7 +48,7 @@
 
                         <input type="password" name="form-password" placeholder="密码" class="form-control" id="form-password">
                     </div>
-                    <button type="button" id="submit" class="btn btn-success">登录</button>
+                    <button type="button" id="submit" class="btn btn-success" onclick="login()">登录</button>
                     <div id="bottomText"  class="row" >
                         <div class="col-md-6">
                             <a href="#" data-toggle="modal" data-target="#find-pwd-modal">忘记密码?</a>
@@ -119,6 +119,13 @@
 <script src="js/lib/bootstrap.min.js"></script>
 
 <script src="js/img.js"></script>
+<script>
+    $("body").keydown(function(event) {
+        if (event.keyCode == "13") {//keyCode=13是回车键
+            $('#submit').click();
+        }
+    });
+</script>
 
 </body>
 

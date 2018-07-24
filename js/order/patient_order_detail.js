@@ -5,6 +5,45 @@ window.onload = function () {
     orderdetail(oid,pid);
     init();
 };
+
+/*
+  * 患者回复评价
+  * 接口：api/Evaluation/patient_reply
+  * 参数：token,oid,reply,profile_id
+  */
+function preply() {
+    var token = checktoken();
+    $("#bOK").attr("disabled",true).text("正在提交...");
+
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "evaluation/patient_reply",
+        data: {
+            'token':token,
+            'oid': getQueryString('oid'),
+            'reply':$("#text_reply").val(),
+            'profile_id':getQueryString('pid')
+        },
+        success: function (data) {
+            $("#bOK").attr("disabled",false).text("提交");
+            if(data.succ == 1){
+                var succ_message = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">\n" +
+                    "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    "                        回复成功\n" +
+                    "                    </div>";
+                $("#alertmessage2").append(succ_message);
+            }
+
+            else {
+                var error_message = "<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">\n" +
+                    "                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    data.error + "</div>";
+                $("#alertmessage2").append(error_message);
+            }
+        }
+    });
+}
+
 //查看评价
 function load_eval() {
     $.ajax({
