@@ -46,7 +46,8 @@ function month_order_data(ctx) {
         columns: [
             {
                 field: 'date',
-                title: '月份'
+                title: '月份',
+                sortable : true
             },
             {
                 field: 'new_orders',
