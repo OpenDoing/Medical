@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="css/step-lib.css">
 <link rel="stylesheet" href="css/bootstrap-datepicker3.css">
 
@@ -6,7 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 
 <link rel="stylesheet" href="css/fileinput.css">
-
+<link rel="stylesheet" href="css/auto.css">
 <div class="col-md-9" role="main">
 
     <h3>新建病历</h3>
@@ -23,40 +24,61 @@
         </li>
     </ul>
 
-<div id="step1" class="table-responsive">
-    <table class="table table-hover">
+    <div id="step1" class="table-responsive">
+        <table class="table table-hover">
 
-        <tbody>
-        <tr><td><b>患者信息</b><br/>选择一名患者为其新建病历</td>
-            <td><select id="profile" name="profile" class="form-control"></select></td>
-        </tr><tr><td><b>就诊时间</b><br/>就诊时间</td><td>
-            <div class="input-group date datepicker">
-                <input type="text" id="visit_time" class="form-control">
-                <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-th "></span>
-                </div>
-            </div>
-        </td>
-        </td></tr><tr><td><b>就诊医院</b><br/>就诊医院</td>
-            <td><input type="text" name="system_url" id="hospital" class="form-control"></td>
-        <tr><td><b>描述</b><br><br>简单描述疾病、诊断结果、治疗情况等</td><td>
-            <textarea id="description" class="form-control" style="height:200px"></textarea>
+            <tbody>
+            <tr>
+                <td><b>患者信息</b><br/>选择一名患者为其新建病历</td>
+                <td><select id="profile" name="profile" class="form-control"></select></td>
+            </tr>
+            <tr>
+                <td><b>就诊时间</b><br/>就诊时间</td>
+                <td>
+                    <div class="input-group date datepicker">
+                        <input type="text" id="visit_time" class="form-control">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th "></span>
+                        </div>
+                    </div>
+                </td>
+                </td></tr>
+            <tr>
+                <td><b>就诊医院</b><br/>就诊医院</td>
+                <td>
+                    <div class="wrap">
+                        <input type="text" id="hospital" class="form-control auto-inp" name="system_url" >
+                        <div class="auto hidden" id="auto">
+                            <div class="auto_out">1</div>
+                            <div class="auto_out">2</div>
+                        </div>
+                    </div>
 
-        </tbody></table>
+                </td>
+            <tr>
+                <td><b>描述</b><br><br>简单描述疾病、诊断结果、治疗情况等</td>
+                <td>
+                    <textarea id="description" class="form-control" style="height:200px"></textarea>
 
-    <br/>
-    <div id="alertmessage"></div>
-    <input type="button" class="btn btn-success" id="submit" value="下一步">
+            </tbody>
+        </table>
+
+        <br/>
+        <div id="alertmessage"></div>
+        <input type="button" class="btn btn-success" id="submit" value="下一步">
 
 
-</div>
+    </div>
 
     <div id="step2">
         <table class="table table-hover">
             <tbody>
-        <tr><td><b>图片类型</b><br/>选择要上传的图片类型</td>
-            <td><select id="type" name="type" class="form-control"></select></td>
-        </tr></tbody></table>
+            <tr>
+                <td><b>图片类型</b><br/>选择要上传的图片类型</td>
+                <td><select id="type" name="type" class="form-control"></select></td>
+            </tr>
+            </tbody>
+        </table>
 
         <!--<div id="demo" class="demo"></div>-->
         <input id="imageFile" type="file" multiple="multiple">
@@ -69,15 +91,49 @@
     <script src="js/admin/fileinput.js"></script>
     <script src="js/admin/zh.js"></script>
     <script type="text/javascript">
-        $(function(){
+        $(function () {
             $('.datepicker').datepicker({
                 language: 'zh-CN'
             });
         });
-        $(document).ready(function(){
+        $(document).ready(function () {
             bsStep();
         });
     </script>
+    <script src="js/lib/jquery-1.12.4.min.js"></script>
+    <script src="js/medicalrecord/auto.js"></script>
+    <script>
+        var array = [];
+        $('#hospital').bind('input propertychange', function() {
+            //全国医疗机构库
+            /**
+             * param q 医院关键字
+             * param i 固定为 be_hmap__me_name
+             */
+            $.ajax({
+                url:"https://db.yaozh.com/ajax/inputts",
+                type:"GET",
+                data:{
+                    q:$(this).val(),
+                    i:"be_hmap__me_name"
+                },
+                success:function (res) {
+                    try{
+                        var json = JSON.parse(res);
+                        for (var i=0;i<json.length;i++){
+                            array.push(json[i]);
+                        }
+                    }catch (e) {
+                        // console.log("输入不合法");
+                    }
+                }
+            });
+        });
 
+        var autoComplete = new AutoComplete("hospital","auto",array);
+        document.getElementById("hospital").onkeyup = function(event){
+            autoComplete.start(event);
+        }
+    </script>
 
 </div>
