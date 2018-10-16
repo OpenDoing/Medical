@@ -358,7 +358,7 @@ function orderdetail(oid,pid) {
             $("#department").text(response.data.department);
             $("#code").text(response.data.code);
 
-            $("#appointment_time").text(response.data.appointment_date +" "+ response.data.range);
+            $("#appointment_time").text(response.data.appointment_date +" "+ response.data.str_time);
             $("#price").text(response.data.price + " 元");
             $("#status").text(response.data.status);
             if (response.data.status === '待支付'){

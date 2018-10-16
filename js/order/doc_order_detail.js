@@ -296,7 +296,7 @@ function orderdetail(oid) {
                 $("#advice").text("医生暂未提交建议");
 
             $("#username").text(response.data.username);
-            $("#appointment_time").text(response.data.appointment_date +" "+ response.data.range);
+            $("#appointment_time").text(response.data.appointment_date +" "+ response.data.str_time);
             $("#price").text(response.data.price + " 元");
             $("#status").text(response.data.status);
             if (response.data.status == '待建议'){
