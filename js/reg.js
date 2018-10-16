@@ -9,7 +9,7 @@ function sendsms() {
     var phone = $("#phone").val();
 
     $.ajax({
-        url:"http://bieke.cf:8080/ma/zxy/api/Smscode/send",
+        url: config.base_url + "Smscode/send",
         type: 'post',
         dataType: 'json',
         data: {

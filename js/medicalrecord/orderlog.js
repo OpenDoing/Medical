@@ -46,7 +46,7 @@ function init() {
 
 function load_profiles() {
     $.ajax({
-        url:"http://bieke.cf:8080/ma/zxy/api/userprofile",
+        url: config.base_url + "userprofile",
         type: 'get',
         dataType: 'json',
         data: {
