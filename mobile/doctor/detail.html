@@ -2,12 +2,19 @@
 <html lang="zh-CN">
 
 <head>
-
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+
 
     <link href="../css/app.css" rel="stylesheet">
     <link href="../css/doctor.css" rel="stylesheet">
+    <link href="../css/doctorheader.css" rel="stylesheet">
 </head>
+
 <body id="body" style="">
     <div id="app">
         <div class="fullheight">
@@ -151,7 +158,7 @@
             <div class="mt10 typo_smaller layout pl30 relative clearfix showgoodat">
                 <span class="goodat">费用：</span>
                 <div class="goodatcon">
-                    <div class="lh18">{price}</div>
+                    <div class="lh18">{price}元</div>
                 </div>
             </div>
         </div>
@@ -162,6 +169,21 @@
     <script src="../js/lib/jquery-3.2.1.min.js"></script>
     <script src="../js/util.js"></script>
     <script src="../js/doctor/doctordetail.js"></script>
+    <script>
+        //字体大小自适应
+         (function (doc, win) {
+             var docEl = doc.documentElement,
+                 resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                 recalc = function () {
+                     var clientWidth = docEl.clientWidth;
+                     if (!clientWidth) return;
+                     docEl.style.fontSize = 32 * (clientWidth / 320) + 'px';
+                 };
+             if (!doc.addEventListener) return;
+             win.addEventListener(resizeEvt, recalc, false);
+             doc.addEventListener('DOMContentLoaded', recalc, false);
+         })(document, window);
+    </script>
 
 </body>
 </html>
