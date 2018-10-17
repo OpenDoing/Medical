@@ -1,10 +1,42 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('//at.alicdn.com/t/font_512913_5f6kx9yp5hq.eot');
+    src: url('//at.alicdn.com/t/font_512913_5f6kx9yp5hq.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_512913_5f6kx9yp5hq.woff') format('woff'),
+    url('//at.alicdn.com/t/font_512913_5f6kx9yp5hq.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_512913_5f6kx9yp5hq.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: iconfont;
+}
+
+.header{position:fixed;top:0;left:0;z-index:100;width:100%;height: 1.173333rem;line-height: 1.173333rem; text-align: center; font-size: 0.48rem; color:#fff; background-color: #00D3C2;
+    background: -webkit-gradient(linear, left top, right top, from(#1db5a4), to(#1cabbf));
+    background: -webkit-linear-gradient(left, #1db5a4, #1cabbf);
+    background: linear-gradient(to right, #1db5a4, #1cabbf);
+}
+.headname{max-width: 8.0rem;margin:0 auto;
+}
+.nofixedheader{position: static;
+}
+.shadbg{position:fixed;top:0;left:0;z-index: 99;width: 100%;height: 100%; background: rgba(0,0,0,0.6);
+}
+.goback{position: absolute;top:0;left: 0; padding:0 0.266667rem; line-height: 1.173333rem;
+}
+.nav-inav{position: absolute;top:0;right:0; z-index: 100; padding:0 0.266667rem;
+}
+.collection{position: absolute;top: 0; right: 0.8rem; z-index: 100; padding:0.05333rem 0.26667rem; line-height: 1.17333rem
+}
+
+
 .topmenufixed {
-                          position: fixed;
-                          top: 1.17333rem;
-                          left: 0;
-                          z-index: 111;
-                          width: 100%;
-                      }
+      position: fixed;
+      top: 1.17333rem;
+      left: 0;
+      z-index: 111;
+      width: 100%;
+}
 
 .apptop {
     top: 0;
