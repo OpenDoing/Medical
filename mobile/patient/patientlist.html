@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html data-dpr="1" style="font-size: 54px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>家庭成员管理</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/custom.plugin.css">
+    <link rel="stylesheet" href="../css/custom.main.css">
+    <script src="../js/lib/vue.js"></script>
+    <script src="../js/lib/jquery-3.2.1.min.js"></script>
+</head>
+<body style="font-size: 12px;">
+<div class="fullwidth fullheight uc-family-wrap bg_gray uc-family-wrap-rem">
+    <!--最上面的标题栏-->
+    <div class="nav clearfix fixedtop fullwidth">
+        <div class="nav-nav">
+            <a class="typo_white typo_middle iconfont fleft nav-nav-prev pr10" href="#">
+            </a>
+            <h1 id="page_title" class="nav-title textc typo_white typo_large typo_normal elli">家庭成员管理</h1>
+        </div>
+    </div>
+
+
+    <div class="wrap uc-family bg_gray hasNav">
+
+        <div class="pl15 pr15 pt10 pb10 bg_white">
+
+        </div>
+        <div class="add-user"><a href="addpatient.html"><i class="iconfont add-user-icon cl00caba"></i> <i
+                class="add-user-txt cl00caba">添加家庭成员</i></a> (已有 <span>1</span> 人，还能添加 <span>11</span> 人)
+        </div>
+
+        <!--家庭成员列表-->
+        <ul class="user-list" id="user-list">
+            <li v-for="item in items" class="mt10 clearfix" style="padding-top:0.666666667rem;">
+                <div class="layout">
+                    <div class="avatar fl mr10">
+                        <img src="https://wximg.91160.com/wechat//img/common/avatar_user_1.jpg">
+                    </div>
+                    <div class="userinfo fl">
+                        <a href="editpatient.html?profile_id=" + "{{item.id}}"  class="block">
+                            <h1 class="layout">
+                                <span class="fs16-rem">
+                                    <i class="fleft inblo elli" style="max-width: 2rem;">{{item.name}}</i>
+                                    <em class="fleft ml10">{{item.sex}}</em>
+                                    <em class="fleft ml10">{{item.birth}}</em>
+                                </span>
+                            </h1>
+                            <p>居住地址：{{item.address}}</p>
+                            <p>手机号码：{{item.phone}}</p>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="pshade prompt fullheight fullwidth">
+    <div class="prompt-box bg_white textc rsquare clearfix">
+        <div class="prompt-main pdf">
+            <div class="prompt-title typo_middle typo_dgray"></div>
+            <div class="prompt-msg typo_small typo_gray"></div>
+        </div>
+        <div class="prompt-bbox clearfix fullwidth">
+            <a class="prompt-btn prompt-cancel block typo_gray typo_middle" href="javascript:void(0);"></a>
+            <a class="prompt-btn prompt-sure block typo_green typo_middle" href="javascript:void(0);"></a>
+        </div>
+    </div>
+</div>
+<div class="loading tshade hidden">
+    <div class="loadingicon loadingimg">
+        <div class="spinner" aria-role="progressbar"
+             style="position: relative; width: 0px; z-index: 2000000000; left: 40px; top: 40px;">
+            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-0-12 2s linear infinite;">
+                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(0deg) translate(10px, 0px); border-radius: 2px;"></div>
+            </div>
+            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-1-12 2s linear infinite;">
+                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(30deg) translate(10px, 0px); border-radius: 2px;"></div>
+            </div>
+            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-2-12 2s linear infinite;">
+                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(60deg) translate(10px, 0px); border-radius: 2px;"></div>
+            </div>
+            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-3-12 2s linear infinite;">
+                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(90deg) translate(10px, 0px); border-radius: 2px;"></div>
+            </div>
+            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-4-12 2s linear infinite;">
+                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(120deg) translate(10px, 0px); border-radius: 2px;"></div>
+            </div>
+            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-5-12 2s linear infinite;">
+                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(150deg) translate(10px, 0px); border-radius: 2px;"></div>
+            </div>
+            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-6-12 2s linear infinite;">
+                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(180deg) translate(10px, 0px); border-radius: 2px;"></div>
+            </div>
+            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-7-12 2s linear infinite;">
+                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(210deg) translate(10px, 0px); border-radius: 2px;"></div>
+            </div>
+            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-8-12 2s linear infinite;">
+                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(240deg) translate(10px, 0px); border-radius: 2px;"></div>
+            </div>
+            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-9-12 2s linear infinite;">
+                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(270deg) translate(10px, 0px); border-radius: 2px;"></div>
+            </div>
+            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-10-12 2s linear infinite;">
+                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(300deg) translate(10px, 0px); border-radius: 2px;"></div>
+            </div>
+            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-11-12 2s linear infinite;">
+                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(330deg) translate(10px, 0px); border-radius: 2px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="success tshade hidden">
+    <div class="success-icon iconfont"></div>
+    <div class="success-msg">操作成功</div>
+</div>
+<div class="tips_form hidden"></div>
+<div class="shade fullheight fullwidth hidden"></div>
+<a href="javascript:void(0);" class="btn_top typo_white textc hidden">
+    <span class="iconfont typo_large btn_itop"></span>
+</a>
+<div class="pdf pshade pop-dwrap"
+     style="display: none; height: 669.6px; padding-top: 83.9833px; padding-bottom: 83.9833px;">
+    <div class="pop-box fullwidth fullheight bg_white" style="height: 669.6px;">
+        <h2 class="clearfix typo_gray typo_middle pdf bt_gray pop-title">
+            <span class="pop-dtitle">更多</span>
+            <a href="javascript:void(0);" class="typo_middle typo_lgray fright iconfont pop-iclose"></a>
+        </h2>
+        <div class="swiper-container fullwidth fullheight popup swiper-container-vertical swiper-container-free-mode"
+             style="height: 673.544px; cursor: -webkit-grab;">
+            <div class="swiper-wrapper" style="transition-duration: 0ms;">
+                <div class="swiper-slide pop-dlist swiper-slide-active"></div>
+            </div>
+            <div class="swiper-scrollbar pop-scrollbar" style="opacity: 1; transition-duration: 400ms;">
+                <div class="swiper-scrollbar-drag" style="transition-duration: 0ms;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pshade greenanswer-dwrap fullwidth fullheight">
+    <div class="greenanswer-box fullwidth fullheight bg_white absolute"
+         style="top: 50%; height: 767.2px; width: 822px; margin-top: -383.6px;">
+        <h2 class="clearfix typo_white typo_middle pdf greenanswer-title bg_green textc">
+            <span class="greenanswer-dtitle">更多</span>
+            <a href="javascript:void(0);" class="typo_middle typo_white fright iconfont greenanswer-iclose"></a>
+            <div class="pt5 typo_smaller typo_normal greenanswer-subtitle">
+                将我的问题转发给其他好医生，听取更多意见！
+            </div>
+        </h2>
+        <div class="fullwidth fullheight greenanswer-popup lauto" style="width: 822px; height: 767.2px;">
+            <div class="greenanswer-dlist"></div>
+        </div>
+    </div>
+</div>
+<div class="pshade prompt2 fullheight fullwidth">
+    <div class="prompt-box2 bg_white textc rsquare clearfix">
+        <div class="prompt-main2 pdf">
+            <div class="prompt-title2 typo_middle typo_dgray"></div>
+            <div class="prompt-msg2 typo_small typo_gray"></div>
+        </div>
+        <div class="prompt-bbox2 clearfix fullwidth">
+            <a class="prompt-btn2 prompt-sure2 block typo_green typo_middle" href="javascript:void(0);"></a>
+            <a class="prompt-btn2 prompt-cancel2 block typo_green typo_middle" href="javascript:void(0);"></a>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="../js/util.js"></script>
+<script>
+    var example1 = new Vue({
+        el: '#user-list',
+        data: {
+            items: {}
+        }
+    });
+    $.ajax({
+            url: config.base_url + "userprofile",
+            type: 'get',
+            dataType: 'json',
+            data: {
+                profile_id: 0,
+                token: 'f2ab018c22c1d2ad6c2111e8b817180f'
+            },
+            success: function (res) {
+                for (var i = 0; i < res.data.length; i++) {
+                    if (res.data[i].sex === 1) {
+                        res.data[i].sex = '男';
+                    } else {
+                        res.data[i].sex = '女';
+                    }
+                }
+
+                example1.items = res.data;
+
+            }
+        }
+    );
+</script>
+</html>
