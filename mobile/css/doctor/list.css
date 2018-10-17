@@ -1,0 +1,253 @@
+.topmenufixed {
+                          position: fixed;
+                          top: 1.17333rem;
+                          left: 0;
+                          z-index: 111;
+                          width: 100%;
+                      }
+
+.apptop {
+    top: 0;
+}
+
+.unitbox {
+    padding-top: 4.45333rem;
+}
+
+.mt2 {
+    margin-top: 0.05333rem;
+}
+
+.h44 {
+    height: 1.17333rem;
+}
+
+.h39 {
+    height: 1.04rem;
+}
+
+.h40 {
+    height: 1.06667rem;
+}
+
+.h48 {
+    height: 1.28rem;
+}
+
+.pt44 {
+    padding-top: 1.17333rem;
+}
+
+.pt83 {
+    padding-top: 2.21333rem;
+}
+
+.pt92 {
+    padding-top: 2.45333rem;
+}
+
+.pt123 {
+    padding-top: 3.28rem;
+}
+
+.pt131 {
+    padding-top: 3.49333rem;
+}
+
+.datechoose {
+    position: fixed;
+    left: 0;
+    z-index: 98;
+    width: 100%;
+}
+
+.w-18 {
+    width: 18%;
+}
+
+.beforeloadimg {
+    width: 2.66667rem;
+}
+
+.beforeloadimg img {
+    width: 0.53333rem;
+}
+
+.date-doctor-list {
+    position: relative;
+    width: 82%;
+    padding: 0;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.date-doctor-list a {
+    display: inline-block;
+    width: 1.81333rem;
+    height: 1.06667rem;
+    padding: 0.13333rem 0;
+    line-height: 0.53333rem;
+    color: #888;
+}
+
+.date-doctor-list a.cur {
+    color: #00d2c3;
+}
+
+.alldate:after {
+    position: absolute;
+    top: 0.3rem;
+    right: 0;
+    content: '';
+    width: 1px;
+    height: 0.8rem;
+    background: #eee;
+}
+
+.docinfo {
+    margin-top: 0.26667rem;
+    padding: 0.37333rem 0.4rem;
+    background: #fff;
+}
+
+.docinfo:first-child {
+    margin-top: 0;
+}
+
+.avatar {
+    float: left;
+    width: 1.06667rem;
+    height: 1.06667rem;
+    margin-right: 0.26667rem;
+    vertical-align: top;
+}
+
+.rgtbox {
+    padding-left: 1.35rem;
+}
+
+.docname-level {
+    /*height:0.53333rem; line-height:0.53333rem;*/
+}
+
+.deplist i {
+    display: inline-block;
+    line-height: 0.53333rem;
+    padding: 0 0.13333rem;
+    border-radius: 0.05333rem;
+    font-size: 0.32rem;
+    color: #fff;
+    background: #ffb753;
+}
+
+.docname {
+    max-width: 4.26667rem;
+}
+
+.disname {
+    float: left;
+    height: 0.53333rem;
+    line-height: 0.48rem;
+    padding: 0 0.16rem;
+    border: 1px solid #9B9B9B;
+    border-radius: 0.106666667rem;
+    margin: 0 0.26667rem 0.05333rem 0;
+    font-size: 0.32rem;
+}
+
+.openservices-i {
+    max-height: 1.14667rem;
+    overflow: hidden;
+}
+
+.openservices-i i {
+    display: inline-block;
+    float: left;
+    margin: 0 0.26667rem 0.08rem 0;
+    padding: 0.05333rem 0.13333rem;
+    border: solid 1px #33b2ef;
+    border-radius: 0.05333rem;
+    line-height: 0.37333rem;
+    text-align: center;
+    color: #33b2ef;
+    background: #fff;
+}
+
+.goodimg {
+    position: relative;
+    display: inline-block;
+    width: 2.66667rem;
+    height: 2.0rem;
+}
+
+.goodimg i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 0.85333rem;
+    height: 0.42667rem;
+    text-align: center;
+    font-size: 0.32rem;
+    color: #fff;
+    border-radius: 0.05333rem 0 0.21333rem 0;
+}
+
+.goodimg i.hot {
+    background: #f55d3a;
+}
+
+.goodimg i.offer {
+    background: #62cd02;
+}
+
+.goodrgt {
+    padding-left: 2.93333rem;
+}
+
+.tab-bar {
+    /*position: fixed;top: 1.17333rem;left: 0;z-index: 11;*/
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    background: #fff;
+}
+
+.tab-bar button {
+    position: relative;
+    display: inline-block;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    height: 1.04rem;
+    line-height: 1.04rem;
+    border-bottom: solid 0.05333rem #f9f9f9;
+    text-align: center;
+    font-size: 0.4rem;
+    color: #333;
+    background: #fff;
+}
+
+.tab-bar button.cur {
+    color: #00d3c2;
+}
+
+.tab-bar button.cur:before {
+    content: "";
+    position: absolute;
+    bottom: -0.053333rem;
+    left: 50%;
+    width: 0.8rem;
+    height: 0.05333rem;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    border-bottom: solid 0.053333rem #00d2c3;
+    color: #00d2c3;
+}
