@@ -33,7 +33,7 @@
 
         </div>
         <div class="add-user"><a href="addpatient.html"><i class="iconfont add-user-icon cl00caba"></i> <i
-                class="add-user-txt cl00caba">添加家庭成员</i></a> (已有 <span>1</span> 人，还能添加 <span>11</span> 人)
+                class="add-user-txt cl00caba">添加家庭成员</i></a><span></span>
         </div>
 
         <!--家庭成员列表-->
@@ -44,7 +44,7 @@
                         <img src="https://wximg.91160.com/wechat//img/common/avatar_user_1.jpg">
                     </div>
                     <div class="userinfo fl">
-                        <a href="editpatient.html?profile_id=" + "{{item.id}}"  class="block">
+                        <a :href="'editpatient.html?id=' + item.id" class="block">
                             <h1 class="layout">
                                 <span class="fs16-rem">
                                     <i class="fleft inblo elli" style="max-width: 2rem;">{{item.name}}</i>
@@ -62,65 +62,6 @@
     </div>
 </div>
 
-<div class="pshade prompt fullheight fullwidth">
-    <div class="prompt-box bg_white textc rsquare clearfix">
-        <div class="prompt-main pdf">
-            <div class="prompt-title typo_middle typo_dgray"></div>
-            <div class="prompt-msg typo_small typo_gray"></div>
-        </div>
-        <div class="prompt-bbox clearfix fullwidth">
-            <a class="prompt-btn prompt-cancel block typo_gray typo_middle" href="javascript:void(0);"></a>
-            <a class="prompt-btn prompt-sure block typo_green typo_middle" href="javascript:void(0);"></a>
-        </div>
-    </div>
-</div>
-<div class="loading tshade hidden">
-    <div class="loadingicon loadingimg">
-        <div class="spinner" aria-role="progressbar"
-             style="position: relative; width: 0px; z-index: 2000000000; left: 40px; top: 40px;">
-            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-0-12 2s linear infinite;">
-                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(0deg) translate(10px, 0px); border-radius: 2px;"></div>
-            </div>
-            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-1-12 2s linear infinite;">
-                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(30deg) translate(10px, 0px); border-radius: 2px;"></div>
-            </div>
-            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-2-12 2s linear infinite;">
-                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(60deg) translate(10px, 0px); border-radius: 2px;"></div>
-            </div>
-            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-3-12 2s linear infinite;">
-                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(90deg) translate(10px, 0px); border-radius: 2px;"></div>
-            </div>
-            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-4-12 2s linear infinite;">
-                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(120deg) translate(10px, 0px); border-radius: 2px;"></div>
-            </div>
-            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-5-12 2s linear infinite;">
-                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(150deg) translate(10px, 0px); border-radius: 2px;"></div>
-            </div>
-            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-6-12 2s linear infinite;">
-                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(180deg) translate(10px, 0px); border-radius: 2px;"></div>
-            </div>
-            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-7-12 2s linear infinite;">
-                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(210deg) translate(10px, 0px); border-radius: 2px;"></div>
-            </div>
-            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-8-12 2s linear infinite;">
-                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(240deg) translate(10px, 0px); border-radius: 2px;"></div>
-            </div>
-            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-9-12 2s linear infinite;">
-                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(270deg) translate(10px, 0px); border-radius: 2px;"></div>
-            </div>
-            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-10-12 2s linear infinite;">
-                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(300deg) translate(10px, 0px); border-radius: 2px;"></div>
-            </div>
-            <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-50-25-11-12 2s linear infinite;">
-                <div style="position: absolute; width: 12px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(330deg) translate(10px, 0px); border-radius: 2px;"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="success tshade hidden">
-    <div class="success-icon iconfont"></div>
-    <div class="success-msg">操作成功</div>
-</div>
 <div class="tips_form hidden"></div>
 <div class="shade fullheight fullwidth hidden"></div>
 <a href="javascript:void(0);" class="btn_top typo_white textc hidden">
@@ -187,7 +128,7 @@
             dataType: 'json',
             data: {
                 profile_id: 0,
-                token: 'f2ab018c22c1d2ad6c2111e8b817180f'
+                token: checktoken()
             },
             success: function (res) {
                 for (var i = 0; i < res.data.length; i++) {
@@ -201,7 +142,6 @@
                 example1.items = res.data;
 
             }
-        }
-    );
+        });
 </script>
 </html>

@@ -1,0 +1,253 @@
+
+/*页面顶部开始*/
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 1.173333rem;
+    line-height: 1.173333rem;
+    text-align: center;
+    font-size: 0.48rem;
+    color: #fff;
+    background-color: #00D3C2;
+    background: -webkit-gradient(linear, left top, right top, from(#1db5a4), to(#1cabbf));
+    background: -webkit-linear-gradient(left, #1db5a4, #1cabbf);
+    background: linear-gradient(to right, #1db5a4, #1cabbf);
+}
+
+.headname {
+    max-width: 8.0rem;
+    margin: 0 auto;
+}
+
+.nofixedheader {
+    position: static;
+}
+
+.shadbg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.goback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 0.266667rem;
+    line-height: 1.173333rem;
+}
+
+.nav-inav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 0.266667rem;
+}
+
+.collection {
+    position: absolute;
+    top: 0;
+    right: 0.8rem;
+    z-index: 100;
+    padding: 0.05333rem 0.26667rem;
+    line-height: 1.17333rem
+}
+
+/*页面顶部结束*/
+
+/*我的挂号下面的三个button  开始*/
+
+.orderli[nav-btn] {
+    padding: 0;
+}
+
+.orderli li[nav-btn] {
+    float: left;
+    width: 100%;
+    margin: 0.26667rem 0 0 0;
+}
+
+.w66[nav-btn] {
+    width: 1.76rem
+}
+
+.orderindex[nav-btn] {
+    padding-top: 2.34667rem;
+}
+
+.tab-bar[nav-btn] {
+    position: fixed;
+    top: 1.17333rem;
+    left: 0;
+    z-index: 10;
+    width: 100%
+}
+
+.tab-bar-app[nav-btn] {
+    top: 1.22667rem;
+}
+
+.tab-bar button[nav-btn] {
+    position: relative;
+    float: left;
+    display: inline-block;
+    width: 33.33%;
+    height: 1.17333rem;
+    line-height: 1.17333rem;
+    border-bottom: solid 0.053333rem #f9f9f9;
+    text-align: center;
+    font-size: 0.4rem;
+    color: #707070;
+    background: #fff;
+}
+
+.tab-bar button.cur[nav-btn]:before {
+    content: "";
+    position: absolute;
+    bottom: -0.05333rem;
+    left: 50%;
+    width: 1.17333rem;
+    height: 0.053333rem;
+    margin-left: -0.58667rem;
+    border-bottom: solid 0.053333rem #00d2c3;
+    color: #00d2c3;
+}
+
+.nocoupon[nav-btn] {
+    padding: 30% 0;
+}
+
+.nocoupon img[nav-btn] {
+    display: block;
+    width: 2.45333rem;
+    margin: 0 auto;
+}
+
+.beforeloadimg[nav-btn] {
+    width: 2.66667rem;
+}
+
+.beforeloadimg img[nav-btn] {
+    width: 0.53333rem;
+}
+
+.accesscodebg[nav-btn] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 98;
+    width: 100%;
+    height: 100%;
+    background: rgba(51, 51, 51, 0.4);
+}
+
+.accesscodebox[nav-btn] {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 8.2rem;
+    height: 6.13333rem;
+    margin: -3.06667rem 0 0 -4.1rem;
+    border-radius: 0.21333rem;
+    background: #fff;
+}
+
+.accesscodetit[nav-btn] {
+    height: 1.33333rem;
+    line-height: 1.33333rem;
+    border-top-left-radius: 0.21333rem;
+    border-top-right-radius: 0.21333rem;
+    font-size: 0.48rem;
+    text-align: center;
+    color: #fff;
+    background-color: #09d8c3;
+    background: -webkit-gradient(linear, left top, right top, from(#09d8c3), to(#70e99b));
+    background: -webkit-linear-gradient(left, #09d8c3, #70e99b);
+    background: linear-gradient(to right, #09d8c3, #70e99b);
+}
+
+.closecode[nav-btn] {
+    position: absolute;
+    top: 0;
+    right: 0.13333rem;
+    padding: 0 0.26667rem;
+}
+
+/*我的挂号下面的三个button  结束*/
+
+/*下面这是就诊信息的显示布局 开始*/
+
+.lh26[ info-1] {
+    line-height: 0.69333rem;
+}
+
+.ordertwo a[ info-1], .ordertwo span[ info-1] {
+    position: relative;
+    float: left;
+    display: inline-block;
+    width: 50%;
+    padding: 12px 4.8%;
+    line-height: 0.53333rem;
+    font-size: 0.4rem;
+    color: #707070;
+}
+
+.ordertwo a img[ info-1], .ordertwo span img[ info-1] {
+    float: left;
+    width: 0.53333rem;
+    margin-right: 0.13333rem;
+}
+
+.ordertwo a[ info-1]:after {
+    position: absolute;
+    right: 4.8%;
+    top: 0.34667rem;
+    content: '\e6ed';
+    font-family: 'iconfont';
+    font-size: 0.4rem;
+    color: #d1d1d1;
+}
+
+.tzx[ info-1] {
+    padding: 0.26667rem;
+    line-height: 0.53333rem;
+    background: #F1F8FC;
+}
+
+.uc-oitem-thumb[ info-1] {
+    width: 1.33333rem;
+    height: 1.33333rem;
+    margin-right: 0.4rem;
+    overflow: hidden;
+}
+
+.uc-oitem-label[ info-1] {
+    width: 1.86667rem;
+}
+
+.illtag[ info-1] {
+    display: inline-block;
+    float: left;
+    padding: 0 0.08rem;
+    margin-right: 0.13333rem;
+    margin-bottom: 0.08rem;
+    border: solid 1px #ccc;
+    border-radius: 0.05333rem;
+    line-height: 0.53333rem;
+    font-size: 0.32rem;
+    white-space: normal;
+}
+
+.orderli-btn-a a[ info-1] {
+    margin-bottom: 0.08rem;
+}
+
+/*这是就诊信息的显示布局  结束*/

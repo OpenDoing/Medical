@@ -1,3 +1,31 @@
+window.onload = function (ev) {
+    $.ajax({
+        url: config.base_url + "userprofile",
+        type: 'get',
+        dataType: 'json',
+        data: {
+            profile_id: getQueryString('id'),
+            token: checktoken()
+        },
+        success: function (res) {
+            if (res.data[0].sex === 1) {
+                res.data[0].sex = '男';
+            } else {
+                res.data[0].sex = '女';
+            }
+            console.log(res.data[0].sex);
+            $("#username").val(res.data[0].name);
+            $("#birthday").val(res.data[0].birth);
+            // $("#sec_mobile").hide();
+            // $("#mobile").removeAttr("type");
+            $("#sec_mobile").attr("value",res.data[0].phone);
+            $("#mobile").val(res.data[0].phone);
+            $("#sex-val").text(res.data[0].sex);
+
+        }
+    });
+};
+
 //显示隐藏性别日期选择框
 function isShowSelect(is_show) {
     if (is_show == true) {
@@ -23,23 +51,28 @@ function isShowSelect(is_show) {
 
 function submitData() {
     // console.log(data);
+    var sex = 0;
+    if ($("#sex-val").text() === '男'){
+        sex = 1;
+    }
+
     $.ajax({
         url:  config.base_url + "userprofile/update",
         type: "POST",
         data: {
-            'token':'660f9505528f8ca3af691be24645ad44',
-            'profile_id':id,
+            'token':checktoken(),
+            'profile_id':getQueryString('id'),
             'name':$('#username').val(),
-            'sex':$('#sex_type').val(),
+            'sex':sex,
             'birth':$('#birthday').val(),
             'address':$('#relationship_type').val().trim(),
             'phone':$('#mobile').val().trim()
         },
         success: function (res) {
             if (res.succ === 1){
-                showTips("添加成功");
+                showTips("修改成功");
                 setTimeout(function () {
-                    window.location.href = "patientinfo.html";
+                    window.location.href = "patientlist.html";
                 }, 1000);
             }else{
                 showTips(res.error);
@@ -108,10 +141,10 @@ $(function () {
             _val = _this.attr('data-val'),
             // old_val = $("#card_type").val(),
             _text = _this.text(),
-            typeC = _this.parent('.select-con').attr('id');
-        $('#' + typeC + '-val').html(_text);
-        $('#' + typeC + '-box').hide().find('input').val(_val);
-        $("#sex-val").html(sex_type ? '女' : '男');
+            type = _this.parent('.select-con').attr('id');
+        $('#' + type + '-val').html(_text);
+        $('#' + type + '-box').hide().find('input').val(_val);
+        // $("#sex-val").html(sex_type ? '女' : '男');
 
     });
 

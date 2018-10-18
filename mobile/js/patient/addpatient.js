@@ -27,7 +27,7 @@ function submitData() {
         url:  config.base_url + "userprofile/create",
         type: "POST",
         data: {
-            'token':'660f9505528f8ca3af691be24645ad44',
+            'token':checktoken(),
             'name':$('#username').val(),
             'sex':$('#sex_type').val(),
             'birth':$('#birthday').val(),
@@ -107,10 +107,11 @@ $(function () {
             _val = _this.attr('data-val'),
             // old_val = $("#card_type").val(),
             _text = _this.text(),
-            typeC = _this.parent('.select-con').attr('id');
-        $('#' + typeC + '-val').html(_text);
-        $('#' + typeC + '-box').hide().find('input').val(_val);
-        $("#sex-val").html(sex_type ? '女' : '男');
+            type = _this.parent('.select-con').attr('id');
+        $('#' + type + '-val').html(_text);
+        $('#' + type + '-box').hide().find('input').val(_val);
+        // $("#sex-val").html(sex_type ? '女' : '男');
+
 
     });
 
