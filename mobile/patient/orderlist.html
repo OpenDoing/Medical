@@ -2,24 +2,41 @@
 <html style="font-size: 59.8px;">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
-    <meta name="screen-orientation" content="portrait">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta http-equiv="cleartype" content="on">
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+    <!--<meta charset="utf-8">-->
+    <!--<meta name="viewport"-->
+          <!--content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">-->
+    <!--<meta name="screen-orientation" content="portrait">-->
+    <!--<meta name="apple-mobile-web-app-capable" content="yes">-->
+    <!--<meta name="format-detection" content="telephone=no">-->
+    <!--<meta http-equiv="cleartype" content="on">-->
 
+    <!--<link rel="stylesheet" href="../css/patient/orderlist.css">-->
+
+    <!--<link rel="stylesheet" href="../css/custom.main.css">-->
+    <!--&lt;!&ndash;下面这个放最后&ndash;&gt;-->
+    <!--<link rel="stylesheet" href="../css/app.css">-->
+    <!--<link rel="stylesheet" href="../css/bootstrap.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="../css/lib/mobileSelect.css">-->
+    <!--<link href="../css/lib/jquery.dropdown.css" type="text/css" rel="stylesheet">-->
+
+    <meta charset="UTF-8">
+    <link href="../css/custom.plugin.css" rel="stylesheet">
+    <link href="../css/custom.main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/lib/mobileSelect.css">
+    <link href="../css/lib/jquery.dropdown.css" type="text/css" rel="stylesheet">
+
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
     <link rel="stylesheet" href="../css/patient/orderlist.css">
 
-    <link rel="stylesheet" href="../css/custom.main.css">
-    <!--下面这个放最后-->
-    <script src="../js/lib/vue.js"></script>
-    <script src="../js/lib/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="../css/app.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-
+    <style>
+        .order-confirm-new .case-item{border:none;line-height:50px;background-color:#fff;}
+    </style>
 </head>
 
 
@@ -32,40 +49,48 @@
                     <div class="header"><!----> <a href="javascript:void(0);"
                                                    class="nav-inav typo_white typo_middle iconfont fright"></a>
                         <span class="iconfont typo_white goback"></span>
-                        <div class="headname elli">我的挂号</div> <!----></div> <!----></div>
-                <div nav-btn="" class="orderindex" style="">
-                    <div style="width: 100%;" class="" role="group" aria-label="">
-                        <div style="width: 33.3%; float:left" class="btn-group" role="group">
-                            <button style="width: 100%;" nav-btn="" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                选择家庭成员
-                                <span class="caret"></span>
-                            </button>
-                            <ul id="user_list" class="dropdown-menu">
-                                <li  v-for="patient in patients" :value=" patient.id " onclick="refresh(this.value)">{{patient.name}}</li>
-                                <!--<li><a href="#">Dropdown link</a></li>-->
-                            </ul>
+                        <div class="headname elli">我的订单
                         </div>
-                        <div style="width: 33.3%; float:left"><button style="width: 100%;" nav-btn="" type="button" class="btn btn-default">待就诊</button></div>
-                        <div style="width: 33.3%; float:left"><button style="width: 100%;" nav-btn="" type="button" class="btn btn-default">待评价</button></div>
                     </div>
+                </div>
 
-
-                    <!--<div nav-btn="" class="tab-bar" style="">-->
-                        <!--<div style="width: 33.33%;" class="btn-group" role="group">-->
-                            <!--<button type="button" nav-btn="" id="current_name" class="cur dropdown-toggle"-->
-                                    <!--data-toggle="dropdown" disabled="disabled">-->
-                                <!--全部订单<span class="caret"></span>-->
+                <div nav-btn="" class="orderindex" style="">
+                    <!--<div style="width: 100%;" class="" role="group" aria-label="">-->
+                        <!--<div style="width: 33.3%; float:left" class="btn-group" role="group">-->
+                            <!--<button style="width: 100%;" nav-btn="" type="button"-->
+                                    <!--class="btn btn-default dropdown-toggle" data-toggle="dropdown"-->
+                                    <!--aria-haspopup="true" aria-expanded="false">-->
+                                <!--选择家庭成员-->
+                                <!--<span class="caret"></span>-->
                             <!--</button>-->
-                            <!--<ul id="user_list" class="dropdown-menu" role="menu">-->
-                                <!--<li v-for="patient in patients" :value=" patient.id ">{{patient.name}}</li>-->
+                            <!--<ul id="user_list" class="dropdown-menu">-->
+                                <!--<li v-for="patient in patients" :value=" patient.id " onclick="refresh(this.value)">-->
+                                    <!--{{patient.name}}-->
+                                <!--</li>-->
+                                <!--&lt;!&ndash;<li><a href="#">Dropdown link</a></li>&ndash;&gt;-->
                             <!--</ul>-->
-
-                        <!--<button style="width: 33.33%;"  nav-btn="" id="forVisit" class="">待就诊</button>-->
-                        <!--<button style="width: 33.33%;"  nav-btn="" id="forComment" class="">待评价</button>-->
+                        <!--</div>-->
+                        <!--<div style="width: 33.3%; float:left">-->
+                            <!--<button style="width: 100%;" nav-btn="" type="button" class="btn btn-default">待就诊</button>-->
+                        <!--</div>-->
+                        <!--<div style="width: 33.3%; float:left">-->
+                            <!--<button style="width: 100%;" nav-btn="" type="button" class="btn btn-default">待评价</button>-->
                         <!--</div>-->
                     <!--</div>-->
-                    <div nav-btn="" class="fullwidth layout boxtop"><!---->
+
+                    <div class="uc-iform-item list_arrow clearfix">
+                        <div class="hr2">
+                            <!--分割线-->
+                        </div>
+                        <span class="uc-iform-label typo_dblack block fleft">
+                            选择咨询人
+                        </span>
+                        <div class="nobor typo_dgrey uc-iform-msg textr block fright select ">
+                            <div id="patient-trigger" class="select-value fullwidth elli press-has-bgcolor">点击选择</div>
+                        </div>
+                    </div>
+
+                    <div nav-btn="" class="fullwidth layout boxtop">
                         <div id="orderinfo" class="tab-item fullwidth fl">
                             <ul v-for="item in items" class="orderli layout">
                                 <li class="layout">
@@ -170,54 +195,15 @@
         </div>
     </div>
 </div>
-<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/jquery-3.2.1.min.js"></script>
+<script src="../js/lib/jquery.dropdown.js"></script>
+<script src="../js/lib/mobileSelect.js"></script>
+<script src="../js/lib/vue.js"></script>
 <script src="../js/util.js"></script>
+<!--<script src="../js/lib/bootstrap.min.js"></script>-->
 <script src="../js/patient/orderlist.js"></script>
 <script>
-    var example1 = new Vue({
-        el: '#orderinfo',
-        data: {
-            items:{}
-        }
-    });
 
-
-    function refresh(id){
-        console.log(id);
-        $.ajax({
-            url: config.base_url + "order",
-            type: 'get',
-            dataType: 'json',
-            data: {
-                profile_id: id,
-                order_id: 0,
-                token: checktoken()
-            },
-            success: function (res) {
-                if (res.succ === 1){
-                    console.log(example1.items);
-                    example1.items = res.data;
-                }
-
-            }
-        });
-
-    }
-
-
-    $.ajax({
-            url: "http://139.196.90.212:8080/ma/zxy/api/order",
-            type: 'get',
-            dataType: 'json',
-            data: {
-                profile_id: 28,
-                order_id: 0,
-                token: 'fe2c6f7e34ed4063f93eac706fbe1ca8'
-            },
-            success: function (res) {
-
-            }
-        });
 </script>
 </body>
 </html>

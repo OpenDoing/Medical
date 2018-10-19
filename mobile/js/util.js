@@ -28,7 +28,7 @@ function getInfoFromCookie(name) {
 function checktoken() {
     if(!getCookie('token')){
         //todo:弹框提示登录已失效
-        window.location.href = "login.html";
+        window.location.href = "../login.html";
         return;
     }
     return getCookie('token');
