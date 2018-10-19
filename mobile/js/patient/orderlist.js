@@ -1,33 +1,6 @@
 var p_id;
 window.onload = load_userprofile();
 
-// window.onload = function (ev) {
-//     var users = new Vue({
-//         el: '#user_list',
-//         data: {
-//             patients: {}
-//         }
-//     });
-//     $.ajax({
-//         url: config.base_url + "userprofile",
-//         type: 'get',
-//         dataType: 'json',
-//         data: {
-//             profile_id: 0,
-//             token:checktoken()
-//         },
-//         success: function (res) {
-//             if (res.succ === 1) {
-//
-//                 users.patients = res.data;
-//
-//             }
-//
-//         }
-//
-//     });
-// };
-
 function load_userprofile() {
     $.ajax({
         url: config.base_url + "userprofile",
@@ -42,7 +15,7 @@ function load_userprofile() {
                 init_memlist(data.data);
             }
             else {
-                alert_error(data.error);
+                showTips(data.error);
             }
         }
     });
@@ -89,25 +62,16 @@ function load_orders(id) {
         success: function (res) {
             if (res.succ === 1) {
                 console.log(example1.items);
-                example1.items = res.data;
+                var data = res.data;
+                for(i in data){
+                    data[i].time = data[i].appointment_date + " " + data[i].str_time;
+                    data[i].href = "detail.html?oid="+ data[i].id + "&pid=" + data[i].profile_id;
+                    data[i].photo = config.img_url + data[i].photo;
+                }
+                example1.items = data;
             }
 
         }
     });
 
 }
-
-
-$.ajax({
-    url: "http://139.196.90.212:8080/ma/zxy/api/order",
-    type: 'get',
-    dataType: 'json',
-    data: {
-        profile_id: 28,
-        order_id: 0,
-        token: 'fe2c6f7e34ed4063f93eac706fbe1ca8'
-    },
-    success: function (res) {
-
-    }
-});

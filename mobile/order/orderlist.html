@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html style="font-size: 59.8px;">
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <link href="../css/custom.plugin.css" rel="stylesheet">
+    <link href="../css/custom.main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/lib/mobileSelect.css">
+    <link href="../css/lib/jquery.dropdown.css" type="text/css" rel="stylesheet">
+
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <link rel="stylesheet" href="../css/patient/orderlist.css">
+
+    <link rel="stylesheet" href="../css/app.css">
+    <style>
+        .order-confirm-new .case-item{border:none;line-height:50px;background-color:#fff;}
+    </style>
+</head>
+
+
+<body id="body" style="">
+<div id="app">
+    <div class="fullheight">
+        <div class="fullheight">
+            <div data-title="我的订单">
+                <div>
+                    <div class="header">
+                        <a href="javascript:void(0);" class="nav-inav typo_white typo_middle iconfont fright"></a>
+                        <span href="javascript:history.back();" class="iconfont typo_white goback"></span>
+                        <div class="headname elli">我的订单</div>
+                    </div>
+                </div>
+
+
+                <div nav-btn="" class="orderindex" style="">
+                    <div class="tab-bar" style="">
+                        <div class="uc-iform-item list_arrow clearfix" style="height: 1rem;line-height: 1rem">
+                            <span class="uc-iform-label typo_dblack block fleft">
+                            选择咨询人
+                        </span>
+                            <div class="nobor typo_dgrey uc-iform-msg textr block fright select ">
+                                <div id="patient-trigger" class="select-value fullwidth elli press-has-bgcolor">点击选择</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div nav-btn="" class="fullwidth layout boxtop">
+                        <div style="height: 0.5rem"></div>
+
+                        <div id="orderinfo" class="tab-item fullwidth fl">
+                            <ul v-for="item in items" class="orderli layout">
+                                <li class="layout">
+                                    <div info-1="" class="pt10 pb10 block bg_white typo_gray typo_small">
+                                        <div info-1="" class="pagn pb10 bt_gray clearfix">
+                                            <div info-1="" class="fright" style="color:#0795d4;">{{item.status}}</div>
+                                            <div info-1="" class="elli typo_dgray">订单号: {{item.id}}</div>
+                                        </div>
+                                        <div info-1="" class="mt5 pt8 pagn clearfix">
+                                            <a info-1="" :href="item.href" class="block elli">
+                                                <div info-1="" class="uc-oitem-thumb fleft">
+                                                    <img info-1="" :src="item.photo">
+                                                </div>
+                                                <div info-1="" class="typo_middle typo_gray elli lh24">
+                                                    <span
+                                                        info-1="" class="fleft typo_dgray typo_large elli"
+                                                        style="max-width: 4.53333rem;">{{item.doctorname}}</span>&nbsp;{{item.typename}}
+                                                </div>
+                                                <div info-1="" class="elli mt5 lh20 c_999 layout" style="height: 0.58667rem;">
+                                                    <span info-1="" class="fleft">{{item.department}}</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <a info-1="" :href="item.href"
+                                           class="block pagn pt10 clearfix">
+                                            <div info-1="" class="bg_lgray typo_black pt5 pb5 pl10 pr10 typo_small lh22">
+                                                <div info-1="" class="elli">
+                                                    <span info-1="" class="typo_gray inblo uc-oitem-label">预约人:</span> {{item.username}}
+                                                </div>
+                                                <div info-1="" class="elli">
+                                                    <span info-1="" class="typo_gray inblo uc-oitem-label">咨询时间:</span>
+                                                    <span info-1="" class="typo_num">{{item.time}}</span>
+                                                </div>
+                                                <div info-1="" class="elli">
+                                                    <span info-1="" class="typo_gray inblo uc-oitem-label">费用:</span> {{item.price}}元&nbsp;
+                                                </div>
+                                            </div>
+                                            <div info-1="" class="bg_lgray typo_black pt5 pb5 pl10 pr10 typo_small lh24">
+                                                <span info-1="" class="typo_gray inblo uc-oitem-label">咨询密码:</span>
+                                                <span info-1="" class="fs20 typo_orange">{{item.code}}</span>
+                                            </div>
+                                        </a>
+                                        <div info-1="" class="orderli-btn-a pagn clearfix mt10">
+
+                                        </div>
+                                        <div info-1="" class="weui-loading_toast vux-loading"
+                                             style="display: none;">
+                                            <div class="weui-mask_transparent"></div>
+                                            <div class="weui-toast"><i class="weui-loading weui-icon_toast"></i>
+                                                <p class="weui-toast__content"></p></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul> <!---->
+
+                        </div> <!---->
+                    </div>
+                    <div class="hide textc" style="display: none;">
+                        <span class="iconfont js_scroll_top "></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="vux-toast">
+        <div class="weui-mask_transparent" style="display: none;"></div>
+        <div class="weui-toast weui-toast_text vux-toast-middle" style="width: auto; display: none;"><i
+                class="weui-icon-success-no-circle weui-icon_toast" style="display: none;"></i>
+            <p class="weui-toast__content" style="padding: 10px;">已经全部加载完</p></div>
+    </div>
+
+    <div class="vux-confirm">
+        <div class="vux-x-dialog">
+            <div class="weui-mask" style="display: none;"></div>
+            <div class="weui-dialog" style="display: none;"><!---->
+                <div class="weui-dialog__bd">
+                    <div></div>
+                </div>
+                <div class="weui-dialog__ft"><a href="javascript:;"
+                                                class="weui-dialog__btn weui-dialog__btn_default">取消</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //字体大小自适应
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 32 * (clientWidth / 320) + 'px';
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+<script src="../js/lib/jquery-3.2.1.min.js"></script>
+<script src="../js/lib/jquery.dropdown.js"></script>
+<script src="../js/lib/mobileSelect.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/util.js"></script>
+<script src="../js/lib/tips.js"></script>
+
+<!--<script src="../js/lib/bootstrap.min.js"></script>-->
+<script src="../js/patient/orderlist.js"></script>
+<script>
+
+</script>
+</body>
+</html>

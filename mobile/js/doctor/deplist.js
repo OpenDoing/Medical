@@ -50,11 +50,11 @@ function pinyin() {
 
     $.ajax({
         type: "GET",
-        url: config.base_url + "department",
+        url: config.base_url + "department/sortlist",
         success: function (response) {
             var data = response.data;
-            var str = pySegSort(data);
-            init_scroller(str.segs);
+            // var str = pySegSort(data);
+            init_scroller(data);
             // console.log(str)
         }
     });
@@ -72,23 +72,23 @@ function initCities(depdata) {
 
     var lists = '';
     var en = '<ul>';
-    depdata.forEach(function (group) {
-        var name = group.letter;
+
+    for(var key in depdata){
+        var name = key;
         lists += '<div class="title">'+name+'</div>';
         lists += '<ul>';
-        group.data.forEach(function(g) {
+        depdata[key].forEach(function(g) {
             lists += '<li onclick="todoclist('+ g.id + ')" class="item" data-name="'+ g.name +'" data-id="'+ g.id +'"><span class="border-1px name">'+ g.name +'</span></li>';
         });
         lists += '</ul>';
 
 
-        var name = group.letter.substr(0, 1);
+        // var name = key.substr(0, 1);
         en += '<li data-anchor="'+name+'" class="item">'+name+'</li>';
-        var len = group.data.length;
+        var len = depdata[key].length;
         anchorMap[name] = y;
         y -= titleHeight + len * itemHeight;
-
-    });
+    }
     en += '</ul>';
 
     cities.innerHTML = lists;
