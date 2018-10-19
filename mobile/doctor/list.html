@@ -8,64 +8,47 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="cleartype" content="on">
-    <style>
-        @font-face {
-            font-family: 'iconfont';  /* project id 512913 */
-            src: url('//at.alicdn.com/t/font_512913_5f6kx9yp5hq.eot');
-            src: url('//at.alicdn.com/t/font_512913_5f6kx9yp5hq.eot?#iefix') format('embedded-opentype'),
-            url('//at.alicdn.com/t/font_512913_5f6kx9yp5hq.woff') format('woff'),
-            url('//at.alicdn.com/t/font_512913_5f6kx9yp5hq.ttf') format('truetype'),
-            url('//at.alicdn.com/t/font_512913_5f6kx9yp5hq.svg#iconfont') format('svg');
-        }
 
-        .iconfont {
-            font-family: iconfont;
-        }
-    </style>
     <link href="../css/app.css" rel="stylesheet">
     <link href="../css/doctor/list.css" rel="stylesheet">
-    <link href="../css/doctor/list_2.css" rel="stylesheet">
+
 </head>
 
 <body id="body" style="">
 <div id="app">
     <div class="fullheight">
-        <div class="fullheight"><!----> <!----> <!---->
-            <div  data-title="健康160">
-                <div  class="topmenufixed">
-                    <div  >
-                        <div  class="header">
-                            <span  class="collection iconfont"></span>
-                            <a  href="javascript:void(0);" class="nav-inav typo_white typo_middle iconfont fright"></a>
-                            <span class="iconfont typo_white goback"></span>
-                            <div  class="headname elli">健康160</div>
-                        </div>
-                    </div>
-                    <div  id="doctor_tab" class="layout"></div>
-                </div>
-                <div  class="h44"></div>
-                <div id="doctor_detail" class="layout">
-                    <a v-for="data in items" data-params="{&quot;pulltype&quot;:&quot;doctor&quot;,&quot;unit_id&quot;:&quot;100001803&quot;,&quot;dep_id&quot;:&quot;100102366&quot;,&quot;doctor_id&quot;:100251968,&quot;type&quot;:0,&quot;app_native_tpl&quot;:&quot;&quot;,&quot;gaStaticClick&quot;:100251968}" class="block docinfo layout">
-                        <img :src="data.photo" class="avatar inblo">
-                                <div  class="rgtbox relative fs14 typo_gray">
-                        <div  class=" c2a2a2a fs18 docname-level lh22">
-                            <span  class="inblo docname elli">{{data.name}}</span>
+        <div class="topmenufixed">
+            <div  class="header">
+                <span  class="collection iconfont"></span>
+                <a href="" class="nav-inav typo_white typo_middle iconfont fright"></a>
+                <a href="javascript:history.back();" class="iconfont typo_white goback"></a>
+                <div class="headname elli">选择医生</div>
+            </div>
+        </div>
+
+        <div class="h44"></div>
+
+        <div id="doctor_detail" class="layout">
+                <a v-for="data in items" class="block docinfo layout" :href="data.url">
+                    <img :src="data.photo" class="avatar inblo">
+                    <div class="rgtbox relative fs14 typo_gray">
+                        <div class=" c2a2a2a fs18 docname-level lh22">
+                            <span class="inblo docname elli">{{data.name}}</span>
                             <span class="ml5 c848484 fs16 inblo zcname elli">{{data.typename}}</span>
                         </div>
-                        <div  class="lh18 elli layout">
+                        <div class="lh18 elli layout">
                             {{data.introduction}}
                         </div>
-                        <div  class="mt3 lh18 fs14">
-                            价格 <i  class="typo_lorange">{{data.price}}</i>
+                        <div class="mt3 lh18 fs14">
+                            价格 <i class="typo_lorange">{{data.price}}</i>
                         </div>
-                        <div  class="fs12 openservices-i mt4"></div>
                     </div>
-                    </a>
-                </div>
-            </div>
+                </a>
         </div>
     </div>
 </div>
+
+
 <script>
     //字体大小自适应
     (function (doc, win) {
@@ -84,6 +67,7 @@
 <script src="../js/lib/vue.js"></script>
 <script src="../js/lib/jquery-3.2.1.min.js"></script>
 <script src="../js/util.js"></script>
+<script src="../js/lib/tips.js"></script>
 <script>
     $.ajax({
         type: "POST",
@@ -94,6 +78,7 @@
                 console.log(doctors)
                 for(i in doctors){
                     doctors[i].photo = config.img_url + doctors[i].photo;
+                    doctors[i].url = "detail.html?doc_id=" + doctors[i].id;
                 }
                 new Vue({
                     el: '#doctor_detail',
@@ -101,10 +86,9 @@
                         items: data.data
                     }
                 })
-
             }
             else {
-                alert_error(data.error);
+                showTips(data.error);
             }
         }
     });

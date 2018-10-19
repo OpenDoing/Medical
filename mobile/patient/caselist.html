@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html style="font-size: 59.8px;">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="../css/patient/case.css">
+    <link rel="stylesheet" href="../css/custom.plugin.css">
+    <link rel="stylesheet" href="../css/custom.main.css">
+    <!--下面这个放最后-->
+    <link href="../css/app.css" rel="stylesheet">
+
+</head>
+<body id="body" style="">
+<div id="app">
+    <div class="fullheight">
+        <div class="fullheight">
+            <div data-title="我的挂号">
+                <div class="header">
+                    <a href="javascript:void(0);"
+                       class="nav-inav typo_white typo_middle iconfont fright">
+
+                    </a>
+                    <span class="iconfont typo_white goback"></span>
+                    <div class="headname elli">我的挂号</div>
+                </div>
+                <div nav-btn="" class="orderindex" style="">
+                    <div nav-btn="" id="patients">
+                        <span>选择患者</span>
+                        <select id="selectPatient" style="width: 30%"
+                                onchange="changePatient(this.options[this.options.selectedIndex].value)">
+                            <option id="defaultId">请选择</option>
+                            <option v-for="item in items" :value="item.id">{{item.name}}</option>
+
+                        </select>
+                    </div>
+                    <div nav-btn="" class="fullwidth layout boxtop"><!---->
+                        <div id="caselist" class="tab-item fullwidth fl">
+                            <ul v-for="item in items" class="orderli layout">
+                                <li class="layout">
+                                    <div info-1=""
+                                         class="pt10 pb10 block bg_white typo_gray typo_small">
+                                        <div info-1="" class="pagn pb10 bt_gray clearfix">
+                                            <div info-1="" class="fright">{{item.type}}</div>
+                                            <div info-1="" class="elli typo_dgray">病历编号: {{item.id}}</div>
+                                        </div>
+
+                                        <a info-1=""
+                                           href="#"
+                                           class="block pagn pt10 clearfix">
+                                            <div info-1=""
+                                                 class="bg_lgray typo_black pt5 pb5 pl10 pr10 typo_small lh22">
+                                                <div info-1="" class="elli"><span info-1=""
+                                                                                  class="typo_gray inblo uc-oitem-label">就诊时间:</span><span
+                                                        info-1=""
+                                                        class="typo_num">{{item.visit_time}}</span>
+                                                </div>
+                                                <div info-1="" class="elli"><span info-1=""
+                                                                                  class="typo_gray inblo uc-oitem-label">就诊医院:</span><span
+                                                        info-1=""
+                                                        class="typo_num">{{item.hospital}}</span>
+                                                </div>
+                                                <div info-1="" class="elli"><span info-1=""
+                                                                                  class="typo_gray inblo uc-oitem-label">疾病描述:</span>{{item.description}}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/lib/jquery-3.2.1.min.js"></script>
+<script src="../js/util.js"></script>
+<script src="../js/patient/caselist.js"></script>
+</body>
+</html>

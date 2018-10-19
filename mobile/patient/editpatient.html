@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>编辑就诊人</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../css/custom.plugin.css">
+    <link rel="stylesheet" href="../css/custom.main.css">
+</head>
+<body class="bg_gray" style="">
+<div class="fullwidth fullheight uc-info-wrap account-editmember bg_gray">
+    <div id="edit-box">
+        <!--最上面的顶部栏-->
+        <div class="nav clearfix fixedtop fullwidth">
+            <div class="nav-nav">
+                <a class="typo_white typo_middle iconfont fleft nav-nav-prev pr10" href="#">
+                </a>
+                <h1 id="page_title" class="nav-title textc typo_white typo_large typo_normal elli">编辑家庭成员</h1>
+            </div>
+        </div>
+
+        <div class="wrap uc-info bg_gray typo_middle hasNav">
+            <div class="uc-info-form bg_gray">
+                <form class="form-edit-member">
+                    <div class="pagn ptb typo_small  typo_gray"></div>
+                    <div class="uc-iform-item pagn mt5 layout" style="height:auto;">
+                        <span class="uc-iform-label typo_dgray block fleft">姓名</span>
+                        <div class="fright max-w-70 lh22 pt10 pb10" id="lengthName">
+                            <!--为空时-->
+                            <input id="username" maxlength="62" type="text"
+                                   class="nobor typo_gray textr block fright input" value="" placeholder="请填写真实姓名"
+                                   data-rule-required="true" data-msg-required="姓名不能为空" data-rule-truename="true">
+                        </div>
+                    </div>
+                    <div class="uc-iform-item list_arrow clearfix">
+                        <span class="uc-iform-label typo_dgray block fleft">性别</span>
+                        <div class="nobor typo_gray uc-iform-msg textr block fright select show-sex" id="sex-select">
+                            <div class="select-value fullwidth" id="sex-val">请选择</div>
+                        </div>
+                    </div>
+                    <div class="uc-iform-item list_arrow clearfix">
+                        <span class="uc-iform-label typo_dgray block fleft">出生日期</span>
+                        <input data-required="true" data-type="birth" data-name="出生日期" id="birthday" type="date"
+                               class="nobor typo_gray uc-iform-msg textr block fright input" value="" placeholder="请选择"
+                               max="2018-010-15">
+                    </div>
+
+                    <div class="uc-iform-item list_arrow clearfix">
+                        <span class="uc-iform-label typo_dgray block fleft">成员关系</span>
+                        <div class="nobor typo_gray uc-iform-msg textr block fright select show-relationship"
+                             id="relationship-select">
+                            <div class="select-value fullwidth" id="relationship-val">请选择</div>
+                        </div>
+                    </div>
+
+                    <div class="uc-iform-item pagn clearfix">
+                        <span class="uc-iform-label typo_dgray block fleft">手机号码</span>
+                        <input data-name="手机号码" data-length="11-11" id="sec_mobile" type="tel" placeholder="用于接收就诊短信"
+                               class="nobor typo_gray uc-iform-msg textr block fright input" value="" maxlength="11">
+                        <input data-type="phone" data-name="手机号码" data-length="11-11" id="mobile" type="hidden" value=""
+                               maxlength="11">
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <input type="hidden" id="member_id" value="">
+                    <!-- <input type="hidden" id="default" value="" /> -->
+                    <input type="hidden" id="counties_id" value="">
+
+                    <div class="pagn clearfix typo_small mt20 pb10 js-tips hide" style="display: block;">
+                        <h3 class="typo_smiddle cl333">温馨提示</h3>
+                        <div class="typo_gray mt10">
+                            您的个人信息和病历、订单相关，请谨慎修改。
+                        </div>
+                    </div>
+                    <div class="pagn mt20 pb20">
+                        <a class="block btn_green oval fullwidth textc typo_white lh_def typo_large"
+                           href="javascript:void(0);" id="submit">提交</a>
+                    </div>
+
+                    <div class="pop-mask" id="sex-box">
+                        <input name="sex" id="sex_type" type="hidden" value="">
+                        <div class="pop-select">
+                            <div class="select-con" id="sex">
+                                <p data-val="1">女</p>
+                                <p data-val="0">男</p>
+                            </div>
+                            <p data-val="-1" class="pop-cancel">取消</p>
+                        </div>
+                    </div>
+                    <div class="pop-mask" id="relationship-box">
+                        <input name="relationship" id="relationship_type" type="hidden" value="">
+                        <div class="pop-select">
+                            <div class="select-con" id="relationship">
+                                <p data-val="1">本人</p>
+                                <p data-val="2">父母</p>
+                                <p data-val="3">子女</p>
+                                <p data-val="7">夫妻</p>
+                                <p data-val="4">亲属</p>
+                                <p data-val="5">朋友</p>
+                                <p data-val="6">其他</p>
+                            </div>
+                            <p data-val="-1" class="pop-cancel">取消</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--后退按钮的mask-->
+    <div class="pshade prompt fullheight fullwidth">
+        <div class="prompt-box bg_white textc rsquare clearfix">
+            <div class="prompt-main pdf">
+                <div class="prompt-title typo_middle typo_dgray"></div>
+                <div class="prompt-msg typo_small typo_gray"></div>
+            </div>
+            <div class="prompt-bbox clearfix fullwidth">
+                <a class="prompt-btn prompt-cancel block typo_gray typo_middle" href="javascript:void(0);"></a>
+                <a class="prompt-btn prompt-sure block typo_green typo_middle" href="javascript:void(0);"></a>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../js/lib/jquery-3.2.1.min.js"></script>
+
+    <!--<script type="text/javascript" src="../js/patient/jquery.wechat.js"></script>-->
+    <!--下面这行负责验证，弹出姓名不为空这种-->
+    <script type="text/javascript" src="../js/patient/common.js"></script>
+    <!--下面这行控制页面点击弹出来选择性别的-->
+    <script type="text/javascript" src="../js/patient/form.js"></script>
+
+    <!--下面验证-->
+    <script type="text/javascript" src="../js/patient/valid.js"></script>
+
+    <script type="text/javascript" src="../js/util.js"></script>
+
+    <script type="text/javascript" src="../js/patient/editpatient.js"></script>
+
+</div>
+</body>
+</html>

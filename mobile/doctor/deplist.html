@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="../css/custom.plugin.css">
+    <link rel="stylesheet" href="../css/custom.main.css">
+    <link rel="stylesheet" type="text/css" href="../css/deplist/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/deplist/city.css">
+</head>
+<body>
+<div id="app">
+    <div>
+        <div class="nav clearfix fixedtop fullwidth">
+            <div class="nav-nav">
+                <a class="typo_white typo_middle iconfont fleft nav-nav-prev pr10" href="javascript:history.back();"></a>
+                <h1 id="page_title" class="nav-title textc typo_white typo_large typo_normal elli">选择科室</h1>
+            </div>
+        </div>
+
+
+        <div class="layout" >
+            <div class="city">
+                <div class="city-wrapper city-wrapper-hook">
+                    <div class="scroller-hook">
+                        <div style="height: 4rem"></div>
+                        <div class="cities cities-hook"></div>
+                    </div>
+                    <div class="shortcut shortcut-hook"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../js/lib/jquery-3.2.1.min.js"></script>
+<script src="../js/lib/bscroll.min.js"></script>
+<script src="../js/util.js"></script>
+
+<script src="../js/doctor/deplist.js"></script>
+
+</body>
+</html>

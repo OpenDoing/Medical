@@ -18,7 +18,7 @@ function init_evaluation() {
 
             }
             else {
-                alert_error(data.error);
+                showTips(data.error);
             }
         }
     });

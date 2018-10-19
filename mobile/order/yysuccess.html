@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="../css/custom.plugin.css">
+    <link rel="stylesheet" href="../css/custom.main.css">
+</head>
+<body>
+<div class="fullwidth fullheight order-suc-wrap bg_gray">
+    <div class="nav clearfix fixedtop fullwidth">
+        <div class="nav-nav">
+            <a class="typo_white typo_middle iconfont fleft nav-nav-prev pr10" href="javascript:history.back();">
+            </a>
+            <a class="typo_white typo_middle fright nav-txt sendinfo" href="orderlist.html">我的订单</a>
+            <!--咨询模块用-->
+            <h1 id="page_title" class="nav-title textc typo_white typo_large typo_normal elli">预约成功</h1>
+        </div>
+    </div>
+
+    <div class="wrap order-suc bg_gray hasNav">
+
+        <div class="pl15 pr15 pt15 pb15 ">
+            <div class="pagn pt20 pb15 rsquare bg_white" style="box-shadow:0 0 8px #ddd;-webkit-box-shadow:0 0 8px #ddd;">
+                <div class="bt_gray">
+                    <div class="layout pb10">
+                        <i class="fleft iconfont mr10 typo_xlarge typo_cyan"></i>
+                        <span class="fleft noti typo_xxlarge typo_dblack">预约成功</span>
+                    </div>
+                    <div id="order-info" class="typo_middle typo_dblack lh22 yuyue-success-info">
+                        <p class="noti elli"><span class="typo_gray">预约医生：</span>{{doctorname}}｜{{department}} | {{typename}}</p>
+                        <p class="noti pt5"><span class="typo_gray">就诊时间：</span>{{appointment_date}} {{str_time}}</p>
+                        <p class="noti pt5"><span class="typo_gray">咨询密码：</span>{{code}}</p>
+                    </div>
+                </div>
+                <div class="pb10 js-noticebox hidden" style="display: block;">
+                    <p class="noti pt5"><span class="typo_gray">咨询须知</span></p>
+                    <p class="noti typo_middle lh22 typo_dblack"></p>
+                    <p>1. 咨询须知1</p>
+                    <p>2. 咨询须知2</p>
+                    <p></p>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+<script src="../js/lib/jquery-3.2.1.min.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/util.js"></script>
+<script src="../js/lib/tips.js"></script>
+<script>
+    $.ajax({
+        type: "GET",
+        url: config.base_url + "order",
+        data:{
+            'token':checktoken(),
+            'profile_id':getQueryString('pid'),
+            'order_id':getQueryString('oid')
+        },
+        success: function (data) {
+            if (data.succ == 1){
+                new Vue({
+                    el: '#order-info',
+                    data: data.data
+                });
+            }
+            else
+                showTips(data.error);
+        }
+    });
+
+
+</script>
+
+</body>
+</html>

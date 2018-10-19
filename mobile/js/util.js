@@ -28,7 +28,7 @@ function getInfoFromCookie(name) {
 function checktoken() {
     if(!getCookie('token')){
         //todo:弹框提示登录已失效
-        window.location.href = "login.html";
+        window.location.href = "../login.html";
         return;
     }
     return getCookie('token');
@@ -115,16 +115,4 @@ function getNowFormatDate() {
     return currentdate;
 }
 
-//todo:字体大小自适应
-(function (doc, win) {
-    var docEl = doc.documentElement,
-        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-        recalc = function () {
-            var clientWidth = docEl.clientWidth;
-            if (!clientWidth) return;
-            docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
-        };
-    if (!doc.addEventListener) return;
-    win.addEventListener(resizeEvt, recalc, false);
-    doc.addEventListener('DOMContentLoaded', recalc, false);
-})(document, window);
+
