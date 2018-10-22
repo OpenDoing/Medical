@@ -92,7 +92,7 @@ function load_userprofile() {
                 init_memlist(data.data);
             }
             else {
-                alert_error(data.error);
+                showTips(data.error);
             }
         }
     });
