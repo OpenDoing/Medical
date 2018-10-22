@@ -2,46 +2,65 @@
 <html style="font-size: 59.8px;">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
-    <meta name="screen-orientation" content="portrait">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta http-equiv="cleartype" content="on">
+    <meta charset="UTF-8">
+    <link href="../css/custom.plugin.css" rel="stylesheet">
+    <link href="../css/custom.main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/lib/mobileSelect.css">
+    <link href="../css/lib/jquery.dropdown.css" type="text/css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/patient/case.css">
-    <link rel="stylesheet" href="../css/custom.plugin.css">
-    <link rel="stylesheet" href="../css/custom.main.css">
-    <!--下面这个放最后-->
-    <link href="../css/app.css" rel="stylesheet">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <link rel="stylesheet" href="../css/patient/orderlist.css">
+
+    <link rel="stylesheet" href="../css/app.css">
+    <style>
+        .order-confirm-new .case-item{border:none;line-height:50px;background-color:#fff;}
+    </style>
 
 </head>
 <body id="body" style="">
 <div id="app">
     <div class="fullheight">
         <div class="fullheight">
-            <div data-title="我的挂号">
+            <div data-title="我的病历">
+
                 <div class="header">
                     <a href="javascript:void(0);"
                        class="nav-inav typo_white typo_middle iconfont fright">
 
                     </a>
                     <span class="iconfont typo_white goback"></span>
-                    <div class="headname elli">我的挂号</div>
+                    <div class="headname elli">我的病历</div>
                 </div>
-                <div nav-btn="" class="orderindex" style="">
-                    <div nav-btn="" id="patients">
-                        <span>选择患者</span>
-                        <select id="selectPatient" style="width: 30%"
-                                onchange="changePatient(this.options[this.options.selectedIndex].value)">
-                            <option id="defaultId">请选择</option>
-                            <option v-for="item in items" :value="item.id">{{item.name}}</option>
 
-                        </select>
+                <div nav-btn="" class="orderindex" style="">
+                    <!--<div nav-btn="" id="patients">-->
+                        <!--<span>选择患者</span>-->
+                        <!--<select id="selectPatient" style="width: 30%"-->
+                                <!--onchange="changePatient(this.options[this.options.selectedIndex].value)">-->
+                            <!--<option id="defaultId">请选择</option>-->
+                            <!--<option v-for="item in items" :value="item.id">{{item.name}}</option>-->
+
+                        <!--</select>-->
+                    <!--</div>-->
+
+                    <div class="tab-bar" style="">
+                        <div class="uc-iform-item list_arrow clearfix" style="height: 1rem;line-height: 1rem">
+                            <span class="uc-iform-label typo_dblack block fleft">
+                            选择咨询人
+                        </span>
+                            <div class="nobor typo_dgrey uc-iform-msg textr block fright select ">
+                                <div id="patient-trigger" class="select-value fullwidth elli press-has-bgcolor">点击选择</div>
+                            </div>
+                        </div>
+
                     </div>
+
                     <div nav-btn="" class="fullwidth layout boxtop"><!---->
+                        <div style="height: 0.5rem"></div>
                         <div id="caselist" class="tab-item fullwidth fl">
                             <ul v-for="item in items" class="orderli layout">
                                 <li class="layout">
@@ -82,9 +101,12 @@
         </div>
     </div>
 </div>
-<script src="../js/lib/vue.js"></script>
 <script src="../js/lib/jquery-3.2.1.min.js"></script>
+<script src="../js/lib/jquery.dropdown.js"></script>
+<script src="../js/lib/mobileSelect.js"></script>
+<script src="../js/lib/vue.js"></script>
 <script src="../js/util.js"></script>
+
 <script src="../js/patient/caselist.js"></script>
 </body>
 </html>

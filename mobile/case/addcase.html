@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link href="../css/custom.plugin.css" rel="stylesheet">
+    <link href="../css/custom.main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/lib/mobileSelect.css">
+    <link href="../css/lib/jquery.dropdown.css" type="text/css" rel="stylesheet">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+
+    <style>
+        .order-confirm-new .case-item {
+            border: none;
+            line-height: 50px;
+            background-color: #fff;
+        }
+    </style>
+
+</head>
+
+
+<body class="bg_gray" style="">
+<div class="nav clearfix fixedtop fullwidth">
+    <div class="nav-nav">
+        <a class="typo_white typo_middle iconfont fleft nav-nav-prev pr10" href="javascript:history.back();"></a>
+        <a class="typo_white typo_middle fright nav-txt " onclick=""></a>
+        <!--咨询模块用-->
+        <h1 id="page_title" class="nav-title textc typo_white typo_large typo_normal elli">添加病历</h1>
+    </div>
+</div>
+
+<div class="bg_gray fullheight fullwidth" id="edit-box">
+    <div class="wrap order-confirm-new bg_gray typo_middle hasNav">
+
+        <div class="uc-iform-item list_arrow clearfix mt12">
+                <span class="uc-iform-label typo_dblack block fleft">
+                    选择就诊患者
+                </span>
+            <div class="nobor typo_dgrey uc-iform-msg textr block fright select ">
+                <div id="patient-trigger" class="select-value fullwidth elli press-has-bgcolor">点击选择</div>
+            </div>
+        </div>
+
+
+        <div class="uc-iform-item pagn mt5 layout" style="height:auto;">
+            <span class="uc-iform-label typo_dgray block fleft">就诊医院</span>
+            <div class="fright max-w-70 lh22 pt10 pb10" id="lengthName">
+                <!--为空时-->
+                <input id="hospital" maxlength="62" type="text" class="nobor typo_gray textr block fright input"
+                       value="" placeholder="请填写医院名称" data-rule-required="true" data-msg-required="医院不能为空"
+                       data-rule-truename="true">
+            </div>
+        </div>
+
+        <div class="uc-iform-item list_arrow mt5 clearfix">
+            <span class="uc-iform-label typo_dgray block fleft">就诊日期</span>
+            <input data-required="true" data-type="birth" data-name="就诊日期" id="visit_time" type="date"
+                   class="nobor typo_gray uc-iform-msg textr block fright input" value="" placeholder="请选择">
+        </div>
+
+        <div class="pdf bg_white mt5">
+            <h1 class="typo_normal typo_small typo_dgray mb10">描述您的患病情况（可选）</h1>
+            <div class="bor_gray ptb pl5 pr5">
+                <textarea style="border:none" data-length="10-500" rows="5" id="description"
+                          class="fullwidth typo_small typo_gray wordcount input"
+                          placeholder="提前告知医生您的病情，有助于提升诊疗效率。请输入10~500字简明扼要的描述"></textarea>
+            </div>
+        </div>
+
+        <div class="sub-div fullwidth">
+            <div class="pagn pt10 pb10 bg_white tc">
+                <input id="submitbtn" class="block fullwidth typo_white lh18 pt10 pb10 lh18 bg_green oval" type="button"
+                       name="" value="下一步" onclick="submit()">
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div class="loading tshade hidden">
+    <div class="loadingicon loadingimg"></div>
+</div>
+<div class="success tshade hidden">
+    <div class="success-icon iconfont">&#xe603;</div>
+    <div class="success-msg">操作成功</div>
+</div>
+</body>
+
+<script src="../js/lib/jquery-3.2.1.min.js"></script>
+<script src="../js/lib/jquery.dropdown.js"></script>
+<script src="../js/lib/mobileSelect.js" type="text/javascript"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/util.js"></script>
+<script src="../js/lib/tips.js"></script>
+<script src="../js/case/addcase.js"></script>
+
+</html>
