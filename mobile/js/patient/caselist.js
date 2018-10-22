@@ -1,41 +1,44 @@
+var p_id;
+window.onload = load_userprofile();
 
-window.onload = function () {
-    /**
-     * 家庭成员加载到select框
-     */
-    var patients = new Vue({
-        el: '#selectPatient',
-        data: {
-            items: {}
-        }
-    });
+function load_userprofile() {
     $.ajax({
         url: config.base_url + "userprofile",
         type: 'get',
         dataType: 'json',
         data: {
             profile_id: 0,
-            token: checktoken()
+            token:checktoken()
         },
-        success: function (res) {
-
-            if (res.succ === 1) {
-
-                $("#defaultId").val(res.data[0].id);
-                patients.items = res.data;
-
+        success: function (data) {
+            if(data.succ === 1){
+                init_memlist(data.data);
+            }
+            else {
+                showTips(data.error);
             }
         }
     });
+}
 
-    /**
-     * 页面加载完 先把所有的病历显示出来
-     */
-    // console.log($("#selectPatient").val());
-    //  changePatient($("#selectPatient").val());
-
-};
-
+//加载患者列表
+function init_memlist(data) {
+    for (var i in data){
+        data[i].value = data[i].name;
+    }
+    new MobileSelect({
+        trigger: '#patient-trigger',
+        title: '咨询人',
+        wheels: [
+            {data:data}
+        ],
+        callback:function(indexArr, data){
+            // schedule_id = data[0].id;
+            p_id = data[0].id;
+            load_cases(data[0].id);
+        }
+    });
+}
 
 var vm = new Vue({
     el: '#caselist',
@@ -45,7 +48,7 @@ var vm = new Vue({
 });
 
 // 查询某人的病历列表
-function changePatient(val) {
+function load_cases(val) {
     $.ajax({
         url: config.base_url +  "medicalrecord",
 
