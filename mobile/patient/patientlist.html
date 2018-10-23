@@ -28,21 +28,17 @@
 
 
     <div class="wrap uc-family bg_gray hasNav">
-
-        <div class="pl15 pr15 pt10 pb10 bg_white">
-
-        </div>
         <div class="add-user"><a href="addpatient.html"><i class="iconfont add-user-icon cl00caba"></i> <i
                 class="add-user-txt cl00caba">添加家庭成员</i></a><span></span>
         </div>
 
         <!--家庭成员列表-->
         <ul class="user-list" id="user-list">
-            <li v-for="item in items" class="mt10 clearfix" style="padding-top:0.666666667rem;">
+            <li v-for="item in items" class="mt10 clearfix" style="">
                 <div class="layout">
-                    <div class="avatar fl mr10">
-                        <img src="https://wximg.91160.com/wechat//img/common/avatar_user_1.jpg">
-                    </div>
+                    <!--<div class="avatar fl mr10">-->
+                        <!--<img src="https://wximg.91160.com/wechat//img/common/avatar_user_1.jpg">-->
+                    <!--</div>-->
                     <div class="userinfo fl">
                         <a :href="'editpatient.html?id=' + item.id" class="block">
                             <h1 class="layout">
@@ -114,6 +110,7 @@
 </div>
 
 </body>
+<script src="../js/lib/fontsize.js"></script>
 <script type="text/javascript" src="../js/util.js"></script>
 <script>
     var example1 = new Vue({

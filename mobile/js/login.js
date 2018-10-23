@@ -28,7 +28,7 @@ function login() {
                 }
                 //跳转个人中心页面
                 if(data.data.type_id === 1)
-                    window.location.href = '../mobile/doctor/deplist.html';
+                    window.location.href = '../mobile/patient/index.html';
                 else if(data.data.type_id === 2)
                     window.location.href = 'doctorinfo.html';
                 else if(data.data.type_id === 3)

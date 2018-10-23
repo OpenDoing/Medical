@@ -1,0 +1,143 @@
+<html style="font-size: 60.4px;">
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+    <meta name=screen-orientation content=portrait><meta name=apple-mobile-web-app-capable content=yes>
+    <meta name=format-detection content="telephone=no">
+    <title>订单详情</title>
+    <link href="../css/custom.plugin.css" rel="stylesheet">
+    <link href="../css/custom.main.css" rel="stylesheet">
+    <link href="../css/app.css" rel="stylesheet">
+    <link href="../css/order/order.css" rel="stylesheet">
+    <link href="../css/order/order2.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/lib/baguetteBox.css">
+
+</head>
+<body id="body" style="">
+<div id="app">
+    <div class="fullheight">
+        <div class="fullheight">  
+            <div data-title="病历详情" class="orderbox">
+                <div class="header">
+                    <span href="javascript:history.back();" class="iconfont typo_white goback"></span>
+                    病历详情
+                </div>
+
+                <div class="orderindex pt44">
+
+                    <div id="case-info">
+                        <div class="bg_white pb15 mb10">
+                            <div class="pagn pt10 pb10 lh20 bt_gray typo_dgray typo_smiddle">
+                                病历信息
+                            </div>
+                            <a class="block pagn pt10 clearfix">
+                                <div class="bg_lgray typo_black pt5 pb5 pl10 pr10 typo_small lh22">
+                                    <div class="elli">
+                                        <span class="typo_gray inblo uc-oitem-label">就诊人:</span> {{username}}
+                                    </div>
+                                    <div class="elli">
+                                        <span class="typo_gray inblo uc-oitem-label">就诊时间:</span>
+                                        <span class="typo_num">{{visit_time}}</span>
+                                    </div>
+                                    <div class="elli">
+                                        <span class="typo_gray inblo uc-oitem-label">就诊医院:</span>
+                                        <span >{{hospital}}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="pagn pt15 pb15 bg_white mb10">
+                            <h2 class="typo_normal typo_small typo_gray pb8 typo_middle">
+                                就诊详情</h2>
+                            <div class="layout typo_small lh20 typo_black">
+                                {{description}}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="pagn pt10 pb15 bg_white mb10">
+                        <div class="pb10 lh20 bt_gray typo_dgray typo_smiddle">
+                            病历图片
+                        </div>
+                        <div id="img-list" class="baguetteBoxOne gallery">
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="weui-loading_toast vux-loading" style="display: none;">
+                        <div class="weui-mask_transparent"></div>
+                        <div class="weui-toast">
+                            <i class="weui-loading weui-icon_toast"></i>
+                            <p class="weui-toast__content"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-loading_toast vux-loading" style="display: none;">
+                    <div class="weui-mask_transparent"></div>
+                    <div class="weui-toast"><i class="weui-loading weui-icon_toast"></i>
+                        <p class="weui-toast__content"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="vux-toast">
+    <div class="weui-mask_transparent" style="display: none;"></div>
+    <div class="weui-toast weui-toast_success" style="width: 7.6em; display: none;">
+        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+        <p class="weui-toast__content"></p>
+    </div>
+</div>
+<div class="vux-confirm">
+    <div class="vux-x-dialog">
+        <div class="weui-mask" style="display: none;"></div>
+        <div class="weui-dialog" style="display: none;">
+            <div class="weui-dialog__bd">
+                <div>
+                </div>
+            </div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">取消</a>
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pshade prompt fullheight fullwidth">
+    <div class="prompt-box bg_white textc rsquare clearfix">
+        <div class="prompt-main pdf">
+            <div class="prompt-title typo_middle typo_dgray"></div>
+            <div class="prompt-msg typo_small typo_gray"></div>
+        </div>
+        <div class="prompt-bbox clearfix fullwidth">
+            <a class="prompt-btn prompt-cancel block typo_gray typo_middle" href="javascript:void(0);"></a>
+            <a class="prompt-btn prompt-sure block typo_green typo_middle" href="javascript:void(0);"></a>
+        </div>
+    </div>
+</div>
+
+<div class="loading tshade hidden">
+    <div class="loadingicon loadingimg"></div>
+</div>
+<div class="success tshade hidden">
+    <div class="success-icon iconfont">&#xe603;</div>
+    <div class="success-msg">操作成功</div>
+</div>
+
+<script src="../js/lib/fontsize.js"></script>
+<script src="../js/lib/jquery-3.2.1.min.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/util.js"></script>
+<script src="../js/lib/tips.js"></script>
+
+<script src="../js/case/detail.js"></script>
+<script src="../js/lib/baguetteBox.js"></script>
+
+</body>
+</html>

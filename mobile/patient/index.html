@@ -13,14 +13,14 @@
 <div class="fullwidth fullheight uc-index-wrap bg_gray">
     <div class="wrap uc-index bg_gray pb1 hasFootnav">
         <div class="pt20 bg_white typo_grey clearfix">
-            <div class="pl20 clearfix">
-                <a href="https://wap.91160.com/account/security.html" class="block uc-index-icon relative mr10 fleft" >
-                    <img onerror="nothumb('https://wximg.91160.com/wechat/img/common/avatar_user_0.jpg', this)" src="https://wximg.91160.com/wechat/img/common/avatar_user_.jpg&#10;    &#9;&#9;&#9;&#9;&#9;" class="oval col1
-    					" style="width:66px;height:66px;">
+            <div id="user-info" class="pl20 clearfix">
+                <a class="block uc-index-icon relative mr10 fleft" >
+                    <img :src="avatar" class="oval col1" style="width:66px;height:66px;">
                 </a>
                 <div class="clearfix typo_middle lh22 pb10 pl20 relative">
-                    <a class="typo_grey inblo mt5" href="https://wap.91160.com/account/editaccount.html">请完善帐号信息</a>
-                    <div class="fleft w-80 typo_smaller typo_gray">升级会员享受更多福利</div>
+                    <a class="typo_grey inblo mt5" >{{nickname}}</a>
+                    <br>
+                    <div class="fleft w-80 typo_smaller typo_gray">最后登录:{{token_create_time}}</div>
                 </div>
             </div>
         </div>
@@ -28,47 +28,50 @@
         </div>
 
         <div class="uc-index-link bg_white mb10">
-            <a class="relative typo_middle typo_dgray block pagn lh30 pt8 pb8">
+            <a href="patientlist.html" class="relative typo_middle typo_dgray block pagn lh30 pt8 pb8" >
+                <img src="https://wximg.91160.com/wechat/img/account/icon001.png">患者资料<span class="clcf iconfont fright"></span>
+            </a>
+            <a href="../case/caselist.html" class="relative typo_middle typo_dgray block pagn lh30 pt8 pb8"  >
+                <img src="https://wximg.91160.com/wechat/img/account/icon002.png">病历管理<span class="clcf iconfont fright"></span>
+            </a>
+        </div>
+
+        <div class="uc-index-link bg_white mb10">
+            <a href="../doctor/deplist.html" class="relative typo_middle typo_dgray block pagn lh30 pt8 pb8">
                 <img src="https://wximg.91160.com/wechat/img/account/familydoctor.png">
                 预约医生
                 <span class="clcf iconfont fright"></span>
             </a>
-            <a class="relative typo_middle typo_dgray block pagn lh30 pt8 pb8" >
-                <img src="https://wximg.91160.com/wechat/img/account/icon001.png">患者资料<span class="clcf iconfont fright"></span>
-            </a>
-            <a class="relative typo_middle typo_dgray block pagn lh30 pt8 pb8" >
-                <img src="https://wximg.91160.com/wechat/img/account/icon012.png">线上咨询记录<span class="clcf iconfont fright"></span>
-                <span class="fright mt7 reviews-tipsnum">new</span>
-            </a>
-            <a class="relative typo_middle typo_dgray block pagn lh30 pt8 pb8"  >
-                <img src="https://wximg.91160.com/wechat/img/account/icon002.png">病例管理<span class="clcf iconfont fright"></span>
-            </a>
-            <a class="relative typo_middle typo_dgray block pagn lh30 pt8 pb8"  >
+
+            <a href="../order/orderlist.html" class="relative typo_middle typo_dgray block pagn lh30 pt8 pb8"  >
                 <img src="https://wximg.91160.com/wechat/img/account/icon003.png">订单记录<span class="clcf iconfont fright"></span>
             </a>
+        </div>
+
+        <div class="uc-index-link bg_white mb10">
             <a class="relative typo_middle typo_dgray block pagn lh30 pt8 pb8" >
                 <img src="https://wximg.91160.com/wechat/img/account/address.png">登陆日志<span class="clcf iconfont fright"></span>
+            </a>
+            <a class="relative typo_middle typo_dgray block pagn lh30 pt8 pb8" href="">
+                <img src="https://wximg.91160.com/wechat/img/account/icon009.png">
+                设置
+                <span class="clcf iconfont fright"></span>
             </a>
         </div>
 
 
-        <div class="fixedbtm bb_dgray fullwidth column-5 typo_smaller bg_white footnav">
+        <div class="fixedbtm bb_dgray fullwidth column-4 typo_smaller bg_white footnav">
             <a class="column-grid block textc footnav-item typo_lgray activelink" >
                 <span class="iconfont block typo_xxlarge lh_one pt5"></span>
                 <span class="block lh20">首页</span>
             </a>
             <a class="column-grid block textc footnav-item typo_lgray activelink" >
-                <span class="iconfont block typo_xxlarge lh_one pt5"></span>
-                <span class="block lh20">名医</span>
+                <span class="iconfont block typo_xxlarge lh_one pt5"></span>
+                <span class="block lh20">病历</span>
             </a>
             <a class="column-grid block textc footnav-item typo_lgray activelink" >
-                <span class="iconfont block typo_xxlarge lh_one pt5"></span>
-                <span class="block lh20">健康</span>
-            </a>
-            <a class="column-grid block textc footnav-item typo_lgray activelink relative ">
-                <span class="iconfont block typo_xxlarge lh_one pt5"></span>
-                <span class="block lh20">消息</span>
-                <span class="bot-tips"></span>
+                <span class="iconfont block typo_xxlarge lh_one pt5"></span>
+                <span class="block lh20">订单</span>
             </a>
 
             <a class="column-grid block textc footnav-item typo_lgray activelink relative  active" >
@@ -79,5 +82,42 @@
     </div>
 </div>
 
+<script src="../js/lib/jquery-3.2.1.min.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/util.js"></script>
+<script src="../js/lib/tips.js"></script>
+<script src="../js/lib/fontsize.js"></script>
+<script>
+
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "User",
+        data: "token=" + checktoken(),
+        success: function (data) {
+            if(data.succ == 1){
+                //保存用户信息到cookie
+                var exp = new Date();
+                if(data.data.token_valid_time > 0){
+                    //设置过期时间
+                    exp.setTime(exp.getTime() + 1000 * 60 * data.data.token_valid_time); //计算毫秒
+                    document.cookie = "data=" + JSON.stringify(data.data) + ";expires=" + exp.toGMTString();
+                }
+                else {
+                    document.cookie = "data=" + JSON.stringify(data.data);
+
+                }
+                data.data.avatar = config.img_url + data.data.avatar;
+                new Vue({
+                    el: '#user-info',
+                    data: data.data
+                });
+
+            }
+            else {
+                showTips(data.error);
+            }
+        }
+    });
+</script>
 </body>
 </html>

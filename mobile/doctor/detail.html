@@ -11,8 +11,8 @@
 
 
     <link href="../css/app.css" rel="stylesheet">
-    <link href="../css/doctor.css" rel="stylesheet">
-    <link href="../css/doctorheader.css" rel="stylesheet">
+    <link href="../css/doctor/doctor.css" rel="stylesheet">
+    <link href="../css/doctor/doctorheader.css" rel="stylesheet">
 </head>
 
 <body id="body" style="">
@@ -170,21 +170,7 @@
     <script src="../js/util.js"></script>
     <script src="../js/lib/tips.js"></script>
     <script src="../js/doctor/doctordetail.js"></script>
-    <script>
-        //字体大小自适应
-         (function (doc, win) {
-             var docEl = doc.documentElement,
-                 resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-                 recalc = function () {
-                     var clientWidth = docEl.clientWidth;
-                     if (!clientWidth) return;
-                     docEl.style.fontSize = 32 * (clientWidth / 320) + 'px';
-                 };
-             if (!doc.addEventListener) return;
-             win.addEventListener(resizeEvt, recalc, false);
-             doc.addEventListener('DOMContentLoaded', recalc, false);
-         })(document, window);
-    </script>
+    <script src="../js/lib/fontsize.js"></script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-var p_id;
+var p_id,p_name;
 window.onload = load_userprofile();
 
 function load_userprofile() {
@@ -35,6 +35,7 @@ function init_memlist(data) {
         callback:function(indexArr, data){
             // schedule_id = data[0].id;
             p_id = data[0].id;
+            p_name = data[0].value;
             load_cases(data[0].id);
         }
     });
@@ -67,6 +68,7 @@ function load_cases(val) {
                     } else {
                         res.data[i].type = '线上咨询';
                     }
+                    res.data[i].url = "detail.html?pid=" + p_id + "&rid=" + res.data[i].id + "&uname=" + encodeURI(encodeURI(p_name));
                 }
                 vm.items = res.data
             }
