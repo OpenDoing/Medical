@@ -10,6 +10,8 @@
     <meta http-equiv="cleartype" content="on">
 
     <link href="../css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.plugin.css">
+    <link rel="stylesheet" href="../css/custom.main.css">
     <link href="../css/doctor/list.css" rel="stylesheet">
 
 </head>
@@ -17,18 +19,23 @@
 <body id="body" style="">
 <div id="app">
     <div class="fullheight">
-        <div class="topmenufixed">
-            <div  class="header">
-                <span  class="collection iconfont"></span>
-                <a href="" class="nav-inav typo_white typo_middle iconfont fright"></a>
-                <a href="javascript:history.back();" class="iconfont typo_white goback"></a>
-                <div class="headname elli">选择医生</div>
+        <div class="fullwidth search-history-wrap">
+            <div class="bg_green pagn pt10 pb10 clearfix">
+                <a class="typo_white fright" onclick="doc_search()">确认</a>
+                <div class="bg_white oval fleft w-85">
+                    <span class="search-icancel iconfont fright typo_lgray typo_middle hidden mr10"></span>
+                    <div class="search-search">
+                        <span class="iconfont typo_gray typo_middle ml5"></span>
+                        <input type="text" placeholder="输入医生姓名搜索" maxlength="30" class="help-input w-75 ac_input" id="new_search" name="keyword" value="" autocomplete="off">
+                    </div>
+                </div>
             </div>
+            <div class="s_search help-hot-list help-hot-list2"></div>
         </div>
 
-        <div class="h44"></div>
+        <!--<div class="h44"></div>-->
 
-        <div id="doctor_detail" class="layout">
+        <div id="doctor_detail" class="layout" style="display: none">
                 <a v-for="data in items" class="block docinfo layout" :href="data.url">
                     <img :src="data.photo" class="avatar inblo">
                     <div class="rgtbox relative fs14 typo_gray">
@@ -55,29 +62,33 @@
 <script src="../js/util.js"></script>
 <script src="../js/lib/tips.js"></script>
 <script>
-    $.ajax({
-        type: "POST",
-        url: config.base_url + "doctorprofile/doctorlist?dep_id=" + getQueryString('dep_id'),
-        success: function (data) {
-            if (data.succ == 1){
-                var doctors = data.data;
-                console.log(doctors)
-                for(i in doctors){
-                    doctors[i].photo = config.img_url + doctors[i].photo;
-                    doctors[i].url = "detail.html?doc_id=" + doctors[i].id;
-                }
-                new Vue({
-                    el: '#doctor_detail',
-                    data: {
-                        items: data.data
+    function doc_search() {
+        $.ajax({
+            type: "POST",
+            url: config.base_url + "doctorprofile/search?keyword=" + $("#new_search").val(),
+            success: function (data) {
+                if (data.succ == 1){
+                    var doctors = data.data;
+                    console.log(doctors)
+                    for(i in doctors){
+                        doctors[i].photo = config.img_url + doctors[i].photo;
+                        doctors[i].url = "detail.html?doc_id=" + doctors[i].id;
                     }
-                })
+                    new Vue({
+                        el: '#doctor_detail',
+                        data: {
+                            items: data.data
+                        }
+                    })
+                    $('#doctor_detail').css("display","block");
+                }
+                else {
+                    showTips(data.error);
+                }
             }
-            else {
-                showTips(data.error);
-            }
-        }
-    });
+        });
+    }
+
 </script>
 </body>
 </html>
