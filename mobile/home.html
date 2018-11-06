@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="format-detection" content="telephone=no">
+
+
+    <link rel="stylesheet" href="css/custom.plugin.css">
+    <link rel="stylesheet" href="css/custom.main.css">
+
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+<div class="fullwidth fullheight bg_lgray top-app-wrap">
+
+
+    <div class="wrap index bg_lgray hasFootnav">
+        <div class="relative" style="min-height:52px;">
+            <div class="fullwidth search-history-wrap absolute" style="top:0;left:0;background:none;">
+                <div class="pagn pt10 pb10 clearfix" style="background:rgba(255,255,255,0); line-height:22px;">
+                    <div class="typo_middle index-search typo_gray clearfix pl10 pr10 pt5 pb5 bg_white oval">
+                        <span class="iconfont typo_middle fleft"></span>
+                        <div class="block index-search-input typo_small elli" style="padding-left:7px;">搜索医生</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tbanner">
+                <a id="banner-img" class="swiper-slide block backgroundimg view-visiable"
+                   style="background-image: url(img/banner.jpg);">
+                </a>
+
+            </div>
+        </div>
+
+        <!-- 快捷入口 -->
+        <div class="top-menu layout bg_white">
+            <a href="doctor/deplist.html"><img src="http://images.91160.com/AppConfig/201807/2018071917322238634.png">预约</a>
+            <a href="patient/patientlist.html"><img src="http://images.91160.com/AppConfig/201807/2018071917335591867.png">患者资料</a>
+            <a href="case/caselist.html"><img src="http://images.91160.com/AppConfig/201807/2018071917325426257.png">病历</a>
+            <a href="order/orderlist.html"><img src="http://images.91160.com/AppConfig/201807/2018071917332693061.png">订单</a>
+            <a href=""><img src="http://images.91160.com/AppConfig/201807/2018071917345240774.png">预约规则</a>
+        </div>
+
+        <!-- 快捷入口2 科室 begin-->
+        <div class="pagn bg_white layout">
+            <div class="bb_gray"></div>
+        </div>
+
+        <div class="hot-dep pt6rem pb2rem bg_white layout">
+            <a href="" class="view-visiable">
+                <img src="https://images.91160.com/primary/201807/2018071917430969426.png">
+                科室1                    </a>
+            <a href="" class="view-visiable">
+                <img src="http://images.91160.com/AppConfig/201807/2018071917322238634.png">
+                科室2                    </a>
+            <a href="" class="view-visiable">
+                <img src="http://images.91160.com/AppConfig/201807/2018071917335591867.png">
+                科室3                    </a>
+            <a href="" class="view-visiable">
+                <img src="http://images.91160.com/AppConfig/201807/2018071917332693061.png">
+                科室4                    </a>
+            <a href="" class="view-visiable">
+                <img src="http://images.91160.com/AppConfig/201807/2018071917345240774.png">
+                科室5                    </a>
+            <a href="" class="view-visiable">
+                <img src="https://images.91160.com/primary/201807/2018071917430969426.png">
+                科室1                    </a>
+            <a href="" class="view-visiable">
+                <img src="http://images.91160.com/AppConfig/201807/2018071917322238634.png">
+                科室2                    </a>
+            <a href="" class="view-visiable">
+                <img src="http://images.91160.com/AppConfig/201807/2018071917335591867.png">
+                科室3                    </a>
+            <a href="" class="view-visiable">
+                <img src="http://images.91160.com/AppConfig/201807/2018071917332693061.png">
+                科室4                    </a>
+            <a href="" class="view-visiable">
+                <img src="http://images.91160.com/AppConfig/201807/2018071917345240774.png">
+                科室5                    </a>
+        </div>
+        <!-- 快捷入口2 科室 end -->
+
+        <div class="bg_white mt10 index-news">
+            <div>
+                <div class="index-news-swiper-container swiper-container-horizontal swiper-container-free-mode swiper-container-android">
+                    <div class="swiper-t swiper-slide swiper-slide-next">医院新闻</div>
+                </div>
+                <div class="index-news-box fullwidth fleft" style="padding-top: 0px;">
+
+                    <div id="news-list" class="hidden" style="display: block;">
+
+                        <div v-for="item in items" class="pagn pt15 pb15 clearfix" data-growing-circle="">
+                            <a :href="item.url" class="news-item-thumb fleft borderadius3 backgroundimg"
+                               :style="item.img"></a>
+                            <div class="news-item-main">
+                                <a class="block news-item-title typo_middle typo_normal clearfix"
+                                   style="height:40px;" :href="item.url">
+                                    {{item.title}}
+                                </a>
+                                <div class="news-item-detail typo_lgray typo_small elli clearfix">
+                                    发布时间&nbsp;&nbsp;{{item.time}}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="pagn pt10 pb10 textc typo_smaller typo_lgray lh_nor">
+                -暂无更多数据-
+            </div>
+        </div>
+
+        <div class="fixedbtm bb_dgray fullwidth column-4 typo_smaller bg_white footnav">
+            <a class="column-grid block textc footnav-item typo_lgray activelink active">
+                <span class="iconfont block typo_xxlarge lh_one pt5"></span>
+                <span class="block lh20">首页</span>
+            </a>
+            <a href="case/caselist.html" class="column-grid block textc footnav-item typo_lgray activelink">
+                <span class="iconfont block typo_xxlarge lh_one pt5"></span>
+                <span class="block lh20">病历</span>
+            </a>
+            <a href="order/orderlist.html" class="column-grid block textc footnav-item typo_lgray activelink">
+                <span class="iconfont block typo_xxlarge lh_one pt5"></span>
+                <span class="block lh20">订单</span>
+            </a>
+
+            <a href="patient/index.html" class="column-grid block textc footnav-item typo_lgray activelink relative">
+                <span class="iconfont block typo_xxlarge lh_one pt5"> </span>
+                <span class="block lh20">我的</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="js/lib/jquery-3.2.1.min.js"></script>
+<script src="js/lib/vue.js"></script>
+<script src="js/util.js"></script>
+<script src="js/home.js"></script>
+<script>
+//    $("#news-list").load("http://mhos.jiankang51.cn/app/article_list?nodeId=93&level=1&productId=007&imgShow=1");
+    //字体大小自适应
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 32 * (clientWidth / 320) + 'px';
+                document.getElementById("tbanner").style.height = 32 * (clientWidth / 80) + 'px';
+                document.getElementById("banner-img").style.width = 2.5 * 32 * (clientWidth / 80) + 'px';
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+
+    <link href="../css/app.css" rel="stylesheet">
+    <link href="../css/doctor/list.css" rel="stylesheet">
+
+</head>
+
+<body id="body" style="">
+<div id="app">
+    <div class="fullheight">
+        <div class="topmenufixed">
+            <div  class="header">
+                <span  class="collection iconfont"></span>
+                <a href="" class="nav-inav typo_white typo_middle iconfont fright"></a>
+                <a href="javascript:history.back();" class="iconfont typo_white goback"></a>
+                <div class="headname elli">选择医生</div>
+            </div>
+        </div>
+
+        <div class="h44"></div>
+
+        <div id="doctor_detail" class="layout">
+                <a v-for="data in items" class="block docinfo layout" :href="data.url">
+                    <img :src="data.photo" class="avatar inblo">
+                    <div class="rgtbox relative fs14 typo_gray">
+                        <div class=" c2a2a2a fs18 docname-level lh22">
+                            <span class="inblo docname elli">{{data.name}}</span>
+                            <span class="ml5 c848484 fs16 inblo zcname elli">{{data.typename}}</span>
+                        </div>
+                        <div class="lh18 elli layout">
+                            {{data.introduction}}
+                        </div>
+                        <div class="mt3 lh18 fs14">
+                            价格 <i class="typo_lorange">{{data.price}}</i>
+                        </div>
+                    </div>
+                </a>
+        </div>
+    </div>
+</div>
+
+
+<script src="../js/lib/fontsize.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/lib/jquery-3.2.1.min.js"></script>
+<script src="../js/util.js"></script>
+<script src="../js/lib/tips.js"></script>
+<script>
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "doctorprofile/doctorlist?dep_id=" + getQueryString('dep_id'),
+        success: function (data) {
+            if (data.succ == 1){
+                var doctors = data.data;
+                console.log(doctors)
+                for(i in doctors){
+                    doctors[i].photo = config.img_url + doctors[i].photo;
+                    doctors[i].url = "detail.html?doc_id=" + doctors[i].id;
+                }
+                new Vue({
+                    el: '#doctor_detail',
+                    data: {
+                        items: data.data
+                    }
+                })
+            }
+            else {
+                showTips(data.error);
+            }
+        }
+    });
+</script>
+</body>
+</html>
