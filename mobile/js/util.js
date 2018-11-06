@@ -116,4 +116,21 @@ function getNowFormatDate() {
 }
 
 
+var sec = 10;
+var countDown = function () {
+    var obj = $("#sendCode");
+    obj.addClass("sending");
+    if (sec >= 0) {
+        obj.html("<span id='left'>" + sec-- + "</span>s后可重发");
+        obj.attr("disabled","disabled")
+        setTimeout(function () {
+            countDown();
+        }, 1000);
+    } else {
+        obj.removeClass("btn_dround").addClass("btn_ground").html("重获验证码");
+        obj.removeAttr("disabled");
+        sec = 10
+    }
+};
+
 

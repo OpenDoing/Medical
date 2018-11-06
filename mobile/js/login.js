@@ -40,6 +40,19 @@ function login() {
         }
     });
 }
+
+function showpwd() {
+    if($("#password").attr("type")==="text"){
+        $("#password").attr("type","password");
+//            $("#dj img").css("opacity",0.5)
+    }
+    //点击眼睛，如果input输入框为为password时执行，并改成text实现隐藏。
+    else{
+        $("#password").attr("type","text");
+//            $("#dj img").css("opacity",1)
+    }
+}
+
 function find_pwd() {
     var password = $("#password").val();
     $("#bOK").attr("disabled",true).text("正在提交...");

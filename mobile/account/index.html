@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html style="font-size: 59.8px;">
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+
+    <link href="../css/custom.plugin.css" rel="stylesheet">
+    <link href="../css/custom.main.css" rel="stylesheet">
+
+</head>
+
+
+<body id="body" style="">
+<div class="fullheight">
+            <div class="nav clearfix fixedtop fullwidth">
+                <div class="nav-nav">
+                    <a class="typo_white typo_middle iconfont fleft nav-nav-prev pr10" href="javascript:history.back();" ></a>
+
+                    <h1 id="page_title" class="nav-title textc typo_white typo_large typo_normal elli">帐号设置</h1>
+                </div>
+            </div>
+
+
+            <div class="account-security wrap uc-account bg_gray hasNav">
+                    <div class="uc-account-link bg_white">
+                        <a class="typo_middle typo_dgray block pagn pt5 pb5 mt15 bb_dgray bt_dgray clearfix user-avatar-wrap js-user-avatar-wrap" href="javascript:;" >
+                            头像
+                            <span class="typo_lgray iconfont fright"></span>
+                            <div class="fright mr10">
+                                <img id="avatar" class="user-avatar oval" src="">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="uc-account-link bg_white">
+                        <a class="typo_middle typo_dgray block pagn lh_def pt5 pb5 mt10 bb_dgray" href="editpassword.html">
+                            修改密码
+                            <span class="typo_lgray iconfont fright"></span>
+                        </a>
+                        <a class="typo_middle typo_dgray block pagn lh_def pt5 pb5 bb_dgray" href="editphone.html">
+                            修改手机
+                            <span class="typo_lgray iconfont fright"></span>
+                            <span id="phone" class="fright cl707070"></span>
+                        </a>
+                    </div>
+
+                <div class="uc-index-link bg_white mt15 bb_dgray bt_dgray">
+                    <a href="../login.html" class="typo_large typo_pink block pagn lh_def activelink textc">退出登录</a>
+                </div>
+
+            </div>
+
+</div>
+
+
+<script src="../js/lib/fontsize.js"></script>
+<script src="../js/lib/jquery-3.2.1.min.js"></script>
+<script src="../js/lib/jquery.dropdown.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/util.js"></script>
+<script src="../js/lib/tips.js"></script>
+
+<script>
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "User",
+        data: "token=" + checktoken(),
+        success: function (data) {
+            if(data.succ == 1){
+                $("#phone").text(data.data.phone);
+                $("#avatar").attr('src',config.img_url + data.data.avatar);
+            }
+            else {
+                showTips(data.error);
+            }
+        }
+    });
+</script>
+</body>
+</html>
