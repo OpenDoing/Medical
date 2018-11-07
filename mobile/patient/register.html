@@ -32,26 +32,6 @@
                 </div>
             </div>
             <div class="user-input-item bt_gray pdf clearfix">
-                <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
-                <a data-for="phone" class="user-input-icancel iconfont fright typo_lgray typo_large hidden lh_one"
-                   href="javascript:void(0);"></a>
-                <div class="user-input-phone clearfix">
-                    <input id="phone" class="input user-input typo_black typo_middle block fullwidth nobor"
-                           data-required="true" data-type="phone" data-name="手机号码" data-length="11-11" type="tel"
-                           placeholder="请输入您的手机号码">
-                </div>
-            </div>
-            <div class="user-input-item bt_gray pdf clearfix relative">
-                <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
-                <button onclick="countDown()" id="sendCode"  class="bg_white btn_ground fright typo_xlarge ac-code-btn oval">获取验证码</button>
-                <a data-for="code" class="user-input-icancel iconfont fright typo_lgray typo_large lh_one mr10 hidden"
-                   href="javascript:void(0);"></a>
-                <div class="user-input-vcncode clearfix">
-                    <input id="code" class="input user-input typo_black typo_middle block fullwidth nobor"
-                           data-required="true" data-name="短信验证码" type="tel" placeholder="请输入短信验证码">
-                </div>
-            </div>
-            <div class="user-input-item bt_gray pdf clearfix">
                 <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
                 <a data-for="password" class="user-input-ivisible iconfont fright typo_lgray typo_xxlarge lh_one"
                    href="javascript:void(0);">&nbsp;</a>
@@ -64,6 +44,27 @@
                            placeholder="请输入数字和字母的6-20位密码">
                 </div>
             </div>
+            <div class="user-input-item bt_gray pdf clearfix">
+                <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
+                <a data-for="phone" class="user-input-icancel iconfont fright typo_lgray typo_large hidden lh_one"
+                   href="javascript:void(0);"></a>
+                <div class="user-input-phone clearfix">
+                    <input id="phone" class="input user-input typo_black typo_middle block fullwidth nobor"
+                           data-required="true" data-type="phone" data-name="手机号码" data-length="11-11" type="tel"
+                           placeholder="请输入您的手机号码">
+                </div>
+            </div>
+            <div class="user-input-item bt_gray pdf clearfix relative">
+                <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
+                <button onclick="sendm()" id="sendCode"  class="bg_white btn_ground fright typo_xlarge ac-code-btn oval">获取验证码</button>
+                <a data-for="code" class="user-input-icancel iconfont fright typo_lgray typo_large lh_one mr10 hidden"
+                   href="javascript:void(0);"></a>
+                <div class="user-input-vcncode clearfix">
+                    <input id="code" class="input user-input typo_black typo_middle block fullwidth nobor"
+                           data-required="true" data-name="短信验证码" type="tel" placeholder="请输入短信验证码">
+                </div>
+            </div>
+
             <div class="user-input-item pdf clearfix">
 					<span class="typo_small typo_gray input_checkbox active pointer">
 						<i class="iconfont icon_check user-icheckbox inblo textc relative">&nbsp;</i>
@@ -75,7 +76,7 @@
             </div>
         </div>
         <div class="pagn mt10">
-            <a class="block btn_green oval fullwidth textc typo_white lh_def typo_middle" href="javascript:void(0);"
+            <a class="block btn_green oval fullwidth textc typo_white lh_def typo_middle" onclick="reg_func()"
                id="submit">注&nbsp;册</a>
         </div>
     </div>
@@ -86,129 +87,87 @@
     <div class="success-msg">操作成功</div>
 </div>
 <script src="../js/lib/jquery-3.2.1.min.js"></script>
+
 <script src="../js/patient/form.js"></script>
 <script src="../js/lib/tips.js"></script>
-
+<script src="../js/util.js"></script>
 <script type="text/javascript">
 
-    var sec = 60;
-    var countDown = function () {
-        var obj = $("#sendCode");
-        obj.addClass("sending");
-        if (sec >= 0) {
-            obj.html("<span id='left'>" + sec-- + "</span>s后可重发");
-            obj.attr("disabled","disabled")
-            setTimeout(function () {
-                countDown();
-            }, 1000);
-        } else {
-            obj.removeClass("btn_dround").addClass("btn_ground").html("重获验证码");
-            obj.removeAttr("disabled");
-            sec = 60
-        }
-    };
+    function sendm() {
+        sendsms();
 
+    }
 
+    function sendsms() {
+        var nickname = $("#username").val();
+        var password = $("#password").val();
+        var phone = $("#phone").val();
 
-    $(function () {
-        checkbox();
-        userValidate();
-        submitForm = function () {
-            phone = $('#phone').val();
-            code = $('#code').val();
-            password = $('#password').val();
-            var data = {'phone': phone, 'code': code, 'password': password};
-            $.ajax({
-                type: "post",
-                url: "https://wap.91160.com/user/reg.html",
-                dataType: 'json',
-                data: data,
-                success: function (res) {
-                    if (res.state == 1) { //state为1即成功
-                        showSuccess("注册成功");
-                        // 延迟跳转到去完善资料页面，防止注册成功状态一闪而过
-                        setTimeout(function () {
-                            window.location.href = res.redirect_url; //去完善资料
-                        }, 2000);
-                    } else {
-                        hideLoading();
-                        if (res.state == 0) {
-                            popTips("短信验证码错误，请重新输入");
-                        } else {
-                            popTips(res.msg);
-                        }
-                    }
-                    send = 1;
+        $.ajax({
+            url: config.base_url + "Smscode/send",
+            type: 'post',
+            dataType: 'json',
+            data: {
+                nickname: nickname,
+                password: password,
+                phone: phone,
+                action: "REG"
+            },
+            success: function (data) {
+                if(data.succ == 0){
+                    showTips(data.error);
                 }
-            });
-        }
+                else if(data.succ == 1){
+                    showSuccess("发送成功");
+                    countDown();
+                }
 
+            }
 
-        $(".btn_protocol").bind("click", function () {
-            var str = $(".protocol-clip").find(".protocol-wrap").clone();
-            showPop("健康160用户许可协议", str);
-            popup.update({updateTranslate: true});
         });
-        $(".prompt").addClass("origin");
-    });
+    }
 
-    // function valiCodeImg(phone, token, obj, captchaCode, randcode, verifyCode) {
-    //     if (codesend == 0) {
-    //         return false;
-    //     }
-    //     codesend = 0;
-    //     if (!counting) {
-    //         $.ajax({
-    //             type: "post",
-    //             url: "https://wap.91160.com/user/sendRegisterSms",
-    //             data: {
-    //                 'phone': phone,
-    //                 'type': 'reg',
-    //                 'token': token,
-    //                 'captcha': captchaCode,
-    //                 'rand': randcode,
-    //                 'verifyCode': verifyCode
-    //             },
-    //             success: function (res) {
-    //                 codesend = 1;
-    //                 if (res.code == '00000000') { //state为1即成功
-    //                     $(".prompt2,.prompt-box2").hide();
-    //                     $("#sendCode").removeClass("btn_ground").addClass("btn_dround").html("<span id='left'>" + res.tokenRefreshInterval + "</span>s后可重发"); //left为剩余秒数
-    //                     countDown();
-    //                     showSuccess("发送成功");
-    //                 } else if (res.code == '10555555') {//网络检测不安全要求输入图片验证码
-    //                     $("#captchaCode").val('');
-    //                     $("#valiCodeImg").trigger('click');
-    //
-    //                     //弹出图片验证码输入框
-    //                     showPictureValidate(phone, obj);
-    //                 } else if (res.code == '10555556') {
-    //                     $("#captchaCode").val('');
-    //                     $("#valiCodeImg").trigger('click');
-    //
-    //                     popTips("失败:图片验证码输入错误");
-    //                 } else if (res.code == '10000004') {	//页面超时请重新获取验证码
-    //                     $(".prompt2,.prompt-box2").hide();
-    //                     popTips(res.msg);
-    //                     setTimeout("window.location.reload();", 2000);
-    //                 } else {
-    //                     $(".prompt2,.prompt-box2").hide();
-    //                     $(obj).removeClass("btn_dround").addClass("btn_ground").html("重获验证码"); //发送失败
-    //
-    //                     var msg = '短信发送失败';
-    //                     //返回消息内容拼接
-    //                     if (typeof(res.msg) != 'undefined') {
-    //                         msg += res.msg;
-    //                     }
-    //                     if (typeof(res.messages) != 'undefined') {
-    //                         msg += '：' + res.messages.join(' ');
-    //                     }
-    //                     popTips(msg);
-    //                 }
-    //             }
-    //         });
-    //     }
-    // }
+    function reg_func() {
+        var nickname = $("#username").val();
+        var password = $("#password").val();
+        var phone = $("#phone").val();
+        var code = $("#code").val();
+
+        $.ajax({
+            url:config.base_url + "User/create",
+            type: 'post',
+            dataType: 'json',
+            data: {
+                nickname: nickname,
+                password: password,
+                phone: phone,
+                code: code
+            },
+            success: function (data) {
+                if(data.succ == 1){
+                    //保存用户信息到cookie
+                    var exp = new Date();
+                    if(data.data.token_valid_time > 0){
+                        //设置过期时间
+                        exp.setTime(exp.getTime() + 1000 * 60 * data.data.token_valid_time); //计算毫秒
+                        document.cookie = "token=" + data.token + ";expires=" + exp.toGMTString();
+                        document.cookie = "data=" + JSON.stringify(data.data) + ";expires=" + exp.toGMTString();
+                    }
+                    else {
+                        document.cookie = "token=" + data.token;
+                        document.cookie = "data=" + JSON.stringify(data.data);
+                    }
+                    //跳转个人中心页面
+                    window.location.href = '../home.html';
+                }
+                else {
+                    showTips(data.error);
+                }
+            }
+
+        });
+    }
+
 </script>
 
 </body>

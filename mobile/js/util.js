@@ -116,7 +116,7 @@ function getNowFormatDate() {
 }
 
 
-var sec = 10;
+var sec = 60;
 var countDown = function () {
     var obj = $("#sendCode");
     obj.addClass("sending");
@@ -129,7 +129,7 @@ var countDown = function () {
     } else {
         obj.removeClass("btn_dround").addClass("btn_ground").html("重获验证码");
         obj.removeAttr("disabled");
-        sec = 10
+        sec = 60
     }
 };
 

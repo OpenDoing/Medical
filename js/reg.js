@@ -38,7 +38,7 @@ function reg_func() {
     var code = $("#code").val();
 
     $.ajax({
-        url:"http://bieke.cf:8080/ma/zxy/api/User/create",
+        url:config.base_url + "User/create",
         type: 'post',
         dataType: 'json',
         data: {
