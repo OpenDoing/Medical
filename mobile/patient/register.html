@@ -34,7 +34,7 @@
             <div class="user-input-item bt_gray pdf clearfix">
                 <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
                 <a data-for="password" class="user-input-ivisible iconfont fright typo_lgray typo_xxlarge lh_one"
-                   href="javascript:void(0);">&nbsp;</a>
+                   href="javascript:showpwd();">&nbsp;</a>
                 <a data-for="password"
                    class="user-input-icancel iconfont fright typo_lgray typo_large lh_one mr10 hidden"
                    href="javascript:void(0);"></a>
@@ -56,7 +56,7 @@
             </div>
             <div class="user-input-item bt_gray pdf clearfix relative">
                 <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
-                <button onclick="sendm()" id="sendCode"  class="bg_white btn_ground fright typo_xlarge ac-code-btn oval">获取验证码</button>
+                <button onclick="sendsms()" id="sendCode"  class="bg_white btn_ground fright typo_xlarge ac-code-btn oval">获取验证码</button>
                 <a data-for="code" class="user-input-icancel iconfont fright typo_lgray typo_large lh_one mr10 hidden"
                    href="javascript:void(0);"></a>
                 <div class="user-input-vcncode clearfix">
@@ -93,9 +93,16 @@
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 
-    function sendm() {
-        sendsms();
-
+    function showpwd() {
+        if($("#password").attr("type")==="text"){
+            $("#password").attr("type","password");
+//            $("#dj img").css("opacity",0.5)
+        }
+        //点击眼睛，如果input输入框为为password时执行，并改成text实现隐藏。
+        else{
+            $("#password").attr("type","text");
+//            $("#dj img").css("opacity",1)
+        }
     }
 
     function sendsms() {

@@ -26,31 +26,33 @@
     </div>
 
 
-    <br>
-    <div class="user-form">
-        <div class="user-input-item bt_gray pdf clearfix">
-            <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
-            <div class="user-input-phone clearfix">
-                <input id="old_phone" class="input user-input typo_black typo_middle block fullwidth nobor" type="tel" placeholder="请输入当前手机号码">
+    <div class="wrap reg bg_white relative bg_white hasNav">
+        <div class="bg_lgray pt7"></div>
+        <div class="user-form">
+            <div class="user-input-item bt_gray pdf clearfix">
+                <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
+                <div class="user-input-phone clearfix">
+                    <input id="old_phone" class="input user-input typo_black typo_middle block fullwidth nobor" type="tel" placeholder="请输入当前手机号码">
+                </div>
+            </div>
+            <div class="user-input-item bt_gray pdf clearfix">
+                <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
+                <div class="user-input-phone clearfix">
+                    <input id="new_phone" class="input user-input typo_black typo_middle block fullwidth nobor" type="tel" placeholder="请输入新手机号码">
+                </div>
+            </div>
+            <div class="user-input-item bt_gray pdf clearfix relative">
+                <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
+                <button id="sendCode" onclick="sendsms()" class="btn_ground fright typo_small ac-code-btn oval bg_white">获取验证码</button>
+                <div class="user-input-vcncode clearfix">
+                    <input id="code" class="input ac-input typo_black typo_middle block fullwidth nobor" data-required="true" data-name="短信验证码" type="tel" placeholder="请输入短信验证码">
+                </div>
             </div>
         </div>
-        <div class="user-input-item bt_gray pdf clearfix">
-            <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
-            <div class="user-input-phone clearfix">
-                <input id="new_phone" class="input user-input typo_black typo_middle block fullwidth nobor" type="tel" placeholder="请输入新手机号码">
-            </div>
-        </div>
-        <div class="user-input-item bt_gray pdf clearfix relative">
-            <span class="fleft iconfont typo_green typo_xlarge mr10 lh_one"></span>
-            <button id="sendCode" onclick="send()" class="btn_ground fright typo_small ac-code-btn oval bg_white">获取验证码</button>
-            <div class="user-input-vcncode clearfix">
-                <input id="code" class="input ac-input typo_black typo_middle block fullwidth nobor" data-required="true" data-name="短信验证码" type="tel" placeholder="请输入短信验证码">
-            </div>
-        </div>
-    </div>
 
-    <div class="pagn mt20">
-        <a class="block btn_green oval fullwidth textc typo_white lh_def typo_middle" href="javascript:void(0);" onclick="edit_phone()" id="submit_phone">提交</a>
+        <div class="pagn mt20">
+            <a class="block btn_green oval fullwidth textc typo_white lh_def typo_middle" href="javascript:void(0);" onclick="edit_phone()" id="submit_phone">提交</a>
+        </div>
     </div>
 </div>
 
@@ -67,11 +69,6 @@
 <script src="../js/lib/tips.js"></script>
 
 <script>
-
-    function send() {
-        sendsms();
-        countDown();
-    }
 
     function edit_phone() {
         $("#submit_phone").attr("disabled",true).text("正在提交...");
@@ -91,7 +88,9 @@
 
                 if(data.succ == 1){
                     showSuccess();
-//                    countDown();
+                    setTimeout(function () {
+                        window.location.href = "../patient/index.html";
+                    }, 1000);
                 }
 
                 else {
@@ -115,7 +114,8 @@
             },
             success: function (data) {
                 if(data.succ == 1){
-                    showSuccess("验证码发送成功");
+                    showSuccess("发送成功");
+                    countDown();
                 }
                 else{
                     showTips(data.error);

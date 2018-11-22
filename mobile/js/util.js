@@ -127,7 +127,7 @@ var countDown = function () {
             countDown();
         }, 1000);
     } else {
-        obj.removeClass("btn_dround").addClass("btn_ground").html("重获验证码");
+        obj.removeClass("btn_dround").addClass("btn_ground").html("重发验证码");
         obj.removeAttr("disabled");
         sec = 60
     }
