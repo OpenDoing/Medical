@@ -1,13 +1,27 @@
+var rid = getQueryString('rid');
+var pid = getQueryString('pid');
+var name = decodeURI(getQueryString('uname'));
+
 window.onload = function () {
-    var rid = getQueryString('rid');
-    var pid = getQueryString('pid');
-    var name = decodeURI(getQueryString('uname'));
-    casedetail(rid,pid,name);
-    loadimg(rid,pid);
+    casedetail();
+    loadimg();
     // init();
 };
 
-function casedetail(rid,pid,name) {
+$("#del").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    showPrompt('', "确定要删除病历吗？删除后无法恢复", "syncs", [{
+        "name": "取消", "events": function () {
+        }
+    }, {
+        "name": "确定", "events": function () {
+            del();
+        }
+    }]);
+});
+
+function casedetail() {
     $.ajax({
         type: "POST",
         url: config.base_url + "Medicalrecord/",
@@ -36,7 +50,32 @@ function casedetail(rid,pid,name) {
         }
     });
 }
-function loadimg(rid,pid) {
+
+
+
+function del() {
+    $.ajax({
+        type: "POST",
+        url: config.base_url + "Medicalrecord/delete",
+        data:{
+            'token':checktoken(),
+            'record_id':rid,
+            'profile_id':pid
+        },
+        success:function (response) {
+            if (response.succ == 1){
+                showTips("删除成功");
+                setTimeout(function () {
+                    window.location.href = "caselist.html";
+                }, 1000);
+            }
+            else
+                showTips(response.error);
+
+        }
+    });
+}
+function loadimg() {
     var a = '<a href="{link}" data-caption="{type}">\n' +
         '    <img src="{thumb}" alt="{type}"></a>';
     var htmls = '';
@@ -70,4 +109,7 @@ function loadimg(rid,pid) {
 
         }
     });
+}
+function upload_image() {
+    window.location.href = "addimage.html?rid=" + rid + "&pid=" + pid;
 }

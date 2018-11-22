@@ -6,7 +6,7 @@
     <meta name=format-detection content="telephone=no">
     <title>病历详情</title>
     <link href="../css/custom.plugin.css" rel="stylesheet">
-    <!--<link href="../css/custom.main.css" rel="stylesheet">-->
+    <link href="../css/custom.main.css" rel="stylesheet">
     <link href="../css/app.css" rel="stylesheet">
     <link href="../css/order/order.css" rel="stylesheet">
     <link href="../css/order/order2.css" rel="stylesheet">
@@ -68,6 +68,19 @@
 
                     </div>
 
+                    <div class="fixedbtm fullwidth bb_gray pt10 pb10 bg_white layout">
+                        <!--按钮组-->
+                        <div class="pl10 pr10 layout">
+
+                            <a id="del"
+                               class="fright lh26 oval bor_red typo_red ml5 pl10 pr10 typo_small">删除病历</a>
+
+                            <a id="upload" href="javascript:upload_image();"
+                               class="fright lh26 oval bor_green typo_green ml5 pl10 pr10 typo_small">上传图片</a>
+
+                        </div>
+                    </div>
+
                     <div class="weui-loading_toast vux-loading" style="display: none;">
                         <div class="weui-mask_transparent"></div>
                         <div class="weui-toast">
@@ -86,28 +99,6 @@
         </div>
     </div>
 </div>
-<div class="vux-toast">
-    <div class="weui-mask_transparent" style="display: none;"></div>
-    <div class="weui-toast weui-toast_success" style="width: 7.6em; display: none;">
-        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
-        <p class="weui-toast__content"></p>
-    </div>
-</div>
-<div class="vux-confirm">
-    <div class="vux-x-dialog">
-        <div class="weui-mask" style="display: none;"></div>
-        <div class="weui-dialog" style="display: none;">
-            <div class="weui-dialog__bd">
-                <div>
-                </div>
-            </div>
-            <div class="weui-dialog__ft">
-                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">取消</a>
-                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="pshade prompt fullheight fullwidth">
     <div class="prompt-box bg_white textc rsquare clearfix">
@@ -121,8 +112,6 @@
         </div>
     </div>
 </div>
-
-
 
 <script src="../js/lib/fontsize.js"></script>
 <script src="../js/lib/jquery-3.2.1.min.js"></script>

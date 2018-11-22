@@ -217,7 +217,7 @@ $(function () {
             }
         }, {
             "name": "确定", "events": function () {
-                window.location.href = "patientlist.html";
+                history.back();
             }
         }]);
     });

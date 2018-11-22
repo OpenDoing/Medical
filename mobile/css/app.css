@@ -3365,6 +3365,10 @@ body, html {
     border: 1px solid #00d3c2
 }
 
+.bor_red {
+    border: 1px solid #ff4949
+}
+
 .bt_green {
     border-bottom: 1px solid #00d3c2
 }

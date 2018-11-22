@@ -3,6 +3,13 @@ window.onload = load_userprofile();
 var p_id,record_id;
 
 function submit() {
+    var visit_time = $("#visit_time").val();
+    var hospital = $("#hospital").val();
+    var description = $("#description").val();
+    if(!p_id || !visit_time || !hospital.trim() || !description.trim()){
+        showTips("请完整填写病历信息");
+        return;
+    }
     var token = checktoken();
     profile_id = p_id;
 
@@ -14,9 +21,9 @@ function submit() {
         data: {
             'token':token,
             'profile_id':p_id,
-            'visit_time':$("#visit_time").val(),
-            'hospital':$("#hospital").val(),
-            'description':$("#description").val()
+            'visit_time':visit_time,
+            'hospital':hospital,
+            'description':description
         },
         success: function (data) {
             if(data.succ === 1){
