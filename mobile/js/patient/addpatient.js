@@ -31,14 +31,15 @@ function submitData() {
             'name':$('#username').val(),
             'sex':$('#sex_type').val(),
             'birth':$('#birthday').val(),
-            'address':$('#relationship_type').val().trim(),
-            'phone':$('#mobile').val().trim()
+            'relation':$('#relationship_type').val(),
+            'phone':$('#mobile').val().trim(),
+            'address':'暂无'
         },
         success: function (res) {
             if (res.succ === 1){
                 showTips("添加成功");
                 setTimeout(function () {
-                    window.location.href = "patientinfo.html";
+                    window.location.href = "patientlist.html";
                 }, 1000);
             }else{
                 showTips(res.error);
@@ -83,14 +84,26 @@ function submitForm() {
         return showTips('请输入正确手机号码');
     }
     submitData();
+    // if(userValidate()){
+    //     submitData();
+    // }
 }
 
 $(function () {
 
     checkbox();
 
-    $("#submit").click(function () {
-        submitForm();
+    $("#submit").click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        showPrompt('', "确定要添加患者资料吗？", "syncs", [{
+            "name": "取消", "events": function () {
+            }
+        }, {
+            "name": "确定", "events": function () {
+                submitForm();
+            }
+        }]);
     });
 
     $(".uc-info-form").on('click', '.show-sex', function () {

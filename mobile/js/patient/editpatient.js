@@ -1,3 +1,5 @@
+var phone;
+
 window.onload = function (ev) {
     $.ajax({
         url: config.base_url + "userprofile",
@@ -8,19 +10,49 @@ window.onload = function (ev) {
             token: checktoken()
         },
         success: function (res) {
-            if (res.data[0].sex === 1) {
-                res.data[0].sex = '男';
-            } else {
-                res.data[0].sex = '女';
-            }
-            console.log(res.data[0].sex);
+            // if (res.data[0].sex === 1) {
+            //     res.data[0].sex = '男';
+            // } else {
+            //     res.data[0].sex = '女';
+            // }
             $("#username").val(res.data[0].name);
             $("#birthday").val(res.data[0].birth);
             // $("#sec_mobile").hide();
             // $("#mobile").removeAttr("type");
             $("#sec_mobile").attr("value",res.data[0].phone);
             $("#mobile").val(res.data[0].phone);
-            $("#sex-val").text(res.data[0].sex);
+            phone = res.data[0].phone;
+
+            $("#sex_type").val(res.data[0].sex);
+            if (res.data[0].sex === 1) {
+                $("#sex-val").text('男');
+            } else {
+                $("#sex-val").text('女');
+            }
+            $('#relationship_type').val(res.data[0].relation);
+            switch (res.data[0].relation){
+                case 1:
+                    $("#relationship-val").text("本人");
+                    break;
+                case 2:
+                    $("#relationship-val").text("父母");
+                    break;
+                case 3:
+                    $("#relationship-val").text("子女");
+                    break;
+                case 4:
+                    $("#relationship-val").text("夫妻");
+                    break;
+                case 5:
+                    $("#relationship-val").text("亲属");
+                    break;
+                case 6:
+                    $("#relationship-val").text("朋友");
+                    break;
+                case 7:
+                    $("#relationship-val").text("其他");
+                    break;
+            }
 
         }
     });
@@ -49,13 +81,7 @@ function isShowSelect(is_show) {
     $("#birthday").attr('max', year + '-' + month + '-' + day)
 })()
 
-function submitData() {
-    // console.log(data);
-    var sex = 0;
-    if ($("#sex-val").text() === '男'){
-        sex = 1;
-    }
-
+function submit() {
     $.ajax({
         url:  config.base_url + "userprofile/update",
         type: "POST",
@@ -63,10 +89,39 @@ function submitData() {
             'token':checktoken(),
             'profile_id':getQueryString('id'),
             'name':$('#username').val(),
-            'sex':sex,
+            'sex':$("#sex_type").val(),
             'birth':$('#birthday').val(),
-            'address':$('#relationship_type').val().trim(),
-            'phone':$('#mobile').val().trim()
+            'relation':$('#relationship_type').val(),
+            'address':'暂无'
+        },
+        success: function (res) {
+            if (res.succ === 1){
+                showTips("修改成功");
+                setTimeout(function () {
+                    window.location.href = "patientlist.html";
+                }, 1000);
+            }else{
+                showTips(res.error);
+            }
+
+
+        }
+    });
+}
+
+function submitPhone() {
+    $.ajax({
+        url:  config.base_url + "userprofile/update_phone",
+        type: "POST",
+        data: {
+            'token':checktoken(),
+            'profile_id':getQueryString('id'),
+            'name':$('#username').val(),
+            'sex':$("#sex_type").val(),
+            'birth':$('#birthday').val(),
+            'relation':$('#relationship_type').val(),
+            'phone':$('#mobile').val().trim(),
+            'address':'暂无'
         },
         success: function (res) {
             if (res.succ === 1){
@@ -109,14 +164,19 @@ function submitForm() {
         return showTips('请选择成员关系');
     }
 
-    var mobile = $('#mobile').val().trim();
-    if (!mobile) {
-        return showTips('手机号码不能为空');
+    if(phone === $('#mobile').val().trim()){
+        submit();
     }
-    if (!valid.isMobileNum(mobile)) {
-        return showTips('请输入正确手机号码');
+    else {
+        var mobile = $('#mobile').val().trim();
+        if (!mobile) {
+            return showTips('手机号码不能为空');
+        }
+        if (!valid.isMobileNum(mobile)) {
+            return showTips('请输入正确手机号码');
+        }
+        submitPhone();
     }
-    submitData();
 }
 
 $(function () {
@@ -158,6 +218,37 @@ $(function () {
         }, {
             "name": "确定", "events": function () {
                 window.location.href = "patientlist.html";
+            }
+        }]);
+    });
+    $("#del").click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        showPrompt('', "确定要删除患者资料吗？删除后该患者的所有病历和订单无法恢复！", "syncs", [{
+            "name": "取消", "events": function () {
+            }
+        }, {
+            "name": "确定", "events": function () {
+                $.ajax({
+                    url:  config.base_url + "userprofile/delete",
+                    type: "POST",
+                    data: {
+                        'token':checktoken(),
+                        'profile_id':getQueryString('id'),
+                    },
+                    success: function (res) {
+                        if (res.succ === 1){
+                            showTips("删除成功");
+                            setTimeout(function () {
+                                window.location.href = "patientlist.html";
+                            }, 1000);
+                        }else{
+                            showTips(res.error);
+                        }
+
+
+                    }
+                });
             }
         }]);
     });

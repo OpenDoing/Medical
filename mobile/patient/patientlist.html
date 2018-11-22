@@ -20,7 +20,7 @@
     <!--最上面的标题栏-->
     <div class="nav clearfix fixedtop fullwidth">
         <div class="nav-nav">
-            <a class="typo_white typo_middle iconfont fleft nav-nav-prev pr10" href="#">
+            <a class="typo_white typo_middle iconfont fleft nav-nav-prev pr10" href="javascript:history.back();">
             </a>
             <h1 id="page_title" class="nav-title textc typo_white typo_large typo_normal elli">家庭成员管理</h1>
         </div>
@@ -45,7 +45,7 @@
                                     <em class="fleft ml10">{{item.birth}}</em>
                                 </span>
                             </h1>
-                            <p>居住地址：{{item.address}}</p>
+                            <p>成员关系：{{item.rel}}</p>
                             <p>手机号码：{{item.phone}}</p>
                         </a>
                     </div>
@@ -131,7 +131,31 @@
                     } else {
                         res.data[i].sex = '女';
                     }
+                    switch (res.data[i].relation){
+                        case 1:
+                            res.data[i].rel = "本人";
+                            break;
+                        case 2:
+                            res.data[i].rel = "父母";
+                            break;
+                        case 3:
+                            res.data[i].rel = "子女";
+                            break;
+                        case 4:
+                            res.data[i].rel = "夫妻";
+                            break;
+                        case 5:
+                            res.data[i].rel = "亲属";
+                            break;
+                        case 6:
+                            res.data[i].rel = "朋友";
+                            break;
+                        case 7:
+                            res.data[i].rel = "朋友";
+                            break;
+                    }
                 }
+
 
                 example1.items = res.data;
 
